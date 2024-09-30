@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.font-poppins {
+    font-family: "Poppins", sans-serif;
+}
+
+.font-inter {
+    font-family: "Inter", sans-serif;
+}
+
+.font-fira {
+    font-family: "Fira Sans", sans-serif;
+}
+
+.swiper-wrapper {
+    width: 100%;
+    height: max-content !important;
+    padding-bottom: 64px !important;
+    -webkit-transition-timing-function: linear !important;
+    transition-timing-function: linear !important;
+    position: relative;
+}
+.swiper-pagination-bullet {
+    background: #4f46e5;
+}
