@@ -25,3 +25,16 @@
 .swiper-pagination-bullet {
     background: #4f46e5;
 }
+
+.slide-left {
+    animation: slide-left 1s ease-in-out;
+}
+
+@keyframes slide-left {
+    0% {
+        transform: translateX(-75%);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
