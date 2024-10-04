@@ -1,7 +1,6 @@
 @extends('layout.app')
 
 @section('content')
-
     {{-- <section class="">
         <div class="flex flex-wrap md:flex-nowrap">
             <div class="items-center justify-center ">
@@ -19,7 +18,9 @@
 
             <div class="divide-y divide-slate-200">
                 <x-accordion title="Siapa Kalian" id="1">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis nihil rem dolor aut voluptatum. Explicabo soluta adipisci quam praesentium earum quia debitis possimus, quisquam neque nesciunt, sed corporis laborum architecto!
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis nihil rem dolor aut voluptatum.
+                    Explicabo soluta adipisci quam praesentium earum quia debitis possimus, quisquam neque nesciunt, sed
+                    corporis laborum architecto!
                 </x-accordion>
 
                 <x-accordion title="Apa yang kalian lakukan?" id="2">
@@ -36,7 +37,9 @@
 
             <div class="divide-y divide-slate-200">
                 <x-accordion title="Siapa Kalian" id="4">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis nihil rem dolor aut voluptatum. Explicabo soluta adipisci quam praesentium earum quia debitis possimus, quisquam neque nesciunt, sed corporis laborum architecto!
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis nihil rem dolor aut voluptatum.
+                    Explicabo soluta adipisci quam praesentium earum quia debitis possimus, quisquam neque nesciunt, sed
+                    corporis laborum architecto!
                 </x-accordion>
 
                 <x-accordion title="How does the pricing work?" id="5">
@@ -52,30 +55,32 @@
 @endsection
 
 @section('script')
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-    const accordions = document.querySelectorAll('button[id^="accordion-btn-"]');
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const accordions = document.querySelectorAll('button[id^="accordion-btn-"]');
 
-    accordions.forEach(button => {
-        const id = button.id.split('-')[2];
-        const content = document.getElementById(`accordion-content-${id}`);
-        const rect1 = document.getElementById(`rect-1-${id}`);
-        const rect2 = document.getElementById(`rect-2-${id}`);
+            accordions.forEach(button => {
+                const id = button.id.split('-')[2];
+                const content = document.getElementById(`accordion-content-${id}`);
+                const rect1 = document.getElementById(`rect-1-${id}`);
+                const rect2 = document.getElementById(`rect-2-${id}`);
 
-        button.addEventListener('click', function () {
-            const isExpanded = content.style.maxHeight && content.style.maxHeight !== '0px';
+                button.addEventListener('click', function() {
+                    const isExpanded = content.style.maxHeight && content.style.maxHeight !== '0px';
 
-            if (isExpanded) {
-                content.style.maxHeight = '0';
-                rect1.style.transform = 'rotate(0)';
-                rect2.style.transform = 'rotate(90deg)';
-            } else {
-                content.style.maxHeight = content.scrollHeight + 'px';
-                rect1.style.transform = 'rotate(45deg)';
-                rect2.style.transform = 'rotate(-45deg)';
-            }
+                    if (isExpanded) {
+                        // Close the accordion
+                        content.style.maxHeight = '0';
+                        rect1.style.transform = 'rotate(0deg)'; // Back to horizontal
+                        rect2.style.transform = 'rotate(90deg)'; // Vertical line
+                    } else {
+                        // Open the accordion
+                        content.style.maxHeight = content.scrollHeight + 'px';
+                        rect1.style.transform = 'rotate(135deg)'; // Diagonal for the X
+                        rect2.style.transform = 'rotate(45deg)'; // Diagonal for the X
+                    }
+                });
+            });
         });
-    });
-});
-</script>
+    </script>
 @endsection
