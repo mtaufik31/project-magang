@@ -6,6 +6,10 @@ Route::get('/', function () {
     return view('welcome');
 })->name('home');
 
+Route::get('/rawr', function () {
+    return view('rawr');
+})->name('home');
+
 Route::get('join', function () {
     return view('join');
 })->name('join');

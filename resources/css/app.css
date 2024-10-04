@@ -38,3 +38,18 @@
         transform: translateX(0);
     }
 }
+
+/* Menargetkan tombol accordion yang aktif */
+[data-accordion-target][aria-expanded="true"] span {
+    color: black; /* Ubah warna teks menjadi hitam ketika accordion aktif */
+}
+
+.accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+}
+
+.accordion-content.open {
+    max-height: 500px; /* Atur nilai max-height sesuai dengan konten */
+}
