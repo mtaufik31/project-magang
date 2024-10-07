@@ -1,4 +1,4 @@
-<div class="py-2">
+<div class="py-2 mx-7">
     <h2>
         <button id="accordion-btn-{{ $id }}" type="button" class="flex items-center justify-between w-full text-left font-semibold py-2">
             <span>{{ $title }}</span>

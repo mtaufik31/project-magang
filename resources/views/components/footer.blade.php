@@ -14,19 +14,19 @@
                 <h3 class="font-semibold text-4xl text-black mb-5">Tautan</h3>
                 <ul class="text-black">
                     <li>
-                        <a href="#home" class="inline-block text-base hover:text-orange-500 mb-3">Home</a>
+                        <a href="{{ route('home') }}" class="inline-block text-base hover:text-orange-500 mb-3">Home</a>
                     </li>
                     <li>
-                        <a href="#About" class="inline-block text-base hover:text-orange-500 mb-3">About me</a>
+                        <a href="{{ route('list') }}" class="inline-block text-base hover:text-orange-500 mb-3">List</a>
                     </li>
                     <li>
-                        <a href="#gallery" class="inline-block text-base hover:text-orange-500 mb-3">Gallery</a>
+                        <a href="{{ route('blog')}}" class="inline-block text-base hover:text-orange-500 mb-3">Blog</a>
                     </li>
                     <li>
-                        <a href="#blog" class="inline-block text-base hover:text-orange-500 mb-3">Blog</a>
+                        <a href="{{route('join')}}" class="inline-block text-base hover:text-orange-500 mb-3">Join Us</a>
                     </li>
                     <li>
-                        <a href="#contact" class="inline-block text-base hover:text-orange-500 mb-3">Contact</a>
+                        <a href="{{route('faq')}}" class="inline-block text-base hover:text-orange-500 mb-3">FAQ</a>
                     </li>
                 </ul>
             </div>

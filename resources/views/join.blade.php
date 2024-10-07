@@ -14,11 +14,13 @@
     </section>
 
     <section class="w-full h-full relative">
-        <div class="lg:bg-[url(/public/asset/img/bgjjk.jpg)] bg-no-repeat bg-contain bg-right-top w-full h-full absolute -z-10 opacity-20 bg-fixed md:bg-none
+        <div
+            class="lg:bg-[url(/public/asset/img/bgjjk.png)] bg-no-repeat bg-contain bg-right-top w-full h-full absolute -z-10 opacity-20 bg-fixed md:bg-none
         ">
         </div>
-        <div class="flex justify-center md:p-0 px-8 pt-8 md:justify-start items-center gap-12 flex-col-reverse md:flex-row shadow-lg">
-            <img src="{{ asset('asset/img/join.jpg') }}" alt=""  class="w-[350px] md:opacity-20">
+        <div
+            class="flex justify-center md:p-0 px-8 pt-8 md:justify-start items-center gap-12 flex-col-reverse md:flex-row shadow-lg">
+            <img src="{{ asset('asset/img/join.png') }}" alt="" class="w-[350px] md:opacity-30">
             <div class="md:w-2/5 md:me-10" data-aos="fade-right">
                 <h1 class="text-5xl font-medium font-fira">WE'RE <span class="text-[#FE9800]">HIRING</span></h1>
                 <h2 class="text-3xl w-3/4">OUR VISION IS "<span class="text-[#FE9800]">From fans, To fans, By
@@ -29,6 +31,9 @@
                 </p>
                 <p>jadi, Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla animi temporibus accusantium. In
                     tenetur porro accusamus, ex minus pariatur nihil.</p>
+                <a href="#learn-more"
+                    class="inline-block mt-3 bg-slate-50  text-orange-400 font-semibold px-6 py-3 rounded-md shadow hover:bg-gray-200 transition">Learn
+                    More</a>
             </div>
         </div>
     </section>
