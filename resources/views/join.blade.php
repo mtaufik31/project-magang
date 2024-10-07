@@ -3,12 +3,12 @@
 @section('content')
     <section class="shadow-lg">
         <div
-            class="w-full h-[396px] bg-[url(/public/asset/img/bg.jpg)] bg-fixed bg-cover bg-center bg-opacity-75 backdrop-blur-lg relative overflow-hidden">
+            class="w-full h-[386px] bg-[url(/public/asset/img/bg.jpg)] bg-fixed bg-cover bg-center bg-opacity-75 backdrop-blur-lg relative overflow-hidden">
             <div class="backdrop-blur-sm w-full h-[396px] flex justify-center items-center">
-                <img class="w-[700px] absolute bottom-0 left-0 top-0z hidden lg:block slide-left"
+                <img class="w-[700px] absolute bottom-0 left-0 top-0 hidden lg:block slide-left"
                     src="{{ asset('asset/img/yujii.png') }}" data-aos="fade-right" data-aos-duration="800" alt="">
                 <p class="justify-center text-7xl font-extrabold text-[#FE9800] font-fira lg:ps-96" data-aos="fade-up"
-                    data-aos-duration="800">JOIN US</p>
+                    data-aos-duration="800" data-aos-delay="1000">JOIN US</p>
             </div>
         </div>
     </section>

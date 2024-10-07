@@ -28,8 +28,6 @@
             background: #FE9800;
         }
     </style>
-
-
 </head>
 
 <body class="bg-[#EFEFEF]">
@@ -39,7 +37,7 @@
     {{-- navbar bawah --}}
     <x-navbarbawah></x-navbarbawah>
 
-    {{-- Swiper --}}
+    {{-- Isi Content disini --}}
     @yield('content')
 
     {{-- Footer --}}
@@ -47,10 +45,10 @@
     <!-- Footer section End -->
 
 
-
-    <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.js"></script>
+    {{-- Tambah Javascript disini --}}
     @yield('script')
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.js"></script>
     <script>
       AOS.init();
     </script>

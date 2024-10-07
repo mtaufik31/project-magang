@@ -23,7 +23,7 @@ Route::get('list', function () {
 })->name('list');
 
 Route::get('register', function () {
-    return view('register.register');
+    return view('register.signup');
 })->name('register');
 
 Route::get('login', function () {
