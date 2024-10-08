@@ -22,7 +22,7 @@
                 <!-- Email Field -->
                 <div>
                     <label for="email" class="block text-lg font-medium text-gray-700">Email</label>
-                    <input id="email" name="email" type="email" placeholder="Email"
+                    <input id="email" name="email" type="email" placeholder="Email" autocomplete="off"
                         class="mt-1 w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:border-orange-300 bg-gray-100" />
                 </div>
 

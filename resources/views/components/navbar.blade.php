@@ -1,6 +1,6 @@
 <nav class="md:bg- bg-accent bg-[rgb(255,153,0,0.7)] md:bg-transparent font-poppins ">
     <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto xl:p-4 p-5">
-        <a href="{{route('home')}}" class="flex items-center space-x-3 rtl:space-x-reverse">
+        <a href="{{ route('home') }}" class="flex items-center space-x-3 rtl:space-x-reverse">
             <span class="self-center text-3xl whitespace-nowrap  hover:text-[#FF9900] duration-200">MangaLo!</span>
         </a>
         <div class="flex md:order-2">
@@ -14,7 +14,7 @@
                     <span class="sr-only">Search icon</span>
                 </div>
                 <input type="text" id="search-navbar"
-                    class="block w-full p-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-[rgb(255,153,0,0.7)] focus:ring-blue-500 focus:border-blue-500  dark:border-gray-600 dark:placeholder-gray-400 "
+                    class="block w-full p-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-[rgb(255,153,0,0.7)]  dark:border-gray-600 dark:placeholder-gray-400 "
                     placeholder="Search...">
             </div>
             <button data-collapse-toggle="navbar-search" type="button"
@@ -38,41 +38,60 @@
                     </svg>
                 </div>
                 <input type="text" id="search-navbar"
-                    class="block w-full p-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500  dark:border-gray-600 dark:placeholder-gray-400"
+                    class="block w-full p-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50  dark:border-gray-600 dark:placeholder-gray-400"
                     placeholder="Search...">
             </div>
             <ul
                 class="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white  md:hidden ">
                 <li>
-                    <a href="{{route('home')}}"
+                    <a href="{{ route('home') }}"
                         class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 hover:text-[#FF9900] md:hover:bg-transparent md:hover:text-blue-700 md:p-0">Home</a>
                 </li>
                 <li>
-                    <a href="{{route('list')}}"
+                    <a href="{{ route('list') }}"
                         class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 hover:text-[#FF9900] md:hover:bg-transparent md:hover:text-blue-700 md:p-0">List</a>
                 </li>
                 <li>
-                    <a href="{{route('blog')}}"
+                    <a href="{{ route('blog') }}"
                         class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 hover:text-[#FF9900] md:hover:bg-transparent md:hover:text-blue-700 md:p-0">Blog</a>
                 </li>
                 <li>
-                    <a href="{{route('join')}}"
+                    <a href="{{ route('join') }}"
                         class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 hover:text-[#FF9900] md:hover:bg-transparent md:hover:text-blue-700 md:p-0">Join
                         Us</a>
                 </li>
                 <li>
-                    <a href="{{route('faq')}}"
+                    <a href="{{ route('faq') }}"
                         class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 hover:text-[#FF9900] md:hover:bg-transparent md:hover:text-blue-700 md:p-0">FAQ</a>
                 </li>
                 <div class="md:hidden pt-2">
-                    <button type="button"
-                        class="text-black bg-[#FE9800] hover:bg-[rgb(255,153,0,0.7)] hover:bg-slate-500 duration-200 focus:ring-4 focus:outline-none focus:ring-slate-300 font-medium rounded-lg text-sm px-6 py-2 text-center">
-                        Login
-                    </button>
-                    <button type="button"
-                        class="text-black bg-[#FE9800] hover:bg-[rgb(255,153,0,0.7)] hover:bg-slate-500 duration-200 focus:ring-4 focus:outline-none focus:ring-slate-300 font-medium rounded-lg text-sm px-4 py-2 text-center">
-                        Register
-                    </button>
+                    @if (Auth::check())
+                        <!-- Menampilkan nama pengguna dan tombol logout -->
+                        <a href="{{ route('logout') }}"
+                            onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                            <button type="button"
+                                class="bg-[#FE9800] hover:bg-[rgb(255,153,0,0.7)] duration-200 focus:ring-4 focus:outline-none border border-black focus:ring-blue-300 font-medium rounded-lg text-sm px-6 py-2 text-center">
+                                Logout
+                            </button>
+                        </a>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            @csrf
+                        </form>
+                    @else
+                        <!-- Tombol login jika pengguna belum login -->
+                        <a href="{{ route('login') }}">
+                            <button type="button"
+                                class="bg-[#FE9800] hover:bg-[rgb(255,153,0,0.7)] duration-200 focus:ring-4 focus:outline-none border border-black focus:ring-blue-300 font-medium rounded-lg text-sm px-6 py-2 text-center">
+                                Login
+                            </button>
+                        </a>
+                        <a href="{{ route('register') }}">
+                            <button type="button"
+                                class="bg-[#FE9800] hover:bg-[rgb(255,153,0,0.7)] duration-200 focus:ring-4 focus:outline-none border border-black focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center">
+                                Register
+                            </button>
+                        </a>
+                    @endif
                 </div>
             </ul>
         </div>

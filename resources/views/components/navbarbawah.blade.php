@@ -47,18 +47,33 @@
             </ul>
 
             <div class="flex space-x-4 ml-auto">
-                <a href="{{ route('login') }}">
-                    <button type="button"
-                        class=" bg-[#FE9800] hover:bg-[rgb(255,153,0,0.7)] duration-200 focus:ring-4 focus:outline-none border border-black focus:ring-blue-300 font-medium rounded-lg text-sm px-6 py-2 text-center ">
-                        Login
-                    </button>
-                </a>
-                <a href="{{ route('register') }}">
-                    <button type="button"
-                        class=" bg-[#FE9800] hover:bg-[rgb(255,153,0,0.7)] duration-200 focus:ring-4 focus:outline-none border border-black focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center">
-                        Register
-                    </button>
-                </a>
+                @if (Auth::check())
+                    <!-- Menampilkan nama pengguna dan tombol logout -->
+                    <a href="{{ route('logout') }}"
+                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                        <button type="button"
+                            class="bg-[#FE9800] hover:bg-[rgb(255,153,0,0.7)] duration-200 focus:ring-4 focus:outline-none border border-black focus:ring-blue-300 font-medium rounded-lg text-sm px-6 py-2 text-center">
+                            Logout
+                        </button>
+                    </a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
+                    </form>
+                @else
+                    <!-- Tombol login jika pengguna belum login -->
+                    <a href="{{ route('login') }}">
+                        <button type="button"
+                            class="bg-[#FE9800] hover:bg-[rgb(255,153,0,0.7)] duration-200 focus:ring-4 focus:outline-none border border-black focus:ring-blue-300 font-medium rounded-lg text-sm px-6 py-2 text-center">
+                            Login
+                        </button>
+                    </a>
+                    <a href="{{ route('register') }}">
+                        <button type="button"
+                            class="bg-[#FE9800] hover:bg-[rgb(255,153,0,0.7)] duration-200 focus:ring-4 focus:outline-none border border-black focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center">
+                            Register
+                        </button>
+                    </a>
+                @endif
             </div>
         </div>
     </div>

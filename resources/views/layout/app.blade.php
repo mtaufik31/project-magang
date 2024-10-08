@@ -50,7 +50,7 @@
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.js"></script>
     <script>
-      AOS.init();
+        AOS.init();
     </script>
 </body>
 

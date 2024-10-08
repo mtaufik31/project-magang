@@ -57,6 +57,13 @@ class AuthController extends Controller
         return back()->withErrors([
             'email' => 'Email atau password salah.',
         ])->onlyInput('email');
+    }
 
+    public function logout(Request $request)
+    {
+        Auth::logout(); // Melakukan logout
+
+        // Redirect ke halaman utama atau login setelah logout
+        return redirect('/')->with('berhasil', 'Anda telah berhasil logout!');
     }
 }
