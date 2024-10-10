@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 
+//  ----------------------------------------------------------------
+// ROUTE VIEW
+//  ----------------------------------------------------------------
 Route::get('/', function () {
     return view('welcome', array('title' => 'MangaLo') );
 })->name('home');
@@ -38,7 +41,9 @@ Route::get('forgot', function () {
     return view('register.forgot', data: array('title' => 'MangaLo | Forgot') );
 })->name('forgot');
 
+//  ----------------------------------------------------------------
 // AUTHENTICATION
+//  ----------------------------------------------------------------
 Route::get('/register', [AuthController::class, 'showRegister'])->name('register');
 Route::post('/register', [AuthController::class, 'register']);
 
@@ -65,7 +70,7 @@ Route::post('forgot-password', [AuthController::class, 'forgotPassword'])->name(
 
 // Halaman perubahan password
 Route::get('reset-password/{token}', function ($token) {
-    return view('auth.reset-password', ['token' => $token]);
+    return view('register.reset', ['token' => $token], array('title' => 'Reset'));
 })->name('password.reset');
 
 // Proses perubahan password
@@ -93,3 +98,10 @@ Route::post('reset-password', action: function (Request $request) {
                 ? redirect()->route('login')->with('status', __($status))
                 : back()->withErrors(['email' => [__($status)]]);
 })->name('password.update');
+
+//  ----------------------------------------------------------------
+// DASHBOARD
+//  ----------------------------------------------------------------
+Route::get('/dashboard', function () {
+    return view('staff.dashboard', array('title' => 'Dashboard | Staff') );
+})->name('dashboard');

@@ -53,3 +53,10 @@
 .accordion-content.open {
     max-height: 500px; /* Atur nilai max-height sesuai dengan konten */
 }
+
+.shadow-manual-left {
+    box-shadow: -6px 0px 16px 4px rgba(0, 0, 0, 0.2); /* Ubah efek shadow menjadi manual */
+}
+.shadow-manual-right {
+    box-shadow: 6px 0px 16px 4px rgba(0, 0, 0, 0.2), 0px 2px 10px rgba(0,0,0,0.2); /* Ubah efek shadow menjadi manual */
+}

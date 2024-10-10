@@ -3,7 +3,7 @@
 @section('content')
     <div class="flex h-screen lg:px-52 lg:py-5 flex-row-reverse bg-[#ff9900]">
         <!-- Left Section (Form) -->
-        <div class="w-full bg-white lg:w-1/2 flex flex-col justify-center items-center px-10 py-6 relative">
+        <div class="w-full bg-white lg:w-1/2 flex flex-col justify-center items-center px-10 py-6 relative shadow-manual-left">
             <h1 class="text-4xl font-semibold">Sign Up</h1>
 
             <form method="POST" action="{{ route('register') }}" class="space-y-6 w-full max-w-full">
@@ -77,7 +77,7 @@
 
         <!-- Right Section (Empty or Image) -->
         <div
-            class="hidden lg:flex items-center justify-center text-center lg:w-1/2 bg-right bg-no-repeat z-10 bg-[#fec46d] bg-cover  ">
+            class="hidden lg:flex items-center justify-center text-center lg:w-1/2 bg-right bg-no-repeat z-10 bg-[#fec46d] bg-cover shadow-manual-right">
             <div class="font-fira">
                 <h1 class="text-5xl font-semibold font-inter">HELO GAIS</h1>
                 <H2 class="py-5 text-2xl">Udah Punya <b>Akun?</b></H2>

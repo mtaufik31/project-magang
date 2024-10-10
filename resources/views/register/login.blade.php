@@ -3,7 +3,8 @@
 @section('content')
     <div class="flex h-screen bg-cover lg:px-52 lg:py-5 bg-[#ff9900]  ">
         <!-- Left Section (Form) -->
-        <div class="w-full md:bg-[url()] md:bg-white bg-[url(/public/asset/img/bg.jpg)]   lg:w-1/2 flex flex-col justify-center items-center px-10 py-12 relative">
+        <div
+            class="w-full md:bg-[url()] md:bg-white bg-[url(/public/asset/img/bg.jpg)]   lg:w-1/2 flex flex-col justify-center items-center px-10 py-12 relative shadow-manual-left">
             <h1 class="text-4xl font-semibold mb-3">Sign In</h1>
 
             <form method="POST" action="{{ route('login') }}" class="space-y-6 w-full max-w-md">
@@ -43,7 +44,8 @@
                     </div>
 
                     <div>
-                        <a href="{{ route('forgot') }}" class="text-sm text-gray-500 hover:text-orange-400 transition">Forgot
+                        <a href="{{ route('forgot') }}"
+                            class="text-sm text-gray-500 hover:text-orange-400 transition">Forgot
                             Password?</a>
                     </div>
                 </div>
@@ -72,8 +74,7 @@
         </div>
 
         <!-- Right Section (Empty or Image) -->
-        <div
-            class="hidden lg:flex items-center justify-center text-center lg:w-1/2 bg-right bg-no-repeat z-10 bg-[#fec46d] bg-cover">
+        <div class="hidden lg:flex items-center justify-center text-center lg:w-1/2 bg-right bg-no-repeat z-10 bg-[#fec46d] bg-cover shadow-manual-right">
             <div class="font-fira">
                 <h1 class="text-5xl font-semibold font-inter">Silahkan Login</h1>
                 <H2 class="py-6 text-2xl text-red-600">Not Register Yet?</b></H2>
@@ -83,4 +84,5 @@
                 </a>
             </div>
         </div>
-    @endsection
+    </div>
+@endsection

