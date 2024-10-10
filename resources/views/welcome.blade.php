@@ -2,7 +2,7 @@
 
 @section('content')
     @if (session('success'))
-        <div class="bg-[#ff9900] border border-black text-black px-4 py-3 rounded relative" role="alert" id="alert">
+        <div class="bg-[#ff9900] border border-black text-black px-4 md:px-36 py-3 rounded relative" role="alert" id="alert">
             <span class="block">{{ session('success') }}
                 @if (Auth::user()->name != null)
                     <span class="text-gray-900 font-medium">Welcome, {{ Auth::user()->name }}</span>
@@ -20,7 +20,7 @@
         </div>
     @endif
     @if (@session('berhasil'))
-        <div class="bg-[#ff9900] border border-black text-black px-4 py-3 rounded relative" role="alert" id="alert">
+        <div class="bg-[#ff9900] border border-black text-black px-4 md:px-36 py-3 rounded relative" role="alert" id="alert">
             <span class="text-gray-900 font-medium">You're Log Out</span>
 
             <!-- Close button -->
@@ -40,47 +40,48 @@
         </script>
     @endif
 
-    <div class="swiper mySwiper w-[54%] h-1/3 mt-16">
+    <div class="swiper mySwiper w-[30%] h-[10%] mt-16 relative">
         <div class="swiper-wrapper">
             <div class="swiper-slide">
-                <img src="{{ asset('asset/img/1.jpg') }}" alt="" class="w-full h-full object-cover rounded-lg">
+                <img src="{{ asset('asset/img/halo.png') }}" alt="" class="w-full h-full object-cover rounded-lg">
             </div>
             <div class="swiper-slide">
-                <img src="{{ asset('asset/img/2.jpg') }}" alt="" class="w-full h-full object-cover rounded-lg">
+                <img src="{{ asset('asset/img/halo.png') }}" alt="" class="w-full h-full object-cover rounded-lg">
             </div>
             <div class="swiper-slide">
-                <img src="{{ asset('asset/img/3.jpg') }}" alt="" class="w-full h-full object-cover rounded-lg">
+                <img src="{{ asset('asset/img/halo.png') }}" alt="" class="w-full h-full object-cover rounded-lg">
             </div>
             <div class="swiper-slide">
-                <img src="{{ asset('asset/img/1.jpg') }}" alt="" class="w-full h-full object-cover rounded-lg">
+                <img src="{{ asset('asset/img/halo.png') }}" alt="" class="w-full h-full object-cover rounded-lg">
             </div>
         </div>
-        <div class="swiper-pagination "></div>
+
+        <!-- Pagination -->
+        <div class="swiper-pagination"></div>
+
+        <!-- Navigation buttons (arrows) -->
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
     </div>
+
 @endsection
 
 @section('script')
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
     <script>
-        var swiper = new Swiper(".mySwiper", {
-            navigation: {
-                nextEl: ".swiper-button-next",
-                prevEl: ".swiper-button-prev",
-            },
+        var swiper = new Swiper('.mySwiper', {
             loop: true,
-            centeredSlides: true,
-            autoplay: {
-                delay: 2000,
-                disableOnInteraction: false,
-            },
             pagination: {
-                el: ".swiper-pagination",
+                el: '.swiper-pagination',
+                clickable: true,
             },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            slidesPerView: 1,
+            spaceBetween: 10,
         });
-
-        function closeAlert() {
-            document.getElementById('alert').style.display = 'none';
-        }
     </script>
 @endsection

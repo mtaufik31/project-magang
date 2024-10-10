@@ -7,12 +7,13 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Controllers;
+use Illuminate\Support\Facades\Password;
 
 class AuthController extends Controller
 {
     public function showRegister()
     {
-        return view('register.signup');
+        return view('register.signup', ['title' => 'MangaLo | Sign Up']);
     }
 
     public function register(Request $request)
@@ -35,7 +36,7 @@ class AuthController extends Controller
 
     public function showLogin()
     {
-        return view('register.login');
+        return view('register.login', ['title' => 'MangaLo | Sign In']);
     }
 
     // Proses login
@@ -65,5 +66,44 @@ class AuthController extends Controller
 
         // Redirect ke halaman utama atau login setelah logout
         return redirect('/')->with('berhasil', 'Anda telah berhasil logout!');
+    }
+
+    public function forgotPassword(Request $request) {
+        $request->validate(['email' => 'required|email']);
+
+        // Mengirim link reset password
+        $status = Password::sendResetLink(
+            $request->only('email')
+        );
+
+        return $status === Password::RESET_LINK_SENT
+           ? back()->with(['status' => __($status)])
+            : back()->withErrors(['email' => [__($status)]]);
+    }
+
+    public function reset(Request $request)
+    {
+        $request->validate([
+            'token' => 'required',
+            'email' => 'required|email',
+            'password' => 'required|confirmed|min:8',
+        ]);
+
+        // Reset password
+        $status = Password::reset(
+            $request->only('email', 'password', 'password_confirmation', 'token'),
+            function ($user, $password) {
+                $user->forceFill([
+                    'password' => bcrypt($password)
+                ])->save();
+
+                // Jika ingin langsung login setelah reset
+                auth()->login($user);
+            }
+        );
+
+        return $status === Password::PASSWORD_RESET
+            ? redirect()->route('login')->with('status', __($status))
+            : back()->withErrors(['email' => [__($status)]]);
     }
 }

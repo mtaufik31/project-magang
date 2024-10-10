@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>MangaLo</title>
+    <title>{{ $title }}</title>
     <link rel="icon" href="{{ asset('asset/img/logo.jpeg') }}">
     <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.css" rel="stylesheet" />
     @vite('resources/css/app.css')
@@ -18,14 +18,28 @@
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 
     <style>
-        .swiper-pagination-bullet {
+        .swiper-button-next,
+        .swiper-button-prev {
+            color: #000;
             width: 50px;
-            height: 15px;
-            border-radius: 10px;
+            height: 50px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .swiper-button-next::after,
+        .swiper-button-prev::after {
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .swiper-pagination-bullet {
+            background-color: #ccc;
+            opacity: 1;
         }
 
         .swiper-pagination-bullet-active {
-            background: #FE9800;
+            background-color: #ff9900;
         }
     </style>
 </head>

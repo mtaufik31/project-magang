@@ -14,7 +14,7 @@
                     More</a>
             </div>
             <div class="md:w-1/2">
-                <img class="w-[275px] md:w-[300px] rounded-lg mx-auto md:mx-0" src="{{ asset('asset/img/apasih.jpg') }}"
+                <img class="w-[275px] md:w-[300px] rounded-lg mx-auto md:mx-0" src="{{ asset('asset/img/join.jpg') }}"
                     alt="Hero Image">
             </div>
         </div>
@@ -26,7 +26,7 @@
     </svg>
 
     <main class="relative min-h-screen flex flex-col justify-center overflow-hidden">
-        <div class="w-full max-w-2xl mx-auto px-4 md:px-6 pb-12 pt-5">
+        <div class="w-full max-w-4xl mx-auto px-4 md:px-6 pb-12 pt-5">
             <h1 class="text-2xl font-semibold text-slate-900 mb-4 font-fira">We Are</h1>
 
             <div class="divide-y divide-slate-200">
@@ -45,7 +45,7 @@
                 </x-accordion>
             </div>
         </div>
-        <div class="w-full max-w-2xl mx-auto px-4 md:px-6 pt-4">
+        <div class="w-full max-w-4xl mx-auto px-4 md:px-6 pt-4">
             <h1 class="text-2xl font-semibold text-slate-900 mb-4 font-fira">Service</h1>
 
             <div class="divide-y divide-slate-200">

@@ -1,9 +1,9 @@
 @extends('layout.register')
 
 @section('content')
-    <div class="flex h-screen lg:px-52 lg:py-5 bg-[#ff9900]">
+    <div class="flex h-screen bg-cover lg:px-52 lg:py-5 bg-[#ff9900]  ">
         <!-- Left Section (Form) -->
-        <div class="w-full bg-white lg:w-1/2 flex flex-col justify-center items-center px-10 py-12 relative">
+        <div class="w-full md:bg-[url()] md:bg-white bg-[url(/public/asset/img/bg.jpg)]   lg:w-1/2 flex flex-col justify-center items-center px-10 py-12 relative">
             <h1 class="text-4xl font-semibold mb-3">Sign In</h1>
 
             <form method="POST" action="{{ route('login') }}" class="space-y-6 w-full max-w-md">
@@ -43,7 +43,7 @@
                     </div>
 
                     <div>
-                        <a href="#" class="text-sm text-gray-500 hover:text-orange-400 transition">Forgot
+                        <a href="{{ route('forgot') }}" class="text-sm text-gray-500 hover:text-orange-400 transition">Forgot
                             Password?</a>
                     </div>
                 </div>
@@ -75,8 +75,8 @@
         <div
             class="hidden lg:flex items-center justify-center text-center lg:w-1/2 bg-right bg-no-repeat z-10 bg-[#fec46d] bg-cover">
             <div class="font-fira">
-                <h1 class="text-5xl font-semibold font-inter">HELO GAIS</h1>
-                <H2 class="py-5 text-2xl text-red-600">Belum Punya <b>Akun?</b></H2>
+                <h1 class="text-5xl font-semibold font-inter">Silahkan Login</h1>
+                <H2 class="py-6 text-2xl text-red-600">Not Register Yet?</b></H2>
                 <a href="{{ route('register') }}"
                     class="text-black transition  bg-[#ff9900] hover:bg-[rgb(255,153,0,0.6)] py-3 px-6 rounded-lg duration-100">Register
                     Here
