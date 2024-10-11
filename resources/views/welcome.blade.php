@@ -40,7 +40,7 @@
         </script>
     @endif
 
-    <div class="swiper mySwiper w-[30%] h-[10%] mt-16 relative">
+    {{-- <div class="swiper mySwiper w-[30%] h-[10%] mt-16 relative">
         <div class="swiper-wrapper">
             <div class="swiper-slide">
                 <img src="{{ asset('asset/img/halo.png') }}" alt="" class="w-full h-full object-cover rounded-lg">
@@ -62,11 +62,12 @@
         <!-- Navigation buttons (arrows) -->
         <div class="swiper-button-next"></div>
         <div class="swiper-button-prev"></div>
-    </div>
+    </div> --}}
 
 @endsection
 
 @section('script')
+
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
     <script>

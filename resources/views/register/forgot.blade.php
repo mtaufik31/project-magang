@@ -9,7 +9,7 @@
         <h1 class="text-4xl font-semibold mb-3">Forgot Password?</h1>
         <p class="text-center w-[60%]">Masukkan email kalian agar kami dapat mengirimkan kode </p>
 
-        <form method="POST" action="{{ route('password.email') }}" class="space-y-6 w-full max-w-md">
+        <form method="POST" action="{{ route('password.email') }}" class="space-y-6 w-full max-w-full">
             @csrf
             @if (session('status'))
                 <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative" role="alert">
@@ -31,6 +31,12 @@
                     class="w-full py-3 px-4 bg-[#FE9800] hover:bg-orange-500 text-white font-semibold rounded-md shadow transition duration-200">
                     SEND
                 </button>
+            </div>
+            <div class="items-center lg:hidden block">
+                <p>Remember You're Password?
+                    <a href="{{ route('register') }}"
+                        class="text-blue-400 hover:text-orange-400 transition hover:underline">Login Here</a>
+                </p>
             </div>
         </form>
 

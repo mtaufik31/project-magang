@@ -7,7 +7,7 @@
             class="w-full md:bg-[url()] md:bg-white bg-[url(/public/asset/img/bg.pg)]   lg:w-1/2 flex flex-col justify-center items-center px-10 py-12 relative shadow-manual-left">
             <h1 class="text-4xl font-semibold mb-3">Sign In</h1>
 
-            <form method="POST" action="{{ route('login') }}" class="space-y-6 w-full max-w-md">
+            <form method="POST" action="{{ route('login') }}" class="space-y-6 w-full max-w-full">
                 @csrf
                 @if ($errors->has('email') && $errors->has('password'))
                     <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
@@ -58,12 +58,12 @@
                     </button>
                 </div>
 
-                {{-- <div class="flex items-center">
+                <div class="items-center lg:hidden block">
                     <p>Not Registered Yet?
                         <a href="{{ route('register') }}"
                             class="text-blue-400 hover:text-orange-400 transition hover:underline">Register Here</a>
                     </p>
-                </div> --}}
+                </div>
             </form>
 
             <!-- Copyright Text Fixed at Bottom -->
@@ -74,7 +74,8 @@
         </div>
 
         <!-- Right Section (Empty or Image) -->
-        <div class="hidden lg:flex items-center justify-center text-center lg:w-1/2 bg-right bg-no-repeat z-10 bg-[#fec46d] bg-cover shadow-manual-right">
+        <div
+            class="hidden lg:flex items-center justify-center text-center lg:w-1/2 bg-right bg-no-repeat z-10 bg-[#fec46d] bg-cover shadow-manual-right">
             <div class="font-fira">
                 <h1 class="text-5xl font-semibold font-inter">Silahkan Login</h1>
                 <H2 class="py-6 text-2xl text-red-600">Not Register Yet?</b></H2>
