@@ -20,11 +20,22 @@
 </head>
 
 <body>
-
+    @if (session('success'))
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                Swal.fire({
+                    title: "Wow!",
+                    text: "{{ session('success') }}", // Use the session success message here
+                    icon: "success"
+                });
+            });
+        </script>
+    @endif
     <x-navboard></x-navboard>
-    
+
     <x-sidebar></x-sidebar>
 
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.js"></script>
 </body>
 

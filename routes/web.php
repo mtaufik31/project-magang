@@ -101,6 +101,7 @@ Route::post('reset-password', action: function (Request $request) {
         : back()->withErrors(['email' => [__($status)]]);
 })->name('password.update');
 
+
 //  ----------------------------------------------------------------
 // DASHBOARD
 //  ----------------------------------------------------------------

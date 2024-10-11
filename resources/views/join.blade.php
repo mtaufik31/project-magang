@@ -23,7 +23,7 @@
             <img src="{{ asset('asset/img/join.png') }}" alt="" class="w-[350px] md:opacity-30">
             <div class="md:w-2/5 md:me-10" data-aos="fade-right">
                 <h1 class="text-5xl font-medium font-fira">WE'RE <span class="text-[#FE9800]">HIRING</span></h1>
-                <h2 class="text-3xl w-3/4">OUR VISION IS "<span class="text-[#FE9800]">From fans, To fans, By
+                <h2 class="text-3xl w-3/4 py-3">OUR VISION IS "<span class="text-[#FE9800]">From fans, To fans, By
                         fans</span>".</h2>
                 <p class="w-">
                     <span class="text-[#FE9800] font-poppins"> MangaLo </span>membuka kesempatan untuk kalian yang ingin

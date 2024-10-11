@@ -1,6 +1,17 @@
 @extends('layout.register')
 
 @section('content')
+    @if (session('success'))
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            Swal.fire({
+                title: "Welcome!",
+                text: "{{ session('success') }}", // Use the session success message here
+                icon: "success"
+            });
+        });
+    </script>
+    @endif
     <div class="flex h-screen bg-cover lg:px-52 lg:py-5 bg-white  md:bg-[#ff9900]">
         <!-- Left Section (Form) -->
         <div

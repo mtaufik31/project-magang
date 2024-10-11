@@ -1,21 +1,18 @@
 @extends('layout.app')
 
 @section('content')
-    <section class="relative bg-gradient-to-r bg-[#e2e2e2] text-black pt-20">
-        <div class="max-w-7xl mx-auto flex flex-wrap md:flex-nowrap items-center justify-center  gap-10 px-10">
-            <div class="space-y-4">
-                <h1 class="text-5xl font-semibold font-fira text-orange-400">FAQ!</h1>
-                <p class="text-lg font-semibold">We Had All the Answer!</p>
-                <p class="text-base">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptas architecto
-                    reprehenderit ea molestias enim. Accusamus, nulla! Expedita porro qui repellendus minus! Dolore dolor
-                    aut nihil!</p>
-                <a href="#learn-more"
-                    class="inline-block bg-white text-orange-400 font-semibold px-6 py-3 rounded-md shadow hover:bg-gray-100 transition">Learn
-                    More</a>
+    <section class="bg-gradient-to-r bg-[#e2e2e2] text-black md:pt-20 pt-16 ">
+        <div class="flex flex-wrap sm:flex-nowrap justify-center">
+            <div class="w-full self-center px-6 sm:w-[45%]  font-inter pb-8 md:pb-0">
+                <h1 class="text-6xl text-[#ff9900] font-semibold ">FAQ</h1>
+                <h3 class="text-2xl font-medium my-3">We Have All The Answers!</h3>
+                <p class="pb-6">Jika kalian kebingungan dengan apa yang sebenernya kami buat di website ini, maka halaman ini merupakan jawaban untuk semua pertanyaan kalian</p>
+                <a class="bg-[#ff9900] font-semibold py-3 px-5 rounded-lg duration-200 hover:bg-[rgb(255,153,0,0.7)]" href="{{ route('home') }}">
+                    Apaan Nih
+                </a>
             </div>
-            <div class="md:w-1/2">
-                <img class="w-[275px] md:w-[300px] rounded-lg mx-auto md:mx-0" src="{{ asset('asset/img/join.jpg') }}"
-                    alt="Hero Image">
+            <div class=" px-5 self-center w-[350px]">
+                <img class="rounded-xl" src="{{ asset('asset/img/apasih.jpg') }}" alt="">
             </div>
         </div>
     </section>
@@ -25,8 +22,8 @@
         </path>
     </svg>
 
-    <main class="relative min-h-screen flex flex-col justify-center overflow-hidden">
-        <div class="w-full max-w-4xl mx-auto px-4 md:px-6 pb-12 pt-5">
+    <main class="relative py-16 flex flex-col justify-center overflow-hidden">
+        <div class="w-full max-w-4xl mx-auto px-4 md:px-6 pb-12 pt-1">
             <h1 class="text-2xl font-semibold text-slate-900 mb-4 font-fira">We Are</h1>
 
             <div class="divide-y divide-slate-200">
