@@ -1,10 +1,10 @@
 @extends('layout.register')
 
 @section('content')
-    <div class="flex h-screen bg-cover lg:px-52 lg:py-5 bg-[#ff9900]  ">
+    <div class="flex h-screen bg-cover lg:px-52 lg:py-5 bg-white  md:bg-[#ff9900]">
         <!-- Left Section (Form) -->
         <div
-            class="w-full md:bg-[url()] md:bg-white bg-[url(/public/asset/img/bg.jpg)]   lg:w-1/2 flex flex-col justify-center items-center px-10 py-12 relative shadow-manual-left">
+            class="w-full md:bg-[url()] md:bg-white bg-[url(/public/asset/img/bg.pg)]   lg:w-1/2 flex flex-col justify-center items-center px-10 py-12 relative shadow-manual-left">
             <h1 class="text-4xl font-semibold mb-3">Sign In</h1>
 
             <form method="POST" action="{{ route('login') }}" class="space-y-6 w-full max-w-md">

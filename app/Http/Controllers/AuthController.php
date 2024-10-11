@@ -50,26 +50,29 @@ class AuthController extends Controller
 
         // Coba autentikasi user
         if (Auth::attempt(['email' => $request->email, 'password' => $request->password], $request->remember_me)) {
+            if (Auth::user()->role=='admin') {
+                return redirect()->intended('/dashboard')->with('success', 'You`re Dewa'); // Pesan sukses
+            }
             return redirect()->intended('/')->with('success', 'Login berhasil!'); // Pesan sukses
         }
 
-        if ($request->email === 'taufikbudiman031@gmail.com' && $request->password === '123456789') {
-            // Jika cocok, login manual tanpa cek database
-            $user = User::where('email', $request->email)->first();
+        // if ($request->email === 'taufikbudiman031@gmail.com' && $request->password === '123456789') {
+        //     // Jika cocok, login manual tanpa cek database
+        //     $user = User::where('email', $request->email)->first();
 
-            // Jika user tidak ada di database, buat user baru
-            if (!$user) {
-                $user = User::create([
-                    'name' => 'Taufik Budiman', // Anda bisa menyesuaikan nama
-                    'email' => $request->email,
-                    'password' => bcrypt($request->password),
-                    'role' => 'admin' // Asumsikan ini adalah akun admin
-                ]);
-            }
+        //     // Jika user tidak ada di database, buat user baru
+        //     if (!$user) {
+        //         $user = User::create([
+        //             'name' => 'Taufik Budiman', // Anda bisa menyesuaikan nama
+        //             'email' => $request->email,
+        //             'password' => bcrypt($request->password),
+        //             'role' => 'admin' // Asumsikan ini adalah akun admin
+        //         ]);
+        //     }
 
-            Auth::login($user, $request->remember_me);
-            return redirect()->intended('/dashboard')->with('success', 'Login berhasil!');
-        }
+        //     Auth::login($user, $request->remember_me);
+        //     return redirect()->intended('/dashboard')->with('success', 'Login berhasil!');
+        // }
 
         // Jika autentikasi gagal
         // return back()->withErrors([

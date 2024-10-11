@@ -5,28 +5,29 @@ use Illuminate\Support\Facades\Password;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use Illuminate\Support\Facades\Auth;
 
 //  ----------------------------------------------------------------
 // ROUTE VIEW
 //  ----------------------------------------------------------------
 Route::get('/', function () {
-    return view('welcome', array('title' => 'MangaLo') );
+    return view('welcome', array('title' => 'MangaLo'));
 })->name('home');
 
 Route::get('join', function () {
-    return view('join', array('title' => 'MangaLo | Join Us') );
+    return view('join', array('title' => 'MangaLo | Join Us'));
 })->name('join');
 
 Route::get('faq', function () {
-    return view('faq', array('title' => 'MangaLo | FAQ') );
+    return view('faq', array('title' => 'MangaLo | FAQ'));
 })->name('faq');
 
 Route::get('blog', function () {
-    return view('blog', array('title' => 'MangaLo | Blog') );
+    return view('blog', array('title' => 'MangaLo | Blog'));
 })->name('blog');
 
 Route::get('list', function () {
-    return view('list', array('title' => 'MangaLo | List') );
+    return view('list', array('title' => 'MangaLo | List'));
 })->name('list');
 
 Route::get('register', function () {
@@ -38,7 +39,7 @@ Route::get('login', function () {
 })->name('login');
 
 Route::get('forgot', function () {
-    return view('register.forgot', data: array('title' => 'MangaLo | Forgot') );
+    return view('register.forgot', data: array('title' => 'MangaLo | Forgot'));
 })->name('forgot');
 
 //  ----------------------------------------------------------------
@@ -95,13 +96,15 @@ Route::post('reset-password', action: function (Request $request) {
     );
 
     return $status === Password::PASSWORD_RESET
-                ? redirect()->route('login')->with('status', __($status))
-                : back()->withErrors(['email' => [__($status)]]);
+        ? redirect()->route('login')->with('status', __($status))
+        : back()->withErrors(['email' => [__($status)]]);
 })->name('password.update');
 
 //  ----------------------------------------------------------------
 // DASHBOARD
 //  ----------------------------------------------------------------
 Route::get('/dashboard', function () {
-    return view('staff.dashboard', array('title' => 'Dashboard | Staff') );
-})->name('dashboard');
+    if (Auth::user()->role == 'admin') {
+        return view('staff.dashboard', array('title' => 'Dashboard | Staff'));
+    } return redirect()->route('home');
+})->middleware('auth')->name('dashboard');

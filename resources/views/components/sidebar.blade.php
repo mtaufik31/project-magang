@@ -40,7 +40,8 @@ aria-label="Sidebar">
             </a>
         </li>
         <li>
-            <a href="#" class="flex items-center p-2 text-gray-900 rounded-lg  hover:bg-gray-200 group">
+            <a href="{{ route('logout') }}"
+            onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="flex items-center p-2 text-gray-900 rounded-lg  hover:bg-gray-200 group">
                 <svg class="flex-shrink-0 w-5 h-5 text-gray-400 transition duration-75  group-hover:text-gray-900 "
                     aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
                     viewBox="0 0 18 20">
@@ -49,6 +50,9 @@ aria-label="Sidebar">
                 </svg>
                 <span class="flex-1 ms-3 whitespace-nowrap">Log Out</span>
             </a>
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                @csrf
+            </form>
         </li>
     </ul>
 </div>
