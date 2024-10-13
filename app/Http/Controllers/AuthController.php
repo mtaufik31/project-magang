@@ -90,7 +90,7 @@ class AuthController extends Controller
         Auth::logout(); // Melakukan logout
 
         // Redirect ke halaman utama atau login setelah logout
-        return redirect('/')->with('berhasil', 'Anda Sekarang Log Out!');
+        return redirect('/')->with('berhasil', 'Anda Log Out!');
     }
 
     public function forgotPassword(Request $request) {
