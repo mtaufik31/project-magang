@@ -1,5 +1,5 @@
 <nav class="fixed top-0 z-50 w-full bg-[#fec46d] border-b border-black">
-    <div class="px-4 py-4 lg:px-5 lg:pl-3">
+    <div class="px-4 py-4 lg:px-5 lg:pl-3 shadow-md">
         <div class="flex items-center justify-between ">
             <div class="flex items-center justify-start rtl:justify-end">
                 <button data-drawer-target="logo-sidebar" data-drawer-toggle="logo-sidebar"
@@ -18,7 +18,7 @@
                         class="self-center text-xl font-semibold sm:text-2xl duration-200 hover:text-white whitespace-nowrap">DashBoard</span>
                 </a>
             </div>
-            <div class="flex items-center">
+            {{-- <div class="flex items-center">
                 <div class="flex items-center ms-3">
                     <div>
                         <button type="button"
@@ -56,7 +56,7 @@
                         </ul>
                     </div>
                 </div>
-            </div>
+            </div> --}}
         </div>
     </div>
 </nav>
