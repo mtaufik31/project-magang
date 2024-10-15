@@ -108,5 +108,10 @@ Route::post('reset-password', action: function (Request $request) {
 Route::get('/dashboard', function () {
     if (Auth::user()->role == 'admin') {
         return view('staff.dashboard', array('title' => 'Dashboard | Staff'));
-    } return redirect()->route('home');
+    }
+    return redirect()->route('home');
 })->middleware('auth')->name('dashboard');
+
+Route::get('/manga', function () {
+    return view('layout.manga', array('title' => 'Manga | Staff'));
+})->middleware('auth')->name('manga');
