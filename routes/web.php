@@ -56,6 +56,8 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::post('forgot-password', [AuthController::class, 'forgotPassword'])->name('password.email');
 
+Route::post('forgot-password', [AuthController::class, 'forgotPassword'])->name('password.email');
+
 
 // Route::post('forgot-password', function (Request $request) {
 //     $request->validate(['email' => 'required|email']);
@@ -113,5 +115,5 @@ Route::get('/dashboard', function () {
 })->middleware('auth')->name('dashboard');
 
 Route::get('/manga', function () {
-    return view('layout.manga', array('title' => 'Manga | Staff'));
+    return view('manga', array('title' => 'MangaLo | Manga'));
 })->middleware('auth')->name('manga');

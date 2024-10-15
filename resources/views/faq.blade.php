@@ -1,13 +1,17 @@
 @extends('layout.app')
 
 @section('content')
+<div id="particles-js">
+
+</div>
+
+
     <section class="bg-gradient-to-r bg-[#e2e2e2] text-black md:pt-20 pt-16 ">
         <div class="flex flex-wrap sm:flex-nowrap justify-center">
             <div class="w-full self-center px-6 sm:w-[45%]  font-inter pb-8 md:pb-0">
                 <h1 class="text-6xl text-[#ff9900] font-semibold ">FAQ</h1>
                 <h3 class="text-2xl font-medium my-3">We Have All The Answers!</h3>
-                <p class="pb-6">Jika kalian kebingungan dengan apa yang sebenernya kami buat di website ini, maka halaman
-                    ini merupakan jawaban untuk semua pertanyaan kalian</p>
+                <p class="pb-6">Assalamualaikum All Hail Wibu!</p>
                 <a class="bg-[#ff9900] font-semibold py-3 px-5 rounded-lg duration-200 hover:bg-[rgb(255,153,0,0.7)]"
                     href="{{ route('home') }}">
                     Apaan Nih
@@ -27,8 +31,8 @@
     <main class="relative py-16 flex flex-col justify-center overflow-hidden">
         <div class="w-full max-w-4xl mx-auto px-4 md:px-6 pb-12 pt-1">
             <div class="text-center">
-                <h1 class="text-5xl font-bold text-slate-900 mb-2">Apa Yang Anda Ingin Cari Tahu  <span
-                        class="text-red-700">Tentang Kami?</span></h1>
+                <h1 class="text-5xl font-bold text-slate-900 mb-2">Apa Yang Anda Ingin Cari Tahu <span
+                        class="text-[#fec46d]">Tentang Kami?</span></h1>
                 <p class="text-lg text-gray-500 mb-6">
                     Dapatkan info seputar tentang kami di halaman ini!
                 </p>
@@ -74,6 +78,9 @@
 @endsection
 
 @section('script')
+    <script src="
+    https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js
+    "></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const accordions = document.querySelectorAll('button[id^="accordion-btn-"]');

@@ -1,4 +1,4 @@
-<div class="py-3 mt-2 bg-orange-400 rounded-xl hover:bg-[rgba(255,153,0,0.9)] duration-150">
+<div class="py-3 mt-2 bg-[#fec46d] rounded-xl hover:bg-[rgba(255,153,0,0.9)] duration-150">
     <h2>
         <button id="accordion-btn-{{ $id }}" type="button" class="flex items-center justify-between w-full text-left font-bold font-poppins py-2 px-5 duration-150 hover:text-white">
             <span class="">{{ $title }}</span>
