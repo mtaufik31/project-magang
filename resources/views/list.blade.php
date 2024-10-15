@@ -3,7 +3,7 @@
 @section('content')
 
 <section class="py-5">
-    <div class="bg-white w-[69%] mx-auto relative">
+    <div class="bg-white md:w-[69%] mx-auto relative">
         <div class="flex items-center justify-between">
             <h1 class="font-fira text-[24px] px-6 pt-5 pb-3">Latest Update</h1>
             <a href="{{ route('list') }}">
@@ -57,6 +57,14 @@
                 </a>
 
                 <!-- Card 5 -->
+                <a href="{{ route('manga') }}" class="min-w-[200px] text-center block">
+                    <div class="w-[160px] h-[250px] mx-auto">
+                        <img class="w-full h-full object-cover rounded-lg" src="{{ asset('asset/img/postspy.jpg') }}"
+                            alt="Chainsaw Man">
+                    </div>
+                    <h3 class="font-semibold mt-2 hover:text-orange-400 duration-150">Spy X Family</h3>
+                    <p class="text-gray-500">Chapter 167</p>
+                </a>
                 <a href="{{ route('manga') }}" class="min-w-[200px] text-center block">
                     <div class="w-[160px] h-[250px] mx-auto">
                         <img class="w-full h-full object-cover rounded-lg" src="{{ asset('asset/img/postspy.jpg') }}"
