@@ -1,10 +1,10 @@
 <nav class="bg-[rgb(255,153,0,0.7)] hidden md:block">
     <div class="max-w-screen-xl px-5 mx-auto ">
         <div class="flex font-inter items-center justify-between">
-            <ul class="flex flex-row font-fira mt-0 gap-10 rtl:space-x-reverse text-lg items-center px-4 py-3">
+            <ul class="flex flex-row font-fira mt-0 gap-10 rtl:space-x-reverse text-lg items-center ">
                 <li>
                     <a href="{{ route('home') }}"
-                        class="text-gray-900 flex flex-col items-center group justify-center {{ request()->routeIs('home') ? 'text-[#ffffff]  rounded-lg' : '' }} ">
+                        class="text-gray-900 flex flex-col items-center group justify-center {{ request()->routeIs('home') ? 'bg-[#ff9900] px-4 py-3  rounded-lg' : '' }} ">
                         Home
                         <hr
                             class="w-0 border-transparent transition-all duration-300 group-hover:w-full group-hover:border-black">
@@ -12,7 +12,7 @@
                 </li>
                 <li>
                     <a href="{{ route('list') }}"
-                        class="text-gray-900 group justify-center flex flex-col items-center {{ request()->routeIs('list') ? 'text-[#ffffff]  rounded-lg' : '' }}">
+                        class="text-gray-900 group justify-center flex flex-col items-center {{ request()->routeIs('list') ? 'bg-[#ff9900] px-4 py-3  rounded-lg' : '' }}">
                         List
                         <hr
                             class="w-0 border-transparent transition-all duration-300 group-hover:w-full group-hover:border-black">
@@ -20,7 +20,7 @@
                 </li>
                 <li>
                     <a href="{{ route('blog') }}"
-                        class="text-gray-900 group justify-center flex flex-col items-center {{ request()->routeIs('blog') ? 'text-[#ffffff]  rounded-lg' : '' }}">
+                        class="text-gray-900 group justify-center flex flex-col items-center {{ request()->routeIs('blog') ? 'bg-[#ff9900] px-4 py-3 rounded-lg' : '' }}">
                         Blog
                         <hr
                             class="w-0 border-transparent transition-all duration-300 group-hover:w-full group-hover:border-black">
@@ -28,7 +28,7 @@
                 </li>
                 <li>
                     <a href="{{ route('join') }}"
-                        class="text-gray-900 group justify-center flex flex-col items-center {{ request()->routeIs('join') ? 'text-[#ffffff]  rounded-lg' : '' }}">
+                        class="text-gray-900 group justify-center flex flex-col items-center {{ request()->routeIs('join') ? 'bg-[#ff9900] px-4 py-3  rounded-lg' : '' }}">
                         Join Us
                         <hr
                             class="w-0 border-transparent transition-all duration-300 group-hover:w-full group-hover:border-black">
@@ -37,7 +37,7 @@
                 </li>
                 <li>
                     <a href="{{ route('faq') }}"
-                        class="text-gray-900 group justify-center flex flex-col items- {{ request()->routeIs('faq') ? 'text-[#ffffff]  rounded-lg' : '' }}">
+                        class="text-gray-900 group justify-center flex flex-col items- {{ request()->routeIs('faq') ? 'bg-[#ff9900] px-4 py-3  rounded-lg' : '' }}">
                         FAQ
                         <hr
                             class="w-0 border-transparent transition-all duration-300 group-hover:w-full group-hover:border-black">

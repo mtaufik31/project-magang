@@ -1,12 +1,10 @@
 @extends('layout.app')
 
 @section('content')
-<div id="particles-js">
+    <div id="particles-js" class="absolute w-full h-[65vh] ">
 
-</div>
-
-
-    <section class="bg-gradient-to-r bg-[#e2e2e2] text-black md:pt-20 pt-16 ">
+    </div>
+    <section class="bg-gradient-to-r  text-black md:pt-20 pt-16 relative z-100">
         <div class="flex flex-wrap sm:flex-nowrap justify-center">
             <div class="w-full self-center px-6 sm:w-[45%]  font-inter pb-8 md:pb-0">
                 <h1 class="text-6xl text-[#ff9900] font-semibold ">FAQ</h1>
@@ -22,11 +20,11 @@
             </div>
         </div>
     </section>
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+    {{-- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" class="relative -z-100">
         <path fill="#e2e2e2" fill-opacity="1"
             d="M0,128L40,144C80,160,160,192,240,186.7C320,181,400,139,480,154.7C560,171,640,245,720,240C800,235,880,149,960,128C1040,107,1120,149,1200,170.7C1280,192,1360,192,1400,192L1440,192L1440,0L1400,0C1360,0,1280,0,1200,0C1120,0,1040,0,960,0C880,0,800,0,720,0C640,0,560,0,480,0C400,0,320,0,240,0C160,0,80,0,40,0L0,0Z">
         </path>
-    </svg>
+    </svg> --}}
 
     <main class="relative py-16 flex flex-col justify-center overflow-hidden">
         <div class="w-full max-w-4xl mx-auto px-4 md:px-6 pb-12 pt-1">
@@ -79,8 +77,8 @@
 
 @section('script')
     <script src="
-    https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js
-    "></script>
+            https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js
+            "></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const accordions = document.querySelectorAll('button[id^="accordion-btn-"]');
@@ -107,6 +105,10 @@
                     }
                 });
             });
+
+        });
+        particlesJS.load('particles-js', '{{ asset('js/particles.json') }}', function() {
+            console.log('callback - particles.js config loaded');
         });
     </script>
 @endsection

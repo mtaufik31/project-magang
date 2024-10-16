@@ -15,7 +15,7 @@
     <section>
         <div class="relative">
             <div
-                class="w-full h-[300px] bg-[url(/public/asset/img/postjjk.jpg)] bg-fixed bg-cover bg-center overflow-hidden">
+                class="w-full h-[300px] bg-[url(/public/asset/img/postdan.jpg)] bg-fixed bg-cover bg-bottom overflow-hidden">
                 <div class="absolute inset-0 bg-white/30 backdrop-blur-lg"></div>
             </div>
     </section>
@@ -23,10 +23,11 @@
         <div class="relative z-20 mt-[-200px]">
             <div class="bg-white w-[80%] mx-auto py-5 px-6 my-10 rounded-sm shadow-lg flex flex-col md:flex-row md:flex-nowrap">
                 <div class="flex flex-col items-center md:items-start">
-                    <div class="judul ">
+                    <div class="judul">
                         <h1 class="text-black text-3xl text-center md:text-left mb-4">
-                            Jujutsu Kaisen Asli Kasian aowkowkoawko
+                            Jujutsu Kaisen
                         </h1>
+
                     </div>
 
                     <!-- Flex container for isi-kiri and isi-kanan -->

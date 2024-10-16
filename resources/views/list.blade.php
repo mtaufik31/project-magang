@@ -6,9 +6,6 @@
     <div class="bg-white md:w-[69%] mx-auto relative">
         <div class="flex items-center justify-between">
             <h1 class="font-fira text-[24px] px-6 pt-5 pb-3">Latest Update</h1>
-            <a href="{{ route('list') }}">
-                <i data-feather="arrow-right-circle" class="mt-2 me-5 hover:text-slate-700 duration-150"></i>
-            </a>
         </div>
 
         <hr>
