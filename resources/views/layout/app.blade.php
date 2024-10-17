@@ -44,7 +44,7 @@
     </style>
 </head>
 
-<body class="bg-[#EFEFEF]">
+<body class="bg-[#EFEFEF] transition-all duration-200">
     {{-- navbar atas --}}
     <x-navbar></x-navbar>
 

@@ -25,7 +25,7 @@
     @endif
 
     <section
-        class="bg-[#fec46d] py-3 px-5 rounded-xl mt-5  w-[69%] justify-center relative items-center mx-auto lg:block hidden">
+        class="bg-[#fec46d] py-3 px-5 rounded-xl mt-5  w-[69%] justify-center relative items-center mx-auto lg:block hidden transition-all">
         <div class="flex justify-between ">
             <div class="font-fira text-[18px] self-center space-x-7 ps-10 ">
                 <a class="hover:text-white duration-150" href="">Adventure</a>
@@ -44,7 +44,7 @@
         </div>
     </section>
 
-    <section class="py-5">
+    <section class="py-5 transition-all">
         <div class="bg-white md:w-[69%] mx-auto relative px-5">
             <div class="flex items-center justify-between">
                 <h1 class="font-fira text-[24px] pt-5 pb-3">Latest Update</h1>
@@ -65,18 +65,17 @@
                         <h3 class="font-semibold mt-2 hover:text-orange-400 duration-150">Jujutsu Kaisen</h3>
                         <p class="text-gray-500">Chapter 266</p>
                     </a>
-
                     <!-- Card 2 -->
                     <a href="{{ route('manga') }}" class="min-w-[200px] text-center block">
                         <div class="w-[160px] h-[250px] mx-auto hover:bg-black">
                             <img class="w-full h-full object-cover rounded-lg" src="{{ asset('asset/img/postrot.jpg') }}"
                                 alt="Spy X Family">
                         </div>
-                        <h3 class="font-semibold mt-2 hover:text-orange-400 duration-150">                        <h3 class="font-semibold mt-2 hover:text-orange-400 duration-150">Shikanoko Nokonoko...</h3>
-                    </h3>
+                        <h3 class="font-semibold mt-2 hover:text-orange-400 duration-150">
+                            <h3 class="font-semibold mt-2 hover:text-orange-400 duration-150">Shikanoko Nokonoko...</h3>
+                        </h3>
                         <p class="text-gray-500">Chapter 110</p>
                     </a>
-
                     <!-- Card 3 -->
                     <a href="{{ route('manga') }}" class="min-w-[200px] text-center block">
                         <div class="w-[160px] h-[250px] mx-auto">
@@ -86,7 +85,6 @@
                         <h3 class="font-semibold mt-2 hover:text-orange-400 duration-150">Chainsaw Man</h3>
                         <p class="text-gray-500">Chapter 266</p>
                     </a>
-
                     <!-- Card 4 -->
                     <a href="{{ route('manga') }}" class="min-w-[200px] text-center block">
                         <div class="w-[160px] h-[250px] mx-auto">
@@ -97,7 +95,6 @@
                         </h3>
                         <p class="text-gray-500">Chapter 266</p>
                     </a>
-
                     <!-- Card 5 -->
                     <a href="{{ route('manga') }}" class="min-w-[200px] text-center block">
                         <div class="w-[160px] h-[250px] mx-auto">
@@ -131,7 +128,7 @@
         </div>
     </section>
 
-    <section class="py-5">
+    <section class="py-5 transition-all">
         <div class="bg-white md:w-[69%] mx-auto relative px-3">
             <div class="flex items-center justify-between">
                 <h1 class="font-fira text-[24px] pt-5 pb-3">Blog</h1>
@@ -144,46 +141,50 @@
             <div class="overflow-x-auto px-5">
                 <div class="flex py-6 gap-20">
                     <!-- Card 1 -->
-                    <a href="{{ route('manga') }}" class="min-w-[200px]  text-start block">
+                    <a href="{{ route('blogs') }}" class="min-w-[200px]  text-start block">
                         <div class="w-[250px] h-[160px] mx-auto">
                             <img class="w-full h-full object-cover rounded-lg" src="{{ asset('asset/img/postjjk.jpg') }}"
                                 alt="Jujutsu Kaisen">
                         </div>
                         <div class="w-[250px]   ">
-                            <h3 class="font-semibold mt-2 hover:text-orange-400 duration-150 ">Bagaimana Cara Membuat akun di Website MangaLo?</h3>
+                            <h3 class="font-semibold mt-2 hover:text-orange-400 duration-150 ">Bagaimana Cara Membuat akun
+                                di Website MangaLo?</h3>
                             <p class="text-gray-500 text-[14px]">Masih Banyak Yang kebingungan cara...</p>
                             <p class="text-[12px]"><span class=" italic">BudiJago -</span> Nov 12, 2024</p>
                         </div>
                     </a>
-                    <a href="{{ route('manga') }}" class="min-w-[200px]  text-start block">
+                    <a href="{{ route('blogs') }}" class="min-w-[200px]  text-start block">
                         <div class="w-[250px] h-[160px] mx-auto">
                             <img class="w-full h-full object-cover rounded-lg" src="{{ asset('asset/img/postjjk.jpg') }}"
                                 alt="Jujutsu Kaisen">
                         </div>
                         <div class="w-[250px]   ">
-                            <h3 class="font-semibold mt-2 hover:text-orange-400 duration-150 ">Bagaimana Cara Membuat akun di Website MangaLo?</h3>
+                            <h3 class="font-semibold mt-2 hover:text-orange-400 duration-150 ">Bagaimana Cara Membuat akun
+                                di Website MangaLo?</h3>
                             <p class="text-gray-500 text-[14px]">Masih Banyak Yang kebingungan cara...</p>
                             <p class="text-[12px]"><span class=" italic">BudiJago -</span> Nov 12, 2024</p>
                         </div>
                     </a>
-                    <a href="{{ route('manga') }}" class="min-w-[200px]  text-start block">
+                    <a href="{{ route('blogs') }}" class="min-w-[200px]  text-start block">
                         <div class="w-[250px] h-[160px] mx-auto">
                             <img class="w-full h-full object-cover rounded-lg" src="{{ asset('asset/img/postjjk.jpg') }}"
                                 alt="Jujutsu Kaisen">
                         </div>
                         <div class="w-[250px]   ">
-                            <h3 class="font-semibold mt-2 hover:text-orange-400 duration-150 ">Bagaimana Cara Membuat akun di Website MangaLo?</h3>
+                            <h3 class="font-semibold mt-2 hover:text-orange-400 duration-150 ">Bagaimana Cara Membuat akun
+                                di Website MangaLo?</h3>
                             <p class="text-gray-500 text-[14px]">Masih Banyak Yang kebingungan cara...</p>
                             <p class="text-[12px]"><span class=" italic">BudiJago -</span> Nov 12, 2024</p>
                         </div>
                     </a>
-                    <a href="{{ route('manga') }}" class="min-w-[200px]  text-start block">
+                    <a href="{{ route('blogs') }}" class="min-w-[200px]  text-start block">
                         <div class="w-[250px] h-[160px] mx-auto">
                             <img class="w-full h-full object-cover rounded-lg" src="{{ asset('asset/img/postjjk.jpg') }}"
                                 alt="Jujutsu Kaisen">
                         </div>
                         <div class="w-[250px]   ">
-                            <h3 class="font-semibold mt-2 hover:text-orange-400 duration-150 ">Bagaimana Cara Membuat akun di Website MangaLo?</h3>
+                            <h3 class="font-semibold mt-2 hover:text-orange-400 duration-150 ">Bagaimana Cara Membuat akun
+                                di Website MangaLo?</h3>
                             <p class="text-gray-500 text-[14px]">Masih Banyak Yang kebingungan cara...</p>
                             <p class="text-[12px]"><span class=" italic">BudiJago -</span> Nov 12, 2024</p>
                         </div>

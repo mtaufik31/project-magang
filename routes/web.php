@@ -23,8 +23,12 @@ Route::get('faq', function () {
     return view('faq', array('title' => 'MangaLo | FAQ'));
 })->name('faq');
 
-Route::get('blog', function () {
-    return view('blog', array('title' => 'MangaLo | Blog'));
+Route::get('blogs', function () {
+    return view('blogs', array('title' => 'MangaLo | Blogs'));
+})->name('blogs');
+
+Route::get('blog', action: function () {
+    return view('blog', array('title' => 'MangaLo | blog'));
 })->name('blog');
 
 Route::get('list', function () {
@@ -115,5 +119,5 @@ Route::get('/dashboard', function () {
 })->middleware('auth')->name('dashboard');
 
 Route::get('/manga', function () {
-    return view('manga', array('title' => 'MangaLo | Manga'));
+    return view('manga', ['title' => 'MangaLo | Manga']);
 })->middleware('auth')->name('manga');
