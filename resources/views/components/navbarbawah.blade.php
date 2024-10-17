@@ -1,4 +1,4 @@
-<nav class="bg-[rgb(255,153,0,0.7)] hidden md:block">
+<nav class="bg-[rgb(255,153,0,0.7)] hidden md:block transition-all">
     <div class="max-w-screen-xl px-5 mx-auto ">
         <div class="flex font-inter items-center justify-between">
             <ul class="flex flex-row font-fira mt-0 gap-10 rtl:space-x-reverse text-lg items-center ">
@@ -19,9 +19,9 @@
                     </a>
                 </li>
                 <li>
-                    <a href="{{ route('blog') }}"
-                        class="text-gray-900 group justify-center flex flex-col items-center {{ request()->routeIs('blog') ? 'bg-[#ff9900] px-4 py-3 rounded-lg' : '' }}">
-                        Blog
+                    <a href="{{ route('blogs') }}"
+                        class="text-gray-900 group justify-center flex flex-col items-center {{ request()->routeIs('blogs') ? 'bg-[#ff9900] px-4 py-3 rounded-lg' : '' }}">
+                        Blogs
                         <hr
                             class="w-0 border-transparent transition-all duration-300 group-hover:w-full group-hover:border-black">
                     </a>

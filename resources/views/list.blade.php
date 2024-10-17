@@ -5,8 +5,15 @@
 <section class="py-5">
     <div class="bg-white md:w-[69%] mx-auto relative">
         <div class="flex items-center justify-between">
-            <h1 class="font-fira text-[24px] px-6 pt-5 pb-3">Latest Update</h1>
+            <h1 class="font-fira text-[24px] px-6 pt-5 pb-3">Manga List</h1>
+            <div class="font-fira flex items-center space-x-7 px-6 pt-5 pb-3">
+                <h1 class="font-semibold text-[20px]">Order By</h1>
+                <a href="" class="font-light hover:text-orange-400">Latest</a>
+                <a href="" class="font-light hover:text-orange-400">A-Z</a>
+                <a href="" class="font-light hover:text-orange-400">Z-A</a>
+            </div>
         </div>
+
 
         <hr>
         <div class="">

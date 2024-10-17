@@ -1,4 +1,4 @@
-<nav class="md:bg- bg-accent bg-[rgb(255,153,0,0.7)] md:bg-transparent font-poppins ">
+<nav class="md:bg- bg-accent bg-[rgb(255,153,0,0.7)] md:bg-transparent font-poppins transition-all">
     <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto xl:p-4 py-5 px-6">
         <a href="{{ route('home') }}" class="flex items-center space-x-3 rtl:space-x-reverse">
             <span class="self-center text-3xl whitespace-nowrap  hover:text-[#FF9900] duration-200">MangaLo!</span>
@@ -28,7 +28,7 @@
                 </svg>
             </button>
         </div>
-        <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-search">
+        <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1 transition-all duration-300" id="navbar-search">
             <div class="relative mt-3 md:hidden">
                 <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
                     <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true"
@@ -52,8 +52,8 @@
                         class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 hover:text-[#FF9900] md:hover:bg-transparent md:hover:text-blue-700 md:p-0">List</a>
                 </li>
                 <li>
-                    <a href="{{ route('blog') }}"
-                        class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 hover:text-[#FF9900] md:hover:bg-transparent md:hover:text-blue-700 md:p-0">Blog</a>
+                    <a href="{{ route('blogs') }}"
+                        class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 hover:text-[#FF9900] md:hover:bg-transparent md:hover:text-blue-700 md:p-0">Blogs</a>
                 </li>
                 <li>
                     <a href="{{ route('join') }}"
