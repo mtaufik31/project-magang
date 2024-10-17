@@ -9,7 +9,7 @@
         </button>
     </h2>
     <div id="accordion-content-{{ $id }}" role="region" class="text-sm text-slate-600 overflow-hidden transition-all ease-in-out duration-300" style="max-height: 0;">
-        <p class="pb-3 px-5 text-white font-semibold">
+        <p class="pb-3 px-5 text-black font-semibold">
             {{ $slot }}
         </p>
     </div>
