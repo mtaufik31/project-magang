@@ -47,6 +47,11 @@ Route::get('forgot', function () {
     return view('register.forgot', data: array('title' => 'MangaLo | Forgot'));
 })->name('forgot');
 
+Route::get('/manga', function () {
+    return view('manga', ['title' => 'MangaLo | Manga']);
+})->middleware('auth')->name('manga');
+
+
 //  ----------------------------------------------------------------
 // AUTHENTICATION
 //  ----------------------------------------------------------------
@@ -113,11 +118,11 @@ Route::post('reset-password', action: function (Request $request) {
 //  ----------------------------------------------------------------
 Route::get('/dashboard', function () {
     if (Auth::user()->role == 'admin') {
-        return view('staff.dashboard', array('title' => 'Dashboard | Staff'));
+        return view('admin.index', array('title' => 'Dashboard | Staff'));
     }
     return redirect()->route('home');
 })->middleware('auth')->name('dashboard');
 
-Route::get('/manga', function () {
-    return view('manga', ['title' => 'MangaLo | Manga']);
-})->middleware('auth')->name('manga');
+Route::get('users', function () {
+    return view('admin.users', array('title' => 'Dashboard | Users'));
+})->name('users');

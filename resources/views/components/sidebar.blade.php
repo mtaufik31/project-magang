@@ -6,8 +6,10 @@
             <h2 class="pt-3 text-gray-500">Menu</h2>
             <li>
                 <a href="{{ route('dashboard') }}"
-                    class="flex items-center p-2 text-gray-900 rounded-lg group {{ request()->routeIs('dashboard') ? 'bg-[rgb(255,153,0,0.6)] px-2 py-2 rounded-lg' : '' }}">
-                    <svg class="w-5 h-5 text-gray-400 transition duration-150  group-hover:text-gray-900 "
+                    class="flex items-center p-2 rounded-lg group
+    {{ request()->routeIs('dashboard') ? 'bg-[rgb(255,153,0,0.6)] text-black' : 'text-gray-400' }}">
+                    <svg class="w-5 h-5 transition duration-150
+        {{ request()->routeIs('dashboard') ? 'text-black' : 'text-gray-400' }} group-hover:text-black"
                         aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 21">
                         <path
                             d="M16.975 11H10V4.025a1 1 0 0 0-1.066-.998 8.5 8.5 0 1 0 9.039 9.039.999.999 0 0 0-1-1.066h.002Z" />
@@ -16,6 +18,7 @@
                     </svg>
                     <span class="ms-3">Dashboard</span>
                 </a>
+
                 <a href="{{ route('home') }}"
                     class="flex items-center p-2 text-gray-400 rounded-lg group hover:text-black duration-150 {{ request()->routeIs('home') ? 'bg-[rgb(255,153,0,0.6)] px-4 py-2 rounded-lg' : '' }}">
                     <svg class="flex-shrink-0 h-6 w-5 text-gray-400 transition duration-150  group-hover:text-gray-900"
@@ -51,13 +54,26 @@
             <li>
                 <a href="{{ route('home') }}"
                     class="flex items-center p-2 text-gray-400 rounded-lg group hover:text-black duration-150 {{ request()->routeIs('home') ? 'bg-[rgb(255,153,0,0.6)] px-4 py-2 rounded-lg' : '' }}">
-                    <svg class="flex-shrink-0 h-6 w-5 text-gray-400 transition duration-150  group-hover:text-gray-900"
+                    <svg class="flex-shrink-0 h-6 w-5 text-gray-400 transition duration-150  group-hover:text-gray-900 {{ request()->routeIs('dashboard') ? 'text-black' : 'text-gray-400' }} group-hover:text-black"
                         xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 18" fill="currentColor" aria-hidden="true">
                         <path
                             d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
                     </svg>
                     <span class="flex-1 ms-3 whitespace-nowrap">Post</span>
                 </a>
+            </li>
+            <h2 class="pt-3 text-gray-500">User</h2>
+            <li>
+                <a href="{{ route('users') }}"
+                    class="flex items-center p-2 text-gray-400 rounded-lg group hover:text-black duration-150 {{ request()->routeIs('users') ? 'bg-[rgb(255,153,0,0.6)] text-black px-4 py-2 rounded-lg' : '' }}">
+                    <svg class="flex-shrink-0 h-6 w-5 text-gray-400 transition duration-150 group-hover:text-gray-900 {{ request()->routeIs('users') ? 'text-black' : 'text-gray-400' }}"
+                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                        <path
+                            d="M12 12c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm0 2c-3.33 0-10 1.67-10 5v2h20v-2c0-3.33-6.67-5-10-5z" />
+                    </svg>
+                    <span class="flex-1 ms-3 whitespace-nowrap">User List</span>
+                </a>
+
             </li>
         </ul>
         <ul class="font-medium absolute bottom-5">

@@ -9,7 +9,7 @@
                         How to make an account in website MangaLo
                     </h1>
                     <p class="text-[12px] text-center md:text-left"><span class="italic">BudiJago -</span> Nov 12, 2024</p>
-                    <div class="mt-4">  
+                    <div class="mt-4">
                         <div class="image md:w-1/2 flex md:hidden  justify-center items-center my-5 md:mt-0">
                             <img class="w-[80%] rounded-lg" src="{{ asset('asset/img/image.png') }}" alt="MangaLo">
                         </div>

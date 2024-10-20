@@ -19,8 +19,8 @@ return new class extends Migration
             $table->year('release_year');
             $table->string('author'); // Ganti varchar dengan string
             $table->string('publisher')->nullable(); // Ganti varchar dengan string
-            $table->unsignedBigInteger('posted_by');
-            $table->date('posted_on');
+            $table->unsignedBigInteger('created_by');
+            $table->date('created_on');
             $table->timestamps();
         });
 
