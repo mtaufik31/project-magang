@@ -18,6 +18,7 @@
                         class="self-center text-xl font-semibold sm:text-2xl duration-200 hover:text-white whitespace-nowrap">DashBoard</span>
                 </a>
             </div>
+            <x-account></x-account>
             {{-- <div class="flex items-center">
                 <div class="flex items-center ms-3">
                     <div>

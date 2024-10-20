@@ -46,7 +46,7 @@
                 </li>
             </ul>
 
-            <div class="flex space-x-4 ml-auto">
+            {{-- <div class="flex space-x-4 ml-auto">
                 @if (Auth::check())
                     <!-- Menampilkan nama pengguna dan tombol logout -->
                     <a href="{{ route('logout') }}"
@@ -74,7 +74,7 @@
                         </button>
                     </a>
                 @endif
-            </div>
+            </div> --}}
         </div>
     </div>
 </nav>

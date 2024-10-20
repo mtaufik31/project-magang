@@ -57,7 +57,7 @@
             <div class="overflow-x-auto">
                 <div class="flex py-6 gap-3">
                     <!-- Card 1 -->
-                    <a href="{{ route('manga') }}" class="min-w-[200px] text-center block">
+                    <a href="{{ route('manga') }}" class="min-w-[200px] text-center block hover:scale-105 duration-150">
                         <div class="w-[160px] h-[250px] mx-auto">
                             <img class="w-full h-full object-cover rounded-lg" src="{{ asset('asset/img/postjjk.jpg') }}"
                                 alt="Jujutsu Kaisen">
@@ -66,9 +66,9 @@
                         <p class="text-gray-500">Chapter 266</p>
                     </a>
                     <!-- Card 2 -->
-                    <a href="{{ route('manga') }}" class="min-w-[200px] text-center block">
-                        <div class="w-[160px] h-[250px] mx-auto hover:bg-black">
-                            <img class="w-full h-full object-cover rounded-lg" src="{{ asset('asset/img/postrot.jpg') }}"
+                    <a href="{{ route('manga') }}" class="min-w-[200px] text-center block hover:scale-105 duration-150">
+                        <div class="w-[160px] h-[250px] mx-auto">
+                            <img class="w-full h-full object-cover rounded-lg " src="{{ asset('asset/img/postrot.jpg') }}"
                                 alt="Spy X Family">
                         </div>
                         <h3 class="font-semibold mt-2 hover:text-orange-400 duration-150">
@@ -77,7 +77,7 @@
                         <p class="text-gray-500">Chapter 110</p>
                     </a>
                     <!-- Card 3 -->
-                    <a href="{{ route('manga') }}" class="min-w-[200px] text-center block">
+                    <a href="{{ route('manga') }}" class="min-w-[200px] text-center block hover:scale-105 duration-150">
                         <div class="w-[160px] h-[250px] mx-auto">
                             <img class="w-full h-full object-cover rounded-lg" src="{{ asset('asset/img/postcsm.jpg') }}"
                                 alt="Lv2 kara Cheat datta...">
@@ -86,7 +86,7 @@
                         <p class="text-gray-500">Chapter 266</p>
                     </a>
                     <!-- Card 4 -->
-                    <a href="{{ route('manga') }}" class="min-w-[200px] text-center block">
+                    <a href="{{ route('manga') }}" class="min-w-[200px] text-center block hover:scale-105 duration-150">
                         <div class="w-[160px] h-[250px] mx-auto">
                             <img class="w-full h-full object-cover rounded-lg" src="{{ asset('asset/img/postlv2.jpg') }}"
                                 alt="Shikanoko Nokonoko Koshitantan">
@@ -96,7 +96,7 @@
                         <p class="text-gray-500">Chapter 266</p>
                     </a>
                     <!-- Card 5 -->
-                    <a href="{{ route('manga') }}" class="min-w-[200px] text-center block">
+                    <a href="{{ route('manga') }}" class="min-w-[200px] text-center block hover:scale-105 duration-150">
                         <div class="w-[160px] h-[250px] mx-auto">
                             <img class="w-full h-full object-cover rounded-lg" src="{{ asset('asset/img/postspy.jpg') }}"
                                 alt="Chainsaw Man">
@@ -104,7 +104,7 @@
                         <h3 class="font-semibold mt-2 hover:text-orange-400 duration-150">Spy X Family</h3>
                         <p class="text-gray-500">Chapter 167</p>
                     </a>
-                    <a href="{{ route('manga') }}" class="min-w-[200px] text-center block">
+                    <a href="{{ route('manga') }}" class="min-w-[200px] text-center block hover:scale-105 duration-150">
                         <div class="w-[160px] h-[250px] mx-auto">
                             <img class="w-full h-full object-cover rounded-lg" src="{{ asset('asset/img/postspy.jpg') }}"
                                 alt="Chainsaw Man">
@@ -112,7 +112,7 @@
                         <h3 class="font-semibold mt-2 hover:text-orange-400 duration-150">Spy X Family</h3>
                         <p class="text-gray-500">Chapter 167</p>
                     </a>
-                    <a href="{{ route('manga') }}" class="min-w-[200px] text-center block">
+                    <a href="{{ route('manga') }}" class="min-w-[200px] text-center block hover:scale-105 duration-150">
                         <div class="w-[160px] h-[250px] mx-auto">
                             <img class="w-full h-full object-cover rounded-lg" src="{{ asset('asset/img/postspy.jpg') }}"
                                 alt="Chainsaw Man">
