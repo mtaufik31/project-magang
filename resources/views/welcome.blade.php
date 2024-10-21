@@ -58,7 +58,7 @@
                 <div class="flex py-6 gap-3">
                     <!-- Card 1 -->
                     <a href="{{ route('manga') }}" class="min-w-[200px] text-center block hover:scale-105 duration-150">
-                        <div class="w-[160px] h-[250px] mx-auto">
+                        <div class="w-[170px] h-[250px] mx-auto">
                             <img class="w-full h-full object-cover rounded-lg" src="{{ asset('asset/img/postjjk.jpg') }}"
                                 alt="Jujutsu Kaisen">
                         </div>
@@ -67,7 +67,7 @@
                     </a>
                     <!-- Card 2 -->
                     <a href="{{ route('manga') }}" class="min-w-[200px] text-center block hover:scale-105 duration-150">
-                        <div class="w-[160px] h-[250px] mx-auto">
+                        <div class="w-[170px] h-[250px] mx-auto">
                             <img class="w-full h-full object-cover rounded-lg " src="{{ asset('asset/img/postrot.jpg') }}"
                                 alt="Spy X Family">
                         </div>
@@ -78,7 +78,7 @@
                     </a>
                     <!-- Card 3 -->
                     <a href="{{ route('manga') }}" class="min-w-[200px] text-center block hover:scale-105 duration-150">
-                        <div class="w-[160px] h-[250px] mx-auto">
+                        <div class="w-[170px] h-[250px] mx-auto">
                             <img class="w-full h-full object-cover rounded-lg" src="{{ asset('asset/img/postcsm.jpg') }}"
                                 alt="Lv2 kara Cheat datta...">
                         </div>
@@ -87,7 +87,7 @@
                     </a>
                     <!-- Card 4 -->
                     <a href="{{ route('manga') }}" class="min-w-[200px] text-center block hover:scale-105 duration-150">
-                        <div class="w-[160px] h-[250px] mx-auto">
+                        <div class="w-[170px] h-[250px] mx-auto">
                             <img class="w-full h-full object-cover rounded-lg" src="{{ asset('asset/img/postlv2.jpg') }}"
                                 alt="Shikanoko Nokonoko Koshitantan">
                         </div>
@@ -97,7 +97,7 @@
                     </a>
                     <!-- Card 5 -->
                     <a href="{{ route('manga') }}" class="min-w-[200px] text-center block hover:scale-105 duration-150">
-                        <div class="w-[160px] h-[250px] mx-auto">
+                        <div class="w-[170px] h-[250px] mx-auto">
                             <img class="w-full h-full object-cover rounded-lg" src="{{ asset('asset/img/postspy.jpg') }}"
                                 alt="Chainsaw Man">
                         </div>
@@ -105,7 +105,7 @@
                         <p class="text-gray-500">Chapter 167</p>
                     </a>
                     <a href="{{ route('manga') }}" class="min-w-[200px] text-center block hover:scale-105 duration-150">
-                        <div class="w-[160px] h-[250px] mx-auto">
+                        <div class="w-[170px] h-[250px] mx-auto">
                             <img class="w-full h-full object-cover rounded-lg" src="{{ asset('asset/img/postspy.jpg') }}"
                                 alt="Chainsaw Man">
                         </div>
@@ -113,7 +113,7 @@
                         <p class="text-gray-500">Chapter 167</p>
                     </a>
                     <a href="{{ route('manga') }}" class="min-w-[200px] text-center block hover:scale-105 duration-150">
-                        <div class="w-[160px] h-[250px] mx-auto">
+                        <div class="w-[170px] h-[250px] mx-auto">
                             <img class="w-full h-full object-cover rounded-lg" src="{{ asset('asset/img/postspy.jpg') }}"
                                 alt="Chainsaw Man">
                         </div>
@@ -133,7 +133,7 @@
             <div class="flex items-center justify-between">
                 <h1 class="font-fira text-[24px] pt-5 pb-3">Blog</h1>
                 <a href="{{ route('list') }}">
-                    <i data-feather="arrow-right-circle" class=" me-5 hover:text-slate-700 duration-150"></i>
+                    <i class="fa-solid fa-arrow-right me-5"></i>
                 </a>
             </div>
 
@@ -141,54 +141,15 @@
             <div class="overflow-x-auto px-5">
                 <div class="flex py-6 gap-20">
                     <!-- Card 1 -->
-                    <a href="{{ route('blogs') }}" class="min-w-[200px]  text-start block">
-                        <div class="w-[250px] h-[160px] mx-auto">
-                            <img class="w-full h-full object-cover rounded-lg" src="{{ asset('asset/img/postjjk.jpg') }}"
-                                alt="Jujutsu Kaisen">
-                        </div>
-                        <div class="w-[250px]   ">
-                            <h3 class="font-semibold mt-2 hover:text-orange-400 duration-150 ">Bagaimana Cara Membuat akun
-                                di Website MangaLo?</h3>
-                            <p class="text-gray-500 text-[14px]">Masih Banyak Yang kebingungan cara...</p>
-                            <p class="text-[12px]"><span class=" italic">BudiJago -</span> Nov 12, 2024</p>
-                        </div>
-                    </a>
-                    <a href="{{ route('blogs') }}" class="min-w-[200px]  text-start block">
-                        <div class="w-[250px] h-[160px] mx-auto">
-                            <img class="w-full h-full object-cover rounded-lg" src="{{ asset('asset/img/postjjk.jpg') }}"
-                                alt="Jujutsu Kaisen">
-                        </div>
-                        <div class="w-[250px]   ">
-                            <h3 class="font-semibold mt-2 hover:text-orange-400 duration-150 ">Bagaimana Cara Membuat akun
-                                di Website MangaLo?</h3>
-                            <p class="text-gray-500 text-[14px]">Masih Banyak Yang kebingungan cara...</p>
-                            <p class="text-[12px]"><span class=" italic">BudiJago -</span> Nov 12, 2024</p>
-                        </div>
-                    </a>
-                    <a href="{{ route('blogs') }}" class="min-w-[200px]  text-start block">
-                        <div class="w-[250px] h-[160px] mx-auto">
-                            <img class="w-full h-full object-cover rounded-lg" src="{{ asset('asset/img/postjjk.jpg') }}"
-                                alt="Jujutsu Kaisen">
-                        </div>
-                        <div class="w-[250px]   ">
-                            <h3 class="font-semibold mt-2 hover:text-orange-400 duration-150 ">Bagaimana Cara Membuat akun
-                                di Website MangaLo?</h3>
-                            <p class="text-gray-500 text-[14px]">Masih Banyak Yang kebingungan cara...</p>
-                            <p class="text-[12px]"><span class=" italic">BudiJago -</span> Nov 12, 2024</p>
-                        </div>
-                    </a>
-                    <a href="{{ route('blogs') }}" class="min-w-[200px]  text-start block">
-                        <div class="w-[250px] h-[160px] mx-auto">
-                            <img class="w-full h-full object-cover rounded-lg" src="{{ asset('asset/img/postjjk.jpg') }}"
-                                alt="Jujutsu Kaisen">
-                        </div>
-                        <div class="w-[250px]   ">
-                            <h3 class="font-semibold mt-2 hover:text-orange-400 duration-150 ">Bagaimana Cara Membuat akun
-                                di Website MangaLo?</h3>
-                            <p class="text-gray-500 text-[14px]">Masih Banyak Yang kebingungan cara...</p>
-                            <p class="text-[12px]"><span class=" italic">BudiJago -</span> Nov 12, 2024</p>
-                        </div>
-                    </a>
+                    @foreach ($blogs as $blog)
+                    <x-cardblog id="{{ $blog->id }}"
+                        title="{{ $blog->title }}"
+                        description="{{ $blog->description }}"
+                        image="{{ $blog->image }}"
+                        name="{{ $blog->user->name }} - {{ $blog->created_at->format('d-m-Y') }}">
+                    </x-cardblog>
+                    @endforeach
+
 
 
                     <!-- Tambahan Card jika diperlukan -->
@@ -196,6 +157,9 @@
             </div>
         </div>
     </section>
+
+
+
 
 
     {{-- <div class="swiper mySwiper w-[30%] h-[10%] mt-16 relative">
