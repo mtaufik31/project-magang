@@ -19,7 +19,7 @@
 
 </head>
 
-<body>
+<body class="bg-[#EFEFEF] transition-all duration-200">
     @if (session('success'))
         <script>
             document.addEventListener('DOMContentLoaded', function() {
@@ -31,15 +31,42 @@
             });
         </script>
     @endif
-    <x-navboard></x-navboard>
 
-    @yield('content')
 
     <x-sidebar></x-sidebar>
+    <div id="content" class="md:ml-[35vh] transition-all duration-500">
+        <x-navboard></x-navboard>
+        <div class="px-12 py-24">
+            @yield('content')
+        </div>
+    </div>
 
     @yield('scripts')
+    <script src="https://kit.fontawesome.com/c340d81b5e.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script>
+        const menuButton = document.getElementById('menuButton');
+        const sidebar = document.getElementById('sidebar');
+        const overlay = document.getElementById('overlay');
+        const content = document.getElementById('content');
+
+        menuButton.addEventListener('click', () => {
+            if(window.innerWidth <= 768) {
+                sidebar.classList.toggle('-translate-x-full');
+                overlay.classList.toggle('hidden');
+            } else {
+                sidebar.classList.toggle('md:translate-x-0');
+                content.classList.toggle('md:ml-[35vh]');
+            }
+        });
+
+        overlay.addEventListener('click', () => {
+            sidebar.classList.add('-translate-x-full');
+            overlay.classList.add('hidden');
+        });
+    </script>
 </body>
 
 </html>

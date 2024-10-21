@@ -61,6 +61,7 @@
 
     {{-- Tambah Javascript disini --}}
     @yield('script')
+    <script src="https://kit.fontawesome.com/c340d81b5e.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.js"></script>

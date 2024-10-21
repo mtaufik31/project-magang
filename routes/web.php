@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Password;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Models\Blog;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -12,7 +13,9 @@ use Illuminate\Support\Facades\Auth;
 // ROUTE VIEW
 //  ----------------------------------------------------------------
 Route::get('/', function () {
-    return view('welcome', array('title' => 'MangaLo'));
+
+    $blogs = Blog::all();
+    return view('welcome', array('title' => 'MangaLo', 'blogs' => $blogs));
 })->name('home');
 
 Route::get('join', function () {
@@ -24,11 +27,15 @@ Route::get('faq', function () {
 })->name('faq');
 
 Route::get('blogs', function () {
-    return view('blogs', array('title' => 'MangaLo | Blogs'));
+    $blogs = Blog::all();
+
+    return view('blogs', array('title' => 'MangaLo | Blogs', 'blogs' => $blogs));
 })->name('blogs');
 
-Route::get('blog', action: function () {
-    return view('blog', array('title' => 'MangaLo | blog'));
+Route::get('blog/{id}', action: function ($id) {
+    $blog = Blog::where('id', '=', $id)->get()->first();
+
+    return view('blog', array('title' => 'MangaLo | blog', 'blog' => $blog));
 })->name('blog');
 
 Route::get('list', function () {
@@ -115,14 +122,27 @@ Route::post('reset-password', action: function (Request $request) {
 
 //  ----------------------------------------------------------------
 // DASHBOARD
-//  ----------------------------------------------------------------
+//  ----------------------------------------------------------------]
 Route::get('/dashboard', function () {
+    $manyBlog = Blog::all()->count();
     if (Auth::user()->role == 'admin') {
-        return view('admin.index', array('title' => 'Dashboard | Staff'));
+        return view('dashboard.index', array('title' => 'Dashboard | Staff', 'manyBlogs' => $manyBlog));
     }
     return redirect()->route('home');
 })->middleware('auth')->name('dashboard');
 
-Route::get('users', function () {
-    return view('admin.users', array('title' => 'Dashboard | Users'));
-})->name('users');
+Route::get('BlogsList', function () {
+    $blogs = Blog::all();
+
+    return view('dashboard.blog.list', array('title' => 'Dashboard | List Blogs', 'blogs' => $blogs));
+})->name('List Blogs');
+
+Route::get('MangaList', function () {
+    return view('dashboard.manga.list', array('title' => 'Dashboard | List Manga'));
+})->name('List Manga');
+
+Route::get('StaffList', function () {
+    return view('dashboard.staff.list', array('title' => 'Dashboard | List Staff'));
+})->name('List Staff');
+
+
