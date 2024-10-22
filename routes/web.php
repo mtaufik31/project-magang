@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Password;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Middleware\Dashboard;
 use App\Models\Blog;
 use Illuminate\Support\Facades\Auth;
 
@@ -123,26 +124,27 @@ Route::post('reset-password', action: function (Request $request) {
 //  ----------------------------------------------------------------
 // DASHBOARD
 //  ----------------------------------------------------------------]
-Route::get('/dashboard', function () {
-    $manyBlog = Blog::all()->count();
-    if (Auth::user()->role == 'admin') {
-        return view('dashboard.index', array('title' => 'Dashboard | Staff', 'manyBlogs' => $manyBlog));
-    }
-    return redirect()->route('home');
-})->middleware('auth')->name('dashboard');
 
-Route::get('BlogsList', function () {
-    $blogs = Blog::all();
+Route::middleware(Dashboard::class)->group(function () {
+    Route::get('/dashboard', function () {
+        $manyBlog = Blog::all()->count();
+        if (Auth::user()->role == 'admin') {
+            return view('dashboard.index', array('title' => 'Dashboard | Staff', 'manyBlogs' => $manyBlog));
+        }
+        return redirect()->route('home');
+    })->middleware('auth')->name('dashboard');
 
-    return view('dashboard.blog.list', array('title' => 'Dashboard | List Blogs', 'blogs' => $blogs));
-})->name('List Blogs');
+    Route::get('BlogsList', function () {
+        $blogs = Blog::all();
 
-Route::get('MangaList', function () {
-    return view('dashboard.manga.list', array('title' => 'Dashboard | List Manga'));
-})->name('List Manga');
+        return view('dashboard.blog.list', array('title' => 'Dashboard | List Blogs', 'blogs' => $blogs));
+    })->name('List Blogs');
 
-Route::get('StaffList', function () {
-    return view('dashboard.staff.list', array('title' => 'Dashboard | List Staff'));
-})->name('List Staff');
+    Route::get('MangaList', function () {
+        return view('dashboard.manga.list', array('title' => 'Dashboard | List Manga'));
+    })->name('List Manga');
 
-
+    Route::get('StaffList', function () {
+        return view('dashboard.staff.list', array('title' => 'Dashboard | List Staff'));
+    })->name('List Staff');
+});
