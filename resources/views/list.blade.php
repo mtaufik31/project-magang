@@ -4,29 +4,41 @@
 
 <section class="py-5">
     <div class="bg-white md:w-[69%] mx-auto relative">
-        <div class="flex items-center justify-between">
+        <div class="flex flex-wrap items-center justify-between">
             <h1 class="font-fira text-[24px] px-6 pt-5 pb-3">Manga List</h1>
-            <div class="font-fira flex items-center space-x-7 px-6 pt-5 pb-3">
+            <div class="font-fira flex items-center space-x-7 px-4 pt-5 pb-3">
                 <h1 class="font-semibold text-[20px]">Order By</h1>
-                <a href="" class="font-light hover:text-orange-400">Latest</a>
-                <a href="" class="font-light hover:text-orange-400">A-Z</a>
-                <a href="" class="font-light hover:text-orange-400">Z-A</a>
+                <!-- Dropdown for Tablet and Mobile -->
+                <div class="relative md:hidden">
+                    <select class="block w-full p-2 border rounded-md bg-white shadow-sm ">
+                        <option value="latest">Latest</option>
+                        <option value="a-z">A-Z</option>
+                        <option value="z-a">Z-A</option>
+                    </select>
+                </div>
+                <!-- Links for Desktop -->
+                <div class="hidden md:flex space-x-7">
+                    <a href="" class="font-light hover:text-orange-400">Latest</a>
+                    <a href="" class="font-light hover:text-orange-400">A-Z</a>
+                    <a href="" class="font-light hover:text-orange-400">Z-A</a>
+                </div>
             </div>
         </div>
 
 
+
         <hr>
         <div class="">
-            <div class="flex flex-wrap py-5 gap-3 ">
+            <div class="flex flex-wrap py-5 gap-3 md:gap-0 justify-center md:justify-start">
                 <!-- Card 1 -->
                 <a href="{{ route('manga') }}" class="min-w-[200px] text-center block">
-                    <div class="w-[160px] h-[250px] mx-auto">
-                        <img class="w-full h-full object-cover rounded-lg" src="{{ asset('asset/img/postjjk.jpg') }}"
-                            alt="Jujutsu Kaisen">
+                    <div class="w-[160px] h-[250px] mx-auto md:w-[140px] md:h-[220px] sm:w-[120px] sm:h-[180px]">
+                        <img class="w-full h-full object-cover rounded-lg" src="{{ asset('asset/img/postjjk.jpg') }}" alt="Jujutsu Kaisen">
                     </div>
                     <h3 class="font-semibold mt-2 hover:text-orange-400 duration-150">Jujutsu Kaisen</h3>
                     <p class="text-gray-500">Chapter 266</p>
                 </a>
+
 
                 <!-- Card 2 -->
                 <a href="{{ route('manga') }}" class="min-w-[200px] text-center block">

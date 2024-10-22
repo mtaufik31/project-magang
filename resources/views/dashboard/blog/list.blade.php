@@ -7,7 +7,7 @@
             Blog List
         </div>
         <hr class="mb-4">
-        <div class="overflow-x-auto">
+        <div class="overflow-auto">
             <table class="min-w-full bg-white border border-gray-300">
                 <thead class="bg-gray-100">
                     <tr>

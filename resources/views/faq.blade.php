@@ -10,7 +10,7 @@
                 <h1 class="text-6xl text-[#ff9900] font-semibold ">FAQ</h1>
                 <h3 class="text-2xl font-medium my-3">We Have All The Answers!</h3>
                 <p class="pb-6">Assalamualaikum All Hail Wibu!</p>
-                <a class="bg-[#ff9900] font-semibold py-3 px-5 rounded-lg duration-200 hover:bg-[rgb(255,153,0,0.7)]"
+                <a class="bg-[#ff9900] font-semibold py-3 px-5 rounded-lg duration-200 hover:bg-[#ff9900]"
                     href="{{ route('home') }}">
                     Apaan Nih
                 </a>
@@ -30,7 +30,7 @@
         <div class="w-full max-w-4xl mx-auto px-4 md:px-6 pb-12 pt-1">
             <div class="text-center">
                 <h1 class="text-5xl font-bold text-slate-900 mb-2">Apa Yang Anda Ingin Cari Tahu <span
-                        class="text-[#fec46d]">Tentang Kami?</span></h1>
+                        class="text-[#ff9900]">Tentang Kami?</span></h1>
                 <p class="text-lg text-gray-500 mb-6">
                     Dapatkan info seputar tentang kami di halaman ini!
                 </p>

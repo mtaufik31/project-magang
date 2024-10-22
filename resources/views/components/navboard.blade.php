@@ -4,4 +4,6 @@
         <i class="fa-solid fa-bars"></i>
     </button>
     <div class="font-fira text-2xl ">Dashboard {{ Auth::user()->role }}</div>
+
+    <x-account></x-account>
 </div>
