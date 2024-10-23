@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Password;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\BlogController;
 use App\Http\Middleware\Dashboard;
 use App\Models\Blog;
 use Illuminate\Support\Facades\Auth;
@@ -139,6 +140,8 @@ Route::middleware(Dashboard::class)->group(function () {
 
         return view('dashboard.blog.list', array('title' => 'Dashboard | List Blogs', 'blogs' => $blogs));
     })->name('List Blogs');
+
+    Route::delete('blog/delete/{id}', [BlogController::class, 'delete'])->name('blog.delete');
 
     Route::get('MangaList', function () {
         return view('dashboard.manga.list', array('title' => 'Dashboard | List Manga'));

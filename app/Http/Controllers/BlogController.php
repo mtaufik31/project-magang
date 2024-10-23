@@ -19,6 +19,11 @@ class BlogController extends Controller
         return view('admin.create');
     }
 
+    public function delete($id) {
+        Blog::where('id', $id)->delete();
+        return redirect()->route('List Blogs')->with('success', 'Blog berhasil dihapus');
+    }
+
     public function store(Request $request)
     {
         $request->validate([
