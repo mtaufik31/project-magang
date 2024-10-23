@@ -49,7 +49,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#" class="flex items-center p-2 rounded-md text-gray-700 hover:text-orange-400 hover:bg-gray-100 transition-colors duration-200">
+                    <a href="{{ route('Create blog') }}" class="flex items-center p-2 rounded-md text-gray-700 hover:text-orange-400 hover:bg-gray-100 transition-colors duration-200 {{ request()->routeIs('Create blog') ? 'text-orange-400 hover:text-gray-800' : '' }}">
                         <i class="fa-solid fa-plus mr-2"></i>  Add Blog
                     </a>
                 </li>

@@ -141,6 +141,8 @@ Route::middleware(Dashboard::class)->group(function () {
         return view('dashboard.blog.list', array('title' => 'Dashboard | List Blogs', 'blogs' => $blogs));
     })->name('List Blogs');
 
+    Route::get('BlogCreate', [BlogController::class, 'create'])->name('Create blog');
+
     Route::delete('blog/delete/{id}', [BlogController::class, 'delete'])->name('blog.delete');
 
     Route::get('MangaList', function () {

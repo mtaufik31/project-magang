@@ -6,7 +6,9 @@
         <div class="font-fira text-2xl pb-3 flex justify-between">
             <p>Blog List</p>
             <button class="bg-blue-500 hover:bg-blue-600 px-3 py-2 rounded-md text-white text-sm">
-                <i class="fa-solid fa-plus"></i> Add Blog
+                <a href="{{ route('Create blog') }}">
+                    <i class="fa-solid fa-plus"></i> Add Blog
+                </a>
             </button>
         </div>
         <hr class="mb-4">
@@ -14,7 +16,7 @@
             <table class="w-full min-w-[1200px] bg-white border border-gray-300">
                 <thead class="bg-gray-100">
                     <tr>
-                        <th class="px-4 py-2 border border-gray-300 text-left text-sm font-medium text-gray-600">ID</th>
+                        <th class="px-4 py-2 border border-gray-300 text-left text-sm font-medium text-gray-600">NO</th>
                         <th class="px-4 py-2 border border-gray-300 text-left text-sm font-medium text-gray-600">Title</th>
                         <th class="px-4 py-2 border border-gray-300 text-left text-sm font-medium text-gray-600">Description</th>
                         <th class="px-4 py-2 border border-gray-300 text-left text-sm font-medium text-gray-600">Image</th>
@@ -25,9 +27,11 @@
                     </tr>
                 </thead>
                 <tbody>
+                    @php $i = 1; @endphp
                     @foreach ($blogs as $blog)
+
                     <tr class="hover:bg-gray-50 transition-colors">
-                        <td class="px-4 py-2 border border-gray-300 text-sm text-gray-700">{{ $blog->id }}</td>
+                        <td class="px-4 py-2 border border-gray-300 text-sm text-gray-700">{{ $i++ }}</td>
                         <td class="px-4 py-2 border border-gray-300 text-sm text-gray-700">{{ $blog->title }}</td>
                         <td class="px-4 py-2 border border-gray-300 text-sm text-gray-700">{{ Str::limit($blog->description, 37) }}</td>
                         <td class="px-4 py-2 border border-gray-300 text-sm text-gray-700">

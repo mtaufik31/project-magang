@@ -16,8 +16,13 @@ class BlogController extends Controller
 
     public function create()
     {
-        return view('admin.create');
+        return view('dashboard.blog.create', array('title' => 'Dashboard | Create Blogs'));
+
+        
+
     }
+
+
 
     public function delete($id) {
         Blog::where('id', $id)->delete();
