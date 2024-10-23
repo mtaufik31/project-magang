@@ -17,12 +17,7 @@ class BlogController extends Controller
     public function create()
     {
         return view('dashboard.blog.create', array('title' => 'Dashboard | Create Blogs'));
-
-        
-
     }
-
-
 
     public function delete($id) {
         Blog::where('id', $id)->delete();
@@ -36,6 +31,7 @@ class BlogController extends Controller
             'description' => 'required',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
+        // dd($request->all());
 
         $imagePath = null;
         if ($request->hasFile('image')) {
@@ -49,6 +45,6 @@ class BlogController extends Controller
             'created_by' => Auth::id(),
         ]);
 
-        return redirect()->route('admin.blogs')->with('success', 'Blog berhasil ditambahkan');
+        return redirect()->route('List Blogs')->with('success', 'Blog berhasil ditambahkan');
     }
 }
