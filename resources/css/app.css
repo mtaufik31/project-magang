@@ -14,6 +14,10 @@
     font-family: "Fira Sans", sans-serif;
 }
 
+.rounded-xl {
+    
+}
+
 .swiper-wrapper {
     width: 100%;
     height: max-content !important;
@@ -60,3 +64,26 @@
 .shadow-manual-right {
     box-shadow: 6px 0px 16px 4px rgba(0, 0, 0, 0.2), 0px 2px 10px rgba(0,0,0,0.2); /* Ubah efek shadow menjadi manual */
 }
+
+::-webkit-scrollbar {
+    width: 7px;
+    height: 10px;
+     /* Width of the scrollbar */
+  }
+
+  /* Make the scrollbar background transparent */
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  /* Style the scrollbar handle/drag (thumb) */
+  ::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.3); /* Add transparency to the thumb */
+    border-radius: full; /* Make the scrollbar rounded */
+    border: 2px solid transparent; /* Optional: Adds spacing around the thumb */
+  }
+
+  /* Optional: Hover effect on the thumb */
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: gray; /* Slightly darker on hover */
+  }
