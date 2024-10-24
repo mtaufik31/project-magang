@@ -55,70 +55,103 @@
 
             <hr>
             <div class="overflow-x-auto">
-                <div class="flex py-6 gap-3">
-                    <!-- Card 1 -->
-                    <a href="{{ route('manga') }}" class="min-w-[200px] text-center block hover:scale-105 duration-150">
-                        <div class="w-[170px] h-[250px] mx-auto">
-                            <img class="w-full h-full object-cover rounded-lg" src="{{ asset('asset/img/postjjk.jpg') }}"
+                <div class="flex py-6 gap-8">
+                    <!-- Card 1 --> 
+                    <a href="{{ route('manga') }}" class=" text-center block">
+                        <div class="w-[140px] h-[230px] mx-auto">
+                            <img class="w-full h-full object-cover " src="{{ asset('asset/img/postjjk.jpg') }}"
                                 alt="Jujutsu Kaisen">
                         </div>
-                        <h3 class="font-semibold mt-2 hover:text-orange-400 duration-150">Jujutsu Kaisen</h3>
-                        <p class="text-gray-500">Chapter 266</p>
+                        <h3 class="font-semibold mt-2 hover:text-orange-400 duration-150 text-start">Jujutsu Kaisen</h3>
+                        <p class="text-gray-500  text-start">Chapter 266</p>
                     </a>
                     <!-- Card 2 -->
-                    <a href="{{ route('manga') }}" class="min-w-[200px] text-center block hover:scale-105 duration-150">
-                        <div class="w-[170px] h-[250px] mx-auto">
-                            <img class="w-full h-full object-cover rounded-lg " src="{{ asset('asset/img/postrot.jpg') }}"
+                    <a href="{{ route('manga') }}" class=" text-center block">
+                        <div class="w-[140px] h-[230px] mx-auto">
+                            <img class="w-full h-full object-cover " src="{{ asset('asset/img/postrot.jpg') }}"
                                 alt="Spy X Family">
                         </div>
-                        <h3 class="font-semibold mt-2 hover:text-orange-400 duration-150">
-                            <h3 class="font-semibold mt-2 hover:text-orange-400 duration-150">Shikanoko Nokonoko...</h3>
-                        </h3>
-                        <p class="text-gray-500">Chapter 110</p>
+                        <h3 class="font-semibold mt-2 hover:text-orange-400 duration-150 text-start">Shikanoko No....</h3>
+                        <p class="text-gray-500 text-start">Chapter 110</p>
                     </a>
+
                     <!-- Card 3 -->
-                    <a href="{{ route('manga') }}" class="min-w-[200px] text-center block hover:scale-105 duration-150">
-                        <div class="w-[170px] h-[250px] mx-auto">
-                            <img class="w-full h-full object-cover rounded-lg" src="{{ asset('asset/img/postcsm.jpg') }}"
+                    <a href="{{ route('manga') }}" class=" text-center block">
+                        <div class="w-[140px] h-[230px] mx-auto">
+                            <img class="w-full h-full object-cover " src="{{ asset('asset/img/postcsm.jpg') }}"
                                 alt="Lv2 kara Cheat datta...">
                         </div>
-                        <h3 class="font-semibold mt-2 hover:text-orange-400 duration-150">Chainsaw Man</h3>
-                        <p class="text-gray-500">Chapter 266</p>
+                        <h3 class="font-semibold mt-2 hover:text-orange-400 duration-150 text-start">Chainsaw Man</h3>
+                        <p class="text-gray-500 text-start">Chapter 266</p>
                     </a>
-                    <!-- Card 4 -->
-                    <a href="{{ route('manga') }}" class="min-w-[200px] text-center block hover:scale-105 duration-150">
-                        <div class="w-[170px] h-[250px] mx-auto">
-                            <img class="w-full h-full object-cover rounded-lg" src="{{ asset('asset/img/postlv2.jpg') }}"
-                                alt="Shikanoko Nokonoko Koshitantan">
+                    <a href="{{ route('manga') }}" class=" text-center block">
+                        <div class="w-[140px] h-[230px] mx-auto">
+                            <img class="w-full h-full object-cover " src="{{ asset('asset/img/postrot.jpg') }}"
+                                alt="Spy X Family">
                         </div>
-                        <h3 class="font-semibold mt-2 hover:text-orange-400 duration-150">Lv2 kara Cheat datta..
-                        </h3>
-                        <p class="text-gray-500">Chapter 266</p>
+                        <h3 class="font-semibold mt-2 hover:text-orange-400 duration-150 text-start">Shikanoko No....</h3>
+                        <p class="text-gray-500 text-start">Chapter 110</p>
                     </a>
-                    <!-- Card 5 -->
-                    <a href="{{ route('manga') }}" class="min-w-[200px] text-center block hover:scale-105 duration-150">
-                        <div class="w-[170px] h-[250px] mx-auto">
-                            <img class="w-full h-full object-cover rounded-lg" src="{{ asset('asset/img/postspy.jpg') }}"
-                                alt="Chainsaw Man">
+
+                    <!-- Card 3 -->
+                    <a href="{{ route('manga') }}" class=" text-center block">
+                        <div class="w-[140px] h-[230px] mx-auto">
+                            <img class="w-full h-full object-cover " src="{{ asset('asset/img/postcsm.jpg') }}"
+                                alt="Lv2 kara Cheat datta...">
                         </div>
-                        <h3 class="font-semibold mt-2 hover:text-orange-400 duration-150">Spy X Family</h3>
-                        <p class="text-gray-500">Chapter 167</p>
+                        <h3 class="font-semibold mt-2 hover:text-orange-400 duration-150 text-start">Chainsaw Man</h3>
+                        <p class="text-gray-500 text-start">Chapter 266</p>
                     </a>
-                    <a href="{{ route('manga') }}" class="min-w-[200px] text-center block hover:scale-105 duration-150">
-                        <div class="w-[170px] h-[250px] mx-auto">
-                            <img class="w-full h-full object-cover rounded-lg" src="{{ asset('asset/img/postspy.jpg') }}"
-                                alt="Chainsaw Man">
+                    <a href="{{ route('manga') }}" class=" text-center block">
+                        <div class="w-[140px] h-[230px] mx-auto">
+                            <img class="w-full h-full object-cover " src="{{ asset('asset/img/postrot.jpg') }}"
+                                alt="Spy X Family">
                         </div>
-                        <h3 class="font-semibold mt-2 hover:text-orange-400 duration-150">Spy X Family</h3>
-                        <p class="text-gray-500">Chapter 167</p>
+                        <h3 class="font-semibold mt-2 hover:text-orange-400 duration-150 text-start">Shikanoko No....</h3>
+                        <p class="text-gray-500 text-start">Chapter 110</p>
+                    </a><a href="{{ route('manga') }}" class=" text-center block">
+                        <div class="w-[140px] h-[230px] mx-auto">
+                            <img class="w-full h-full object-cover " src="{{ asset('asset/img/postrot.jpg') }}"
+                                alt="Spy X Family">
+                        </div>
+                        <h3 class="font-semibold mt-2 hover:text-orange-400 duration-150 text-start">Shikanoko No....</h3>
+                        <p class="text-gray-500 text-start">Chapter 110</p>
                     </a>
-                    <a href="{{ route('manga') }}" class="min-w-[200px] text-center block hover:scale-105 duration-150">
-                        <div class="w-[170px] h-[250px] mx-auto">
-                            <img class="w-full h-full object-cover rounded-lg" src="{{ asset('asset/img/postspy.jpg') }}"
-                                alt="Chainsaw Man">
+
+                    <!-- Card 3 -->
+                    <a href="{{ route('manga') }}" class=" text-center block">
+                        <div class="w-[140px] h-[230px] mx-auto">
+                            <img class="w-full h-full object-cover " src="{{ asset('asset/img/postcsm.jpg') }}"
+                                alt="Lv2 kara Cheat datta...">
                         </div>
-                        <h3 class="font-semibold mt-2 hover:text-orange-400 duration-150">Spy X Family</h3>
-                        <p class="text-gray-500">Chapter 167</p>
+                        <h3 class="font-semibold mt-2 hover:text-orange-400 duration-150 text-start">Chainsaw Man</h3>
+                        <p class="text-gray-500 text-start">Chapter 266</p>
+                    </a>
+                    <a href="{{ route('manga') }}" class=" text-center block">
+                        <div class="w-[140px] h-[230px] mx-auto">
+                            <img class="w-full h-full object-cover " src="{{ asset('asset/img/postrot.jpg') }}"
+                                alt="Spy X Family">
+                        </div>
+                        <h3 class="font-semibold mt-2 hover:text-orange-400 duration-150 text-start">Shikanoko No....</h3>
+                        <p class="text-gray-500 text-start">Chapter 110</p>
+                    </a>
+
+                    <!-- Card 3 -->
+                    <a href="{{ route('manga') }}" class=" text-center block">
+                        <div class="w-[140px] h-[230px] mx-auto">
+                            <img class="w-full h-full object-cover " src="{{ asset('asset/img/postcsm.jpg') }}"
+                                alt="Lv2 kara Cheat datta...">
+                        </div>
+                        <h3 class="font-semibold mt-2 hover:text-orange-400 duration-150 text-start">Chainsaw Man</h3>
+                        <p class="text-gray-500 text-start">Chapter 266</p>
+                    </a>
+                    <a href="{{ route('manga') }}" class=" text-center block">
+                        <div class="w-[140px] h-[230px] mx-auto">
+                            <img class="w-full h-full object-cover " src="{{ asset('asset/img/postrot.jpg') }}"
+                                alt="Spy X Family">
+                        </div>
+                        <h3 class="font-semibold mt-2 hover:text-orange-400 duration-150 text-start">Shikanoko No....</h3>
+                        <p class="text-gray-500 text-start">Chapter 110</p>
                     </a>
 
 
@@ -142,12 +175,10 @@
                 <div class="flex py-6 gap-20">
                     <!-- Card 1 -->
                     @foreach ($blogs as $blog)
-                    <x-cardblog id="{{ $blog->id }}"
-                        title="{{ $blog->title }}"
-                        description="{{ $blog->description }}"
-                        image="{{ $blog->image }}"
-                        name="{{ $blog->user->name }} - {{ $blog->created_at->format('d-m-Y') }}">
-                    </x-cardblog>
+                        <x-cardblog id="{{ $blog->id }}" title="{{ $blog->title }}"
+                            description="{{ $blog->description }}" image="{{ $blog->image }}"
+                            name="{{ $blog->user->name }} - {{ $blog->created_at->format('d-m-Y') }}">
+                        </x-cardblog>
                     @endforeach
 
 
@@ -165,16 +196,16 @@
     {{-- <div class="swiper mySwiper w-[30%] h-[10%] mt-16 relative">
         <div class="swiper-wrapper">
             <div class="swiper-slide">
-                <img src="{{ asset('asset/img/halo.png') }}" alt="" class="w-full h-full object-cover rounded-lg">
+                <img src="{{ asset('asset/img/halo.png') }}" alt="" class="w-full h-full object-cover ">
             </div>
             <div class="swiper-slide">
-                <img src="{{ asset('asset/img/halo.png') }}" alt="" class="w-full h-full object-cover rounded-lg">
+                <img src="{{ asset('asset/img/halo.png') }}" alt="" class="w-full h-full object-cover ">
             </div>
             <div class="swiper-slide">
-                <img src="{{ asset('asset/img/halo.png') }}" alt="" class="w-full h-full object-cover rounded-lg">
+                <img src="{{ asset('asset/img/halo.png') }}" alt="" class="w-full h-full object-cover ">
             </div>
             <div class="swiper-slide">
-                <img src="{{ asset('asset/img/halo.png') }}" alt="" class="w-full h-full object-cover rounded-lg">
+                <img src="{{ asset('asset/img/halo.png') }}" alt="" class="w-full h-full object-cover ">
             </div>
         </div>
 

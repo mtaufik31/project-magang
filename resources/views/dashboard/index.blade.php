@@ -2,6 +2,9 @@
 
 
 @section('content')
+    <div class="pb-5">
+        <h1 class="text-3xl font-semibold ">Statistik</h1>
+    </div>
     <div class="flex flex-wrap md:flex-nowrap gap-4">
         <div class="bg-blue-400 text-white rounded-lg w-full md:w-1/3 lg:w-1/4 shadow-lg p-4">
             <div class="flex items-center justify-between">

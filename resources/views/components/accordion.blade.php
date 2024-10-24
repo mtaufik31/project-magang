@@ -1,6 +1,6 @@
-<div class="py-3 mt-2 bg-[#fec46d] rounded-xl hover:bg-[rgba(255,153,0,0.9)] duration-150">
+<div class="py-3 mt-2 bg-[#fec46d] rounded-xl hover:text-white hover:bg-[rgba(255,153,0,0.9)] duration-150">
     <h2>
-        <button id="accordion-btn-{{ $id }}" type="button" class="flex items-center justify-between w-full text-left font-bold font-poppins py-2 px-5 duration-150 hover:text-white">
+        <button id="accordion-btn-{{ $id }}" type="button" class="flex items-center justify-between w-full text-left font-bold font-poppins py-2 px-5 duration-150 ">
             <span class="">{{ $title }}</span>
             <svg class="fill-black shrink-0 ml-8" width="16" height="16" xmlns="http://www.w3.org/2000/svg">
                 <rect id="rect-1-{{ $id }}" y="7" width="16" height="2" rx="1" class="transform origin-center transition duration-200 ease-out" />

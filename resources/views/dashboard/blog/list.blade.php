@@ -74,6 +74,7 @@
             </div>
         </div>
     </section>
+
     <script>
         const remove = document.querySelectorAll('.btn-remove');
         remove.forEach(form => {

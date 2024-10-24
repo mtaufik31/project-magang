@@ -25,7 +25,7 @@
                 class="bg-white w-[80%] mx-auto py-5 px-6 my-10 rounded-sm shadow-lg flex flex-col md:flex-row md:flex-nowrap">
                 <div class="flex flex-col transition-all items-center md:items-start">
                     <div class="judul md:border-b-2 w-full">
-                        <h1 class="text-black text-3xl text-center md:text-left mb-4">
+                        <h1 class="text-black font-fira text-3xl text-center md:text-left mb-4">
                             Jujutsu Kaisen
                         </h1>
                     </div>
