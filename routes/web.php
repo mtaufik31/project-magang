@@ -74,7 +74,6 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::post('forgot-password', [AuthController::class, 'forgotPassword'])->name('password.email');
 
-Route::post('forgot-password', [AuthController::class, 'forgotPassword'])->name('password.email');
 
 
 // Route::post('forgot-password', function (Request $request) {
@@ -95,31 +94,9 @@ Route::get('reset-password/{token}', function ($token) {
     return view('register.reset', ['token' => $token], array('title' => 'Reset'));
 })->name('password.reset');
 
+
+Route::post('reset-password', [AuthController::class, 'reset'])->name('password.update');
 // Proses perubahan password
-Route::post('reset-password', action: function (Request $request) {
-    $request->validate([
-        'token' => 'required',
-        'email' => 'required|email',
-        'password' => 'required|confirmed|min:8',
-    ]);
-
-    // Reset password
-    $status = Password::reset(
-        $request->only('email', 'password', 'password_confirmation', 'token'),
-        function ($user, $password) {
-            $user->forceFill([
-                'password' => bcrypt($password)
-            ])->save();
-
-            // Jika ingin langsung login setelah reset
-            auth()->login($user);
-        }
-    );
-
-    return $status === Password::PASSWORD_RESET
-        ? redirect()->route('login')->with('status', __($status))
-        : back()->withErrors(['email' => [__($status)]]);
-})->name('password.update');
 
 
 //  ----------------------------------------------------------------
