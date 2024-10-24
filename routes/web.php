@@ -64,71 +64,77 @@ Route::get('/manga', function () {
 //  ----------------------------------------------------------------
 // AUTHENTICATION
 //  ----------------------------------------------------------------
-Route::get('/register', [AuthController::class, 'showRegister'])->name('register');
-Route::post('/register', [AuthController::class, 'register']);
 
-Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
-Route::post('/login', [AuthController::class, 'login']);
+Route::controller(Authcontroller::class)->group(function () {
+    Route::get('/register', 'showRegister')->name('register');
+    Route::post('/register', 'register');
 
-Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+    Route::get('/login', 'showLogin')->name('login');
+    Route::post('/login', 'login');
 
-Route::post('forgot-password', [AuthController::class, 'forgotPassword'])->name('password.email');
+    Route::post('/logout', 'logout')->name('logout');
 
+    Route::post('forgot-password', 'forgotPassword')->name('password.email');
 
+    Route::get('reset-password/{token}', function ($token) {
+        return view('register.reset', ['token' => $token], array('title' => 'Reset'));
+    })->name('password.reset');
 
-// Route::post('forgot-password', function (Request $request) {
-//     $request->validate(['email' => 'required|email']);
-
-//     // Mengirim link reset password
-//     $status = Password::sendResetLink(
-//         $request->only('email')
-//     );
-
-//     return $status === Password::RESET_LINK_SENT
-//                 ? back()->with(['status' => __($status)])
-//                 : back()->withErrors(['email' => __($status)]);
-// })->name('password.email');
-
-// Halaman perubahan password
-Route::get('reset-password/{token}', function ($token) {
-    return view('register.reset', ['token' => $token], array('title' => 'Reset'));
-})->name('password.reset');
-
-
-Route::post('reset-password', [AuthController::class, 'reset'])->name('password.update');
-// Proses perubahan password
-
+    Route::post('reset-password',  'reset')->name('password.update');
+});
 
 //  ----------------------------------------------------------------
 // DASHBOARD
 //  ----------------------------------------------------------------]
 
 Route::middleware(Dashboard::class)->group(function () {
+    // Dashboard Route
     Route::get('/dashboard', function () {
         $manyBlog = Blog::all()->count();
         if (Auth::user()->role == 'admin') {
-            return view('dashboard.index', array('title' => 'Dashboard | Staff', 'manyBlogs' => $manyBlog));
+            return view('dashboard.index', array(
+                'title' => 'Dashboard | Staff',
+                'manyBlogs' => $manyBlog
+            ));
         }
         return redirect()->route('home');
     })->middleware('auth')->name('dashboard');
 
-    Route::get('BlogsList', function () {
-        $blogs = Blog::all();
+    // Blog Routes Group
+    Route::controller(BlogController::class)->group(function () {
+        Route::get('BlogsList', function () {
+            $blogs = Blog::all();
+            return view('dashboard.blog.list', array(
+                'title' => 'Dashboard | List Blogs',
+                'blogs' => $blogs
+            ));
+        })->name('List Blogs');
 
-        return view('dashboard.blog.list', array('title' => 'Dashboard | List Blogs', 'blogs' => $blogs));
-    })->name('List Blogs');
+        Route::get('BlogCreate', 'create')
+            ->name('Create blog');
 
-    Route::get('BlogCreate', [BlogController::class, 'create'])->name('Create blog');
+        Route::delete('blog/delete/{id}', 'delete')
+            ->name('blog.delete');
 
-    Route::delete('blog/delete/{id}', [BlogController::class, 'delete'])->name('blog.delete');
+        Route::post('blog/submit', 'store')
+            ->name('blog.submit');
+    });
 
-    Route::post('blog/submit', [BlogController::class, 'store'])->name('blog.submit');
+    // Manga Routes Group
+    Route::controller(MangaController::class)->group(function () {
+        Route::get('MangaList', function () {
+            return view('dashboard.manga.list', array(
+                'title' => 'Dashboard | List Manga'
+            ));
+        })->name('List Manga');
+    });
 
-    Route::get('MangaList', function () {
-        return view('dashboard.manga.list', array('title' => 'Dashboard | List Manga'));
-    })->name('List Manga');
-
-    Route::get('StaffList', function () {
-        return view('dashboard.staff.list', array('title' => 'Dashboard | List Staff'));
-    })->name('List Staff');
-});
+    // Staff Routes Group
+    Route::controller(StaffController::class)->group(function () {
+        Route::get('StaffList', function () {
+            return view('dashboard.staff.list', array(
+                'title' => 'Dashboard | List Staff'
+            ));
+        })->name('List Staff');
+    });
+ });
