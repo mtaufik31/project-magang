@@ -47,4 +47,19 @@ class BlogController extends Controller
 
         return redirect()->route('List Blogs')->with('success', 'Blog berhasil ditambahkan');
     }
+
+    public function update(Request $request, $id) {
+        $blog = Blog::findOrFail($id);
+        $blog->title = $request->title;
+        $blog->description = $request->description;
+
+        if ($request->hasFile('image')) {
+            $imagePath = $request->file('image')->store('blog_images', 'public');
+            $blog->image = $imagePath;
+        }
+
+        $blog->save();
+        return redirect()->route('List Blogs')->with('success', 'Blog updated successfully!');
+    }
+
 }

@@ -118,7 +118,12 @@ Route::middleware(Dashboard::class)->group(function () {
 
         Route::post('blog/submit', 'store')
             ->name('blog.submit');
+
+        // Add this update route for the blog edit
+        Route::put('blog/update/{id}', 'update')
+            ->name('blog.update');
     });
+
 
     // Manga Routes Group
     Route::controller(MangaController::class)->group(function () {
@@ -137,4 +142,4 @@ Route::middleware(Dashboard::class)->group(function () {
             ));
         })->name('List Staff');
     });
- });
+});
