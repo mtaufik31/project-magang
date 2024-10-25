@@ -9,11 +9,11 @@
                         {{ $blog->title }}
                     </h1>
                     <p class="text-[12px] text-center md:text-left">
-                        <span class="italic">{{ $blog->user->name }} -</span> {{ $blog->created_at->format('d-m-Y') }}
+                        <span class="italic">{{ $blog->user->name }} -</span> {{ $blog->updated_at->format('d-m-Y') }}
                     </p>
                     <div class="mt-4">
                         <div class="image md:w-1/2 flex md:hidden justify-center items-center my-5 md:mt-0">
-                            <img class="w-[80%] rounded-lg" src="{{ asset('storage/' . $blog->image) }}" alt="MangaLo">
+                            <img class="w-[100%] rounded-lg" src="{{ asset('storage/' . $blog->image) }}" alt="MangaLo">
                         </div>
                         <p class="text-gray-700">
                             {{ $blog->description }}

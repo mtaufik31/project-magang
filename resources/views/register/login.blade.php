@@ -69,7 +69,7 @@
                     </button>
                 </div>
 
-                <div class="items-center lg:hidden block">
+                <div class="items-center lg:hidden block text-center">
                     <p>Not Registered Yet?
                         <a href="{{ route('register') }}"
                             class="text-blue-400 hover:text-orange-400 transition hover:underline">Register Here</a>

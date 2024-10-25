@@ -67,7 +67,7 @@
                         <span class="block sm:inline">{{ session('success') }}</span>
                     </div>
                 @endif
-                <div class="items-center lg:hidden block">
+                <div class="items-center lg:hidden block text-center">
                     <p>Already Had Account?
                         <a href="{{ route('login') }}"
                             class="text-blue-400 hover:text-orange-400 transition hover:underline">Login Here</a>

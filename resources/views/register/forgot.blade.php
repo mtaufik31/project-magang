@@ -7,7 +7,8 @@
     <!-- Left Section (Form) -->
     <div class="w-full bg-white lg:w-1/2 flex flex-col justify-center items-center px-10 py-12 relative shadow-manual-left">
         <h1 class="text-4xl font-semibold mb-3">Forgot Password?</h1>
-        <p class="text-center w-[60%]">Masukkan email kalian agar kami dapat mengirimkan kode </p>
+        <p class="text-center w-[10%]">Masukkan email kalian agar kami dapat <span class="text-[#ff9900]"> mengirimkan kode
+            </span> </p>
 
         <form method="POST" action="{{ route('password.email') }}" class="space-y-6 w-full max-w-full">
             @csrf
@@ -32,7 +33,7 @@
                     SEND
                 </button>
             </div>
-            <div class="items-center lg:hidden block">
+            <div class="items-center lg:hidden block text-center">
                 <p>Remember You're Password?
                     <a href="{{ route('register') }}"
                         class="text-blue-400 hover:text-orange-400 transition hover:underline">Login Here</a>

@@ -17,7 +17,7 @@
                         title="{{ $blog->title }}"
                         description="{{ $blog->description }}"
                         image="{{ $blog->image }}"
-                        name="{{ $blog->user->name }} - {{ $blog->created_at->format('d-m-Y') }}">
+                        name="{{ $blog->user->name }} - {{ $blog->updated_at->format('d-m-Y') }}">
                     </x-cardblog>
                     @endforeach
                     {{-- <a href="{{ route('blog') }}" class="min-w-[200px]  text-start block">

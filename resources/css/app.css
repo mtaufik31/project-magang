@@ -39,6 +39,24 @@
     }
 }
 
+.manga::after {
+    content: "";
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    width: 100%;
+    height: 70px;
+    z-index: -2;
+    background: linear-gradient(360deg, rgba(0, 0, 0, 1) 10%, rgba(0, 0, 0, 0));
+    transition: all 0.3s;
+}
+
+.box-manga:hover .manga::after {
+    height: 90px;
+    background: linear-gradient(360deg, rgba(0, 0, 0, 1) 30%, rgba(0, 0, 0, 0));
+}
+
+
 /* Menargetkan tombol accordion yang aktif */
 [data-accordion-target][aria-expanded="true"] span {
     color: black; /* Ubah warna teks menjadi hitam ketika accordion aktif */
@@ -58,28 +76,30 @@
     box-shadow: -6px 0px 16px 4px rgba(0, 0, 0, 0.2); /* Ubah efek shadow menjadi manual */
 }
 .shadow-manual-right {
-    box-shadow: 6px 0px 16px 4px rgba(0, 0, 0, 0.2), 0px 2px 10px rgba(0,0,0,0.2); /* Ubah efek shadow menjadi manual */
+    box-shadow: 6px 0px 16px 4px rgba(0, 0, 0, 0.2),
+        0px 2px 10px rgba(0, 0, 0, 0.2); /* Ubah efek shadow menjadi manual */
 }
 
 ::-webkit-scrollbar {
     width: 7px;
-    height: 10px;
-     /* Width of the scrollbar */
-  }
+    height: 4px;
+    /* Width of the scrollbar */
+}
 
-  /* Make the scrollbar background transparent */
-  ::-webkit-scrollbar-track {
+/* Make the scrollbar background transparent */
+::-webkit-scrollbar-track {
     background: transparent;
-  }
+}
 
-  /* Style the scrollbar handle/drag (thumb) */
-  ::-webkit-scrollbar-thumb {
+/* Style the scrollbar handle/drag (thumb) */
+::-webkit-scrollbar-thumb {
     background-color: rgba(0, 0, 0, 0.3); /* Add transparency to the thumb */
     border-radius: full; /* Make the scrollbar rounded */
     border: 2px solid transparent; /* Optional: Adds spacing around the thumb */
-  }
+}
 
-  /* Optional: Hover effect on the thumb */
-  ::-webkit-scrollbar-thumb:hover {
+/* Optional: Hover effect on the thumb */
+::-webkit-scrollbar-thumb:hover {
     background-color: gray; /* Slightly darker on hover */
-  }
+}
+
