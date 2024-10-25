@@ -1,6 +1,7 @@
 @extends('layout.dashboard')
 
 @section('content')
+    <!-- Blog List Section -->
     <section>
         <div class="bg-white mx-auto relative px-5 py-5">
             <div class="font-fira text-2xl pb-3 flex justify-between">
@@ -17,43 +18,55 @@
                     <thead class="bg-gray-100">
                         <tr>
                             <th class="px-4 py-2 border border-gray-300 text-left text-sm font-medium text-gray-600">NO</th>
-                            <th class="px-4 py-2 border border-gray-300 text-left text-sm font-medium text-gray-600">Title</th>
-                            <th class="px-4 py-2 border border-gray-300 text-left text-sm font-medium text-gray-600">Description</th>
-                            <th class="px-4 py-2 border border-gray-300 text-left text-sm font-medium text-gray-600">Image</th>
-                            <th class="px-4 py-2 border border-gray-300 text-left text-sm font-medium text-gray-600">Created By</th>
-                            <th class="px-4 py-2 border border-gray-300 text-left text-sm font-medium text-gray-600">Created At</th>
-                            <th class="px-4 py-2 border border-gray-300 text-left text-sm font-medium text-gray-600">Updated At</th>
-                            <th class="px-4 py-2 border border-gray-300 text-center text-sm font-medium text-gray-600">Actions</th>
+                            <th class="px-4 py-2 border border-gray-300 text-left text-sm font-medium text-gray-600">Title
+                            </th>
+                            <th class="px-4 py-2 border border-gray-300 text-left text-sm font-medium text-gray-600">
+                                Description</th>
+                            <th class="px-4 py-2 border border-gray-300 text-left text-sm font-medium text-gray-600">Image
+                            </th>
+                            <th class="px-4 py-2 border border-gray-300 text-left text-sm font-medium text-gray-600">Created
+                                By</th>
+                            <th class="px-4 py-2 border border-gray-300 text-left text-sm font-medium text-gray-600">Created
+                                At</th>
+                            <th class="px-4 py-2 border border-gray-300 text-left text-sm font-medium text-gray-600">Updated
+                                At</th>
+                            <th class="px-4 py-2 border border-gray-300 text-center text-sm font-medium text-gray-600">
+                                Actions</th>
                         </tr>
                     </thead>
                     <tbody>
                         @php $i = 1; @endphp
                         @foreach ($blogs as $blog)
-                            <tr class="hover:bg-gray-50 transition-colors">
+                            <tr class="hover:bg-gray-50 transition-colors" style="height: 80px;">
                                 <td class="px-4 py-2 border border-gray-300 text-sm text-gray-700">{{ $i++ }}</td>
                                 <td class="px-4 py-2 border border-gray-300 text-sm text-gray-700">{{ $blog->title }}</td>
                                 <td class="px-4 py-2 border border-gray-300 text-sm text-gray-700">
                                     {{ Str::limit($blog->description, 30) }}
                                 </td>
                                 <td class="px-4 py-2 border border-gray-300 text-sm text-gray-700">
-                                    <img src="storage/{{ $blog->image }}" alt="Blog Image" class="w-16 h-16 rounded-md">
+                                    <img src="storage/{{ $blog->image }}" alt="Blog Image"
+                                        class="w-16 h-16 object-cover rounded-md">
                                 </td>
-                                <td class="px-4 py-2 border border-gray-300 text-sm text-gray-700">{{ $blog->user->name }}</td>
-                                <td class="px-4 py-2 border border-gray-300 text-sm text-gray-700">{{ $blog->created_at }}</td>
-                                <td class="px-4 py-2 border border-gray-300 text-sm text-gray-700">{{ $blog->updated_at }}</td>
+                                <td class="px-4 py-2 border border-gray-300 text-sm text-gray-700">{{ $blog->user->name }}
+                                </td>
+                                <td class="px-4 py-2 border border-gray-300 text-sm text-gray-700">{{ $blog->created_at }}
+                                </td>
+                                <td class="px-4 py-2 border border-gray-300 text-sm text-gray-700">{{ $blog->updated_at }}
+                                </td>
                                 <td class="px-4 py-2 border border-gray-300 text-center text-sm text-gray-700">
                                     <div class="flex justify-center items-center space-x-2">
-                                        <!-- Edit button triggers the modal -->
-                                        <button onclick="openEditModal({{ $blog->id }}, '{{ $blog->title }}', '{{ $blog->description }}', 'storage/{{ $blog->image }}')"
+                                        <button
+                                            onclick="openEditModal({{ $blog->id }}, '{{ $blog->title }}', '{{ $blog->description }}', 'storage/{{ $blog->image }}')"
                                             class="bg-yellow-400 hover:bg-yellow-500 text-white px-4 py-2 rounded-md text-sm">
                                             <i class="fa-solid fa-pen-to-square"></i> Edit
                                         </button>
 
-                                        <!-- Delete form -->
-                                        <form action="{{ route('blog.delete', $blog->id) }}" method="POST" class="btn-remove">
+                                        <form action="{{ route('blog.delete', $blog->id) }}" method="POST"
+                                            class="btn-remove">
                                             @csrf
                                             @method('delete')
-                                            <button class="bg-red-500 hover:bg-red-600 text-white px-3 py-2 rounded-md text-sm">
+                                            <button
+                                                class="bg-red-500 hover:bg-red-600 text-white px-3 py-2 rounded-md text-sm">
                                                 <i class="fa-solid fa-trash"></i> Delete
                                             </button>
                                         </form>
@@ -66,6 +79,7 @@
             </div>
         </div>
     </section>
+
 
     <!-- Edit Modal -->
     <div id="editModal" class="fixed inset-0 bg-gray-800 bg-opacity-50 flex justify-center items-center z-50 hidden">
@@ -95,8 +109,7 @@
                 <div class="mb-4">
                     <label for="description" class="block text-sm font-medium text-gray-700">Description</label>
                     <textarea id="editDescription" name="description"
-                        class="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:border-orange-400 h-32"
-                        required></textarea>
+                        class="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:border-orange-400 h-32" required></textarea>
                 </div>
 
                 <!-- Image Upload -->
@@ -105,7 +118,8 @@
                     <div class="relative">
                         <input onchange="loadEditFile(event)" type="file" id="editImage" name="image"
                             class="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10" accept="image/*">
-                        <div class="flex items-center justify-center border-2 border-dashed border-gray-300 rounded-md p-4 bg-gray-50 cursor-pointer hover:border-orange-400 transition">
+                        <div
+                            class="flex items-center justify-center border-2 border-dashed border-gray-300 rounded-md p-4 bg-gray-50 cursor-pointer hover:border-orange-400 transition">
                             <div id="editPreviewContainer" class="text-center">
                                 <img class="w-[40%] mx-auto" id="editOutput" alt="Image preview">
                                 <p class="text-gray-400 mt-2" id="editPlaceholderText">Click to upload an image</p>

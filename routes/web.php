@@ -6,8 +6,10 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\StaffController;
 use App\Http\Middleware\Dashboard;
 use App\Models\Blog;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -91,10 +93,12 @@ Route::middleware(Dashboard::class)->group(function () {
     // Dashboard Route
     Route::get('/dashboard', function () {
         $manyBlog = Blog::all()->count();
-        if (Auth::user()->role == 'admin') {
+        $manyStaff = User::where('role', 'staff')->count();
+        if (Auth::user()->role == 'admin' || Auth::user()->role == 'staff') {
             return view('dashboard.index', array(
                 'title' => 'Dashboard | Staff',
-                'manyBlogs' => $manyBlog
+                'manyBlogs' => $manyBlog,
+                'manyStaff' => $manyStaff,
             ));
         }
         return redirect()->route('home');
@@ -126,20 +130,22 @@ Route::middleware(Dashboard::class)->group(function () {
 
 
     // Manga Routes Group
-    Route::controller(MangaController::class)->group(function () {
-        Route::get('MangaList', function () {
-            return view('dashboard.manga.list', array(
-                'title' => 'Dashboard | List Manga'
-            ));
-        })->name('List Manga');
-    });
+    Route::get('MangaList', function () {
+        return view('dashboard.manga.list', array(
+            'title' => 'Dashboard | List Manga'
+        ));
+    })->name('List Manga');
+    // Route::controller(MangaController::class)->group(function () {
+    // });
 
     // Staff Routes Group
     Route::controller(StaffController::class)->group(function () {
-        Route::get('StaffList', function () {
-            return view('dashboard.staff.list', array(
-                'title' => 'Dashboard | List Staff'
-            ));
-        })->name('List Staff');
+        Route::get('StaffList', 'index')->name('List.Staff');
+
+        Route::get('StaffCreate', 'showForm')->name('Staff.create');
+
+        Route::post('staffSubmit', 'addStaff' )->name('staff.submit');
+
+        Route::delete('staffDelete/{id}', 'delete')->name('staff.delete');
     });
 });

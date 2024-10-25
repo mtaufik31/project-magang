@@ -60,12 +60,12 @@
             <p class="text-xl font-semibold mb-2">Staff Data</p>
             <ul class="">
                 <li>
-                    <a href="{{ route('List Staff') }}" class="flex items-center p-2 rounded-md text-gray-700 hover:text-orange-400 hover:bg-gray-100 transition-colors duration-200 {{ request()->routeIs('List Staff') ? 'text-orange-400 hover:text-gray-800' : '' }}">
+                    <a href="{{ route('List.Staff') }}" class="flex items-center p-2 rounded-md text-gray-700 hover:text-orange-400 hover:bg-gray-100 transition-colors duration-200 {{ request()->routeIs('List.Staff') ? 'text-orange-400 hover:text-gray-800' : '' }}">
                         <i class="fa-solid fa-address-card mr-2"></i> List User
                     </a>
                 </li>
                 <li>
-                    <a href="#" class="flex items-center p-2 rounded-md text-gray-700 hover:text-orange-400 hover:bg-gray-100 transition-colors duration-200">
+                    <a href="{{ route('Staff.create') }}" class="flex items-center p-2 rounded-md text-gray-700 hover:text-orange-400 hover:bg-gray-100 transition-colors duration-200 {{ request()->routeIs('Staff.create') ? 'text-orange-400 hover:text-gray-800' : '' }}">
                         <i class="fa-solid fa-plus mr-3"></i> Add User
                     </a>
                 </li>

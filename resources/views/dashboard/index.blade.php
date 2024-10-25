@@ -34,11 +34,11 @@
 
         <div class="bg-yellow-400 text-white rounded-lg w-full md:w-1/4 lg:w-1/4 shadow-lg p-4">
             <div class="flex items-center justify-between">
-                <div class="text-4xl font-bold">7</div>
+                <div class="text-4xl font-bold">{{ $manyStaff }}</div>
                 <i class="fa-solid fa-users text-5xl"></i>
             </div>
             <div class="mt-4 text-lg">Users</div>
-            <a href="{{ route('List Staff') }}">
+            <a href="{{ route('List.Staff') }}">
                 <div
                     class="mt-2 bg-yellow-500 py-2 px-4 rounded-b-lg text-center text-white cursor-pointer hover:bg-yellow-600">
                     More info →
