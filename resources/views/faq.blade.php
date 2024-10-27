@@ -10,10 +10,10 @@
                 <h1 class="text-6xl text-[#ff9900] font-semibold ">FAQ</h1>
                 <h3 class="text-2xl font-medium my-3">We Have All The Answers!</h3>
                 <p class="pb-6">Assalamualaikum All Hail Wibu!</p>
-                <button class="btn relative inline-flex items-center justify-start overflow-hidden font-medium transition-all bg-orange-100 rounded hover:bg-white group py-1.5 px-2.5">
-                    <span class="w-56 h-48 rounded bg-orange-600 absolute bottom-0 left-0 translate-x-full ease-out duration-500 transition-all translate-y-full mb-9 ml-9 group-hover:ml-0 group-hover:mb-32 group-hover:translate-x-0"></span>
-                    <span class="relative w-full text-left text-orange-600 transition-colors duration-300 ease-in-out group-hover:text-white">Button Hover</span>
-                    </button>
+                <button
+                    class="before:ease rounded-lg relative px-10 py-2 overflow-hidden border border-orange-500 bg-orange-500 text-white shadow-2xl transition-all before:absolute before:right-0 before:top-0 before:h-14 before:w-6 before:translate-x-12 before:rotate-6 before:bg-white before:opacity-50 before:duration-700 hover:shadow-orange-500 hover:before:-translate-x-44">
+                    <span relative="relative z-10">Saya gatau</span>
+                </button>
             </div>
             <div class=" px-5 self-center w-[350px]">
                 <img class="rounded-xl" src="{{ asset('asset/img/apasih.jpg') }}" alt="">
@@ -77,8 +77,8 @@
 
 @section('script')
     <script src="
-            https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js
-            "></script>
+                https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js
+                "></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const accordions = document.querySelectorAll('button[id^="accordion-btn-"]');

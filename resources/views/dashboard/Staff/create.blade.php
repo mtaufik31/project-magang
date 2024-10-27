@@ -43,7 +43,7 @@
             <div class="w-full mt-3">
                 <button type="submit"
                     class="w-full px-4 py-2 text-white font-medium bg-orange-500 rounded-md hover:bg-orange-600 transition duration-200">
-                    Tambah Admin
+                    Tambah Staff
                 </button>
             </div>
         </div>

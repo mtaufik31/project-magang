@@ -31,9 +31,10 @@
                 </p>
                 <p>jadi, Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla animi temporibus accusantium. In
                     tenetur porro accusamus, ex minus pariatur nihil.</p>
-                <a href="#learn-more"
-                    class="inline-block mt-3 bg-slate-50  text-orange-400 font-semibold px-6 py-3 rounded-md shadow hover:bg-gray-200 transition">Learn
-                    More</a>
+                <button
+                    class="before:ease rounded-lg relative px-10 py-2 mt-3 overflow-hidden border border-orange-500 bg-orange-500 text-white shadow-2xl transition-all before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-6 before:bg-white before:opacity-50 before:duration-700 hover:shadow-orange-500 hover:before:-translate-x-40">
+                    <span relative="relative z-10">Join Us!</span>
+                </button>
             </div>
         </div>
     </section>

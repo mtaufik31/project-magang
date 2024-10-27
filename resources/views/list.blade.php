@@ -3,17 +3,18 @@
 @section('content')
 
 <section class="py-5">
-    <div class="bg-white md:w-[61%] md:px-4 mx-auto relative">
+    <div class="bg-white md:w-[65%] md:px-4 mx-auto relative">
         <div class="flex flex-wrap items-center justify-between">
             <h1 class="font-fira text-[24px] md:px-0 px-3 pt-5 pb-3">Manga List</h1>
             <div class="font-fira flex items-center space-x-7 px-4 pt-5 pb-3">
                 <h1 class="font-semibold text-[20px]">Order By</h1>
                 <!-- Dropdown for Tablet and Mobile -->
-                <div class="relative md:hidden">
-                    <select class="block w-full p-2 border rounded-md bg-white shadow-sm ">
+                <div class="relative md:hidden cursor-pointer">
+                    <select class="block w-full p-2 border rounded-md bg-white shadow-sm cursor-pointer">
                         <option value="latest">Latest</option>
                         <option value="a-z">A-Z</option>
                         <option value="z-a">Z-A</option>
+                        <option value="populer">Populer</option>
                     </select>
                 </div>
                 <!-- Links for Desktop -->
@@ -31,10 +32,10 @@
             <div class="flex flex-wrap py-5 gap-8 md:gap-6 justify-center md:justify-start">
                 <!-- Card 1 -->
                 <a href="{{ route('manga') }}" class="block text-center font-fira">
-                    <div class="w-[160px] h-[240px] mx-auto relative group rounded-b-md box-manga mb-1">
-                        <img class="relative object-cover w-full h-full transition-shadow duration-300 rounded-md shadow-none cursor-pointer z-[1] hover:shadow-lg hover:shadow-gray-400 "src="{{ asset('asset/img/postjjk.jpg') }}"
+                    <div class="w-[140px] h-[220px] mx-auto relative group rounded-b-md box-manga mb-1">
+                        <img class="relative object-cover w-full h-full transition-shadow duration-300 rounded-md shadow-none cursor-pointer z-[1] hover:shadow-lg hover:shadow-gray-500 "src="{{ asset('asset/img/postjjk.jpg') }}"
                             alt="Jujutsu Kaisen">
-                        <span class=" absolute bottom-0 left-0 w-full px-2 pb-2 text-white transition-all duration-300 manga z-[1]">
+                        <span class=" absolute bottom-0 left-0 w-full px-2 pb-3 text-white transition-all duration-300 manga z-[1]">
                             <h3
                                 class="mt-2  font-semibold text-[14px] group-hover:text-orange-400 text-start group-hover:-translate-y-2 transition-all duration-300">
                                 {{ Str::limit('Jujutsu Kaisen', 15, '...') }}</h3>
@@ -43,7 +44,7 @@
                                 {{ Str::limit('gege akutami & aka akasaka', 22, '...') }}</h5>
                         </span>
                     </div>
-                    <div class="px-2 pb-2 border-t border-black rounded-b-lg text-start bg-gray-200 hover:border-orange-300 hover:bg-gradient-to-t hover:to-white hover:from-orange-400  ">
+                    <div class="px-2 pb-3 border-t border-black rounded-b-lg text-start bg-gray-50 hover:border-orange-300 hover:bg-gradient-to-t hover:to-white hover:from-orange-400  ">
 
                         <p class="">#266</p>
                         <p class="text-[12px] text-gray-600">{{ Str::limit('266: Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate,
@@ -52,10 +53,10 @@
                 </a>
                 <!-- Card 2 -->
                 <a href="{{ route('manga') }}" class="block text-center font-fira">
-                    <div class="w-[160px] h-[240px] mx-auto relative group rounded-b-md box-manga mb-1">
+                    <div class="w-[140px] h-[220px] mx-auto relative group rounded-b-md box-manga mb-1">
                         <img class="relative object-cover w-full h-full transition-shadow duration-300 rounded-md shadow-none cursor-pointer z-[1] hover:shadow-lg hover:shadow-gray-400 "src="{{ asset('asset/img/postcsm.jpg') }}"
                             alt="Jujutsu Kaisen">
-                        <span class=" absolute bottom-0 left-0 w-full px-2 pb-2 text-white transition-all duration-300 manga z-[1]">
+                        <span class=" absolute bottom-0 left-0 w-full px-2 pb-3 text-white transition-all duration-300 manga z-[1]">
                             <h3
                                 class="mt-2  font-semibold text-[14px] group-hover:text-orange-400 text-start group-hover:-translate-y-2 transition-all duration-300">
                                 {{ Str::limit('Jujutsu Kaisen', 15, '...') }}</h3>
@@ -64,7 +65,7 @@
                                 {{ Str::limit('gege akutami & aka akasaka', 22, '...') }}</h5>
                         </span>
                     </div>
-                    <div class="px-2 pb-2 border-t border-black rounded-b-lg text-start bg-gray-200 hover:border-orange-300 hover:bg-gradient-to-t hover:to-white hover:from-orange-400  ">
+                    <div class="px-2 pb-3 border-t border-black rounded-b-lg text-start bg-gray-50 hover:border-orange-300 hover:bg-gradient-to-t hover:to-white hover:from-orange-400  ">
 
                         <p class="">#266</p>
                         <p class="text-[12px] text-gray-600">{{ Str::limit('266: Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate,
@@ -73,10 +74,10 @@
                 </a>
                 <!-- Card 3 -->
                 <a href="{{ route('manga') }}" class="block text-center font-fira">
-                    <div class="w-[160px] h-[240px] mx-auto relative group rounded-b-md box-manga mb-1">
+                    <div class="w-[140px] h-[220px] mx-auto relative group rounded-b-md box-manga mb-1">
                         <img class="relative object-cover w-full h-full transition-shadow duration-300 rounded-md shadow-none cursor-pointer z-[1] hover:shadow-lg hover:shadow-gray-400 "src="{{ asset('asset/img/postrot.jpg') }}"
                             alt="Jujutsu Kaisen">
-                        <span class=" absolute bottom-0 left-0 w-full px-2 pb-2 text-white transition-all duration-300 manga z-[1]">
+                        <span class=" absolute bottom-0 left-0 w-full px-2 pb-3 text-white transition-all duration-300 manga z-[1]">
                             <h3
                                 class="mt-2  font-semibold text-[14px] group-hover:text-orange-400 text-start group-hover:-translate-y-2 transition-all duration-300">
                                 {{ Str::limit('Shikanaka Nokonoko', 15, '...') }}</h3>
@@ -85,7 +86,7 @@
                                 {{ Str::limit('gege akutami & aka akasaka', 22, '...') }}</h5>
                         </span>
                     </div>
-                    <div class="px-2 pb-2 border-t border-black rounded-b-lg text-start bg-gray-200 hover:border-orange-300 hover:bg-gradient-to-t hover:to-white hover:from-orange-400  ">
+                    <div class="px-2 pb-3 border-t border-black rounded-b-lg text-start bg-gray-50 hover:border-orange-300 hover:bg-gradient-to-t hover:to-white hover:from-orange-400  ">
 
                         <p class="">#266</p>
                         <p class="text-[12px] text-gray-600">{{ Str::limit('266: Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate,
@@ -95,10 +96,10 @@
 
                 <!-- Card 3 -->
                 <a href="{{ route('manga') }}" class="block text-center font-fira">
-                    <div class="w-[160px] h-[240px] mx-auto relative group rounded-b-md box-manga mb-1">
+                    <div class="w-[140px] h-[220px] mx-auto relative group rounded-b-md box-manga mb-1">
                         <img class="relative object-cover w-full h-full transition-shadow duration-300 rounded-md shadow-none cursor-pointer z-[1] hover:shadow-lg hover:shadow-gray-400 "src="{{ asset('asset/img/postlv2.jpg') }}"
                             alt="Jujutsu Kaisen">
-                        <span class=" absolute bottom-0 left-0 w-full px-2 pb-2 text-white transition-all duration-300 manga z-[1]">
+                        <span class=" absolute bottom-0 left-0 w-full px-2 pb-3 text-white transition-all duration-300 manga z-[1]">
                             <h3
                                 class="mt-2  font-semibold text-[14px] group-hover:text-orange-400 text-start group-hover:-translate-y-2 transition-all duration-300">
                                 {{ Str::limit('Shikanaka Nokonoko', 15, '...') }}</h3>
@@ -107,7 +108,7 @@
                                 {{ Str::limit('gege akutami & aka akasaka', 22, '...') }}</h5>
                         </span>
                     </div>
-                    <div class="px-2 pb-2 border-t border-black rounded-b-lg text-start bg-gray-200 hover:border-orange-300 hover:bg-gradient-to-t hover:to-white hover:from-orange-400  ">
+                    <div class="px-2 pb-3 border-t border-black rounded-b-lg text-start bg-gray-50 hover:border-orange-300 hover:bg-gradient-to-t hover:to-white hover:from-orange-400  ">
 
                         <p class="">#266</p>
                         <p class="text-[12px] text-gray-600">{{ Str::limit('266: Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate,
@@ -115,10 +116,10 @@
                     </div>
                 </a>
                 <a href="{{ route('manga') }}" class="block text-center font-fira">
-                    <div class="w-[160px] h-[240px] mx-auto relative group rounded-b-md box-manga mb-1">
+                    <div class="w-[140px] h-[220px] mx-auto relative group rounded-b-md box-manga mb-1">
                         <img class="relative object-cover w-full h-full transition-shadow duration-300 rounded-md shadow-none cursor-pointer z-[1] hover:shadow-lg hover:shadow-gray-400 "src="{{ asset('asset/img/postspy.jpg') }}"
                             alt="Jujutsu Kaisen">
-                        <span class=" absolute bottom-0 left-0 w-full px-2 pb-2 text-white transition-all duration-300 manga z-[1]">
+                        <span class=" absolute bottom-0 left-0 w-full px-2 pb-3 text-white transition-all duration-300 manga z-[1]">
                             <h3
                                 class="mt-2  font-semibold text-[14px] group-hover:text-orange-400 text-start group-hover:-translate-y-2 transition-all duration-300">
                                 {{ Str::limit('Shikanaka Nokonoko', 15, '...') }}</h3>
@@ -127,17 +128,17 @@
                                 {{ Str::limit('gege akutami & aka akasaka', 22, '...') }}</h5>
                         </span>
                     </div>
-                    <div class="px-2 pb-2 border-t border-black rounded-b-lg text-start bg-gray-200 hover:border-orange-300 hover:bg-gradient-to-t hover:to-white hover:from-orange-400  ">
+                    <div class="px-2 pb-3 border-t border-black rounded-b-lg text-start bg-gray-50 hover:border-orange-300 hover:bg-gradient-to-t hover:to-white hover:from-orange-400  ">
 
                         <p class="">#266</p>
                         <p class="text-[12px] text-gray-600">{{ Str::limit('266: Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate,
                             perspiciatis!', 17, '...') }}</p>
                     </div>
                 </a><a href="{{ route('manga') }}" class="block text-center font-fira">
-                    <div class="w-[160px] h-[240px] mx-auto relative group rounded-b-md box-manga mb-1">
+                    <div class="w-[140px] h-[220px] mx-auto relative group rounded-b-md box-manga mb-1">
                         <img class="relative object-cover w-full h-full transition-shadow duration-300 rounded-md shadow-none cursor-pointer z-[1] hover:shadow-lg hover:shadow-gray-400 "src="{{ asset('asset/img/postjjk.jpg') }}"
                             alt="Jujutsu Kaisen">
-                        <span class=" absolute bottom-0 left-0 w-full px-2 pb-2 text-white transition-all duration-300 manga z-[1]">
+                        <span class=" absolute bottom-0 left-0 w-full px-2 pb-3 text-white transition-all duration-300 manga z-[1]">
                             <h3
                                 class="mt-2  font-semibold text-[14px] group-hover:text-orange-400 text-start group-hover:-translate-y-2 transition-all duration-300">
                                 {{ Str::limit('Jujutsu Kaisen', 15, '...') }}</h3>
@@ -146,7 +147,7 @@
                                 {{ Str::limit('gege akutami & aka akasaka', 22, '...') }}</h5>
                         </span>
                     </div>
-                    <div class="px-2 pb-2 border-t border-black rounded-b-lg text-start bg-gray-200 hover:border-orange-300 hover:bg-gradient-to-t hover:to-white hover:from-orange-400  ">
+                    <div class="px-2 pb-3 border-t border-black rounded-b-lg text-start bg-gray-50 hover:border-orange-300 hover:bg-gradient-to-t hover:to-white hover:from-orange-400  ">
 
                         <p class="">#266</p>
                         <p class="text-[12px] text-gray-600">{{ Str::limit('266: Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate,
@@ -155,10 +156,10 @@
                 </a>
                 <!-- Card 2 -->
                 <a href="{{ route('manga') }}" class="block text-center font-fira">
-                    <div class="w-[160px] h-[240px] mx-auto relative group rounded-b-md box-manga mb-1">
+                    <div class="w-[140px] h-[220px] mx-auto relative group rounded-b-md box-manga mb-1">
                         <img class="relative object-cover w-full h-full transition-shadow duration-300 rounded-md shadow-none cursor-pointer z-[1] hover:shadow-lg hover:shadow-gray-400 "src="{{ asset('asset/img/postcsm.jpg') }}"
                             alt="Jujutsu Kaisen">
-                        <span class=" absolute bottom-0 left-0 w-full px-2 pb-2 text-white transition-all duration-300 manga z-[1]">
+                        <span class=" absolute bottom-0 left-0 w-full px-2 pb-3 text-white transition-all duration-300 manga z-[1]">
                             <h3
                                 class="mt-2  font-semibold text-[14px] group-hover:text-orange-400 text-start group-hover:-translate-y-2 transition-all duration-300">
                                 {{ Str::limit('Jujutsu Kaisen', 15, '...') }}</h3>
@@ -167,7 +168,7 @@
                                 {{ Str::limit('gege akutami & aka akasaka', 22, '...') }}</h5>
                         </span>
                     </div>
-                    <div class="px-2 pb-2 border-t border-black rounded-b-lg text-start bg-gray-200 hover:border-orange-300 hover:bg-gradient-to-t hover:to-white hover:from-orange-400  ">
+                    <div class="px-2 pb-3 border-t border-black rounded-b-lg text-start bg-gray-50 hover:border-orange-300 hover:bg-gradient-to-t hover:to-white hover:from-orange-400  ">
 
                         <p class="">#266</p>
                         <p class="text-[12px] text-gray-600">{{ Str::limit('266: Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate,
@@ -176,10 +177,10 @@
                 </a>
                 <!-- Card 3 -->
                 <a href="{{ route('manga') }}" class="block text-center font-fira">
-                    <div class="w-[160px] h-[240px] mx-auto relative group rounded-b-md box-manga mb-1">
+                    <div class="w-[140px] h-[220px] mx-auto relative group rounded-b-md box-manga mb-1">
                         <img class="relative object-cover w-full h-full transition-shadow duration-300 rounded-md shadow-none cursor-pointer z-[1] hover:shadow-lg hover:shadow-gray-400 "src="{{ asset('asset/img/postrot.jpg') }}"
                             alt="Jujutsu Kaisen">
-                        <span class=" absolute bottom-0 left-0 w-full px-2 pb-2 text-white transition-all duration-300 manga z-[1]">
+                        <span class=" absolute bottom-0 left-0 w-full px-2 pb-3 text-white transition-all duration-300 manga z-[1]">
                             <h3
                                 class="mt-2  font-semibold text-[14px] group-hover:text-orange-400 text-start group-hover:-translate-y-2 transition-all duration-300">
                                 {{ Str::limit('Shikanaka Nokonoko', 15, '...') }}</h3>
@@ -188,7 +189,7 @@
                                 {{ Str::limit('gege akutami & aka akasaka', 22, '...') }}</h5>
                         </span>
                     </div>
-                    <div class="px-2 pb-2 border-t border-black rounded-b-lg text-start bg-gray-200 hover:border-orange-300 hover:bg-gradient-to-t hover:to-white hover:from-orange-400  ">
+                    <div class="px-2 pb-3 border-t border-black rounded-b-lg text-start bg-gray-50 hover:border-orange-300 hover:bg-gradient-to-t hover:to-white hover:from-orange-400  ">
 
                         <p class="">#266</p>
                         <p class="text-[12px] text-gray-600">{{ Str::limit('266: Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate,
@@ -198,10 +199,10 @@
 
                 <!-- Card 3 -->
                 <a href="{{ route('manga') }}" class="block text-center font-fira">
-                    <div class="w-[160px] h-[240px] mx-auto relative group rounded-b-md box-manga mb-1">
+                    <div class="w-[140px] h-[220px] mx-auto relative group rounded-b-md box-manga mb-1">
                         <img class="relative object-cover w-full h-full transition-shadow duration-300 rounded-md shadow-none cursor-pointer z-[1] hover:shadow-lg hover:shadow-gray-400 "src="{{ asset('asset/img/postlv2.jpg') }}"
                             alt="Jujutsu Kaisen">
-                        <span class=" absolute bottom-0 left-0 w-full px-2 pb-2 text-white transition-all duration-300 manga z-[1]">
+                        <span class=" absolute bottom-0 left-0 w-full px-2 pb-3 text-white transition-all duration-300 manga z-[1]">
                             <h3
                                 class="mt-2  font-semibold text-[14px] group-hover:text-orange-400 text-start group-hover:-translate-y-2 transition-all duration-300">
                                 {{ Str::limit('Shikanaka Nokonoko', 15, '...') }}</h3>
@@ -210,7 +211,7 @@
                                 {{ Str::limit('gege akutami & aka akasaka', 22, '...') }}</h5>
                         </span>
                     </div>
-                    <div class="px-2 pb-2 border-t border-black rounded-b-lg text-start bg-gray-200 hover:border-orange-300 hover:bg-gradient-to-t hover:to-white hover:from-orange-400  ">
+                    <div class="px-2 pb-3 border-t border-black rounded-b-lg text-start bg-gray-50 hover:border-orange-300 hover:bg-gradient-to-t hover:to-white hover:from-orange-400  ">
 
                         <p class="">#266</p>
                         <p class="text-[12px] text-gray-600">{{ Str::limit('266: Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate,
@@ -218,10 +219,10 @@
                     </div>
                 </a>
                 <a href="{{ route('manga') }}" class="block text-center font-fira">
-                    <div class="w-[160px] h-[240px] mx-auto relative group rounded-b-md box-manga mb-1">
+                    <div class="w-[140px] h-[220px] mx-auto relative group rounded-b-md box-manga mb-1">
                         <img class="relative object-cover w-full h-full transition-shadow duration-300 rounded-md shadow-none cursor-pointer z-[1] hover:shadow-lg hover:shadow-gray-400 "src="{{ asset('asset/img/postspy.jpg') }}"
                             alt="Jujutsu Kaisen">
-                        <span class=" absolute bottom-0 left-0 w-full px-2 pb-2 text-white transition-all duration-300 manga z-[1]">
+                        <span class=" absolute bottom-0 left-0 w-full px-2 pb-3 text-white transition-all duration-300 manga z-[1]">
                             <h3
                                 class="mt-2  font-semibold text-[14px] group-hover:text-orange-400 text-start group-hover:-translate-y-2 transition-all duration-300">
                                 {{ Str::limit('Shikanaka Nokonoko', 15, '...') }}</h3>
@@ -230,7 +231,7 @@
                                 {{ Str::limit('gege akutami & aka akasaka', 22, '...') }}</h5>
                         </span>
                     </div>
-                    <div class="px-2 pb-2 border-t border-black rounded-b-lg text-start bg-gray-200 hover:border-orange-300 hover:bg-gradient-to-t hover:to-white hover:from-orange-400  ">
+                    <div class="px-2 pb-3 border-t border-black rounded-b-lg text-start bg-gray-50 hover:border-orange-300 hover:bg-gradient-to-t hover:to-white hover:from-orange-400  ">
 
                         <p class="">#266</p>
                         <p class="text-[12px] text-gray-600">{{ Str::limit('266: Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate,
@@ -238,10 +239,10 @@
                     </div>
                 </a>
                 <a href="{{ route('manga') }}" class="block text-center font-fira">
-                    <div class="w-[160px] h-[240px] mx-auto relative group rounded-b-md box-manga mb-1">
+                    <div class="w-[140px] h-[220px] mx-auto relative group rounded-b-md box-manga mb-1">
                         <img class="relative object-cover w-full h-full transition-shadow duration-300 rounded-md shadow-none cursor-pointer z-[1] hover:shadow-lg hover:shadow-gray-400 "src="{{ asset('asset/img/postlv2.jpg') }}"
                             alt="Jujutsu Kaisen">
-                        <span class=" absolute bottom-0 left-0 w-full px-2 pb-2 text-white transition-all duration-300 manga z-[1]">
+                        <span class=" absolute bottom-0 left-0 w-full px-2 pb-3 text-white transition-all duration-300 manga z-[1]">
                             <h3
                                 class="mt-2  font-semibold text-[14px] group-hover:text-orange-400 text-start group-hover:-translate-y-2 transition-all duration-300">
                                 {{ Str::limit('Shikanaka Nokonoko', 15, '...') }}</h3>
@@ -250,7 +251,7 @@
                                 {{ Str::limit('gege akutami & aka akasaka', 22, '...') }}</h5>
                         </span>
                     </div>
-                    <div class="px-2 pb-2 border-t border-black rounded-b-lg text-start bg-gray-200 hover:border-orange-300 hover:bg-gradient-to-t hover:to-white hover:from-orange-400  ">
+                    <div class="px-2 pb-3 border-t border-black rounded-b-lg text-start bg-gray-50 hover:border-orange-300 hover:bg-gradient-to-t hover:to-white hover:from-orange-400  ">
 
                         <p class="">#266</p>
                         <p class="text-[12px] text-gray-600">{{ Str::limit('266: Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate,
@@ -258,10 +259,10 @@
                     </div>
                 </a>
                 <a href="{{ route('manga') }}" class="block text-center font-fira">
-                    <div class="w-[160px] h-[240px] mx-auto relative group rounded-b-md box-manga mb-1">
+                    <div class="w-[140px] h-[220px] mx-auto relative group rounded-b-md box-manga mb-1">
                         <img class="relative object-cover w-full h-full transition-shadow duration-300 rounded-md shadow-none cursor-pointer z-[1] hover:shadow-lg hover:shadow-gray-400 "src="{{ asset('asset/img/postspy.jpg') }}"
                             alt="Jujutsu Kaisen">
-                        <span class=" absolute bottom-0 left-0 w-full px-2 pb-2 text-white transition-all duration-300 manga z-[1]">
+                        <span class=" absolute bottom-0 left-0 w-full px-2 pb-3 text-white transition-all duration-300 manga z-[1]">
                             <h3
                                 class="mt-2  font-semibold text-[14px] group-hover:text-orange-400 text-start group-hover:-translate-y-2 transition-all duration-300">
                                 {{ Str::limit('Shikanaka Nokonoko', 15, '...') }}</h3>
@@ -270,7 +271,7 @@
                                 {{ Str::limit('gege akutami & aka akasaka', 22, '...') }}</h5>
                         </span>
                     </div>
-                    <div class="px-2 pb-2 border-t border-black rounded-b-lg text-start bg-gray-200 hover:border-orange-300 hover:bg-gradient-to-t hover:to-white hover:from-orange-400  ">
+                    <div class="px-2 pb-3 border-t border-black rounded-b-lg text-start bg-gray-50 hover:border-orange-300 hover:bg-gradient-to-t hover:to-white hover:from-orange-400  ">
 
                         <p class="">#266</p>
                         <p class="text-[12px] text-gray-600">{{ Str::limit('266: Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate,

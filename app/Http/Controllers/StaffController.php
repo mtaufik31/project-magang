@@ -40,7 +40,7 @@ class StaffController extends Controller
             'isAdmin' => 1,
         ]);
 
-        return redirect()->route('List.Staff')->with('success', 'Admin berhasil ditambahkan');
+        return redirect()->route('List.Staff')->with('success', 'Staff berhasil ditambahkan');
     }
 
     public function delete($id) {
