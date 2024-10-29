@@ -3,14 +3,14 @@
 @section('content')
 
 <section class="py-5">
-        <div class="bg-white md:w-[69%] mx-auto relative px-3">
+        <div class="bg-white md:w-[60%] mx-auto relative px-3">
             <div class="flex items-center justify-between">
                 <h1 class="font-fira text-[24px] pt-5 pb-3">Blog</h1>
             </div>
 
             <hr>
-            <div class="overflow-x-auto px-5">
-                <div class="flex py-6 gap-20">
+            <div class="">
+                <div class="flex flex-wrap justify-center py-6 gap-10">
                     <!-- Card 1 -->
                     @foreach ($blogs as $blog)
                     <x-cardblog id="{{ $blog->id }}"

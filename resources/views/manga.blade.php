@@ -24,10 +24,11 @@
             <div
                 class="bg-white w-[80%] mx-auto py-5 px-6 my-10 rounded-sm shadow-lg flex flex-col md:flex-row md:flex-nowrap">
                 <div class="flex flex-col transition-all items-center md:items-start">
-                    <div class="judul md:border-b-2 w-full">
-                        <h1 class="text-black font-fira text-3xl text-center md:text-left mb-4">
+                    <div class="judul md:border-b-2 w-full shadow-lg">
+                        <h1 class="text-black font-fira text-3xl text-center md:text-left mb-2 ">
                             Jujutsu Kaisen
                         </h1>
+                        <p class="mb-2 text-slate-600 text-center md:text-left">Jujur kasian, cingcong dingdong, rahmat wahyu, apple, kiko, </p>
                     </div>
 
                     <!-- Flex container for isi-kiri and isi-kanan -->
