@@ -12,7 +12,7 @@
                 <!-- Username Field -->
                 <div>
                     <label for="username" class="block text-lg font-medium text-gray-700">Username</label>
-                    <input id="username" name="name" type="text" placeholder="Username"
+                    <input required id="username" name="name" type="text" placeholder="Username"
                         class="mt-1 w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:border-orange-300 bg-gray-100 max-w-full"
                         value="{{ old('name') }}" />
                     @error('name')
@@ -23,7 +23,7 @@
                 <!-- Email Field -->
                 <div>
                     <label for="email" class="block text-lg font-medium text-gray-700">Email</label>
-                    <input id="email" name="email" type="email" placeholder="Email"
+                    <input required id="email" name="email" type="email" placeholder="Email"
                         class="mt-1 w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:border-orange-300 bg-gray-100 max-w-full"
                         value="{{ old('email') }}" />
                     @error('email')
@@ -34,7 +34,7 @@
                 <!-- Password Field -->
                 <div class="relative">
                     <label for="password" class="block text-lg font-medium text-gray-700">Password</label>
-                    <input id="password" name="password" type="password" placeholder="Password"
+                    <input required id="password" name="password" type="password" placeholder="Password"
                         class="mt-1 w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:border-orange-300 bg-gray-100 max-w-full" />
                     @error('password')
                         <span class="text-red-500 text-sm">{{ $message }}</span>
@@ -45,7 +45,7 @@
                 <div class="relative">
                     <label for="password_confirmation" class="block text-lg font-medium text-gray-700">Confirm
                         Password</label>
-                    <input id="password_confirmation" name="password_confirmation" type="password"
+                    <input required id="password_confirmation" name="password_confirmation" type="password"
                         placeholder="Confirm Password"
                         class="mt-1 w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:border-orange-300 bg-gray-100 max-w-full" />
                     @error('password_confirmation')

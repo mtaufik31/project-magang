@@ -44,45 +44,29 @@ class AuthController extends Controller
     {
         // Validasi input
         $request->validate([
-            'email' => 'required|email',
-            'password' => 'required',
+            'login' => 'required|string',
+            'password' => 'required|string',
         ]);
 
-        // Coba autentikasi user
-        if (Auth::attempt(['email' => $request->email, 'password' => $request->password], $request->remember_me)) {
+        $loginType = filter_var($request->input('login'), FILTER_VALIDATE_EMAIL) ? 'email' : 'name';
+
+        $credentials = [
+            $loginType => $request->input('login'),
+            'password' => $request->input('password'),
+        ];
+
+        $remember = $request->has('remember');
+
+        if (Auth::attempt($credentials, $remember)) {
             if (Auth::user()->role=='admin') {
                 return redirect()->intended('/dashboard')->with('success', 'You`re Dewa'); // Pesan sukses
             }
             return redirect()->intended('/')->with('success', 'Login berhasil!'); // Pesan sukses
         }
 
-        // if ($request->email === 'taufikbudiman031@gmail.com' && $request->password === '123456789') {
-        //     // Jika cocok, login manual tanpa cek database
-        //     $user = User::where('email', $request->email)->first();
-
-        //     // Jika user tidak ada di database, buat user baru
-        //     if (!$user) {
-        //         $user = User::create([
-        //             'name' => 'Taufik Budiman', // Anda bisa menyesuaikan nama
-        //             'email' => $request->email,
-        //             'password' => bcrypt($request->password),
-        //             'role' => 'admin' // Asumsikan ini adalah akun admin
-        //         ]);
-        //     }
-
-        //     Auth::login($user, $request->remember_me);
-        //     return redirect()->intended('/dashboard')->with('success', 'Login berhasil!');
-        // }
-
-        // Jika autentikasi gagal
-        // return back()->withErrors([
-        //     'email' => 'Kredensial yang diberikan tidak cocok dengan catatan kami.',
-        // ]);
-
-        // Jika gagal login
         return back()->withErrors([
-            'email' => 'Email atau password salah.',
-        ])->onlyInput('email');
+            'login' => 'Ada Yang Salah awkokwko',
+        ])->withInput($request->only('login'));
     }
 
     public function logout(Request $request)
