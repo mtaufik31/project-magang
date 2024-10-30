@@ -31,15 +31,15 @@
         <div class="text-center w-full">
             <div class="flex flex-wrap py-5 gap-8 md:gap-6 justify-center md:justify-start">
                 <!-- Card 1 -->
-                <x-cardmanga></x-cardmanga>
-                <x-cardmanga></x-cardmanga>
-                <x-cardmanga></x-cardmanga>
-                <x-cardmanga></x-cardmanga>
-                <x-cardmanga></x-cardmanga>
-                <x-cardmanga></x-cardmanga>
-                <x-cardmanga></x-cardmanga>
-                <x-cardmanga></x-cardmanga>
-                <x-cardmanga></x-cardmanga>
+                @foreach ($mangas as $manga)
+                    <x-cardmanga
+                    id="{{ $manga->id }}"
+                    title="{{ $manga->title }}"
+                    author="{{ $manga->author }}"
+                    description="{{ $manga->description }}"
+                    image="{{ asset('storage/' . $manga->image) }}">
+                </x-cardmanga>
+                @endforeach
             </div>
             {{-- @if ({{  }})
             <nav aria-label="Page navigation example">

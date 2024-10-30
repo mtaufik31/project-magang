@@ -13,21 +13,20 @@ return new class extends Migration
     {
         Schema::create('manga', function (Blueprint $table) {
             $table->id();
-            $table->string('title'); // Ganti varchar dengan string
+            $table->string('title');
             $table->string('alternative');
             $table->string('image');
             $table->enum('status', ['ongoing', 'complete']);
             $table->integer('rating');
             $table->text('description')->nullable();
             $table->year('released_year');
-            $table->string('author'); // Ganti varchar dengan string
-            $table->string('artist'); // Ganti varchar dengan string
-            $table->string('publisher')->nullable(); // Ganti varchar dengan string
+            $table->string('author');
+            $table->string('artist');
+            $table->string('publisher')->nullable();
             $table->foreignId('created_by')->constrained('users')->onDelete('cascade');
             $table->text('genre');
             $table->timestamps();
         });
-
     }
 
     /**

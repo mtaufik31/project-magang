@@ -1,6 +1,19 @@
 @extends('layout.dashboard')
 
 @section('content')
+
+<section class="pt-3 pb-5">
+    <div class="flex font-fira bg-white py-4 px-5 ">
+        <a href="{{ route('dashboard') }}">
+            <h2 class="hover:text-orange-400 duration-100 hover:underline">Dashboard </h2>
+        </a>
+        <p class="px-2"> &raquo; </p>
+        <a href="">
+            <h2 class="hover:text-orange-400 duration-100 hover:underline">List User</h2>
+        </a>
+    </div>
+</section>
+
 <section>
     <div class="bg-white mx-auto px-5 py-5 shadow-sm rounded-md w-full ">
         <div class="flex justify-between">
@@ -21,19 +34,19 @@
                         <div class="overflow-x-auto">
                             <table class="w-full border border-gray-300">
                                 <thead class="bg-gray-100">
-                                    <tr>
-                                        <th class="px-4 py-2 border border-gray-300 text-left text-sm font-medium text-gray-600">ID</th>
-                                        <th class="px-4 py-2 border border-gray-300 text-left text-sm font-medium text-gray-600">Name</th>
-                                        <th class="px-4 py-2 border border-gray-300 text-left text-sm font-medium text-gray-600">Email</th>
-                                        <th class="px-4 py-2 border border-gray-300 text-left text-sm font-medium text-gray-600">Role</th>
-                                        <th class="px-4 py-2 border border-gray-300 text-left text-sm font-medium text-gray-600">Post</th>
-                                        <th class="px-4 py-2 border border-gray-300 text-center text-sm font-medium text-gray-600">Action</th>
+                                    <tr class="">
+                                        <th class="px-4 py-3 border border-gray-300 text-left text-sm font-medium text-gray-600">ID</th>
+                                        <th class="px-4 py-3 border border-gray-300 text-left text-sm font-medium text-gray-600">Name</th>
+                                        <th class="px-4 py-3 border border-gray-300 text-left text-sm font-medium text-gray-600">Email</th>
+                                        <th class="px-4 py-3 border border-gray-300 text-left text-sm font-medium text-gray-600">Role</th>
+                                        <th class="px-4 py-3 border border-gray-300 text-left text-sm font-medium text-gray-600">Post</th>
+                                        <th class="px-4 py-3 border border-gray-300 text-center text-sm font-medium text-gray-600">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @php $i = 1; @endphp
                                     @foreach ($staffs as $staff)
-                                    <tr class="hover:bg-gray-50 transition-colors">
+                                    <tr class="transition-colors odd:bg-white even:bg-gray-200">
                                         <td class="px-4 py-2 border border-gray-300 text-sm text-gray-700">{{ $i++ }}</td>
                                         <td class="px-4 py-2 border border-gray-300 text-sm text-gray-700">{{ $staff->name }}</td>
                                         <td class="px-4 py-2 border border-gray-300 text-sm text-gray-700">{{ $staff->email }}</td>

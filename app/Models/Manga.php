@@ -9,19 +9,21 @@ class Manga extends Model
 {
     use HasFactory;
 
+    // Menentukan nama tabel secara eksplisit
+    protected $table = 'manga';
+
     protected $fillable = [
         'title',
         'alternative',
         'image',
         'status',
-        'rating' ,
+        'rating',
         'description',
-        'realese_year',
+        'released_year',
         'author',
         'artist',
         'publisher',
-        'posted_by',
-        'posted_on',
+        'created_by',
         'genre'
     ];
 

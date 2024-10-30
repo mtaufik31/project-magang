@@ -7,9 +7,11 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\StaffController;
+use App\Http\Controllers\MangaController;
 use App\Http\Middleware\Dashboard;
 use App\Models\Blog;
 use App\Models\User;
+use App\Models\Manga;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -18,8 +20,11 @@ use Illuminate\Support\Facades\Auth;
 //  ----------------------------------------------------------------
 Route::get('/', function () {
 
-    $blogs = Blog::all();
-    return view('welcome', array('title' => 'MangaLo', 'blogs' => $blogs));
+    $blogs = Blog::latest()->paginate(4);
+
+    $mangas = Manga::latest()->paginate(8);
+
+    return view('welcome', array('title' => 'MangaLo', 'blogs' => $blogs, 'mangas' => $mangas));
 })->name('home');
 
 Route::get('join', function () {
@@ -43,7 +48,10 @@ Route::get('blog/{id}', action: function ($id) {
 })->name('blog');
 
 Route::get('list', function () {
-    return view('list', array('title' => 'MangaLo | List'));
+
+    $mangas = Manga::latest()->paginate();
+
+    return view('list', array('title' => 'MangaLo | List', 'mangas' => $mangas));
 })->name('list');
 
 Route::get('register', function () {
@@ -58,8 +66,11 @@ Route::get('forgot', function () {
     return view('register.forgot', data: array('title' => 'MangaLo | Forgot'));
 })->name('forgot');
 
-Route::get('/manga', function () {
-    return view('manga', ['title' => 'MangaLo | Manga']);
+Route::get('manga/{id}', function ($id) {
+
+    $manga = Manga::where('id', '=', $id)->get()->first();
+
+    return view('manga', ['title' => 'MangaLo | Manga'], compact('manga'));
 })->middleware('auth')->name('manga');
 
 
@@ -130,13 +141,17 @@ Route::middleware(Dashboard::class)->group(function () {
 
 
     // Manga Routes Group
-    Route::get('MangaList', function () {
-        return view('dashboard.manga.list', array(
-            'title' => 'Dashboard | List Manga'
-        ));
-    })->name('List Manga');
-    // Route::controller(MangaController::class)->group(function () {
-    // });
+    Route::controller(MangaController::class)->group(function () {
+        Route::get('MangaList', 'index')->name('List Manga');
+        Route::get('MangaCreate', 'create')->name('Create manga');
+        Route::post('MangaStore', 'store')->name('Store manga');
+        Route::get('MangaEdit/{manga}', 'edit')->name('Edit manga');
+        Route::put('MangaUpdate/{manga}', 'update')->name('Update manga');
+        Route::delete('MangaDelete/{manga}', 'destroy')->name('Delete manga');
+        Route::get('MangaDetail/{manga}', function () {
+            return view('dashboard.manga.detail', data: array('title' => 'Dashboard | Manga Detail'));
+        })->name('Detail Manga');
+    });
 
     // Staff Routes Group
     Route::controller(StaffController::class)->group(function () {
@@ -144,7 +159,7 @@ Route::middleware(Dashboard::class)->group(function () {
 
         Route::get('StaffCreate', 'showForm')->name('Staff.create');
 
-        Route::post('staffSubmit', 'addStaff' )->name('staff.submit');
+        Route::post('staffSubmit', 'addStaff')->name('staff.submit');
 
         Route::delete('staffDelete/{id}', 'delete')->name('staff.delete');
     });

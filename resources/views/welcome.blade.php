@@ -29,10 +29,10 @@
             <!-- Slide 1 -->
             <div class="swiper-slide text-white rounded-lg p-4 shadow-md overflow-hidden">
                 <!-- Background Image with Blur -->
-                <div class="absolute inset-0 bg-[url('/asset/img/postspy.jpg')] bg-cover bg-center filter blur-md"></div>
+                <div class="absolute inset-0 bg-[url(/public/asset/img/postspy.jpg)] bg-cover bg-center "></div>
 
                 <!-- Overlay for Darkening Background -->
-                <div class="absolute inset-0 bg-black opacity-30"></div>
+                <div class="absolute inset-0 bg-black opacity-55"></div>
 
                 <div class="flex relative">
                     <!-- Manga Cover -->
@@ -44,30 +44,37 @@
                     <!-- Manga Details -->
                     <div class="pl-4 ">
                         <div>
-                            <h2 class="text-xl font-bold">SONO MONBAN...</h2>
-                            <p class="text-yellow-400 mt-2">MANGA</p>
-                            <p class="text-sm mt-1">Action, Comedy, SOL...</p>
+                            <h2 class="text-xl font-bold">Spy x Family</h2>
+                            <p class="text-yellow-400 mt-2">GENRE</p>
+                            <p class="text-sm mt-1 mb-3 flex flex-wrap gap-1">
+                                <a class="hover:text-orange-400 duration-200 " href="">Action, </a>
+                                <a class="hover:text-orange-400 duration-200 " href="">Comedy, </a>
+                                <a class="hover:text-orange-400 duration-200 " href="">Slice Of Life, </a>
+                                <a class="hover:text-orange-400 duration-200 " href="">Drama, </a>
+                                <a class="hover:text-orange-400 duration-200 " href="">Fantasy, </a>
+                            </p>
                         </div>
-                        <div class="mt-4">
+                        <div class="mt-2 sm:block hidden">
                             <p class="font-semibold">Sinopsis</p>
-                            <p class="text-sm mt-1">Sieg is an adventurer with...</p>
-                            <p class="mt-2">Status: Ongoing</p>
-                            <p>Author: TOMOBASHI Kametsu</p>
+                            <p class="text-sm mt-1 mb-2">{{ Str::limit('The master spy codenamed <Twilight> has spent most of his life on undercover missions, all for the dream of a better world. Yet one day he receives a particularly difficult order from command. For his mission, he must form a temporary family and start a new life?!
+
+                                A Spy/Action/Comedy manga about a one-of-a-kind family!', 180, '...') }}</p>
                         </div>
+                        <p class="block sm:hidden mb-3">Status : Ongoing</p>
+                        <button class="text-orange hover:before:bg-orange relative h-[40px] w-40 overflow-hidden border border-orange-500 bg-transparent px-2  shadow-2xl transition-all before:absolute before:bottom-0 before:left-0 before:top-0 before:z-0 before:h-full before:w-0 before:bg-orange-500 before:transition-all before:duration-300 hover:text-white hover:shadow-orange-500 hover:before:left-0 hover:before:w-full"><span class="relative z-10">Read More</span></button>
                     </div>
                 </div>
             </div>
-            <!-- Slide 1 -->
-            <div class="swiper-slide text-white rounded-lg p-4 shadow-md   overflow-hidden">
+            <div class="swiper-slide text-white rounded-lg p-4 shadow-md overflow-hidden">
                 <!-- Background Image with Blur -->
-                <div class="absolute inset-0 bg-[url('/asset/img/postspy.jpg')] bg-cover bg-center filter blur-md"></div>
+                <div class="absolute inset-0 bg-[url(/public/asset/img/postspy.jpg)] bg-cover bg-center "></div>
 
                 <!-- Overlay for Darkening Background -->
-                <div class="absolute inset-0 bg-black opacity-30"></div>
+                <div class="absolute inset-0 bg-black opacity-55"></div>
 
                 <div class="flex relative">
                     <!-- Manga Cover -->
-                    <div class="w-[140px] h-[230px] relative flex-shrink-0">
+                    <div class="w-[140px] h-[230px]  relative flex-shrink-0">
                         <img src="{{ asset('asset/img/postspy.jpg') }}" alt="Manga Cover"
                             class="relative object-cover w-full h-full">
                     </div>
@@ -75,30 +82,37 @@
                     <!-- Manga Details -->
                     <div class="pl-4 ">
                         <div>
-                            <h2 class="text-xl font-bold">SONO MONBAN...</h2>
-                            <p class="text-yellow-400 mt-2">MANGA</p>
-                            <p class="text-sm mt-1">Action, Comedy, SOL...</p>
+                            <h2 class="text-xl font-bold">Spy x Family</h2>
+                            <p class="text-yellow-400 mt-2">GENRE</p>
+                            <p class="text-sm mt-1 mb-3 flex flex-wrap gap-1">
+                                <a class="hover:text-orange-400 duration-200 " href="">Action, </a>
+                                <a class="hover:text-orange-400 duration-200 " href="">Comedy, </a>
+                                <a class="hover:text-orange-400 duration-200 " href="">Slice Of Life, </a>
+                                <a class="hover:text-orange-400 duration-200 " href="">Drama, </a>
+                                <a class="hover:text-orange-400 duration-200 " href="">Fantasy, </a>
+                            </p>
                         </div>
-                        <div class="mt-4">
+                        <div class="mt-2 sm:block hidden">
                             <p class="font-semibold">Sinopsis</p>
-                            <p class="text-sm mt-1">Sieg is an adventurer with...</p>
-                            <p class="mt-2">Status: Ongoing</p>
-                            <p>Author: TOMOBASHI Kametsu</p>
+                            <p class="text-sm mt-1 mb-2">{{ Str::limit('The master spy codenamed <Twilight> has spent most of his life on undercover missions, all for the dream of a better world. Yet one day he receives a particularly difficult order from command. For his mission, he must form a temporary family and start a new life?!
+
+                                A Spy/Action/Comedy manga about a one-of-a-kind family!', 180, '...') }}</p>
                         </div>
+                        <p class="block sm:hidden mb-3">Status : Ongoing</p>
+                        <button class="text-orange hover:before:bg-orange relative h-[40px] w-40 overflow-hidden border border-orange-500 bg-transparent px-2  shadow-2xl transition-all before:absolute before:bottom-0 before:left-0 before:top-0 before:z-0 before:h-full before:w-0 before:bg-orange-500 before:transition-all before:duration-300 hover:text-white hover:shadow-orange-500 hover:before:left-0 hover:before:w-full"><span class="relative z-10">Read More</span></button>
                     </div>
                 </div>
             </div>
-            <!-- Slide 1 -->
-            <div class="swiper-slide text-white rounded-lg p-4 shadow-md   overflow-hidden">
+            <div class="swiper-slide text-white rounded-lg p-4 shadow-md overflow-hidden">
                 <!-- Background Image with Blur -->
-                <div class="absolute inset-0 bg-[url('/asset/img/postspy.jpg')] bg-cover bg-center filter blur-md"></div>
+                <div class="absolute inset-0 bg-[url(/public/asset/img/postspy.jpg)] bg-cover bg-center "></div>
 
                 <!-- Overlay for Darkening Background -->
-                <div class="absolute inset-0 bg-black opacity-30"></div>
+                <div class="absolute inset-0 bg-black opacity-55"></div>
 
                 <div class="flex relative">
                     <!-- Manga Cover -->
-                    <div class="w-[140px] h-[230px] relative flex-shrink-0">
+                    <div class="w-[140px] h-[230px]  relative flex-shrink-0">
                         <img src="{{ asset('asset/img/postspy.jpg') }}" alt="Manga Cover"
                             class="relative object-cover w-full h-full">
                     </div>
@@ -106,19 +120,29 @@
                     <!-- Manga Details -->
                     <div class="pl-4 ">
                         <div>
-                            <h2 class="text-xl font-bold">SONO MONBAN...</h2>
-                            <p class="text-yellow-400 mt-2">MANGA</p>
-                            <p class="text-sm mt-1">Action, Comedy, SOL...</p>
+                            <h2 class="text-xl font-bold">Spy x Family</h2>
+                            <p class="text-yellow-400 mt-2">GENRE</p>
+                            <p class="text-sm mt-1 mb-3 flex flex-wrap gap-1">
+                                <a class="hover:text-orange-400 duration-200 " href="">Action, </a>
+                                <a class="hover:text-orange-400 duration-200 " href="">Comedy, </a>
+                                <a class="hover:text-orange-400 duration-200 " href="">Slice Of Life, </a>
+                                <a class="hover:text-orange-400 duration-200 " href="">Drama, </a>
+                                <a class="hover:text-orange-400 duration-200 " href="">Fantasy, </a>
+                            </p>
                         </div>
-                        <div class="mt-4">
+                        <div class="mt-2 sm:block hidden">
                             <p class="font-semibold">Sinopsis</p>
-                            <p class="text-sm mt-1">Sieg is an adventurer with...</p>
-                            <p class="mt-2">Status: Ongoing</p>
-                            <p>Author: TOMOBASHI Kametsu</p>
+                            <p class="text-sm mt-1 mb-2">{{ Str::limit('The master spy codenamed <Twilight> has spent most of his life on undercover missions, all for the dream of a better world. Yet one day he receives a particularly difficult order from command. For his mission, he must form a temporary family and start a new life?!
+
+                                A Spy/Action/Comedy manga about a one-of-a-kind family!', 180, '...') }}</p>
                         </div>
+                        <p class="block sm:hidden mb-3">Status : Ongoing</p>
+                        <button class="text-orange hover:before:bg-orange relative h-[40px] w-40 overflow-hidden border border-orange-500 bg-transparent px-2  shadow-2xl transition-all before:absolute before:bottom-0 before:left-0 before:top-0 before:z-0 before:h-full before:w-0 before:bg-orange-500 before:transition-all before:duration-300 hover:text-white hover:shadow-orange-500 hover:before:left-0 hover:before:w-full"><span class="relative z-10">Read More</span></button>
                     </div>
                 </div>
             </div>
+            <!-- Slide 1 -->
+
         </div>
 
         <div class="swiper-pagination absolute bottom-1 px-5 left-0 right-0 text-center"></div>
@@ -159,15 +183,9 @@
             <div class="overflow-x-auto">
                 <div class="flex py-6 gap-4">
                     <!-- Card 1 -->
-                    <x-cardmanga></x-cardmanga>
-                    <x-cardmanga></x-cardmanga>
-                    <x-cardmanga></x-cardmanga>
-                    <x-cardmanga></x-cardmanga>
-                    <x-cardmanga></x-cardmanga>
-                    <x-cardmanga></x-cardmanga>
-                    <x-cardmanga></x-cardmanga>
-
-
+                    @foreach ($mangas as $manga)
+                    <x-cardmanga id="{{ $manga->id }}" title="{{ $manga->title }}" author="{{ $manga->author }}" description="{{ $manga->description }}" image="{{ asset('storage/' . $manga->image) }}"></x-cardmanga>
+                    @endforeach
 
                     <!-- Tambahan Card jika diperlukan -->
                 </div>
@@ -204,11 +222,6 @@
         </div>
     </section>
 
-
-
-
-
-
     <!-- Swiper -->
 @endsection
 
@@ -240,7 +253,7 @@
                 clickable: true,
             },
             autoplay: {
-                delay: 3000,
+                delay: 5000,
                 disableOnInteraction: false,
             },
             slidesPerView: 'auto',
