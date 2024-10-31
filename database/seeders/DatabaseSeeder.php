@@ -21,5 +21,11 @@ class DatabaseSeeder extends Seeder
             'password' => 'admin#1234',
             'role' => 'admin',
         ]);
+
+        $this->call([
+            GenreSeeder::class,
+        ]);
     }
+
+
 }

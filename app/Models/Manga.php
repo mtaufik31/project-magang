@@ -31,4 +31,10 @@ class Manga extends Model
     {
         return $this->belongsTo(User::class, 'created_by');
     }
+
+    public function getGenre()
+    {
+        $genreIds = json_decode($this->genre, true);
+        return genre::whereIn('id', $genreIds)->get();
+    }
 }
