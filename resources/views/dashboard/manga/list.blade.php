@@ -68,7 +68,7 @@
                                                     src="storage/{{ $manga->image }}" alt="Blog Image"
                                                     class="w-16 h-16 object-cover rounded-md"></td>
                                             <td class="px-4 py-2 border border-gray-300 text-sm text-gray-700">
-                                                {{Str::limit($manga->title, 20, '...')  }}</td>
+                                                {{ Str::limit($manga->title, 20, '...') }}</td>
                                             <td class="px-4 py-2 border border-gray-300 text-sm text-gray-700">
                                                 {{ ucfirst($manga->status) }}</td>
                                             <td class="px-4 py-2 border border-gray-300 text-sm text-gray-700">
@@ -89,12 +89,10 @@
                                                     class="bg-yellow-500 hover:bg-yellow-600 text-white px-3 py-2 rounded-md text-sm">
                                                     <i class="fa-solid fa-pen"></i> Edit
                                                 </a>
-                                                <form action="{{ route('Delete manga', $manga) }}" method="POST"
-                                                    class="inline">
+                                                <form action="{{ route('Delete manga', $manga) }}" method="POST" class="inline btn-remove">
                                                     @csrf
-                                                    @method('DELETE')
-                                                    <button type="submit"
-                                                        class="bg-red-500 hover:bg-red-600 text-white px-3 py-2 rounded-md text-sm">
+                                                    @method('delete')
+                                                    <button type="submit" class="bg-red-500 hover:bg-red-600 text-white px-3 py-2 rounded-md text-sm">
                                                         <i class="fa-solid fa-trash"></i> Delete
                                                     </button>
                                                 </form>
@@ -119,7 +117,13 @@
                 Swal.fire({
                     title: "Are you sure?",
                     text: "You won't be able to revert this!",
-                    icon: "warning",
+                    html: `<lord-icon
+    src="https://cdn.lordicon.com/hwjcdycb.json"
+    trigger="loop"
+    stroke="light"
+    colors="primary:#121331,secondary:#e83a30"
+    style="width:150px;height:150px">
+</lord-icon>`,
                     showCancelButton: true,
                     confirmButtonColor: "#d33",
                     cancelButtonColor: "#3085d6",

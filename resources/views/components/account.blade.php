@@ -5,7 +5,7 @@
                 id="menu-button" aria-expanded="true" aria-haspopup="true">
             <i class="fa-solid fa-circle-user self-center text-2xl hover:text-[#ff9900]"></i>
             @if (Auth::check())
-                <span class="md:block hidden text-[16px]">{{ Auth::user()->name }}</span>
+                <span class="md:block hidden text-[16px] self-center">{{ Auth::user()->name }}</span>
             @endif
         </button>
     </div>

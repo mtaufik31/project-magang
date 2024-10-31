@@ -45,6 +45,7 @@
     </div>
 
     @yield('scripts')
+    <script src="https://cdn.lordicon.com/lordicon.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <script src="//unpkg.com/alpinejs" defer></script>
     <script src="https://kit.fontawesome.com/c340d81b5e.js" crossorigin="anonymous"></script>
