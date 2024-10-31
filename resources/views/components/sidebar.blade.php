@@ -28,7 +28,7 @@
             <p class="text-xl font-semibold mb-2">Manga</p>
             <ul class="">
                 <li>
-                    <a href="{{ route('List Manga') }}" class="flex items-center p-2 rounded-md text-gray-700 hover:text-orange-400 hover:bg-gray-100 transition-all hover:translate-x-1 duration-200  {{ request()->routeIs('List Manga') ? 'text-orange-400 translate-x-1 hover:text-gray-900' : '' }}">
+                    <a href="{{ route('List Manga') }}" class="flex items-center p-2 rounded-md text-gray-700 hover:text-orange-400 hover:bg-gray-100 transition-all hover:translate-x-1 duration-200  {{ request()->routeIs('List Manga') ? 'text-orange-400 translate-x-1 hover:text-gray-900' : '' }} ">
                         <i class="fa-solid fa-book mr-2"></i>Manga List
                     </a>
                 </li>

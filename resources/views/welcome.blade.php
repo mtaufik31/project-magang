@@ -186,7 +186,7 @@
             <div
                 class="before:ease rounded-lg relative px-10 py-2 overflow-hidden border border-orange-500 bg-orange-500 text-white shadow-2xl transition-all before:absolute before:right-0 before:top-0 before:h-14 before:w-6 before:translate-x-12 before:rotate-6 before:bg-white before:opacity-50 before:duration-700 hover:shadow-orange-500 hover:before:-translate-x-44">
                 <a href="{{ route('list') }}">
-                    All Genre
+                    See More
                 </a>
             </div>
         </div>

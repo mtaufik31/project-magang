@@ -32,7 +32,7 @@
                 <div class="bg-white shadow-sm rounded-md">
                     <div class="p-3">
                         <div class="overflow-x-auto">
-                            <table class="w-full border border-gray-300">
+                            <table class="w-full border border-gray-300 round">
                                 <thead class="bg-gray-100">
                                     <tr class="">
                                         <th class="px-4 py-3 border border-gray-300 text-left text-sm font-medium text-gray-600">ID</th>

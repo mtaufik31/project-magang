@@ -12,7 +12,7 @@
                 </li>
                 <li>
                     <a href="{{ route('list') }}"
-                        class="text-gray-900 group justify-center flex flex-col items-center {{ request()->routeIs('list') ? 'bg-[#ff9900] px-4 py-3 text-white  rounded-lg' : '' }} {{ request()->routeIs('manga') ? 'bg-[#ff9900] px-4 py-3 text-white  rounded-lg' : '' }} ">
+                        class="text-gray-900 group justify-center flex flex-col items-center {{ request()->routeIs('list') ? 'bg-[#ff9900] px-4 py-3 text-white  rounded-lg' : '' }} {{ request()->routeIs('manga') ? 'bg-[#ff9900] px-4 py-3 text-white  rounded-lg' : '' }} {{ request()->routeIs('genre.sort') ? 'bg-[#ff9900] px-4 py-3 text-white  rounded-lg' : '' }}  ">
                         List
                         <hr
                             class="w-0 border-transparent transition-all duration-300 group-hover:w-full group-hover:border-black">
