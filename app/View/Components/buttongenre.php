@@ -11,10 +11,14 @@ class buttongenre extends Component
     /**
      * Create a new component instance.
      */
-    public function __construct()
+
+    public $route;
+    public function __construct($route)
     {
-        //
+        $this->route = $route;
     }
+
+
 
     /**
      * Get the view / contents that represent the component.

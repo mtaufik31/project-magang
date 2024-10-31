@@ -51,7 +51,7 @@ class MangaController extends Controller
                 $genreIds[] = $genre;
             } else {
                 $newgenre = genre::create(['title' => $genre]);
-                $genreIds[] = $newgenre->id;
+                $genreIds[] = "".$newgenre->id;
             }
         }
 
@@ -70,7 +70,7 @@ class MangaController extends Controller
 
     public function edit(Manga $manga)
     {
-        return view('', [
+        return view('dashboard.manga.edit', [
             'title' => 'Dashboard | Edit Manga',
             'manga' => $manga
         ]);

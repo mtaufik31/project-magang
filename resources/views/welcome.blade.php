@@ -56,12 +56,20 @@
                         </div>
                         <div class="mt-2 sm:block hidden">
                             <p class="font-semibold">Sinopsis</p>
-                            <p class="text-sm mt-1 mb-2">{{ Str::limit('The master spy codenamed <Twilight> has spent most of his life on undercover missions, all for the dream of a better world. Yet one day he receives a particularly difficult order from command. For his mission, he must form a temporary family and start a new life?!
+                            <p class="text-sm mt-1 mb-2">
+                                {{ Str::limit(
+                                    'The master spy codenamed <Twilight> has spent most of his life on undercover missions, all for the dream of a better world. Yet one day he receives a particularly difficult order from command. For his mission, he must form a temporary family and start a new life?!
 
-                                A Spy/Action/Comedy manga about a one-of-a-kind family!', 180, '...') }}</p>
+                                                                A Spy/Action/Comedy manga about a one-of-a-kind family!',
+                                    180,
+                                    '...',
+                                ) }}
+                            </p>
                         </div>
                         <p class="block sm:hidden mb-3">Status : Ongoing</p>
-                        <button class="text-orange hover:before:bg-orange relative h-[40px] w-40 overflow-hidden border border-orange-500 bg-transparent px-2  shadow-2xl transition-all before:absolute before:bottom-0 before:left-0 before:top-0 before:z-0 before:h-full before:w-0 before:bg-orange-500 before:transition-all before:duration-300 hover:text-white hover:shadow-orange-500 hover:before:left-0 hover:before:w-full hover:font-medium"><span class="relative z-10">Read More</span></button>
+                        <button
+                            class="text-orange hover:before:bg-orange relative h-[40px] w-40 overflow-hidden border border-orange-500 bg-transparent px-2  shadow-2xl transition-all before:absolute before:bottom-0 before:left-0 before:top-0 before:z-0 before:h-full before:w-0 before:bg-orange-500 before:transition-all before:duration-300 hover:text-white hover:shadow-orange-500 hover:before:left-0 hover:before:w-full hover:font-medium"><span
+                                class="relative z-10">Read More</span></button>
                     </div>
                 </div>
             </div>
@@ -94,12 +102,20 @@
                         </div>
                         <div class="mt-2 sm:block hidden">
                             <p class="font-semibold">Sinopsis</p>
-                            <p class="text-sm mt-1 mb-2">{{ Str::limit('The master spy codenamed <Twilight> has spent most of his life on undercover missions, all for the dream of a better world. Yet one day he receives a particularly difficult order from command. For his mission, he must form a temporary family and start a new life?!
+                            <p class="text-sm mt-1 mb-2">
+                                {{ Str::limit(
+                                    'The master spy codenamed <Twilight> has spent most of his life on undercover missions, all for the dream of a better world. Yet one day he receives a particularly difficult order from command. For his mission, he must form a temporary family and start a new life?!
 
-                                A Spy/Action/Comedy manga about a one-of-a-kind family!', 180, '...') }}</p>
+                                                                A Spy/Action/Comedy manga about a one-of-a-kind family!',
+                                    180,
+                                    '...',
+                                ) }}
+                            </p>
                         </div>
                         <p class="block sm:hidden mb-3">Status : Ongoing</p>
-                        <button class="text-orange hover:before:bg-orange relative h-[40px] w-40 overflow-hidden border border-orange-500 bg-transparent px-2  shadow-2xl transition-all before:absolute before:bottom-0 before:left-0 before:top-0 before:z-0 before:h-full before:w-0 before:bg-orange-500 before:transition-all before:duration-300 hover:text-white hover:shadow-orange-500 hover:before:left-0 hover:before:w-full"><span class="relative z-10">Read More</span></button>
+                        <button
+                            class="text-orange hover:before:bg-orange relative h-[40px] w-40 overflow-hidden border border-orange-500 bg-transparent px-2  shadow-2xl transition-all before:absolute before:bottom-0 before:left-0 before:top-0 before:z-0 before:h-full before:w-0 before:bg-orange-500 before:transition-all before:duration-300 hover:text-white hover:shadow-orange-500 hover:before:left-0 hover:before:w-full"><span
+                                class="relative z-10">Read More</span></button>
                     </div>
                 </div>
             </div>
@@ -132,12 +148,19 @@
                         </div>
                         <div class="mt-2 sm:block hidden">
                             <p class="font-semibold">Sinopsis</p>
-                            <p class="text-sm mt-1 mb-2">{{ Str::limit('The master spy codenamed <Twilight> has spent most of his life on undercover missions, all for the dream of a better world. Yet one day he receives a particularly difficult order from command. For his mission, he must form a temporary family and start a new life?!
+                            <p class="text-sm mt-1 mb-2">
+                                {{ Str::limit(
+                                    'The master spy codenamed <Twilight> has spent most of his life on undercover missions, all for the dream of a better world. Yet one day he receives a particularly difficult order from command. For his mission, he must form a temporary family and start a new life?!
 
-                                A Spy/Action/Comedy manga about a one-of-a-kind family!', 180, '...') }}</p>
+                                                                A Spy/Action/Comedy manga about a one-of-a-kind family!',
+                                    180,
+                                    '...',
+                                ) }}
+                            </p>
                         </div>
                         <p class="block sm:hidden mb-3">Status : Ongoing</p>
-                        <button class="text-orange hover:before:bg-orange relative h-[40px] w-40 overflow-hidden border border-orange-500 bg-transparent px-2  shadow-2xl transition-all before:absolute before:bottom-0 before:left-0 before:top-0 before:z-0 before:h-full before:w-0 before:bg-orange-500 before:transition-all before:duration-300 hover:text-white hover:shadow-orange-500 hover:before:left-0 hover:before:w-full">
+                        <button
+                            class="text-orange hover:before:bg-orange relative h-[40px] w-40 overflow-hidden border border-orange-500 bg-transparent px-2  shadow-2xl transition-all before:absolute before:bottom-0 before:left-0 before:top-0 before:z-0 before:h-full before:w-0 before:bg-orange-500 before:transition-all before:duration-300 hover:text-white hover:shadow-orange-500 hover:before:left-0 hover:before:w-full">
                             <span class="relative z-10">Read More</span>
                         </button>
                     </div>
@@ -156,12 +179,9 @@
         class="bg-[#fec46d] py-3 px-5 rounded-xl mt-5  w-[69%] justify-center relative items-center mx-auto lg:block hidden transition-all">
         <div class="flex justify-between ">
             <div class="font-fira text-[18px] self-center space-x-7 ps-10 ">
-                <a class="hover:text-white duration-150" href="">Adventure</a>
-                <a class="hover:text-white duration-150" href="">Action</a>
-                <a class="hover:text-white duration-150" href="">Comedy</a>
-                <a class="hover:text-white duration-150" href="">Drama</a>
-                <a class="hover:text-white duration-150" href="">Isekai</a>
-                <a class="hover:text-white duration-150" href="">Parody</a>
+                @foreach ($genres as $genre)
+                    <a class="hover:text-white duration-200 " href="{{ route('genre.sort', $genre->id) }}">{{ $genre->title }}</a>
+                @endforeach
             </div>
             <div
                 class="before:ease rounded-lg relative px-10 py-2 overflow-hidden border border-orange-500 bg-orange-500 text-white shadow-2xl transition-all before:absolute before:right-0 before:top-0 before:h-14 before:w-6 before:translate-x-12 before:rotate-6 before:bg-white before:opacity-50 before:duration-700 hover:shadow-orange-500 hover:before:-translate-x-44">
@@ -186,7 +206,9 @@
                 <div class="flex py-6 gap-4">
                     <!-- Card 1 -->
                     @foreach ($mangas as $manga)
-                    <x-cardmanga id="{{ $manga->id }}" title="{{ $manga->title }}" author="{{ $manga->author }}" description="{{ $manga->description }}" image="{{ asset('storage/' . $manga->image) }}"></x-cardmanga>
+                        <x-cardmanga id="{{ $manga->id }}" title="{{ $manga->title }}"
+                            author="{{ $manga->author }}" description="{{ $manga->description }}"
+                            image="{{ asset('storage/' . $manga->image) }}"></x-cardmanga>
                     @endforeach
 
                     <!-- Tambahan Card jika diperlukan -->
@@ -211,11 +233,8 @@
                     <!-- Blog Cards -->
                     {{-- {{ $blogs }} --}}
                     @foreach ($blogs as $blog)
-                        <x-cardblog
-                            id="{{ $blog->id }}"
-                            title="{{ $blog->title }}"
-                            description="{{ $blog->description }}"
-                            image="{{ $blog->image }}"
+                        <x-cardblog id="{{ $blog->id }}" title="{{ $blog->title }}"
+                            description="{{ $blog->description }}" image="{{ $blog->image }}"
                             name="{{ $blog->user->name }} - {{ $blog->created_at->format('d-m-Y') }}">
                         </x-cardblog>
                     @endforeach

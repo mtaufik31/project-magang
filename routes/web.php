@@ -11,6 +11,7 @@ use App\Http\Controllers\StaffController;
 use App\Http\Controllers\MangaController;
 use App\Http\Middleware\Dashboard;
 use App\Models\Blog;
+use App\Models\genre;
 use App\Models\User;
 use App\Models\Manga;
 use Illuminate\Support\Facades\Auth;
@@ -25,7 +26,10 @@ Route::get('/', function () {
 
     $mangas = Manga::latest()->paginate(8);
 
-    return view('welcome', array('title' => 'MangaLo', 'blogs' => $blogs, 'mangas' => $mangas));
+    $genres = genre::paginate(6);
+
+
+    return view('welcome', array('title' => 'MangaLo', 'blogs' => $blogs, 'mangas' => $mangas, 'genres' => $genres));
 })->name('home');
 
 Route::get('join', function () {
@@ -159,7 +163,12 @@ Route::middleware(Dashboard::class)->group(function () {
 
     });
 
-    Route::get('genre/search', [GenreController::class, 'search'])->name('genre.search');
+    Route::controller(GenreController::class)->group(function () {
+        Route::get('genre/search', 'search')->name('genre.search');
+
+        Route::get('/genre/{id}', 'sortGenres')->name('genre.sort');
+    });
+
 
     // Staff Routes Group
     Route::controller(StaffController::class)->group(function () {
