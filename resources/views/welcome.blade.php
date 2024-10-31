@@ -61,7 +61,7 @@
                                 A Spy/Action/Comedy manga about a one-of-a-kind family!', 180, '...') }}</p>
                         </div>
                         <p class="block sm:hidden mb-3">Status : Ongoing</p>
-                        <button class="text-orange hover:before:bg-orange relative h-[40px] w-40 overflow-hidden border border-orange-500 bg-transparent px-2  shadow-2xl transition-all before:absolute before:bottom-0 before:left-0 before:top-0 before:z-0 before:h-full before:w-0 before:bg-orange-500 before:transition-all before:duration-300 hover:text-white hover:shadow-orange-500 hover:before:left-0 hover:before:w-full"><span class="relative z-10">Read More</span></button>
+                        <button class="text-orange hover:before:bg-orange relative h-[40px] w-40 overflow-hidden border border-orange-500 bg-transparent px-2  shadow-2xl transition-all before:absolute before:bottom-0 before:left-0 before:top-0 before:z-0 before:h-full before:w-0 before:bg-orange-500 before:transition-all before:duration-300 hover:text-white hover:shadow-orange-500 hover:before:left-0 hover:before:w-full hover:font-medium"><span class="relative z-10">Read More</span></button>
                     </div>
                 </div>
             </div>
@@ -137,7 +137,9 @@
                                 A Spy/Action/Comedy manga about a one-of-a-kind family!', 180, '...') }}</p>
                         </div>
                         <p class="block sm:hidden mb-3">Status : Ongoing</p>
-                        <button class="text-orange hover:before:bg-orange relative h-[40px] w-40 overflow-hidden border border-orange-500 bg-transparent px-2  shadow-2xl transition-all before:absolute before:bottom-0 before:left-0 before:top-0 before:z-0 before:h-full before:w-0 before:bg-orange-500 before:transition-all before:duration-300 hover:text-white hover:shadow-orange-500 hover:before:left-0 hover:before:w-full"><span class="relative z-10">Read More</span></button>
+                        <button class="text-orange hover:before:bg-orange relative h-[40px] w-40 overflow-hidden border border-orange-500 bg-transparent px-2  shadow-2xl transition-all before:absolute before:bottom-0 before:left-0 before:top-0 before:z-0 before:h-full before:w-0 before:bg-orange-500 before:transition-all before:duration-300 hover:text-white hover:shadow-orange-500 hover:before:left-0 hover:before:w-full">
+                            <span class="relative z-10">Read More</span>
+                        </button>
                     </div>
                 </div>
             </div>

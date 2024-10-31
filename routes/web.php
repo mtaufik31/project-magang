@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\GenreController;
 use App\Http\Controllers\StaffController;
 use App\Http\Controllers\MangaController;
 use App\Http\Middleware\Dashboard;
@@ -103,6 +104,7 @@ Route::controller(Authcontroller::class)->group(function () {
 Route::middleware(Dashboard::class)->group(function () {
     // Dashboard Route
     Route::get('/dashboard', function () {
+        $manyManga = Manga::all()->count();
         $manyBlog = Blog::all()->count();
         $manyStaff = User::where('role', 'staff')->count();
         if (Auth::user()->role == 'admin' || Auth::user()->role == 'staff') {
@@ -110,6 +112,8 @@ Route::middleware(Dashboard::class)->group(function () {
                 'title' => 'Dashboard | Staff',
                 'manyBlogs' => $manyBlog,
                 'manyStaff' => $manyStaff,
+                'manyManga' => $manyManga,
+
             ));
         }
         return redirect()->route('home');
@@ -151,7 +155,11 @@ Route::middleware(Dashboard::class)->group(function () {
         Route::get('MangaDetail/{manga}', function () {
             return view('dashboard.manga.detail', data: array('title' => 'Dashboard | Manga Detail'));
         })->name('Detail Manga');
+        Route::get('/search-manga',  'search')->name('search.manga');
+
     });
+
+    Route::get('genre/search', [GenreController::class, 'search'])->name('genre.search');
 
     // Staff Routes Group
     Route::controller(StaffController::class)->group(function () {

@@ -27,6 +27,8 @@
     </svg> --}}
 
     <main class="relative py-16 flex flex-col justify-center overflow-hidden">
+        <svg class="md:absolute -z-20 bottom-0" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.dev/svgjs" viewBox="0 0 800 400"><path d="M5.489231109619141,212.052490234375C30.698062260945637,193.40690739949545,109.15868695576987,86.90333811442058,156.74221801757812,100.17899322509766C204.32574907938638,113.45464833577473,233.56201680501303,280.66823450724286,290.99041748046875,291.7064208984375C348.4188181559245,302.74460728963214,428.96775309244794,173.26968383789062,501.3126220703125,166.40811157226562C573.6574910481771,159.54653930664062,675.3877970377604,244.57040150960287,725.0596313476562,250.5369873046875C774.7314656575521,256.50357309977215,786.9629618326823,210.26251983642578,799.3436279296875,202.20762634277344" fill="none" stroke-width="4" stroke="url(&quot;#SvgjsLinearGradient1004&quot;)" stroke-linecap="round" stroke-dasharray="36 10"></path><defs><linearGradient id="SvgjsLinearGradient1004"><stop stop-color="hsl(37, 99%, 67%)" offset="0"></stop><stop stop-color="hsl(316, 73%, 52%)" offset="1"></stop></linearGradient></defs>
+        </svg>
         <div class="w-full max-w-4xl mx-auto px-4 md:px-6 pb-12 pt-1">
             <div class="text-center">
                 <h1 class="text-5xl font-bold text-slate-900 mb-2">Apa Yang Anda Ingin Cari Tahu <span

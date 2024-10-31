@@ -8,7 +8,7 @@
     <div class="flex flex-wrap md:flex-nowrap gap-4">
         <div class="bg-blue-400 text-white rounded-lg w-full md:w-1/3 lg:w-1/4 shadow-lg p-4 hover:-translate-y-2 duration-300 hover:shadow-xl">
             <div class="flex items-center justify-between">
-                <div class="text-4xl font-bold">7</div>
+                <div class="text-4xl font-bold">{{ $manyManga }}</div>
                 <i class="fa-solid fa-newspaper text-5xl"></i>
             </div>
             <div class="mt-4 text-lg">Manga</div>
@@ -24,7 +24,7 @@
                 <div class="text-4xl font-bold">7</div>
                 <i class="fa-solid fa-scroll text-5xl"></i>
             </div>
-            <div class="mt-4 text-lg">Chapters</div>
+            <div class="mt-4 text-lg">Genre</div>
             <a href="{{ route('List Manga') }}">
                 <div class="mt-2 bg-red-500 py-2 px-4 rounded-b-lg text-center text-white cursor-pointer hover:bg-red-600">
                     More info →

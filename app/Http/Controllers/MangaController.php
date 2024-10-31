@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\genre;
 use App\Models\Manga;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -22,6 +23,7 @@ class MangaController extends Controller
         return view('dashboard.manga.create', [
             'title' => 'Dashboard | Add Manga'
         ]);
+
     }
 
     public function store(Request $request)
@@ -38,14 +40,27 @@ class MangaController extends Controller
             'author' => 'required|string|max:255',
             'artist' => 'required|string|max:255',
             'publisher' => 'nullable|string|max:255',
-            'genre' => 'required|string'
+            'genre' => 'required|array'
         ]);
+
+        $genreIds = [];
+
+
+        foreach ($request->genre as $genre) {
+            if (is_numeric($genre)) {
+                $genreIds[] = $genre;
+            } else {
+                $newgenre = genre::create(['title' => $genre]);
+                $genreIds[] = $newgenre->id;
+            }
+        }
 
         // dd('wow');
 
         $imagePath = $request->file('image')->store('manga-covers', 'public');
 
         $manga = new Manga($validated);
+        $manga->genre = json_encode($genreIds);
         $manga->image = $imagePath;
         $manga->created_by = Auth::id();
         $manga->save();
@@ -74,7 +89,7 @@ class MangaController extends Controller
             'author' => 'required|string|max:255',
             'artist' => 'required|string|max:255',
             'publisher' => 'nullable|string|max:255',
-            'genre' => 'required|string'
+            'genre' => ' required|string'
         ]);
 
         if ($request->hasFile('image')) {
@@ -91,5 +106,20 @@ class MangaController extends Controller
         $manga->delete();
         return redirect()->route('List Manga')->with('success', 'Manga deleted successfully');
     }
+
+    public function search(Request $request)
+{
+    $keyword = $request->input('keyword');
+
+    // Query for matching manga based on title, author, description, or other fields.
+    $mangas = Manga::where('title', 'like', "%{$keyword}%")
+                    ->orWhere('alternative', 'like', "%{$keyword}%")
+                    ->orWhere('description', 'like', "%{$keyword}%")
+                    ->orWhere('author', 'like', "%{$keyword}%")
+                    ->get();
+
+    return view('search',['title' => 'MangaLo!
+    | What U wanna See'], compact('mangas', 'keyword'));
+}
 }
 

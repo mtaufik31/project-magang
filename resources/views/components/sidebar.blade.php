@@ -12,12 +12,12 @@
             <p class="text-xl font-semibold mb-2">Menu</p>
             <ul class="">
                 <li>
-                    <a href="{{ route('dashboard') }}" class="flex items-center p-2 rounded-md text-gray-700 hover:text-orange-400 hover:bg-gray-100 transition-colors duration-200 {{ request()->routeIs('dashboard') ? 'text-orange-400 hover:text-gray-800' : '' }}">
+                    <a href="{{ route('dashboard') }}" class="flex items-center p-2 rounded-md text-gray-700 hover:text-orange-400 hover:bg-gray-100 transition-all hover:translate-x-1 duration-200  {{ request()->routeIs('dashboard') ? 'text-orange-400 translate-x-1 hover:text-gray-800 translate-x-1' : '' }}">
                         <i class="fa-brands fa-dropbox mr-2"></i> Dashboard
                     </a>
                 </li>
                 <li>
-                    <a href="{{ route('home') }}" class="flex items-center p-2 rounded-md text-gray-700 hover:text-orange-400 hover:bg-gray-100 transition-colors duration-200">
+                    <a href="{{ route('home') }}" class="flex items-center p-2 rounded-md text-gray-700 hover:text-orange-400 hover:bg-gray-100 transition-all hover:translate-x-1 duration-200 ">
                         <i class="fa-solid fa-house mr-2"></i> Home
                     </a>
                 </li>
@@ -28,12 +28,12 @@
             <p class="text-xl font-semibold mb-2">Manga</p>
             <ul class="">
                 <li>
-                    <a href="{{ route('List Manga') }}" class="flex items-center p-2 rounded-md text-gray-700 hover:text-orange-400 hover:bg-gray-100 transition-colors duration-200 {{ request()->routeIs('List Manga') ? 'text-orange-400 hover:text-gray-900' : '' }}">
+                    <a href="{{ route('List Manga') }}" class="flex items-center p-2 rounded-md text-gray-700 hover:text-orange-400 hover:bg-gray-100 transition-all hover:translate-x-1 duration-200  {{ request()->routeIs('List Manga') ? 'text-orange-400 translate-x-1 hover:text-gray-900' : '' }}">
                         <i class="fa-solid fa-book mr-2"></i>Manga List
                     </a>
                 </li>
                 <li>
-                    <a href="#" class="flex items-center p-2 rounded-md text-gray-700 hover:text-orange-400 hover:bg-gray-100 transition-colors duration-200">
+                    <a href="#" class="flex items-center p-2 rounded-md text-gray-700 hover:text-orange-400 hover:bg-gray-100 transition-all hover:translate-x-1 duration-200 ">
                         <i class="fa-solid fa-rectangle-list mr-2"></i> Chapter
                     </a>
                 </li>
@@ -44,12 +44,12 @@
             <p class="text-xl font-semibold mb-2">Blog</p>
             <ul class="">
                 <li>
-                    <a href="{{ route('List Blogs') }}" class="flex items-center p-2 rounded-md text-gray-700 hover:text-orange-400 hover:bg-gray-100 transition-colors duration-200 {{ request()->routeIs('List Blogs') ? 'text-orange-400 hover:text-gray-800' : '' }}">
+                    <a href="{{ route('List Blogs') }}" class="flex items-center p-2 rounded-md text-gray-700 hover:text-orange-400 hover:bg-gray-100 transition-all hover:translate-x-1 duration-200  {{ request()->routeIs('List Blogs') ? 'text-orange-400 translate-x-1 hover:text-gray-800' : '' }}">
                         <i class="fa-solid fa-book mr-2"></i> Blog List
                     </a>
                 </li>
                 <li>
-                    <a href="{{ route('Create blog') }}" class="flex items-center p-2 rounded-md text-gray-700 hover:text-orange-400 hover:bg-gray-100 transition-colors duration-200 {{ request()->routeIs('Create blog') ? 'text-orange-400 hover:text-gray-800' : '' }}">
+                    <a href="{{ route('Create blog') }}" class="flex items-center p-2 rounded-md text-gray-700 hover:text-orange-400 hover:bg-gray-100 transition-all hover:translate-x-1 duration-200  {{ request()->routeIs('Create blog') ? 'text-orange-400 translate-x-1 hover:text-gray-800' : '' }}">
                         <i class="fa-solid fa-plus mr-2"></i>  Add Blog
                     </a>
                 </li>
@@ -60,12 +60,12 @@
             <p class="text-xl font-semibold mb-2">Staff Data</p>
             <ul class="">
                 <li>
-                    <a href="{{ route('List.Staff') }}" class="flex items-center p-2 rounded-md text-gray-700 hover:text-orange-400 hover:bg-gray-100 transition-colors duration-200 {{ request()->routeIs('List.Staff') ? 'text-orange-400 hover:text-gray-800' : '' }}">
+                    <a href="{{ route('List.Staff') }}" class="flex items-center p-2 rounded-md text-gray-700 hover:text-orange-400 hover:bg-gray-100 transition-all hover:translate-x-1 duration-200  {{ request()->routeIs('List.Staff') ? 'text-orange-400 translate-x-1 hover:text-gray-800' : '' }}">
                         <i class="fa-solid fa-address-card mr-2"></i> List User
                     </a>
                 </li>
                 <li>
-                    <a href="{{ route('Staff.create') }}" class="flex items-center p-2 rounded-md text-gray-700 hover:text-orange-400 hover:bg-gray-100 transition-colors duration-200 {{ request()->routeIs('Staff.create') ? 'text-orange-400 hover:text-gray-800' : '' }}">
+                    <a href="{{ route('Staff.create') }}" class="flex items-center p-2 rounded-md text-gray-700 hover:text-orange-400 hover:bg-gray-100 transition-all hover:translate-x-1 duration-200  {{ request()->routeIs('Staff.create') ? 'text-orange-400 translate-x-1 hover:text-gray-800' : '' }}">
                         <i class="fa-solid fa-plus mr-3"></i> Add User
                     </a>
                 </li>

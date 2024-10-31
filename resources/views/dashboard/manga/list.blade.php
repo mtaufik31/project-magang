@@ -62,13 +62,13 @@
                                 <tbody>
                                     @php $i = 1; @endphp
                                     @foreach ($mangas as $manga)
-                                        <tr class="hover:bg-gray-50 transition-colors">
+                                        <tr class="hover:bg-gray-50 transition-colors odd:bg-white even:bg-gray-200">
 
                                             <td class="px-4 py-2 border border-gray-300 text-sm text-gray-700"><img
                                                     src="storage/{{ $manga->image }}" alt="Blog Image"
                                                     class="w-16 h-16 object-cover rounded-md"></td>
                                             <td class="px-4 py-2 border border-gray-300 text-sm text-gray-700">
-                                                {{ $manga->title }}</td>
+                                                {{Str::limit($manga->title, 20, '...')  }}</td>
                                             <td class="px-4 py-2 border border-gray-300 text-sm text-gray-700">
                                                 {{ ucfirst($manga->status) }}</td>
                                             <td class="px-4 py-2 border border-gray-300 text-sm text-gray-700">
