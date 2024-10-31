@@ -69,7 +69,7 @@
                                 <td class="px-4 py-2 border border-gray-300 text-center text-sm text-gray-700">
                                     <div class="flex justify-center items-center space-x-2">
                                         <button
-                                            onclick="openEditModal({{ $blog->id }}, '{{ $blog->title }}', '{{ $blog->description }}', 'storage/{{ $blog->image }}')"
+                                            onclick="openEditModal({{ $blog->id }}, '{{ $blog->title }}', `{{ $blog->description }}`, 'storage/{{ $blog->image }}')"
                                             class="bg-yellow-400 hover:bg-yellow-500 text-white px-4 py-2 rounded-md text-sm">
                                             <i class="fa-solid fa-pen-to-square"></i> Edit
                                         </button>
@@ -151,6 +151,7 @@
     </div>
 
     <!-- JavaScript -->
+    <script src="https://cdn.lordicon.com/lordicon.js"></script>
     <script>
         // Function to open the modal and pre-fill the form
         function openEditModal(id, title, description, imageUrl) {
@@ -185,22 +186,29 @@
 
         // Confirm delete action with SweetAlert
         document.querySelectorAll('.btn-remove').forEach(form => {
-            form.addEventListener('submit', function(e) {
-                e.preventDefault();
-                Swal.fire({
-                    title: "Are you sure?",
-                    text: "You won't be able to revert this!",
-                    icon: "warning",
-                    showCancelButton: true,
-                    confirmButtonColor: "#d33",
-                    cancelButtonColor: "#3085d6",
-                    confirmButtonText: "Yes, delete it!"
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        form.submit();
-                    }
-                });
-            });
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            html: `<lord-icon
+    src="https://cdn.lordicon.com/hwjcdycb.json"
+    trigger="loop"
+    stroke="light"
+    colors="primary:#121331,secondary:#e83a30"
+    style="width:150px;height:150px">
+</lord-icon>`,
+            showCancelButton: true,
+            confirmButtonColor: "#d33",
+            cancelButtonColor: "#3085d6",
+            confirmButtonText: "Yes, delete it!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                form.submit();
+            }
         });
+    });
+});
+
     </script>
 @endsection
