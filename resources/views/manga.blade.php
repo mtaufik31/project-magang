@@ -81,7 +81,7 @@
                                 <x-statusmanga judul="Posted On">{{ $manga->created_at->format('F d, Y') }}</x-statusmanga>
                                 <x-statusmanga judul="Updated On">{{ $manga->updated_at->format(' F d, Y h:i:s')}}</x-statusmanga>
                             </div>
-                            <div class="baris-satu flex pt-3 gap-5">
+                            <div class="baris-satu flex pt-3 ">
                                 <div class="w-full md:w-1/2">
                                     <h2 class="mb-2 text-[18px]">Genre</h2>
                                     @foreach ( $manga->getGenre() as $genre )

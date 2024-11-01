@@ -1,11 +1,13 @@
 <nav class="md:bg-transparent bg-[rgb(255,153,0,0.7)] font-poppins transition-all">
-    <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto xl:p-4 py-4 px-6">
+     <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto xl:p-4 py-4 px-6">
         <a href="{{ route('home') }}" class="flex items-center space-x-3 rtl:space-x-reverse">
             <span class="self-center text-3xl whitespace-nowrap hover:text-[#FF9900] duration-200">MangaLo!</span>
         </a>
         <div class="flex md:order-2 items-center">
-            <x-searchbar></x-searchbar>
 
+            <div class="hidden md:block">
+                <x-searchbar></x-searchbar>
+            </div>
             <x-account></x-account>
 
             <!-- Include Alpine.js -->
@@ -24,8 +26,11 @@
         </div>
 
         <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1 transition-all duration-300"
-             id="navbar-search">
-            <ul class="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white md:hidden">
+        id="navbar-search">
+        <div class="block md:hidden">
+            <x-searchbar></x-searchbar>
+        </div>
+             <ul class="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white md:hidden">
                 <li><a href="{{ route('home') }}" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 hover:text-[#FF9900] md:hover:bg-transparent md:hover:text-blue-700 md:p-0">Home</a></li>
                 <li><a href="{{ route('list') }}" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 hover:text-[#FF9900] md:hover:bg-transparent md:hover:text-blue-700 md:p-0">List</a></li>
                 <li><a href="{{ route('blogs') }}" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 hover:text-[#FF9900] md:hover:bg-transparent md:hover:text-blue-700 md:p-0">Blogs</a></li>

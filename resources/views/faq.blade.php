@@ -4,12 +4,12 @@
     <div id="particles-js" class="absolute w-full h-[65vh] ">
 
     </div>
-    <section class="bg-gradient-to-r  text-black md:pt-20 pt-16 relative z-100">
+    <section class="bg-gradient-to-r  text-black md:pt-20 pt-16 pb-32 relative z-100">
         <div class="flex flex-wrap sm:flex-nowrap justify-center">
             <div class="w-full self-center px-6 sm:w-[45%]  font-inter pb-8 md:pb-0">
                 <h1 class="text-6xl text-[#ff9900] font-semibold ">FAQ</h1>
                 <h3 class="text-2xl font-medium my-3">We Have All The Answers!</h3>
-                <p class="pb-6">Assalamualaikum All Hail Wibu!</p>
+                <p class="pb-6"><span class="text-orange-600">Assalamualaikum All Hail Wibu!</span> Jika kalian penasaran dengan apa yang ada di website ini, mungkin kalian akan menemukan jawabannya di halaman ini!</p>
                 <button
                     class="before:ease rounded-lg relative px-10 py-2 overflow-hidden border border-orange-500 bg-orange-500 text-white shadow-2xl transition-all before:absolute before:right-0 before:top-0 before:h-14 before:w-6 before:translate-x-12 before:rotate-6 before:bg-white before:opacity-50 before:duration-700 hover:shadow-orange-500 hover:before:-translate-x-44">
                     <span relative="relative z-10">Saya gatau</span>

@@ -13,33 +13,42 @@
                 <input type="hidden" name="token" value="{{ $token }}">
 
                 <!-- Email Field -->
-                <div>
-                    <label for="email" class="block text-lg font-medium text-gray-700">Email</label>
-                    <input id="email" name="email" type="email" placeholder="Email" value="{{ old('email') }}"
-                        class="mt-1 w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:border-orange-300 bg-gray-100" />
+                <!-- Email Field -->
+                <div class="relative">
+                    <label for="email"
+                        class="absolute text-sm text-gray-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 transition-all ease-in-out peer-focus:px-2 peer-focus:text-orange-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4">
+                        Email
+                    </label>
+                    <input id="email" name="email" type="email" placeholder=" " value="{{ old('email') }}"
+                        class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-orange-600 peer transition-all ease-in-out" />
                     @if ($errors->has('email'))
                         <p class="text-red-500 text-sm mt-1">{{ $errors->first('email') }}</p>
                     @endif
                 </div>
 
-                <!-- Password Field -->
-                <div>
-                    <label for="password" class="block text-lg font-medium text-gray-700">New Password</label>
-                    <input id="password" name="password" type="password" placeholder="New Password"
-                        class="mt-1 w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:border-orange-300 bg-gray-100" />
+                <!-- New Password Field -->
+                <div class="relative mt-6">
+                    <label for="password"
+                        class="absolute text-sm text-gray-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 transition-all ease-in-out peer-focus:px-2 peer-focus:text-orange-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4">
+                        New Password
+                    </label>
+                    <input id="password" name="password" type="password" placeholder=" "
+                        class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-orange-600 peer transition-all ease-in-out" />
                     @if ($errors->has('password'))
                         <p class="text-red-500 text-sm mt-1">{{ $errors->first('password') }}</p>
                     @endif
                 </div>
 
-                <!-- Password Confirmation Field -->
-                <div>
-                    <label for="password_confirmation" class="block text-lg font-medium text-gray-700">Confirm New
-                        Password</label>
-                    <input id="password_confirmation" name="password_confirmation" type="password"
-                        placeholder="Confirm Password"
-                        class="mt-1 w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:border-orange-300 bg-gray-100" />
+                <!-- Confirm New Password Field -->
+                <div class="relative mt-6">
+                    <label for="password_confirmation"
+                        class="absolute text-sm text-gray-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 transition-all ease-in-out peer-focus:px-2 peer-focus:text-orange-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4">
+                        Confirm New Password
+                    </label>
+                    <input id="password_confirmation" name="password_confirmation" type="password" placeholder=" "
+                        class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-orange-600 peer transition-all ease-in-out" />
                 </div>
+
 
                 <!-- Reset Button -->
                 <div>

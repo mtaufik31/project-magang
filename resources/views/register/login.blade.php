@@ -27,24 +27,33 @@
                     </div>
                 @endif
                 <!-- Email Field -->
-                <div>
-                    <label for="login" class="block text-lg font-medium text-gray-700">Email or Username</label>
-                    <input id="login" required name="login" type="text" placeholder="Name or Email" autocomplete="off"
-                        class="mt-1 w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:border-orange-300 bg-gray-100" />
+                <div class="relative">
+                    <label for="login"
+                        class="absolute text-sm text-gray-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-focus:text-orange-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4">
+                        Email or Username
+                    </label>
+                    <input id="login" required name="login" type="text" placeholder=" " autocomplete="off"
+                        class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-orange-600 peer" />
                     @if ($errors->has('login'))
                         <p class="text-red-500 text-sm mt-1">{{ $errors->first('login') }}</p>
                     @endif
                 </div>
 
+
+
                 <!-- Password Field -->
                 <div class="relative">
-                    <label for="password" class="block text-lg font-medium text-gray-700">Password</label>
-                    <input id="password" required name="password" type="password" placeholder="Password"
-                        class="mt-1 w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:border-orange-300 bg-gray-100" />
+                    <label for="password"
+                        class="absolute text-sm text-gray-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 transition-all ease-in-out peer-focus:px-2 peer-focus:text-orange-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4">
+                        Password
+                    </label>
+                    <input id="password" required name="password" type="password" placeholder=" "
+                        class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-orange-600 peer transition-all ease-in-out" />
                     @if ($errors->has('login'))
                         <p class="text-red-500 text-sm mt-1">{{ $errors->first('login') }}</p>
                     @endif
                 </div>
+
 
                 <!-- Remember Me and Forgot Password Section -->
                 <div class="flex items-center justify-between">
@@ -72,7 +81,7 @@
                 <div class="items-center lg:hidden block text-center">
                     <p>Not Registered Yet?
                         <a href="{{ route('register') }}"
-                            class="text-blue-400 hover:text-orange-400 transition hover:underline">Register Here</a>
+                            class="text-orange-400 hover:text-orange-400 transition hover:underline">Register Here</a>
                     </p>
                 </div>
             </form>
@@ -97,4 +106,6 @@
             </div>
         </div>
     </div>
+
+
 @endsection

@@ -5,7 +5,9 @@
     <div class="bg-white md:w-[65%] md:px-4 mx-auto relative">
         <div class="flex flex-wrap items-center justify-between">
             <h1 class="font-poppins text-[24px] md:px-0 px-3 pt-5 pb-3">
-                Results for: "{{ $genre->title}}"
+                Genre <span class="text-orange-400">
+                    {{ $genre->title}}
+                    </span>
             </h1>
         </div>
 

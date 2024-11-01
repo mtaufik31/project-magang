@@ -1,7 +1,7 @@
-<div class="flex items-center bg-gray-100 rounded-lg overflow-hidden">
+<div class="flex items-center bg-gray-100 rounded-lg overflow-hidden  md:block">
     <form action="{{ route('search.manga') }}" method="GET" class="flex w-full">
         <input type="text" id="search-navbar" name="keyword"
-               class="w-full p-2 text-sm text-gray-700 border-none bg-gray-100 focus:outline-none"
+               class="w-full py-2 px-4 text-sm text-gray-700 border-none bg-gray-100 focus:outline-none"
                placeholder="Search Mangas..." required>
         <button type="submit" class="flex items-center justify-center bg-orange-400 text-white px-3 hover:bg-orange-500">
             <svg class="w-3 h-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20"

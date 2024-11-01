@@ -21,7 +21,7 @@
 
         <div class="bg-red-400 text-white rounded-lg w-full md:w-1/3 lg:w-1/4 shadow-lg p-4 hover:-translate-y-2 duration-300 hover:shadow-xl">
             <div class="flex items-center justify-between">
-                <div class="text-4xl font-bold">7</div>
+                <div class="text-4xl font-bold">{{ $manyGenre }}</div>
                 <i class="fa-solid fa-scroll text-5xl"></i>
             </div>
             <div class="mt-4 text-lg">Genre</div>

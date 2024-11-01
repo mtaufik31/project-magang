@@ -110,6 +110,7 @@ Route::middleware(Dashboard::class)->group(function () {
     Route::get('/dashboard', function () {
         $manyManga = Manga::all()->count();
         $manyBlog = Blog::all()->count();
+        $manyGenre = genre::all()->count();
         $manyStaff = User::where('role', 'staff')->count();
         if (Auth::user()->role == 'admin' || Auth::user()->role == 'staff') {
             return view('dashboard.index', array(
@@ -117,6 +118,7 @@ Route::middleware(Dashboard::class)->group(function () {
                 'manyBlogs' => $manyBlog,
                 'manyStaff' => $manyStaff,
                 'manyManga' => $manyManga,
+                'manyGenre' => $manyGenre,
 
             ));
         }
