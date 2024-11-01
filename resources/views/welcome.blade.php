@@ -176,7 +176,7 @@
 
 
     <section
-        class="bg-[#fec46d] py-3 px-5 rounded-xl mt-5  w-[69%] justify-center relative items-center mx-auto lg:block hidden transition-all">
+        class="bg-[#fec46d] py-3 px-5 rounded-t-xl mt-5  w-[69%] justify-center relative items-center mx-auto lg:block hidden transition-all">
         <div class="flex justify-between ">
             <div class="font-fira text-[18px] self-center space-x-7 ps-10 ">
                 @foreach ($genres as $genre)
@@ -184,7 +184,7 @@
                 @endforeach
             </div>
             <div
-                class="before:ease rounded-lg relative px-10 py-2 overflow-hidden border border-orange-500 bg-orange-500 text-white shadow-2xl transition-all before:absolute before:right-0 before:top-0 before:h-14 before:w-6 before:translate-x-12 before:rotate-6 before:bg-white before:opacity-50 before:duration-700 hover:shadow-orange-500 hover:before:-translate-x-44">
+                class="before:ease rounded-lg relative px-10 py-2 overflow-hidden border border-orange-500 bg-orange-400 text-white shadow-2xl transition-all before:absolute before:right-0 before:top-0 before:h-14 before:w-6 before:translate-x-12 before:rotate-6 before:bg-white before:opacity-50 before:duration-700 hover:shadow-orange-400 duration-300 hover:bg-orange-500 hover:before:-translate-x-44">
                 <a href="{{ route('list') }}">
                     See More
                 </a>

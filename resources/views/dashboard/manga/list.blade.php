@@ -3,7 +3,7 @@
 @section('content')
     <section class="pt-3 pb-5">
         <!-- Breadcrumb -->
-        <div class="flex font-inter bg-white py-4 px-5 shadow-xl">
+        <div class="flex font-inter bg-white py-4 px-5 shadow-xl rounded-t-xl">
             <a href="{{ route('dashboard') }}">
                 <h2 class="hover:text-orange-400 duration-100 hover:underline">Dashboard</h2>
             </a>
@@ -15,7 +15,7 @@
     </section>
 
     <section>
-        <div class="bg-white mx-auto px-5 py-5 shadow-xl rounded-md w-full">
+        <div class="bg-white mx-auto px-5 py-5 shadow-xl rounded-b-xl w-full">
             <div class="flex justify-between items-center">
                 <h1 class="text-2xl pb-3">Manga List</h1>
                 <a href="{{ route('Create manga') }}">
@@ -26,7 +26,7 @@
             </div>
             <hr class="mb-4">
 
-            <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+            <div class="relative font-inter overflow-x-auto shadow-md sm:rounded-lg">
                 <table class="w-full text-sm text-left text-gray-700">
                     <thead class="text-xs text-gray-700 uppercase bg-gray-100">
                         <tr>
@@ -37,7 +37,7 @@
                             <th scope="col" class="px-6 py-3 border-b border-gray-300">Author</th>
                             <th scope="col" class="px-6 py-3 border-b border-gray-300">Artist</th>
                             <th scope="col" class="px-6 py-3 border-b border-gray-300">Released Year</th>
-                            <th scope="col" class="px-6 py-3 border-b border-gray-300 text-center">Actions</th>
+                            <th scope="col" class="px-6 py-3 border-b border-gray-300 ">Actions</th>
                         </tr>
                     </thead>
                     <tbody>

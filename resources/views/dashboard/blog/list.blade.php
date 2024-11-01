@@ -3,7 +3,7 @@
 @section('content')
     <!-- Blog List Section -->
     <section class="pt-3 pb-5">
-        <div class="flex font-fira bg-white shadow-xl py-4 px-5 ">
+        <div class="flex font-fira bg-white shadow-xl py-4 px-5 rounded-t-xl">
             <a href="{{ route('dashboard') }}">
                 <h2 class="hover:text-orange-400 duration-100 hover:underline">Dashboard </h2>
             </a>
@@ -16,7 +16,7 @@
 
 
     <section>
-        <div class="bg-white mx-auto px-5 py-5 shadow-xl rounded-md w-full">
+        <div class="bg-white mx-auto px-5 py-5 shadow-xl rounded-b-xl w-full">
             <div class="font-fira text-2xl pb-3 flex justify-between">
                 <p>Blog List</p>
                 <a href="{{ route('Create blog') }}">
@@ -51,9 +51,9 @@
                     </select>
                 </div>
             </div>
-            <div class="relative overflow-x-auto font-inter">
-                <table class="w-full text-sm text-left text-gray-500 min-w-[1200px] border border-gray-300">
-                    <thead class="text-xs text-gray-700 uppercase bg-gray-50">
+            <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+                <table class="w-full text-sm text-left text-gray-700">
+                    <thead class="text-xs text-gray-700 uppercase bg-gray-100">
                         <tr>
                             <th scope="col" class="px-6 py-3 border-b-2 border-gray-300">No</th>
                             <th scope="col" class="px-6 py-3 border-b-2 border-gray-300">Title</th>

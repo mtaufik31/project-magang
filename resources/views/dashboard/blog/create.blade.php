@@ -2,7 +2,7 @@
 
 @section('content')
     <section class="pt-3 pb-5">
-        <div class="flex font-fira bg-white py-4 px-5 ">
+        <div class="flex font-fira bg-white py-4 px-5 shadow-xl rounded-t-xl">
             <a href="{{ route('dashboard') }}">
                 <h2 class="hover:text-orange-400 duration-100 hover:underline">Dashboard </h2>
             </a>
@@ -17,7 +17,7 @@
         </div>
     </section>
 
-    <div class="bg-white mx-auto relative px-5 py-5  ">
+    <div class="bg-white mx-auto relative px-5 py-5 shadow-xl rounded-b-xl">
         <div class="font-fira text-2xl pb-3 flex justify-between">
             <p>Blog List</p>
         </div>

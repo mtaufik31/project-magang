@@ -2,8 +2,8 @@
 
 @section('content')
 
-<section class="pt-3 pb-5">
-    <div class="flex font-inter bg-white py-4 px-5 ">
+<section class="pt-3 pb-5 ">
+    <div class="flex font-inter bg-white py-4 px-5 shadow-xl rounded-t-xl">
         <a href="{{ route('dashboard') }}">
             <h2 class="hover:text-orange-400 duration-100 hover:underline">Dashboard </h2>
         </a>
@@ -15,7 +15,7 @@
 </section>
 
 <section>
-    <div class="bg-white mx-auto px-5 py-5 shadow-xl rounded-md w-full">
+    <div class="bg-white mx-auto px-5 py-5 shadow-xl rounded-b-xl w-full">
         <!-- Header Section -->
         <div class="flex justify-between items-center">
             <h1 class="text-2xl pb-3 font-inter ">Staff (babu)</h1>
@@ -58,8 +58,8 @@
         <div class="w-full mb-4 font-inter ">
             <div class="bg-white shadow-sm rounded-md">
                 <div class="pt-2">
-                    <div class="overflow-x-auto">
-                        <table class="w-full border border-gray-300 rounded-md">
+                    <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+                        <table class="w-full text-sm text-left text-gray-700">
                             <thead class="bg-gray-100">
                                 <tr>
                                     <th class="px-4 py-2 border-b-2 border-gray-300 text-left text-sm font-medium text-gray-600">No</th>
@@ -72,7 +72,7 @@
                             </thead>
                             <tbody>
                                 @php $i = 1; @endphp
-                                @foreach ($admins as $staff)
+                                @foreach ($staffs as $staff)
                                 <tr class="transition-colors odd:bg-white even:bg-gray-100">
                                     <td class="px-4 py-4 border-b border-gray-300 text-sm text-gray-700 ">{{ $i++ }}</td>
                                     {{-- <td class="px-4 py-4 border border-gray-300 text-sm text-gray-700 ">

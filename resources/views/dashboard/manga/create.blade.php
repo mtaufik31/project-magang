@@ -1,8 +1,8 @@
 @extends('layout.dashboard')
 
 @section('content')
-    <section class="pt-3 pb-5">
-        <div class="flex font-fira bg-white py-4 px-5">
+    <section class="pt-3 pb-5 ">
+        <div class="flex font-fira bg-white py-4 px-5 shadow-xl rounded-t-xl">
             <a href="{{ route('dashboard') }}">
                 <h2 class="hover:text-orange-400 duration-100 hover:underline">Dashboard</h2>
             </a>
@@ -17,7 +17,7 @@
         </div>
     </section>
 
-    <div class="bg-white mx-auto px-5 py-5 shadow-sm rounded-md w-full relative">
+    <div class="bg-white mx-auto px-5 py-5 shadow-xl rounded-b-xl w-full relative">
         <div class="flex justify-between items-center mb-4">
             <h1 class="font-fira text-2xl">Add New Manga</h1>
         </div>
@@ -161,7 +161,7 @@
                         <!-- Save Button -->
                         <div class="w-full mt-4">
                             <button type="submit"
-                                class="w-full px-4 py-2 text-white font-medium bg-blue-500 rounded-md hover:bg-blue-600 transition duration-200">
+                                class="w-full px-4 py-2 text-white font-medium bg-orange-500 rounded-md hover:bg-orange-600 transition duration-200">
                                 Save Manga
                             </button>
                         </div>
@@ -172,9 +172,9 @@
             <!-- Image Preview Section -->
             <div class="">
                 <div id="imagePreviewContainer"
-                    class="flex items-center justify-center w-full h-80 border border-gray-300 rounded-md bg-gray-50 overflow-hidden">
+                    class="flex items-center justify-center w-full h-80 border border-orange-300 rounded-md bg-orange-50 overflow-hidden">
                     <img id="imagePreview" class="w-auto h-full object-cover hidden" alt="Image Preview">
-                    <span id="placeholderText" class="text-gray-500 text-center">Image preview will appear here</span>
+                    <span id="placeholderText" class="text-orange-500 text-center">Image preview will appear here</span>
                 </div>
             </div>
 

@@ -78,6 +78,7 @@ class MangaController extends Controller
 
     public function update(Request $request, Manga $manga)
     {
+
         $validated = $request->validate([
             'title' => 'required|string|max:255',
             'alternative' => 'required|string|max:255',
@@ -89,7 +90,7 @@ class MangaController extends Controller
             'author' => 'required|string|max:255',
             'artist' => 'required|string|max:255',
             'publisher' => 'nullable|string|max:255',
-            'genre' => ' required|string'
+            'genre' => ' required|array'
         ]);
 
         if ($request->hasFile('image')) {
