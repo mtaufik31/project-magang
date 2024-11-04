@@ -12,7 +12,7 @@
             <p class="text-xl font-semibold mb-2">Menu</p>
             <ul class="">
                 <li>
-                    <a href="{{ route('dashboard') }}" class="flex items-center p-2 rounded-md text-gray-700 hover:text-orange-400 hover:bg-gray-100 transition-all hover:translate-x-1 duration-200  {{ request()->routeIs('dashboard') ? 'text-orange-400 translate-x-1 hover:text-gray-800 translate-x-1' : '' }}">
+                    <a href="{{ route('dashboard') }}" class="flex items-center p-2 rounded-md text-gray-700 hover:text-orange-400 hover:bg-gray-100 transition-all hover:translate-x-1 duration-200  {{ request()->routeIs('dashboard') ? 'text-orange-400  hover:text-gray-800 translate-x-1' : '' }}">
                         <i class="fa-brands fa-dropbox mr-2"></i> Dashboard
                     </a>
                 </li>

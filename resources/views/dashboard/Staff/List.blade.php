@@ -28,7 +28,7 @@
         <hr class="mb-4">
 
         <!-- Filter, Search, Sort Options -->
-        <div class="flex flex-wrap items-center justify-between gap-4 mb-4">
+        {{-- <div class="flex flex-wrap items-center justify-between gap-4 mb-4">
             <!-- Search Bar -->
             <div class="relative md:w-1/4 w-full">
                 <input type="text" id="search-navbar"
@@ -52,36 +52,38 @@
                     <!-- Add more sort options as needed -->
                 </select>
             </div>
-        </div>
+        </div> --}}
 
         <!-- Staff List Table -->
         <div class="w-full mb-4 font-inter ">
             <div class="bg-white shadow-sm rounded-md">
-                <div class="pt-2">
-                    <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
-                        <table class="w-full text-sm text-left text-gray-700">
-                            <thead class="bg-gray-100">
+                <div class="pt-2 ">
+                    <div class="relative overflow-x-auto shadow-md sm:rounded-lg px-5">
+                        <table id="myTable" class="w-full text-sm text-left text-gray-700 px-5">
+                            <thead class="bg-orange-200">
                                 <tr>
-                                    <th class="px-4 py-2 border-b-2 border-gray-300 text-left text-sm font-medium text-gray-600">No</th>
-                                    {{-- <th class="px-4 py-2 border border-gray-300 text-left text-sm font-medium text-gray-600">Photo</th> --}}
-                                    <th class="px-4 py-2 border-b-2 border-gray-300 text-left text-sm font-medium text-gray-600">Name</th>
-                                    <th class="px-4 py-2 border-b-2 border-gray-300 text-left text-sm font-medium text-gray-600">Email</th>
-                                    <th class="px-4 py-2 border-b-2 border-gray-300 text-left text-sm font-medium text-gray-600">Role</th>
-                                    <th class="px-4 py-2 border-b-2 border-gray-300 text-left text-sm font-medium text-gray-600">Action</th>
+                                    <th class="px-4 py-2 border-y-2 border-gray-300 text-start text-sm font-medium text-black">No</th>
+                                    {{-- <th class="px-4 py-2 border border-gray-300 text-left text-sm font-medium text-black">Photo</th> --}}
+                                    <th class="px-4 py-2 border-y-2 border-gray-300 text-left text-sm font-medium text-black">Name</th>
+                                    <th class="px-4 py-2 border-y-2 border-gray-300 text-left text-sm font-medium text-black">Email</th>
+                                    <th class="px-4 py-2 border-y-2 border-gray-300 text-left text-sm font-medium text-black">Role</th>
+                                    <th class="px-4 py-2 border-y-2 border-gray-300 text-left text-sm font-medium text-black">Post</th>
+                                    <th class="px-4 py-2 border-y-2 border-gray-300 text-left text-sm font-medium text-black">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @php $i = 1; @endphp
                                 @foreach ($staffs as $staff)
-                                <tr class="transition-colors odd:bg-white even:bg-gray-100">
-                                    <td class="px-4 py-4 border-b border-gray-300 text-sm text-gray-700 ">{{ $i++ }}</td>
-                                    {{-- <td class="px-4 py-4 border border-gray-300 text-sm text-gray-700 ">
+                                <tr class="transition-colors font-poppins even:bg-orange-100 odd:hover:bg-gray-100 border-b even:hover:bg-orange-50">
+                                    <td class="px-4 py-6 border-b border-gray-300 text-sm text-gray-700 ">{{ $i++ }}</td>
+                                    {{-- <td class="px-4 py-6 border border-gray-300 text-sm text-gray-700 ">
                                         <img src="{{ asset('storage/' . $staff->photo) }}" alt="Staff Photo" class="w-8 h-8 rounded-full mx-auto">
                                     </td> --}}
-                                    <td class="px-4 py-4 border-b border-gray-300 text-sm text-gray-700">{{ $staff->name }}</td>
-                                    <td class="px-4 py-4 border-b border-gray-300 text-sm text-gray-700">{{ $staff->email }}</td>
-                                    <td class="px-4 py-4 border-b border-gray-300 text-sm text-gray-700 ">{{ $staff->role }}</td>
-                                    <td class="px-4 py-4 border-b border-gray-300  text-sm text-gray-700">
+                                    <td class="px-4 py-6 border-b border-gray-300 text-sm text-gray-700">{{ $staff->name }}</td>
+                                    <td class="px-4 py-6 border-b border-gray-300 text-sm text-gray-700">{{ $staff->email }}</td>
+                                    <td class="px-4 py-6 border-b border-gray-300 text-sm text-gray-700 ">{{ $staff->role }}</td>
+                                    <td class="px-4 py-6 border-b border-gray-300 text-sm text-gray-700 ">1</td>
+                                    <td class="px-4 py-6 border-b border-gray-300  text-sm text-gray-700">
                                         <form action="{{ route('staff.delete', $staff->id) }}" method="POST" class="btn-remove">
                                             @csrf
                                             @method('delete')
@@ -113,6 +115,44 @@
 
 <!-- Include SweetAlert2 -->
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://cdn.datatables.net/1.11.5/js/dataTables.dataTables.min.js"></script>
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                const table = new DataTable("#myTable", {
+                    language: {
+                        "sEmptyTable": "Tidak ada data yang tersedia pada tabel",
+                        "sInfo": "Menampilkan _START_ hingga _END_ dari _TOTAL_ entri",
+                        "sInfoEmpty": "Menampilkan 0 hingga 0 dari 0 entri",
+                        "sInfoFiltered": "(difilter dari _MAX_ entri keseluruhan)",
+                        "sInfoPostFix": "",
+                        "sInfoThousands": ".",
+                        "sLengthMenu": "Tampilkan _MENU_ entri",
+                        "sLoadingRecords": "Sedang memuat...",
+                        "sProcessing": "Sedang memproses...",
+                        "sSearch": "Cari: ",
+                        "sZeroRecords": `
+                                        <lord-icon src="https://cdn.lordicon.com/wjyqkiew.json"
+                                        trigger="loop"
+                                        stroke="light"
+                                        colors="primary:#121331,secondary:#eeaa66"
+                                        style="width:150px;height:150px">
+                                        </lord-icon>
+                                    <br>
+                                    Data Tidak Ditemukan`,
+                        "oPaginate": {
+                            "sFirst": "<<",
+                            "sLast": ">>",
+                            "sNext": ">",
+                            "sPrevious": "<"
+                        },
+                        "oAria": {
+                            "sSortAscending": ": aktifkan untuk mengurutkan kolom secara ascending",
+                            "sSortDescending": ": aktifkan untuk mengurutkan kolom secara descending"
+                        }
+                    }
+                });
+            });
+        </script>
 
 <script>
     @if (Session::has('success'))

@@ -43,7 +43,7 @@
                                 <div
                                     class="w-[210px] flex justify-between items-center px-4 py-2 bg-gray-200 rounded-lg shadow">
                                     <span class="text-gray-500 mr-2">Status</span>
-                                    <span class="text-[#ff9900] uppercase font-medium">{{ $manga->status }}</span>
+                                    <span class="text-orange-600 uppercase font-medium">{{ $manga->status }}</span>
                                 </div>
                                 <div
                                     class="w-[210px] flex justify-between items-center px-4 py-2 bg-gray-200 rounded-lg shadow">
@@ -81,15 +81,19 @@
                                 <x-statusmanga judul="Posted On">{{ $manga->created_at->format('F d, Y H:i:s') }}</x-statusmanga>
                                 <x-statusmanga judul="Updated On">{{ $manga->updated_at->format(' F d, Y H:i:s')}}</x-statusmanga>
                             </div>
-                            <div class="baris-satu flex pt-3 ">
-                                <div class="w-full md:w-1/2">
+                            <div class="baris-satu flex pt-3">
+                                <div class="w-1/5 md:w-max">
                                     <h2 class="mb-2 text-[18px]">Genre</h2>
-                                    @foreach ( $manga->getGenre() as $genre )
-
-                                    <x-buttongenre route="{{ route('genre.sort', $genre->id) }}">{{ $genre->title }}</x-buttongenre>
-                                    @endforeach
+                                    <div class="flex flex-wrap gap-2"> <!-- Flex container with gap between items -->
+                                        @foreach ($manga->getGenre() as $genre)
+                                            <x-buttongenre route="{{ route('genre.sort', $genre->id) }}" class="">
+                                                {{ $genre->title }}
+                                            </x-buttongenre>
+                                        @endforeach
+                                    </div>
                                 </div>
                             </div>
+
 
 
                         </div>

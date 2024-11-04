@@ -86,18 +86,13 @@ Route::get('manga/{id}', function ($id) {
 Route::controller(Authcontroller::class)->group(function () {
     Route::get('/register', 'showRegister')->name('register');
     Route::post('/register', 'register');
-
     Route::get('/login', 'showLogin')->name('login');
     Route::post('/login', 'login');
-
     Route::post('/logout', 'logout')->name('logout');
-
     Route::post('forgot-password', 'forgotPassword')->name('password.email');
-
     Route::get('reset-password/{token}', function ($token) {
         return view('register.reset', ['token' => $token], array('title' => 'Reset'));
     })->name('password.reset');
-
     Route::post('reset-password',  'reset')->name('password.update');
 });
 
@@ -127,26 +122,43 @@ Route::middleware(Dashboard::class)->group(function () {
 
     // Blog Routes Group
     Route::controller(BlogController::class)->group(function () {
-        Route::get('BlogsList', function () {
-            $blogs = Blog::all();
+        Route::get('BlogsList', function (Request $request) {
+
+            // Ambil query 'search' dan 'sort' dari URL
+            $search = $request->query('search');
+            $sort = $request->query('sort');
+
+            // Mulai query untuk mengambil data blog
+            $blogs = Blog::query();
+
+            // Filter berdasarkan pencarian jika ada query 'search'
+            if ($search) {
+                $blogs->where('title', 'like', '%' . $search . '%')
+                    ->orWhere('description', 'like', '%' . $search . '%')
+                    ->orWhere('created_by', 'like', '%' . $search . '%');
+            }
+
+            // Urutkan berdasarkan 'sort' jika ada query 'sort'
+            if ($sort == 'terbaru') {
+                $blogs->orderBy('created_at', 'desc');
+            } elseif ($sort == 'terlama') {
+                $blogs->orderBy('created_at', 'asc');
+            } else {
+                $blogs->orderBy('created_at', 'asc');
+            }
+
+            // Dapatkan hasil query
+            $blogs = $blogs->get();
+
             return view('dashboard.blog.list', array(
                 'title' => 'Dashboard | List Blogs',
                 'blogs' => $blogs
             ));
         })->name('List Blogs');
-
-        Route::get('BlogCreate', 'create')
-            ->name('Create blog');
-
-        Route::delete('blog/delete/{id}', 'delete')
-            ->name('blog.delete');
-
-        Route::post('blog/submit', 'store')
-            ->name('blog.submit');
-
-        // Add this update route for the blog edit
-        Route::put('blog/update/{id}', 'update')
-            ->name('blog.update');
+        Route::get('BlogCreate', 'create')->name('Create blog');
+        Route::delete('blog/delete/{id}', 'delete')->name('blog.delete');
+        Route::post('blog/submit', 'store')->name('blog.submit');
+        Route::put('blog/update/{id}', 'update')->name('blog.update');
     });
 
 
@@ -162,12 +174,10 @@ Route::middleware(Dashboard::class)->group(function () {
             return view('dashboard.manga.detail', data: array('title' => 'Dashboard | Manga Detail'));
         })->name('Detail Manga');
         Route::get('/search-manga',  'search')->name('search.manga');
-
     });
 
     Route::controller(GenreController::class)->group(function () {
         Route::get('genre/search', 'search')->name('genre.search');
-
         Route::get('/genre/{id}', 'sortGenres')->name('genre.sort');
     });
 
@@ -175,11 +185,8 @@ Route::middleware(Dashboard::class)->group(function () {
     // Staff Routes Group
     Route::controller(StaffController::class)->group(function () {
         Route::get('StaffList', 'index')->name('List.Staff');
-
         Route::get('StaffCreate', 'showForm')->name('Staff.create');
-
         Route::post('staffSubmit', 'addStaff')->name('staff.submit');
-
         Route::delete('staffDelete/{id}', 'delete')->name('staff.delete');
     });
 });

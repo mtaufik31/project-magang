@@ -137,7 +137,7 @@
 
                         <!-- Genre -->
                         <div class="flex flex-col !w-full mb-4">
-                            <label for="genre" class="mb-2 font-bold">Jenis Genre</label>
+                            <label for="genre" class="mb-2 font-bold">Tambah Genre</label>
                             <select name="genre[]" id="genre" class="h-10 border-2 rounded-md border-slate-400"
                                 multiple="multiple">
                             </select>
@@ -186,7 +186,7 @@
     <script>
         function initGenreTypeSelect(selector, showTypes = true) {
             return $(selector).select2({
-                placeholder: "Pilih Jenis Genre",
+                placeholder: "Tambah Genre",
                 tokenSeparators: [','],
                 allowClear: true,
                 tags: true,
