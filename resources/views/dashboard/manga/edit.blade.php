@@ -3,25 +3,25 @@
 @section('content')
     <section class="pt-3 pb-5">
         <!-- Breadcrumb -->
-        <div class="flex font-inter bg-white py-4 px-5 shadow-xl rounded-t-xl">
+        <div class="flex px-5 py-4 bg-white shadow-xl font-inter rounded-t-xl">
             <a href="{{ route('dashboard') }}">
-                <h2 class="hover:text-orange-400 duration-100 hover:underline">Dashboard</h2>
+                <h2 class="duration-100 hover:text-orange-400 hover:underline">Dashboard</h2>
             </a>
             <p class="px-2">&raquo;</p>
             <a href="">
-                <h2 class="hover:text-orange-400 duration-100 hover:underline">Manga List</h2>
+                <h2 class="duration-100 hover:text-orange-400 hover:underline">Manga List</h2>
             </a>
         </div>
     </section>
 
-    <div class="bg-white mx-auto px-5 py-5 shadow-xl rounded-b-xl w-full relative">
-        <div class="flex justify-between items-center mb-4">
-            <h1 class="font-fira text-2xl">Edit Manga</h1>
+    <div class="relative w-full px-5 py-5 mx-auto bg-white shadow-xl rounded-b-xl">
+        <div class="flex items-center justify-between mb-4">
+            <h1 class="text-2xl font-fira">Edit Manga</h1>
         </div>
 
         <hr class="mb-4">
 
-        <div class="flex flex-wrap md:flex-nowrap gap-5">
+        <div class="flex flex-wrap gap-5 md:flex-nowrap">
             <!-- Form Section -->
             <div class="w-full md:w-[85%]">
                 <form action="{{ route('Update manga', $manga->id) }}" method="POST" enctype="multipart/form-data">
@@ -30,11 +30,9 @@
                     <div class="flex flex-wrap gap-5">
                         <!-- Cover Image Upload -->
                         <div class="w-full md:w-1/2">
-                            <label class="block text-sm font-medium text-gray-700 mb-1">Cover Image</label>
+                            <label class="block mb-1 text-sm font-medium text-gray-700">Cover Image</label>
                             <input type="file" name="image" id="image"
-                                class="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:border
-                                  file:rounded-md file:text-sm file:bg-gray-50 file:text-gray-700
-                                  hover:file:bg-gray-100"
+                                class="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:border file:rounded-md file:text-sm file:bg-gray-50 file:text-gray-700 hover:file:bg-gray-100"
                                 onchange="previewImage()">
                             <small class="text-gray-500">Leave blank to keep current image.</small>
                         </div>
@@ -43,7 +41,7 @@
                         <div class="w-full md:w-1/2">
                             <label for="title" class="block text-sm font-medium text-gray-700">Title</label>
                             <input type="text" name="title" id="title" value="{{ old('title', $manga->title) }}"
-                                class="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:border-orange-400"
+                                class="block w-full p-2 mt-1 border border-gray-300 rounded-md focus:border-orange-400"
                                 required>
                         </div>
                         @error('title')
@@ -56,7 +54,7 @@
                                 Title</label>
                             <input type="text" name="alternative" id="alternative"
                                 value="{{ old('alternative', $manga->alternative) }}"
-                                class="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:border-orange-400"
+                                class="block w-full p-2 mt-1 border border-gray-300 rounded-md focus:border-orange-400"
                                 required>
                         </div>
                         @error('alternative')
@@ -67,7 +65,7 @@
                         <div class="w-full md:w-1/2">
                             <label for="status" class="block text-sm font-medium text-gray-700">Status</label>
                             <select name="status" id="status"
-                                class="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:border-orange-400"
+                                class="block w-full p-2 mt-1 border border-gray-300 rounded-md focus:border-orange-400"
                                 required>
                                 <option value="ongoing" {{ old('status', $manga->status) == 'ongoing' ? 'selected' : '' }}>
                                     Ongoing</option>
@@ -83,7 +81,7 @@
                         <div class="w-full md:w-1/2">
                             <label for="rating" class="block text-sm font-medium text-gray-700">Rating (1-10)</label>
                             <input type="number" name="rating" id="rating" min="1" max="10"
-                                class="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:border-orange-400"
+                                class="block w-full p-2 mt-1 border border-gray-300 rounded-md focus:border-orange-400"
                                 value="{{ old('rating', $manga->rating) }}" required>
                         </div>
                         @error('rating')
@@ -95,7 +93,7 @@
                             <label for="released_year" class="block text-sm font-medium text-gray-700">Released Year</label>
                             <input type="number" name="released_year" id="released_year" min="1900"
                                 max="{{ date('Y') }}"
-                                class="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:border-orange-400"
+                                class="block w-full p-2 mt-1 border border-gray-300 rounded-md focus:border-orange-400"
                                 value="{{ old('released_year', $manga->released_year) }}" required>
                         </div>
                         @error('released_year')
@@ -106,7 +104,7 @@
                         <div class="w-full md:w-1/2">
                             <label for="author" class="block text-sm font-medium text-gray-700">Author</label>
                             <input type="text" name="author" id="author"
-                                class="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:border-orange-400"
+                                class="block w-full p-2 mt-1 border border-gray-300 rounded-md focus:border-orange-400"
                                 value="{{ old('author', $manga->author) }}" required>
                         </div>
                         @error('author')
@@ -117,7 +115,7 @@
                         <div class="w-full md:w-1/2">
                             <label for="artist" class="block text-sm font-medium text-gray-700">Artist</label>
                             <input type="text" name="artist" id="artist"
-                                class="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:border-orange-400"
+                                class="block w-full p-2 mt-1 border border-gray-300 rounded-md focus:border-orange-400"
                                 value="{{ old('artist', $manga->artist) }}" required>
                         </div>
                         @error('artist')
@@ -128,7 +126,7 @@
                         <div class="w-full md:w-1/2">
                             <label for="publisher" class="block text-sm font-medium text-gray-700">Publisher</label>
                             <input type="text" name="publisher" id="publisher"
-                                class="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:border-orange-400"
+                                class="block w-full p-2 mt-1 border border-gray-300 rounded-md focus:border-orange-400"
                                 value="{{ old('publisher', $manga->publisher) }}">
                         </div>
                         @error('publisher')
@@ -140,6 +138,10 @@
                             <label for="genre" class="mb-2 font-bold">Tambah Genre</label>
                             <select name="genre[]" id="genre" class="h-10 border-2 rounded-md border-slate-400"
                                 multiple="multiple">
+                                @foreach ($manga->getGenre() as $genre)
+
+                                <option value="{{ $genre->id }}" selected="selected">{{ $genre->title }}</option>
+                                @endforeach
                             </select>
                             <p class="text-red-500">
                                 @error('genre')
@@ -152,7 +154,7 @@
                         <div class="w-full">
                             <label for="description" class="block text-sm font-medium text-gray-700">Description</label>
                             <textarea name="description" id="description" rows="4"
-                                class="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:border-orange-400">{{ old('description', $manga->description) }}</textarea>
+                                class="block w-full p-2 mt-1 border border-gray-300 rounded-md focus:border-orange-400">{{ old('description', $manga->description) }}</textarea>
                         </div>
                         @error('description')
                             {{ $message }}
@@ -161,7 +163,7 @@
                         <!-- Save Button -->
                         <div class="w-full mt-4">
                             <button type="submit"
-                                class="w-full px-4 py-2 text-white font-medium bg-orange-500 rounded-md hover:bg-orange-600 transition duration-200">
+                                class="w-full px-4 py-2 font-medium text-white transition duration-200 bg-orange-500 rounded-md hover:bg-orange-600">
                                 Update Manga
                             </button>
                         </div>
@@ -172,9 +174,9 @@
             <!-- Image Preview Section -->
             <div class="">
                 <div id="imagePreviewContainer"
-                    class="flex items-center justify-center w-full h-80 border border-orange-300 rounded-md bg-orange-50 overflow-hidden">
+                    class="flex items-center justify-center w-full overflow-hidden border border-orange-300 rounded-md h-80 bg-orange-50">
                     <img id="imagePreview" src="{{ asset('storage/' . $manga->image) }}"
-                        class="w-auto h-full object-cover" alt="Image Preview">
+                        class="object-cover w-auto h-full" alt="Image Preview">
                 </div>
             </div>
         </div>

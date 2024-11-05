@@ -98,7 +98,23 @@ class MangaController extends Controller
             $validated['image'] = $imagePath;
         }
 
+        $genreIds = [];
+
+
+        foreach ($request->genre as $genre) {
+            if (is_numeric($genre)) {
+                $genreIds[] = $genre;
+            } else {
+                $newgenre = genre::create(['title' => $genre]);
+                $genreIds[] = "".$newgenre->id;
+            }
+        }
+        $validated["genre"] = json_encode($genreIds);
+        // dd($manga->genre);
+
+
         $manga->update($validated);
+        // $manga->save();
         return redirect()->route('List Manga')->with('success', 'Manga updated successfully');
     }
 
