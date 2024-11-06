@@ -164,7 +164,7 @@
 
 
 
-    
+
     <!-- JavaScript -->
     <script src="https://cdn.datatables.net/1.11.5/js/dataTables.dataTables.min.js"></script>
     {{-- <script src="https://cdn.datatables.net/responsive/2.5.0/js/dataTables.responsive.min.js"></script> --}}
@@ -178,7 +178,7 @@
                                         trigger="loop"
                                         stroke="light"
                                         colors="primary:#121331,secondary:#eeaa66"
-                                        style="width:150px;height:150px">
+                                        style="width:50px;height:50px">
                                         </lord-icon>
                                     <br>
                                     Data Masih Kosong`,
@@ -196,7 +196,7 @@
                                         trigger="loop"
                                         stroke="light"
                                         colors="primary:#121331,secondary:#eeaa66"
-                                        style="width:150px;height:150px">
+                                        style="width:100px;height:100px">
                                         </lord-icon>
                                     <br>
                                     Data Tidak Ditemukan`,

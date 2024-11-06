@@ -104,7 +104,15 @@
         document.addEventListener("DOMContentLoaded", function() {
             const table = new DataTable("#myTable", {
                 language: {
-                    "sEmptyTable": "Tidak ada data yang tersedia pada tabel",
+                    "sEmptyTable": `
+                                        <lord-icon src="https://cdn.lordicon.com/wjyqkiew.json"
+                                        trigger="loop"
+                                        stroke="light"
+                                        colors="primary:#121331,secondary:#eeaa66"
+                                        style="width:50px;height:50px">
+                                        </lord-icon>
+                                    <br>
+                                    Data Masih Kosong`,
                     "sInfo": "Menampilkan _START_ hingga _END_ dari _TOTAL_ entri",
                     "sInfoEmpty": "Menampilkan 0 hingga 0 dari 0 entri",
                     "sInfoFiltered": "(difilter dari _MAX_ entri keseluruhan)",
@@ -115,14 +123,14 @@
                     "sProcessing": "Sedang memproses...",
                     "sSearch": "Cari: ",
                     "sZeroRecords": `
-                                    <lord-icon src="https://cdn.lordicon.com/wjyqkiew.json"
-                                    trigger="loop"
-                                    stroke="light"
-                                    colors="primary:#121331,secondary:#eeaa66"
-                                    style="width:150px;height:150px">
-                                    </lord-icon>
-                                <br>
-                                Data Tidak Ditemukan`,
+                                        <lord-icon src="https://cdn.lordicon.com/wjyqkiew.json"
+                                        trigger="loop"
+                                        stroke="light"
+                                        colors="primary:#121331,secondary:#eeaa66"
+                                        style="width:100px;height:100px">
+                                        </lord-icon>
+                                    <br>
+                                    Data Tidak Ditemukan`,
                     "oPaginate": {
                         "sFirst": "<<",
                         "sLast": ">>",

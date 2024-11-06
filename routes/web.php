@@ -168,6 +168,12 @@ Route::middleware(Dashboard::class)->group(function () {
         Route::put('blog/update/{id}', 'update')->name('blog.update');
     });
 
+    Route::controller(GenreController::class)->group(function() {
+        Route::get('GenreList', function () {
+            return view('dashboard.genre.list', array('title' => 'Dashboard | Genre List'));
+        })->name('GenreList');
+    });
+
 
     // Manga Routes Group
     Route::controller(MangaController::class)->group(function () {
@@ -192,4 +198,5 @@ Route::middleware(Dashboard::class)->group(function () {
         Route::post('staffSubmit', 'addStaff')->name('staff.submit');
         Route::delete('staffDelete/{id}', 'delete')->name('staff.delete');
     });
+
 });

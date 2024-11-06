@@ -34,6 +34,11 @@
                             </a>
                         </li>
                         <li>
+                            <a href="{{ route('Create manga') }}" class="flex items-center p-2 rounded-md text-gray-700 hover:text-orange-400 hover:bg-gray-100 transition-all hover:translate-x-1 duration-200  {{ request()->routeIs('Create manga') ? 'text-orange-400 translate-x-1 hover:text-gray-900' : '' }} ">
+                                <i class="mr-2 fa-solid fa-plus"></i>Create Manga
+                            </a>
+                        </li>
+                        <li>
                             <a href="#" class="flex items-center p-2 text-gray-700 transition-all duration-200 rounded-md hover:text-orange-400 hover:bg-gray-100 hover:translate-x-1 ">
                                 <i class="mr-2 fa-solid fa-rectangle-list"></i> Chapter
                             </a>
@@ -44,6 +49,21 @@
 
         </div>
         <!-- Manga Section -->
+        <div class="py-3">
+            <p class="mb-2 text-xl font-semibold">Genre</p>
+            <ul class="">
+                <li>
+                    <a href="{{ route('GenreList') }}" class="flex items-center p-2 rounded-md text-gray-700 hover:text-orange-400 hover:bg-gray-100 transition-all hover:translate-x-1 duration-200  {{ request()->routeIs('GenreList') ? 'text-orange-400 translate-x-1 hover:text-gray-800' : '' }}">
+                        <i class="mr-2 fa-solid fa-book"></i> Genre List
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('Create blog') }}" class="flex items-center p-2 rounded-md text-gray-700 hover:text-orange-400 hover:bg-gray-100 transition-all hover:translate-x-1 duration-200  {{ request()->routeIs('Create blog') ? 'text-orange-400 translate-x-1 hover:text-gray-800' : '' }}">
+                        <i class="mr-2 fa-solid fa-plus"></i>  Add genre
+                    </a>
+                </li>
+            </ul>
+        </div>
         <div class="py-3">
             <p class="mb-2 text-xl font-semibold">Blog</p>
             <ul class="">

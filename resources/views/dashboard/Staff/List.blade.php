@@ -73,7 +73,7 @@
                             </thead>
                             <tbody>
                                 @php $i = 1; @endphp
-                                @foreach ($staffs as $staff)
+                                @foreach ($admins as $staff)
                                 <tr class="transition-colors border-b font-poppins even:bg-orange-100 odd:hover:bg-gray-100 even:hover:bg-orange-50">
                                     <td class="px-4 py-6 text-sm text-gray-700 border-b border-gray-300 ">{{ $i++ }}</td>
                                     {{-- <td class="px-4 py-6 text-sm text-gray-700 border border-gray-300 ">
@@ -82,7 +82,7 @@
                                     <td class="px-4 py-6 text-sm text-gray-700 border-b border-gray-300">{{ $staff->name }}</td>
                                     <td class="px-4 py-6 text-sm text-gray-700 border-b border-gray-300">{{ $staff->email }}</td>
                                     <td class="px-4 py-6 text-sm text-gray-700 border-b border-gray-300 ">{{ $staff->role }}</td>
-                                    <td class="px-4 py-6 text-sm text-gray-700 border-b border-gray-300 ">1</td>
+                                    <td class="px-4 py-6 text-sm text-gray-700 border-b border-gray-300 ">{{ $manyManga }}</td>
                                     <td class="px-4 py-6 text-sm text-gray-700 border-b border-gray-300">
                                         <form action="{{ route('staff.delete', $staff->id) }}" method="POST" class="btn-remove">
                                             @csrf
@@ -120,36 +120,44 @@
             document.addEventListener("DOMContentLoaded", function() {
                 const table = new DataTable("#myTable", {
                     language: {
-                        "sEmptyTable": "Tidak ada data yang tersedia pada tabel",
-                        "sInfo": "Menampilkan _START_ hingga _END_ dari _TOTAL_ entri",
-                        "sInfoEmpty": "Menampilkan 0 hingga 0 dari 0 entri",
-                        "sInfoFiltered": "(difilter dari _MAX_ entri keseluruhan)",
-                        "sInfoPostFix": "",
-                        "sInfoThousands": ".",
-                        "sLengthMenu": "Tampilkan _MENU_ entri",
-                        "sLoadingRecords": "Sedang memuat...",
-                        "sProcessing": "Sedang memproses...",
-                        "sSearch": "Cari: ",
-                        "sZeroRecords": `
+                    "sEmptyTable": `
                                         <lord-icon src="https://cdn.lordicon.com/wjyqkiew.json"
                                         trigger="loop"
                                         stroke="light"
                                         colors="primary:#121331,secondary:#eeaa66"
-                                        style="width:150px;height:150px">
+                                        style="width:50px;height:50px">
+                                        </lord-icon>
+                                    <br>
+                                    Data Masih Kosong`,
+                    "sInfo": "Menampilkan _START_ hingga _END_ dari _TOTAL_ entri",
+                    "sInfoEmpty": "Menampilkan 0 hingga 0 dari 0 entri",
+                    "sInfoFiltered": "(difilter dari _MAX_ entri keseluruhan)",
+                    "sInfoPostFix": "",
+                    "sInfoThousands": ".",
+                    "sLengthMenu": "Tampilkan _MENU_ entri",
+                    "sLoadingRecords": "Sedang memuat...",
+                    "sProcessing": "Sedang memproses...",
+                    "sSearch": "Cari: ",
+                    "sZeroRecords": `
+                                        <lord-icon src="https://cdn.lordicon.com/wjyqkiew.json"
+                                        trigger="loop"
+                                        stroke="light"
+                                        colors="primary:#121331,secondary:#eeaa66"
+                                        style="width:100px;height:100px">
                                         </lord-icon>
                                     <br>
                                     Data Tidak Ditemukan`,
-                        "oPaginate": {
-                            "sFirst": "<<",
-                            "sLast": ">>",
-                            "sNext": ">",
-                            "sPrevious": "<"
-                        },
-                        "oAria": {
-                            "sSortAscending": ": aktifkan untuk mengurutkan kolom secara ascending",
-                            "sSortDescending": ": aktifkan untuk mengurutkan kolom secara descending"
-                        }
+                    "oPaginate": {
+                        "sFirst": "<<",
+                        "sLast": ">>",
+                        "sNext": ">",
+                        "sPrevious": "<"
+                    },
+                    "oAria": {
+                        "sSortAscending": ": aktifkan untuk mengurutkan kolom secara ascending",
+                        "sSortDescending": ": aktifkan untuk mengurutkan kolom secara descending"
                     }
+                }
                 });
             });
         </script>

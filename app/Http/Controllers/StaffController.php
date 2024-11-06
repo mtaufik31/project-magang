@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Manga;
 use Illuminate\Http\Request;
 use App\Models\User;
 
@@ -13,9 +14,10 @@ class StaffController extends Controller
         $admins = User::where('role', 'admin')->get();
         $staffs = User::where('role', 'staff')->get();
         $users = User::where('role', 'user')->get();
+        $manyManga = Manga::all()->count();
 
         // Tampilkan ke view superadmin
-        return view('dashboard.Staff.List', ['title' => 'List Staff'], compact('admins', 'users', 'staffs'));
+        return view('dashboard.Staff.List', ['title' => 'List Staff'], compact('admins', 'users', 'staffs', 'manyManga'));
     }
 
     public function showForm(Request $request) {
