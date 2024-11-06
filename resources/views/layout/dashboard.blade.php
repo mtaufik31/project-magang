@@ -42,7 +42,7 @@
     <x-sidebar></x-sidebar>
     <div id="content" class="md:ml-[35vh] transition-all duration-500">
         <x-navboard></x-navboard>
-        <div class="px-12 py-4  ">
+        <div class="px-12 py-4 ">
             @yield('content')
         </div>
     </div>
@@ -75,6 +75,39 @@
         overlay.addEventListener('click', () => {
             sidebar.classList.add('-translate-x-full');
             overlay.classList.add('hidden');
+        });
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const accordions = document.querySelectorAll('button[id^="accordion-btn-"]');
+
+            accordions.forEach(button => {
+                const id = button.id.split('-')[2];
+                const content = document.getElementById(`accordion-content-${id}`);
+                const rect1 = document.getElementById(`rect-1-${id}`);
+                const rect2 = document.getElementById(`rect-2-${id}`);
+
+                button.addEventListener('click', function() {
+                    const isExpanded = content.style.maxHeight && content.style.maxHeight !== '0px';
+
+                    if (isExpanded) {
+                        // Close the accordion
+                        content.style.maxHeight = '0';
+                        rect1.style.transform = 'rotate(0deg)'; // Back to horizontal
+                        rect2.style.transform = 'rotate(90deg)'; // Vertical line
+                    } else {
+                        // Open the accordion
+                        content.style.maxHeight = content.scrollHeight + 'px';
+                        rect1.style.transform = 'rotate(135deg)'; // Diagonal for the X
+                        rect2.style.transform = 'rotate(45deg)'; // Diagonal for the X
+                    }
+                });
+            });
+
+        });
+        particlesJS.load('particles-js', '{{ asset('js/particles.json') }}', function() {
+            console.log('callback - particles.js config loaded');
         });
     </script>
 </body>

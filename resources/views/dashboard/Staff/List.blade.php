@@ -3,24 +3,24 @@
 @section('content')
 
 <section class="pt-3 pb-5 ">
-    <div class="flex font-inter bg-white py-4 px-5 shadow-xl rounded-t-xl">
+    <div class="flex px-5 py-4 bg-white shadow-xl font-inter rounded-t-xl">
         <a href="{{ route('dashboard') }}">
-            <h2 class="hover:text-orange-400 duration-100 hover:underline">Dashboard </h2>
+            <h2 class="duration-100 hover:text-orange-400 hover:underline">Dashboard </h2>
         </a>
         <p class="px-2"> &raquo; </p>
         <a href="">
-            <h2 class="hover:text-orange-400 duration-100 hover:underline">List Staff</h2>
+            <h2 class="duration-100 hover:text-orange-400 hover:underline">List Staff</h2>
         </a>
     </div>
 </section>
 
 <section>
-    <div class="bg-white mx-auto px-5 py-5 shadow-xl rounded-b-xl w-full">
+    <div class="w-full px-5 py-5 mx-auto bg-white shadow-xl rounded-b-xl">
         <!-- Header Section -->
-        <div class="flex justify-between items-center">
-            <h1 class="text-2xl pb-3 font-inter ">Staff (babu)</h1>
+        <div class="flex items-center justify-between">
+            <h1 class="pb-3 text-2xl font-inter ">Staff (babu)</h1>
             <a href="{{ route('Staff.create') }}">
-                <button class="bg-blue-500 hover:bg-blue-600 px-3 py-2 rounded-md text-white text-sm">
+                <button class="px-3 py-2 text-sm text-white bg-blue-500 rounded-md hover:bg-blue-600">
                     <i class="fa-solid fa-plus"></i> Add Staff
                 </button>
             </a>
@@ -30,7 +30,7 @@
         <!-- Filter, Search, Sort Options -->
         {{-- <div class="flex flex-wrap items-center justify-between gap-4 mb-4">
             <!-- Search Bar -->
-            <div class="relative md:w-1/4 w-full">
+            <div class="relative w-full md:w-1/4">
                 <input type="text" id="search-navbar"
                     class="block w-full p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50"
                     placeholder="Search for employees...">
@@ -44,8 +44,8 @@
             </div>
 
             <!-- Sort By -->
-            <div class="md:w-1/4 w-full">
-                <select class="border border-gray-300 text-sm rounded-md p-2 w-full">
+            <div class="w-full md:w-1/4">
+                <select class="w-full p-2 text-sm border border-gray-300 rounded-md">
                     <option>Sort By: </option>
                     <option>Terbaru</option>
                     <option>Terlama</option>
@@ -56,38 +56,38 @@
 
         <!-- Staff List Table -->
         <div class="w-full mb-4 font-inter ">
-            <div class="bg-white shadow-sm rounded-md">
+            <div class="bg-white rounded-md shadow-sm">
                 <div class="pt-2 ">
-                    <div class="relative overflow-x-auto shadow-md sm:rounded-lg px-5">
-                        <table id="myTable" class="w-full text-sm text-left text-gray-700 px-5">
+                    <div class="relative px-5 overflow-x-auto shadow-md sm:rounded-lg">
+                        <table id="myTable" class="w-full px-5 text-sm text-left text-gray-700">
                             <thead class="bg-orange-200">
-                                <tr>
-                                    <th class="px-4 py-2 border-y-2 border-gray-300 text-start text-sm font-medium text-black">No</th>
-                                    {{-- <th class="px-4 py-2 border border-gray-300 text-left text-sm font-medium text-black">Photo</th> --}}
-                                    <th class="px-4 py-2 border-y-2 border-gray-300 text-left text-sm font-medium text-black">Name</th>
-                                    <th class="px-4 py-2 border-y-2 border-gray-300 text-left text-sm font-medium text-black">Email</th>
-                                    <th class="px-4 py-2 border-y-2 border-gray-300 text-left text-sm font-medium text-black">Role</th>
-                                    <th class="px-4 py-2 border-y-2 border-gray-300 text-left text-sm font-medium text-black">Post</th>
-                                    <th class="px-4 py-2 border-y-2 border-gray-300 text-left text-sm font-medium text-black">Action</th>
+                                <tr class="text-xs">
+                                    <th class="px-4 py-2 font-medium text-black border-gray-300 border-y-2 text-start">NO</th>
+                                    {{-- <th class="px-4 py-2 text-sm font-medium text-left text-black border border-gray-300">Photo</th> --}}
+                                    <th class="px-4 py-2 font-medium text-left text-black border-gray-300 border-y-2">NAME</th>
+                                    <th class="px-4 py-2 font-medium text-left text-black border-gray-300 border-y-2">EMAIL</th>
+                                    <th class="px-4 py-2 font-medium text-left text-black border-gray-300 border-y-2">ROLE</th>
+                                    <th class="px-4 py-2 font-medium text-left text-black border-gray-300 border-y-2">POST</th>
+                                    <th class="px-4 py-2 font-medium text-left text-black border-gray-300 border-y-2">ACTION</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @php $i = 1; @endphp
                                 @foreach ($staffs as $staff)
-                                <tr class="transition-colors font-poppins even:bg-orange-100 odd:hover:bg-gray-100 border-b even:hover:bg-orange-50">
-                                    <td class="px-4 py-6 border-b border-gray-300 text-sm text-gray-700 ">{{ $i++ }}</td>
-                                    {{-- <td class="px-4 py-6 border border-gray-300 text-sm text-gray-700 ">
-                                        <img src="{{ asset('storage/' . $staff->photo) }}" alt="Staff Photo" class="w-8 h-8 rounded-full mx-auto">
+                                <tr class="transition-colors border-b font-poppins even:bg-orange-100 odd:hover:bg-gray-100 even:hover:bg-orange-50">
+                                    <td class="px-4 py-6 text-sm text-gray-700 border-b border-gray-300 ">{{ $i++ }}</td>
+                                    {{-- <td class="px-4 py-6 text-sm text-gray-700 border border-gray-300 ">
+                                        <img src="{{ asset('storage/' . $staff->photo) }}" alt="Staff Photo" class="w-8 h-8 mx-auto rounded-full">
                                     </td> --}}
-                                    <td class="px-4 py-6 border-b border-gray-300 text-sm text-gray-700">{{ $staff->name }}</td>
-                                    <td class="px-4 py-6 border-b border-gray-300 text-sm text-gray-700">{{ $staff->email }}</td>
-                                    <td class="px-4 py-6 border-b border-gray-300 text-sm text-gray-700 ">{{ $staff->role }}</td>
-                                    <td class="px-4 py-6 border-b border-gray-300 text-sm text-gray-700 ">1</td>
-                                    <td class="px-4 py-6 border-b border-gray-300  text-sm text-gray-700">
+                                    <td class="px-4 py-6 text-sm text-gray-700 border-b border-gray-300">{{ $staff->name }}</td>
+                                    <td class="px-4 py-6 text-sm text-gray-700 border-b border-gray-300">{{ $staff->email }}</td>
+                                    <td class="px-4 py-6 text-sm text-gray-700 border-b border-gray-300 ">{{ $staff->role }}</td>
+                                    <td class="px-4 py-6 text-sm text-gray-700 border-b border-gray-300 ">1</td>
+                                    <td class="px-4 py-6 text-sm text-gray-700 border-b border-gray-300">
                                         <form action="{{ route('staff.delete', $staff->id) }}" method="POST" class="btn-remove">
                                             @csrf
                                             @method('delete')
-                                            <button type="submit" class="text-red-500 hover:text-red-700 ml-2">
+                                            <button type="submit" class="ml-2 text-red-500 hover:text-red-700">
                                                 <i class="fa-solid fa-trash"></i>
                                             </button>
                                         </form>

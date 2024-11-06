@@ -10,11 +10,13 @@ class accordion extends Component
 {
     public $title;
     public $id;
+    public $isSidebar;
 
-    public function __construct($title, $id)
+    public function __construct($title, $id, $isSidebar = false)
     {
         $this->title = $title;
         $this->id = $id;
+        $this->isSidebar = $isSidebar;
     }
 
     public function render()
