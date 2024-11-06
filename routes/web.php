@@ -76,8 +76,10 @@ Route::get('manga/{id}', function ($id) {
     $manga = Manga::where('id', '=', $id)->get()->first();
 
     return view('manga', ['title' => 'MangaLo | Manga'], compact('manga'));
-})->middleware('auth')->name('manga');
+})->name('manga');
 
+Route::get('/search-manga', [MangaController::class, 'search'])->name('search.manga');
+Route::get('/genre/{id}', [GenreController::class, 'sortGenres'])->name('genre.sort');
 
 //  ----------------------------------------------------------------
 // AUTHENTICATION
@@ -173,12 +175,10 @@ Route::middleware(Dashboard::class)->group(function () {
         Route::get('MangaDetail/{manga}', function () {
             return view('dashboard.manga.detail', data: array('title' => 'Dashboard | Manga Detail'));
         })->name('Detail Manga');
-        Route::get('/search-manga',  'search')->name('search.manga');
     });
 
     Route::controller(GenreController::class)->group(function () {
         Route::get('genre/search', 'search')->name('genre.search');
-        Route::get('/genre/{id}', 'sortGenres')->name('genre.sort');
     });
 
 
