@@ -79,7 +79,12 @@ Route::get('manga/{id}', function ($id) {
 })->name('manga');
 
 Route::get('/search-manga', [MangaController::class, 'search'])->name('search.manga');
-Route::get('/genre/{id}', [GenreController::class, 'sortGenres'])->name('genre.sort');
+Route::get('list', [MangaController::class, 'sort'])->name('list');
+
+Route::controller(GenreController::class)->group(function () {
+    Route::get('genre/search', 'search')->name('genre.search');
+    Route::get('/genre/{id}', 'sortGenres')->name('genre.sort');
+});
 
 //  ----------------------------------------------------------------
 // AUTHENTICATION
@@ -177,9 +182,7 @@ Route::middleware(Dashboard::class)->group(function () {
         })->name('Detail Manga');
     });
 
-    Route::controller(GenreController::class)->group(function () {
-        Route::get('genre/search', 'search')->name('genre.search');
-    });
+
 
 
     // Staff Routes Group

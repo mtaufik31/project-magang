@@ -18,6 +18,36 @@ class MangaController extends Controller
         ]);
     }
 
+    public function sort(Request $request)
+    {
+        $sort = $request->query('sort', 'latest'); // Default sort is latest
+
+        $query = Manga::query();
+
+        switch ($sort) {
+            case 'latest':
+                $query->orderBy('created_at', 'desc');
+                break;
+            case 'a-z':
+                $query->orderBy('title', 'asc');
+                break;
+            case 'z-a':
+                $query->orderBy('title', 'desc');
+                break;
+            case 'populer':
+                $query->orderBy('views', 'desc');
+                break;
+        }
+
+        $mangas = $query->get();
+
+        return view('list', [
+            'title' => 'MangaLo | List',
+            'mangas' => $mangas,
+            'sort' => $sort
+        ]);
+    }
+
     public function create()
     {
         return view('dashboard.manga.create', [
