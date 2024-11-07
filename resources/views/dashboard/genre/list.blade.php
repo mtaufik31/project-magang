@@ -101,24 +101,49 @@
 <script src="https://cdn.datatables.net/1.11.5/js/dataTables.dataTables.min.js"></script>
 <script>
     document.addEventListener("DOMContentLoaded", function() {
-        const table = new DataTable("#genreTable", {
-            responsive: true,
-            language: {
-                "sEmptyTable": `Data Masih Kosong`,
-                "sInfo": "Menampilkan _START_ hingga _END_ dari _TOTAL_ entri",
-                "sInfoEmpty": "Menampilkan 0 hingga 0 dari 0 entri",
-                "sInfoFiltered": "(difilter dari _MAX_ entri keseluruhan)",
-                "sSearch": "Cari: ",
-                "sZeroRecords": `Data Tidak Ditemukan`,
-                "oPaginate": {
-                    "sFirst": "<<",
-                    "sLast": ">>",
-                    "sNext": ">",
-                    "sPrevious": "<"
+            const table = new DataTable("#genreTable", {
+                responsive: true,
+                language: {
+                    "sEmptyTable": `
+                                        <lord-icon src="https://cdn.lordicon.com/wjyqkiew.json"
+                                        trigger="loop"
+                                        stroke="light"
+                                        colors="primary:#121331,secondary:#eeaa66"
+                                        style="width:50px;height:50px">
+                                        </lord-icon>
+                                    <br>
+                                    Data Masih Kosong`,
+                    "sInfo": "Menampilkan _START_ hingga _END_ dari _TOTAL_ entri",
+                    "sInfoEmpty": "Menampilkan 0 hingga 0 dari 0 entri",
+                    "sInfoFiltered": "(difilter dari _MAX_ entri keseluruhan)",
+                    "sInfoPostFix": "",
+                    "sInfoThousands": ".",
+                    "sLengthMenu": "Tampilkan _MENU_ entri",
+                    "sLoadingRecords": "Sedang memuat...",
+                    "sProcessing": "Sedang memproses...",
+                    "sSearch": "Cari: ",
+                    "sZeroRecords": `
+                                        <lord-icon src="https://cdn.lordicon.com/wjyqkiew.json"
+                                        trigger="loop"
+                                        stroke="light"
+                                        colors="primary:#121331,secondary:#eeaa66"
+                                        style="width:100px;height:100px">
+                                        </lord-icon>
+                                    <br>
+                                    Data Tidak Ditemukan`,
+                    "oPaginate": {
+                        "sFirst": "<<",
+                        "sLast": ">>",
+                        "sNext": ">",
+                        "sPrevious": "<"
+                    },
+                    "oAria": {
+                        "sSortAscending": ": aktifkan untuk mengurutkan kolom secara ascending",
+                        "sSortDescending": ": aktifkan untuk mengurutkan kolom secara descending"
+                    }
                 }
-            }
+            });
         });
-    });
 
     // Function to open the modal and pre-fill the form
     function openEditModal(id, title) {
