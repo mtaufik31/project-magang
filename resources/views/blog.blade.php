@@ -16,7 +16,7 @@
                             <img class="w-[100%] rounded-lg" src="{{ asset('storage/' . $blog->image) }}" alt="MangaLo">
                         </div>
                         <p class="text-gray-700">
-                            {{ $blog->description }}
+                            {!!$blog->description!!}
                         </p>
                     </div>
                 </div>

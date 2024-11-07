@@ -183,7 +183,7 @@
                 @endforeach
             </div>
             <div
-                class="relative px-10 py-2 overflow-hidden text-white transition-all duration-300 bg-orange-400 border border-orange-500 rounded-lg shadow-2xl before:ease before:absolute before:right-0 before:top-0 before:h-24 before:w-5 before:translate-x-12 before:rotate-6 before:bg-white before:opacity-30 before:duration-700 hover:shadow-orange-400 hover:bg-orange-500 animate-shine">
+                class="relative px-10 py-2 overflow-hidden text-white transition-all duration-300 bg-orange-400 border border-orange-500 rounded-lg shadow-2xl before:ease before:absolute before:right-0 before:top-0 before:h-24 before:w-5 before:translate-x-12 before:rotate-6 before:bg-slate-100 before:opacity-30 before:duration-700 hover:shadow-orange-400 hover:bg-orange-500 animate-shine">
                 <a href="{{ route('list') }}">
                     See More
                 </a>
@@ -209,7 +209,7 @@
     </section>
 
     <section class="py-5 transition-all">
-        <div class="bg-white md:w-[69%] mx-auto relative px-5">
+        <div class="bg-slate-100 md:w-[69%] mx-auto relative px-5">
             <div class="flex items-center justify-between">
                 <h1 class="font-fira text-[24px] pt-5 pb-3">Latest Update</h1>
                 <a href="{{ route('list') }}">
@@ -234,7 +234,7 @@
     </section>
 
     <section class="py-10 transition-all">
-        <div class="bg-white md:w-[69%] mx-auto relative px-7">
+        <div class="bg-slate-100 md:w-[69%] mx-auto relative px-7">
             <div class="flex items-center justify-between">
                 <h1 class="font-fira text-[24px] pt-5 pb-3">Blog</h1>
                 <a href="{{ route('blogs') }}" class="text-gray-700 hover:text-orange-400">

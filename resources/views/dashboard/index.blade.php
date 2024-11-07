@@ -25,7 +25,7 @@
                 <i class="fa-solid fa-scroll text-5xl"></i>
             </div>
             <div class="mt-4 text-lg">Genre</div>
-            <a href="{{ route('List Manga') }}">
+            <a href="{{ route('GenreList') }}">
                 <div class="mt-2 bg-red-500 py-2 px-4 rounded-b-lg text-center text-white cursor-pointer hover:bg-red-600">
                     More info →
                 </div>
