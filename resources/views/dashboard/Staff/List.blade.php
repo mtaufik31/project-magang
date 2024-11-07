@@ -1,34 +1,33 @@
 @extends('layout.dashboard')
 
 @section('content')
-
-<section class="pt-3 pb-5 ">
-    <div class="flex px-5 py-4 bg-white shadow-xl font-inter rounded-t-xl">
-        <a href="{{ route('dashboard') }}">
-            <h2 class="duration-100 hover:text-orange-400 hover:underline">Dashboard </h2>
-        </a>
-        <p class="px-2"> &raquo; </p>
-        <a href="">
-            <h2 class="duration-100 hover:text-orange-400 hover:underline">List Staff</h2>
-        </a>
-    </div>
-</section>
-
-<section>
-    <div class="w-full px-5 py-5 mx-auto bg-white shadow-xl rounded-b-xl">
-        <!-- Header Section -->
-        <div class="flex items-center justify-between">
-            <h1 class="pb-3 text-2xl font-inter ">Staff (babu)</h1>
-            <a href="{{ route('Staff.create') }}">
-                <button class="px-3 py-2 text-sm text-white bg-blue-500 rounded-md hover:bg-blue-600">
-                    <i class="fa-solid fa-plus"></i> Add Staff
-                </button>
+    <section class="pt-3 pb-5 ">
+        <div class="flex px-5 py-4 bg-white shadow-xl font-inter rounded-t-xl">
+            <a href="{{ route('dashboard') }}">
+                <h2 class="duration-100 hover:text-orange-400 hover:underline">Dashboard </h2>
+            </a>
+            <p class="px-2"> &raquo; </p>
+            <a href="">
+                <h2 class="duration-100 hover:text-orange-400 hover:underline">List Staff</h2>
             </a>
         </div>
-        <hr class="mb-4">
+    </section>
 
-        <!-- Filter, Search, Sort Options -->
-        {{-- <div class="flex flex-wrap items-center justify-between gap-4 mb-4">
+    <section>
+        <div class="w-full px-5 py-5 mx-auto bg-white shadow-xl rounded-b-xl">
+            <!-- Header Section -->
+            <div class="flex items-center justify-between">
+                <h1 class="pb-3 text-2xl font-inter ">Staff (babu)</h1>
+                <a href="{{ route('Staff.create') }}">
+                    <button class="px-3 py-2 text-sm text-white bg-blue-500 rounded-md hover:bg-blue-600">
+                        <i class="fa-solid fa-plus"></i> Add Staff
+                    </button>
+                </a>
+            </div>
+            <hr class="mb-4">
+
+            <!-- Filter, Search, Sort Options -->
+            {{-- <div class="flex flex-wrap items-center justify-between gap-4 mb-4">
             <!-- Search Bar -->
             <div class="relative w-full md:w-1/4">
                 <input type="text" id="search-navbar"
@@ -54,72 +53,89 @@
             </div>
         </div> --}}
 
-        <!-- Staff List Table -->
-        <div class="w-full mb-4 font-inter ">
-            <div class="bg-white rounded-md shadow-sm">
-                <div class="pt-2 ">
-                    <div class="relative px-5 overflow-x-auto shadow-md sm:rounded-lg">
-                        <table id="myTable" class="w-full px-5 text-sm text-left text-gray-700">
-                            <thead class="bg-orange-200">
-                                <tr class="text-xs">
-                                    <th class="px-4 py-2 font-medium text-black border-gray-300 border-y-2 text-start">NO</th>
-                                    {{-- <th class="px-4 py-2 text-sm font-medium text-left text-black border border-gray-300">Photo</th> --}}
-                                    <th class="px-4 py-2 font-medium text-left text-black border-gray-300 border-y-2">NAME</th>
-                                    <th class="px-4 py-2 font-medium text-left text-black border-gray-300 border-y-2">EMAIL</th>
-                                    <th class="px-4 py-2 font-medium text-left text-black border-gray-300 border-y-2">ROLE</th>
-                                    <th class="px-4 py-2 font-medium text-left text-black border-gray-300 border-y-2">POST</th>
-                                    <th class="px-4 py-2 font-medium text-left text-black border-gray-300 border-y-2">ACTION</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @php $i = 1; @endphp
-                                @foreach ($admins as $staff)
-                                <tr class="transition-colors border-b font-poppins even:bg-orange-100 odd:hover:bg-gray-100 even:hover:bg-orange-50">
-                                    <td class="px-4 py-6 text-sm text-gray-700 border-b border-gray-300 ">{{ $i++ }}</td>
-                                    {{-- <td class="px-4 py-6 text-sm text-gray-700 border border-gray-300 ">
+            <!-- Staff List Table -->
+            <div class="w-full mb-4 font-inter ">
+                <div class="bg-white rounded-md shadow-sm">
+                    <div class="pt-2 ">
+                        <div class="relative px-5 overflow-x-auto shadow-md sm:rounded-lg">
+                            <table id="myTable" class="w-full px-5 text-sm text-left text-gray-700">
+                                <thead class="bg-orange-200">
+                                    <tr class="text-xs">
+                                        <th class="px-4 py-2 font-medium text-black border-gray-300 border-y-2 text-start">
+                                            NO</th>
+                                        {{-- <th class="px-4 py-2 text-sm font-medium text-left text-black border border-gray-300">Photo</th> --}}
+                                        <th class="px-4 py-2 font-medium text-left text-black border-gray-300 border-y-2">
+                                            NAME</th>
+                                        <th class="px-4 py-2 font-medium text-left text-black border-gray-300 border-y-2">
+                                            EMAIL</th>
+                                        <th class="px-4 py-2 font-medium text-left text-black border-gray-300 border-y-2">
+                                            ROLE</th>
+                                        <th class="px-4 py-2 font-medium text-left text-black border-gray-300 border-y-2">
+                                            POST</th>
+                                        <th class="px-4 py-2 font-medium text-left text-black border-gray-300 border-y-2">
+                                            ACTION</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @php $i = 1; @endphp
+                                    @foreach ($admins as $staff)
+                                        <tr
+                                            class="transition-colors border-b font-poppins even:bg-orange-100 odd:hover:bg-gray-100 even:hover:bg-orange-50">
+                                            <td class="px-4 py-6 text-sm text-gray-700 border-b border-gray-300 ">
+                                                {{ $i++ }}</td>
+                                            {{-- <td class="px-4 py-6 text-sm text-gray-700 border border-gray-300 ">
                                         <img src="{{ asset('storage/' . $staff->photo) }}" alt="Staff Photo" class="w-8 h-8 mx-auto rounded-full">
                                     </td> --}}
-                                    <td class="px-4 py-6 text-sm text-gray-700 border-b border-gray-300">{{ $staff->name }}</td>
-                                    <td class="px-4 py-6 text-sm text-gray-700 border-b border-gray-300">{{ $staff->email }}</td>
-                                    <td class="px-4 py-6 text-sm text-gray-700 border-b border-gray-300 ">{{ $staff->role }}</td>
-                                    <td class="px-4 py-6 text-sm text-gray-700 border-b border-gray-300 ">{{ $manyManga }}</td>
-                                    <td class="px-4 py-6 text-sm text-gray-700 border-b border-gray-300">
-                                        <form action="{{ route('staff.delete', $staff->id) }}" method="POST" class="btn-remove">
-                                            @csrf
-                                            @method('delete')
-                                            <button type="submit" class="ml-2 text-red-500 hover:text-red-700">
-                                                <i class="fa-solid fa-trash"></i>
-                                            </button>
-                                        </form>
-                                    </td>
-                                </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
+                                            <td class="px-4 py-6 text-sm text-gray-700 border-b border-gray-300">
+                                                {{ $staff->name }}</td>
+                                            <td class="px-4 py-6 text-sm text-gray-700 border-b border-gray-300">
+                                                {{ $staff->email }}</td>
+                                            <td class="px-4 py-6 text-sm text-gray-700 border-b border-gray-300 ">
+                                                {{ $staff->role }}</td>
+                                            <td class="px-4 py-6 text-sm text-gray-700 border-b border-gray-300 ">
+                                                {{ $manyManga }}</td>
+                                            <td class="px-4 py-6 text-sm text-gray-700 border-b border-gray-300">
+                                                @if (Auth::id() != $staff->id)
+                                                    <form action="{{ route('staff.delete', $staff->id) }}" method="POST"
+                                                        class="btn-remove">
+                                                        @csrf
+                                                        @method('delete')
+                                                        <button type="submit" class="ml-2 text-red-500 hover:text-red-700">
+                                                            <i class="fa-solid fa-trash"></i>
+                                                        </button>
+                                                    </form>
+                                                @endif
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
+
+            <!-- Pagination -->
+            <div class="flex justify-end mt-4">
+                <nav class="inline-flex">
+                    <button
+                        class="px-4 py-2 text-sm font-medium text-gray-500 bg-gray-100 rounded-l-md hover:bg-gray-200">Previous</button>
+                    <span class="px-4 py-2 text-sm font-medium text-gray-700 bg-blue-100">1</span>
+                    <button
+                        class="px-4 py-2 text-sm font-medium text-gray-500 bg-gray-100 rounded-r-md hover:bg-gray-200">Next</button>
+                </nav>
+            </div>
         </div>
-
-        <!-- Pagination -->
-        <div class="flex justify-end mt-4">
-            <nav class="inline-flex">
-                <button class="px-4 py-2 text-sm font-medium text-gray-500 bg-gray-100 rounded-l-md hover:bg-gray-200">Previous</button>
-                <span class="px-4 py-2 text-sm font-medium text-gray-700 bg-blue-100">1</span>
-                <button class="px-4 py-2 text-sm font-medium text-gray-500 bg-gray-100 rounded-r-md hover:bg-gray-200">Next</button>
-            </nav>
-        </div>
-    </div>
-</section>
+    </section>
 
 
-<!-- Include SweetAlert2 -->
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<script src="https://cdn.datatables.net/1.11.5/js/dataTables.dataTables.min.js"></script>
-        <script>
-            document.addEventListener("DOMContentLoaded", function() {
-                const table = new DataTable("#myTable", {
-                    language: {
+    <!-- Include SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.datatables.net/1.11.5/js/dataTables.dataTables.min.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const table = new DataTable("#myTable", {
+                language: {
                     "sEmptyTable": `
                                         <lord-icon src="https://cdn.lordicon.com/wjyqkiew.json"
                                         trigger="loop"
@@ -158,21 +174,21 @@
                         "sSortDescending": ": aktifkan untuk mengurutkan kolom secara descending"
                     }
                 }
-                });
             });
-        </script>
+        });
+    </script>
 
-<script>
-    @if (Session::has('success'))
-    Swal.fire({
-        title: 'Success',
-        text: '{{ session('success') }}',
-        icon: 'success',
-        confirmButtonText: 'Nice'
-    });
-    @endif
+    <script>
+        @if (Session::has('success'))
+            Swal.fire({
+                title: 'Success',
+                text: '{{ session('success') }}',
+                icon: 'success',
+                confirmButtonText: 'Nice'
+            });
+        @endif
 
-    document.querySelectorAll('.btn-remove').forEach(form => {
+        document.querySelectorAll('.btn-remove').forEach(form => {
             form.addEventListener('submit', function(e) {
                 e.preventDefault();
                 Swal.fire({
@@ -196,5 +212,5 @@
                 });
             });
         });
-</script>
+    </script>
 @endsection

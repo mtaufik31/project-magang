@@ -97,8 +97,32 @@
                 </div>
             </div>
         </form>
-
-
-
     </div>
+
+    {{-- <script src="https://cdn.ckeditor.com/4.16.1/full/ckeditor.js"></script> <!-- Menggunakan full build -->
+    <script>
+        // Inisialisasi CKEditor dengan opsi tambahan
+        CKEDITOR.replace('description', {
+            height: 300, // Tinggi editor
+            toolbar: [
+                { name: 'basicstyles', items: ['Bold', 'Italic', 'Underline', 'Strike', '-', 'RemoveFormat',] },
+                { name: 'styles', items: ['Font', 'FontSize'] }, // Menambahkan pemilihan font dan ukuran
+                { name: 'paragraph', items: ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'Blockquote'] },
+                { name: 'alignment', items: ['JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock'] }, // Menambahkan alat meratakan teks
+                { name: 'tools', items: ['Maximize', '-', 'ShowBlocks'] }
+            ],
+            // Menambahkan font dan ukuran font yang kustom
+            font_names: 'Arial;Comic Sans MS;pop in 2;Courier New;Georgia;Times New Roman;Verdana',
+            fontSize_sizes: '8/Small;10/Normal;12/Medium;14/Large;16/X-Large;18/XX-Large;20/XXX-Large',
+            // Menambahkan gaya font
+            stylesSet: [
+                { name: 'Normal', element: 'p' },
+                { name: 'Heading 1', element: 'h1' },
+                { name: 'Heading 2', element: 'h2' },
+                { name: 'Heading 3', element: 'h3' },
+                { name: 'Quote', element: 'blockquote' },
+                { name: 'Highlighted', element: 'span', attributes: { 'class': 'highlight' } }
+            ]
+        });
+    </script> --}}
 @endsection

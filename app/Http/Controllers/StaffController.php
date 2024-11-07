@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Manga;
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class StaffController extends Controller
 {
@@ -46,9 +47,16 @@ class StaffController extends Controller
     }
 
     public function delete($id) {
+        if (Auth::id() == $id) {
+            return redirect()->route('List.Staff')->with('error', 'Anda tidak dapat menghapus akun anda sendiri');
+        }
+
         $staff = User::find($id);
         $staff->delete();
 
+
         return redirect()->route('List.Staff')->with('success', 'Staff berhasil dihapus');
+
+
     }
 }

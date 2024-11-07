@@ -70,7 +70,7 @@
                                 class="transition-colors bg-white border-b even:bg-orange-100 odd:hover:bg-gray-100 even:hover:bg-orange-50">
                                 <td class="px-6 py-3 text-gray-900">{{ $i++ }}</td>
                                 <td class="px-6 py-3 text-gray-900">{{ Str::limit($blog->title, 10) }}</td>
-                                <td class="px-6 py-3 text-gray-900">{{ Str::limit($blog->description, 15) }}</td>
+                                <td class="px-6 py-3 text-gray-900">{!! Str::limit($blog->description, 15) !!}</td>
                                 <td class="px-6 py-3">
                                     <img src="storage/{{ $blog->image }}" alt="Blog Image"
                                         class="object-cover h-16 rounded-md w-32j">
@@ -161,9 +161,6 @@
             </form>
         </div>
     </div>
-
-
-
 
     <!-- JavaScript -->
     <script src="https://cdn.datatables.net/1.11.5/js/dataTables.dataTables.min.js"></script>
