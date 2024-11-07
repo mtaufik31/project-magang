@@ -21,7 +21,6 @@ class MangaController extends Controller
     public function sort(Request $request)
     {
         $sort = $request->query('sort', 'latest'); // Default sort is latest
-
         $query = Manga::query();
 
         switch ($sort) {
@@ -40,6 +39,10 @@ class MangaController extends Controller
         }
 
         $mangas = $query->get();
+
+        if ($request->ajax()) {
+            return view('partials.manga-list', compact('mangas'))->render();
+        }
 
         return view('list', [
             'title' => 'MangaLo | List',

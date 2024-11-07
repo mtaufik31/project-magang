@@ -55,7 +55,7 @@
         </div>
 
         <!-- Genre Section -->
-        <div class="py-3">
+        {{-- <div class="py-3">
             <p class="mb-2 text-xl font-semibold">Genre</p>
             <ul>
                 <li>
@@ -64,7 +64,7 @@
                     </a>
                 </li>
             </ul>
-        </div>
+        </div> --}}
 
         <!-- Blog Section -->
         <div class="py-3">

@@ -101,7 +101,7 @@
 <script src="https://cdn.datatables.net/1.11.5/js/dataTables.dataTables.min.js"></script>
 <script>
     document.addEventListener("DOMContentLoaded", function() {
-            const table = new DataTable("#genreTable", {
+            const table = new DataTable("#myTable", {
                 responsive: true,
                 language: {
                     "sEmptyTable": `
