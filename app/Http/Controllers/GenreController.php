@@ -32,4 +32,54 @@ class GenreController extends Controller
             'genre' => $genre
         ]);
     }
+
+    public function index()
+    {
+        $genres = Genre::all();
+        return view('dashboard.genre.list', [
+            'title' => 'Dashboard | Genre List',
+            'genres' => $genres,
+        ]);
+    }
+
+    public function store(Request $request)
+    {
+        $request->validate([
+            'title' => 'required|string|max:255',
+        ]);
+
+        Genre::create([
+            'title' => $request->title,
+        ]);
+
+        return redirect()->route('GenreList')->with('success', 'Genre created successfully.');
+    }
+
+    public function edit($id)
+    {
+        $genre = Genre::findOrFail($id);
+        return view('dashboard.genre.edit', compact('genre'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $request->validate([
+            'title' => 'required|string|max:255',
+        ]);
+
+        $genre = Genre::findOrFail($id);
+        $genre->update([
+            'title' => $request->title,
+        ]);
+
+        return redirect()->route('GenreList')->with('success', 'Genre updated successfully.');
+    }
+
+    public function destroy($id)
+    {
+        $genre = Genre::findOrFail($id);
+        $genre->delete();
+
+        return redirect()->route('GenreList')->with('success', 'Genre deleted successfully.');
+    }
 }

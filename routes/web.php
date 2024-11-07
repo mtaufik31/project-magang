@@ -169,9 +169,11 @@ Route::middleware(Dashboard::class)->group(function () {
     });
 
     Route::controller(GenreController::class)->group(function() {
-        Route::get('GenreList', function () {
-            return view('dashboard.genre.list', array('title' => 'Dashboard | Genre List'));
-        })->name('GenreList');
+        Route::get('GenreList', [GenreController::class, 'index'])->name('GenreList');
+        Route::post('GenreStore', [GenreController::class, 'store'])->name('GenreStore');
+        Route::get('GenreEdit/{id}', [GenreController::class, 'edit'])->name('GenreEdit');
+        Route::put('GenreUpdate/{id}', [GenreController::class, 'update'])->name('GenreUpdate');
+        Route::delete('GenreDelete/{id}', [GenreController::class, 'destroy'])->name('GenreDelete');
     });
 
 
