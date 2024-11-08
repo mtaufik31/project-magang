@@ -6,7 +6,7 @@
     <div class="bg-slate-100 md:w-[65%] md:ps-4 mx-auto relative shadow-xl">
         <div class="flex flex-wrap items-center justify-between">
             <h1 class="font-fira text-[24px] md:px-0 px-3">Manga List</h1>
-            <div class="flex items-center px-4 py-4 font-fira space-x-7 bg-gradient-to-l from-orange-400">
+            <div class="flex items-center px-6 py-4 font-fira space-x-7 bg-gradient-to-l from-orange-500">
                 <h1 class="font-semibold text-[20px]">Order By</h1>
 
                 <!-- Dropdown for Tablet and Mobile -->

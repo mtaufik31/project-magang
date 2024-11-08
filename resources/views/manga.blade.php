@@ -20,7 +20,6 @@
     </section>
     <section>
         <div class="relative z-20 mt-[-200px]">
-
             <div
                 class="bg-white w-[80%] mx-auto py-5 px-6 my-10 rounded-sm shadow-lg flex flex-col md:flex-row md:flex-nowrap">
                 <div class="flex flex-col items-center transition-all md:items-start">
@@ -96,11 +95,7 @@
                                     </div>
                                 </div>
                             </div>
-
-
-
                         </div>
-
                     </div>
                 </div>
 

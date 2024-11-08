@@ -60,4 +60,14 @@
             </a>
         </div>
     </div>
+
+    <form class="mt-6">
+        <label class="block mb-2 text-sm font-medium">Slides Per View:</label>
+        <input type="number" min="1" max="5" value="3" class="p-2 border border-gray-300 rounded">
+
+        <label class="block mt-4 mb-2 text-sm font-medium">Autoplay (seconds):</label>
+        <input type="number" min="0" value="5" class="p-2 border border-gray-300 rounded">
+
+        <button type="submit" class="mt-4 px-4 py-2 bg-orange-400 text-white rounded">Update Swiper</button>
+    </form>
 @endsection

@@ -44,13 +44,14 @@
                     </thead>
                     <tbody>
                         @foreach ($mangas as $manga)
-                            <tr class="transition-colors bg-white border-b even:bg-orange-100 odd:hover:bg-gray-100 even:hover:bg-orange-50">
+                            <tr
+                                class="transition-colors bg-white border-b even:bg-orange-100 odd:hover:bg-gray-100 even:hover:bg-orange-50">
                                 <td class="px-6 py-4 border-b border-gray-300">
                                     <img src="storage/{{ $manga->image }}" alt="Manga Image"
                                         class="object-cover w-20 rounded-md h-28">
                                 </td>
                                 <td class="px-6 py-4 border-b border-gray-300">
-                                    {{ Str::limit($manga->title, 20, '...') }}
+                                    {{ Str::limit($manga->title, 10, '...') }}
                                 </td>
                                 <td class="px-6 py-4 border-b border-gray-300">
                                     {{ ucfirst($manga->status) }}
@@ -62,7 +63,7 @@
                                     {{ $manga->created_at->setTimezone('Asia/Jakarta')->format('F d, H:i:s') }}
                                 </td>
                                 <td class="px-6 py-4 border-b border-gray-300">
-                                    {{ $manga->updated_at->setTimezone('Asia/Jakarta')->format('F d, H:i:s')  }}
+                                    {{ $manga->updated_at->setTimezone('Asia/Jakarta')->format('F d, H:i:s') }}
                                 </td>
                                 <td class="px-6 py-4 border-b border-gray-300">
                                     {{ $manga->released_year }}
