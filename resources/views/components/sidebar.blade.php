@@ -23,6 +23,11 @@
                         <i class="mr-2 fa-solid fa-house"></i> Home
                     </a>
                 </li>
+                <li>
+                    <a href="{{ route('swiper.list') }}" class="flex items-center p-2 rounded-md text-gray-700 hover:text-orange-400 hover:bg-gray-100 transition-all hover:translate-x-1 duration-200  {{ request()->routeIs('swiper.list') ? 'text-orange-400 hover:text-gray-800 translate-x-1' : '' }}">
+                        <i class="mr-2 fa-solid fa-layer-group"></i> Swiper
+                    </a>
+                </li>
             </ul>
         </div>
 

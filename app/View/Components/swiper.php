@@ -11,9 +11,16 @@ class swiper extends Component
     /**
      * Create a new component instance.
      */
-    public function __construct()
+
+    public $id,$image, $genres, $description, $status, $title;
+    public function __construct($id, $image, $genres, $description, $status, $title)
     {
-        //
+        $this->id = $id;
+        $this->image = $image;
+        $this->genres = $genres;
+        $this->description = $description;
+        $this->status = $status;
+        $this->title = $title;
     }
 
     /**

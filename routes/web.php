@@ -9,11 +9,14 @@ use App\Http\Controllers\BlogController;
 use App\Http\Controllers\GenreController;
 use App\Http\Controllers\StaffController;
 use App\Http\Controllers\MangaController;
+use App\Http\Controllers\MangaSwiperController;
 use App\Http\Middleware\Dashboard;
 use App\Models\Blog;
 use App\Models\genre;
 use App\Models\User;
 use App\Models\Manga;
+use App\Models\MangaSwiper;
+use App\View\Components\swiper;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -28,8 +31,13 @@ Route::get('/', function () {
 
     $genres = genre::paginate(6);
 
+    $swiperMangas = MangaSwiper::with('manga')
+            ->where('is_active', true)
+            ->orderBy('order')
+            ->get();
 
-    return view('welcome', array('title' => 'MangaLo', 'blogs' => $blogs, 'mangas' => $mangas, 'genres' => $genres));
+
+    return view('welcome', array('title' => 'MangaLo', 'blogs' => $blogs, 'mangas' => $mangas, 'genres' => $genres, 'swiperMangas' => $swiperMangas));
 })->name('home');
 
 Route::get('join', function () {
@@ -190,15 +198,19 @@ Route::middleware(Dashboard::class)->group(function () {
         })->name('Detail Manga');
     });
 
-
-
-
     // Staff Routes Group
     Route::controller(StaffController::class)->group(function () {
         Route::get('StaffList', 'index')->name('List.Staff');
         Route::get('StaffCreate', 'showForm')->name('Staff.create');
         Route::post('staffSubmit', 'addStaff')->name('staff.submit');
         Route::delete('staffDelete/{id}', 'delete')->name('staff.delete');
+    });
+
+    Route::controller(MangaSwiperController::class)->group(function () {
+        Route::get('swiper-list', 'index')->name('swiper.list');
+        Route::post('swiper-submit', 'store')->name('swiper.submit');
+        Route::delete('swiper-delete/{id}', 'destroy')->name('swiper.delete');
+        Route::patch('swiper-toggle-active/{id}', 'toggleActive')->name('swiper.toggle');
     });
 
 });

@@ -24,13 +24,19 @@
         </script>
     @endif
 
-    <div class="swiper-container w-full md:max-w-[71%] mx-auto overflow-hidden px-4 pt-5 relative">
-        <div class="swiper-wrapper">
-            <!-- Slide 1 -->
-            <x-swiper></x-swiper>
-            <x-swiper></x-swiper>
-            <x-swiper></x-swiper>
-            <!-- Slide 1 -->
+    <div class="swiper-container w-full md:max-w-[69%] mx-auto overflow-hidden md:pt-5 relative">
+        <div class="swiper-wrapper ">
+            @foreach ($swiperMangas as $swiper)
+            {{-- {{ $swiper->manga->getGenre() }} --}}
+            <x-swiper
+            :swiper="$swiper"
+            id="{{ $swiper->manga->id }}"
+            title="{{ $swiper->manga->title }}"
+            image="{{ $swiper->manga->image }}"
+            :genres="$swiper->manga->getGenre()"
+            description="{{ Str::limit($swiper->manga->description, 150, '...') }}"
+            status="{{ $swiper->manga->status }}"/>
+            @endforeach
         </div>
 
         <div class="absolute left-0 right-0 px-5 text-center swiper-pagination bottom-1"></div>
@@ -149,7 +155,6 @@
     <script>
         var swiper = new Swiper('.swiper-container', {
             loop: true,
-            spaceBetween: 20,
             pagination: {
                 el: '.swiper-pagination',
                 clickable: true,
@@ -158,7 +163,7 @@
                 delay: 5000,
                 disableOnInteraction: false,
             },
-            slidesPerView: 'auto',
+            slidesPerView: '1',
             centeredSlides: true,
         });
     </script>

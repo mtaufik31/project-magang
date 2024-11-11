@@ -37,4 +37,9 @@ class Manga extends Model
         $genreIds = json_decode($this->genre, true);
         return genre::whereIn('id', $genreIds)->get();
     }
+
+    public function swiper()
+    {
+        return $this->hasOne(MangaSwiper::class);
+    }
 }
