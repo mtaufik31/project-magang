@@ -22,7 +22,7 @@
             <h2 class="text-2xl md:text-3xl font-poppins font-bold mb-4">{{ $title }}</h2>
 
             <!-- Description -->
-            <p class="text-gray-200 text-sm md:text-[14px] mb-6 md:w-[calc(55%)]">{{ $description }}</p>
+            <p class="text-gray-200 text-sm md:text-[14px] mb-6 md:w-[calc(55%)]">{!! $description !!}</p>
 
             <!-- Genre Tags -->
             <div class="space-x-1 flex-wrap  mb-6 hidden md:block">

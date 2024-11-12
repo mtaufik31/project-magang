@@ -137,7 +137,7 @@
 
                         <!-- Genre -->
                         <div class="flex flex-col !w-full mb-4">
-                            <label for="genre" class="mb-2 font-bold">Jenis Genre</label>
+                            <label for="genre" class="mb-2 font-semibold">Jenis Genre</label>
                             <select name="genre[]" id="genre" class="h-10 border-2 rounded-md border-slate-400"
                                 multiple="multiple">
                             </select>

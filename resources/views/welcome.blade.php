@@ -31,7 +31,7 @@
                 {{-- {{ $swiper->manga->getGenre() }} --}}
                 <x-swiper :swiper="$swiper" id="{{ $swiper->manga->id }}" title="{{ $swiper->manga->title }}"
                     image="{{ $swiper->manga->image }}" :genres="$swiper->manga->getGenre()"
-                    description="{{ Str::limit($swiper->manga->description, 230, '...') }}"
+                    description="{{ Str::limit($swiper->manga->description, 210, '...') }}"
                     status="{{ $swiper->manga->status }}" />
             @endforeach
         </div>
@@ -94,8 +94,8 @@
                 <div class="flex gap-4 py-6">
                     <!-- Card 1 -->
                     @foreach ($mangas as $manga)
-                        <x-cardmanga id="{{ $manga->id }}" title="{{ $manga->title }}" author="{{ $manga->author }}"
-                            description="{{ $manga->description }}"
+                        <x-cardmanga :manga="$manga" id="{{ $manga->id }}" title="{{ $manga->title }}" author="{{ $manga->author }}"
+                            :description="$manga->description"
                             image="{{ asset('storage/' . $manga->image) }}"></x-cardmanga>
                     @endforeach
 
