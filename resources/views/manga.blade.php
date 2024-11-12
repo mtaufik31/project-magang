@@ -55,7 +55,7 @@
                         <div class="w-full mt-8 isi-kanan md:ml-10 md:mt-0">
                             <h2 class="text-2xl text-[#ff9900] font-semibold mb-2">Sinopsis</h2>
                             <p class="text-gray-700">
-                                {{ $manga->description }}
+                                {!! $manga->description !!}
 
                             </p>
 

@@ -21,7 +21,7 @@
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-    <link rel="stylesheet" href="https://cdn.ckeditor.com/ckeditor5/43.3.1/ckeditor5.css" />
+    {{-- <link rel="stylesheet" href="https://cdn.ckeditor.com/ckeditor5/43.3.1/ckeditor5.css" />
     <script type="importmap">
         {
             "imports": {
@@ -29,7 +29,9 @@
                 "ckeditor5/": "https://cdn.ckeditor.com/ckeditor5/43.3.1/"
             }
         }
-    </script>
+    </script> --}}
+    <link rel="stylesheet" href="/richtexteditor/rte_theme_default.css" />
+    <script src="https://cdn.ckeditor.com/ckeditor5/39.0.1/classic/ckeditor.js"></script>
     @vite('resources/css/app.css')
 
 </head>

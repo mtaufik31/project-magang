@@ -56,13 +56,11 @@ class MangaController extends Controller
         return view('dashboard.manga.create', [
             'title' => 'Dashboard | Add Manga'
         ]);
-
     }
 
     public function store(Request $request)
     {
-
-        $validated = $request->validate(rules: [
+        $validated = $request->validate([
             'title' => 'required|string|max:255',
             'alternative' => 'required|string|max:255',
             'image' => 'required|image|mimes:jpeg,png,jpg|max:2048',
@@ -76,30 +74,41 @@ class MangaController extends Controller
             'genre' => 'required|array'
         ]);
 
+        // Handling genres (existing or new)
         $genreIds = [];
-
-
         foreach ($request->genre as $genre) {
             if (is_numeric($genre)) {
                 $genreIds[] = $genre;
             } else {
-                $newgenre = genre::create(['title' => $genre]);
-                $genreIds[] = "".$newgenre->id;
+                $newGenre = Genre::create(['title' => $genre]);
+                $genreIds[] = "" . $newGenre->id;
             }
         }
 
-        // dd('wow');
-
+        // Handling image upload
         $imagePath = $request->file('image')->store('manga-covers', 'public');
 
+        // Check if title exists and modify if needed
+        $title = $validated['title'];
+        $originalTitle = $title;
+        $counter = 1;
+
+        while (Manga::where('title', $title)->exists()) {
+            $counter++;
+            $title = $originalTitle . " {$counter}";
+        }
+
+        // Create and save the Manga with the unique title
         $manga = new Manga($validated);
+        $manga->title = $title; // Use the modified title
         $manga->genre = json_encode($genreIds);
         $manga->image = $imagePath;
         $manga->created_by = Auth::id();
         $manga->save();
 
-        return redirect()->route('List Manga')->with('success', 'Manga added successfully');
+        return redirect()->route('List Manga')->with('success', 'Manga added successfully with a unique title!');
     }
+
 
     public function edit(Manga $manga)
     {
@@ -139,7 +148,7 @@ class MangaController extends Controller
                 $genreIds[] = $genre;
             } else {
                 $newgenre = genre::create(['title' => $genre]);
-                $genreIds[] = "".$newgenre->id;
+                $genreIds[] = "" . $newgenre->id;
             }
         }
         $validated["genre"] = json_encode($genreIds);
@@ -158,18 +167,17 @@ class MangaController extends Controller
     }
 
     public function search(Request $request)
-{
-    $keyword = $request->input('keyword');
+    {
+        $keyword = $request->input('keyword');
 
-    // Query for matching manga based on title, author, description, or other fields.
-    $mangas = Manga::where('title', 'like', "%{$keyword}%")
-                    ->orWhere('alternative', 'like', "%{$keyword}%")
-                    ->orWhere('description', 'like', "%{$keyword}%")
-                    ->orWhere('author', 'like', "%{$keyword}%")
-                    ->get();
+        // Query for matching manga based on title, author, description, or other fields.
+        $mangas = Manga::where('title', 'like', "%{$keyword}%")
+            ->orWhere('alternative', 'like', "%{$keyword}%")
+            ->orWhere('description', 'like', "%{$keyword}%")
+            ->orWhere('author', 'like', "%{$keyword}%")
+            ->get();
 
-    return view('search',['title' => 'MangaLo!
+        return view('search', ['title' => 'MangaLo!
     | What U wanna See'], compact('mangas', 'keyword'));
+    }
 }
-}
-

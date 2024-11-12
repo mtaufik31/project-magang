@@ -16,11 +16,7 @@
 
         <p class="">#266</p>
         <p class="text-[12px] text-gray-600">
-            {{ Str::limit(
-                $description,
-                17,
-                '...',
-            ) }}
+            {!! Str::limit($description, 16, "...")  !!}
         </p>
     </div>
 </a>
