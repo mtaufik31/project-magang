@@ -24,28 +24,29 @@
         </script>
     @endif
 
-    <div class="swiper-container w-full md:max-w-[69%] mx-auto overflow-hidden md:pt-5 relative">
+    <div
+        class="swiper-container w-full md:max-w-[97%] xl:max-w-[69%] mx-auto overflow-hidden md:pt-5 relative transition-all">
         <div class="swiper-wrapper ">
             @foreach ($swiperMangas as $swiper)
-            {{-- {{ $swiper->manga->getGenre() }} --}}
-            <x-swiper
-            :swiper="$swiper"
-            id="{{ $swiper->manga->id }}"
-            title="{{ $swiper->manga->title }}"
-            image="{{ $swiper->manga->image }}"
-            :genres="$swiper->manga->getGenre()"
-            description="{{ Str::limit($swiper->manga->description, 150, '...') }}"
-            status="{{ $swiper->manga->status }}"/>
+                {{-- {{ $swiper->manga->getGenre() }} --}}
+                <x-swiper :swiper="$swiper" id="{{ $swiper->manga->id }}" title="{{ $swiper->manga->title }}"
+                    image="{{ $swiper->manga->image }}" :genres="$swiper->manga->getGenre()"
+                    description="{{ Str::limit($swiper->manga->description, 230, '...') }}"
+                    status="{{ $swiper->manga->status }}" />
             @endforeach
         </div>
 
-        <div class="absolute left-0 right-0 px-5 text-center swiper-pagination bottom-1"></div>
+        <div class="absolute left-0 right-0 px-1 text-center bottom-1">
+            <div class="swiper-pagination custom-pagination"></div>
+        </div>
+
+
         <!-- Add Pagination inside the Swiper container -->
     </div>
 
 
     <section
-        class="bg-[#fec46d] py-3 px-5 rounded-t-xl mt-5  w-[69%] justify-center relative items-center mx-auto lg:block hidden transition-all">
+        class="bg-[#fec46d] py-3 px-5 rounded-t md:max-w-[97%] xl:max-w-[69%] mt-5 justify-center relative items-center mx-auto lg:block hidden transition-all">
         <div class="flex justify-between ">
             <div class="font-fira text-[18px] self-center space-x-7 ps-10 ">
                 @foreach ($genres as $genre)
@@ -54,7 +55,7 @@
                 @endforeach
             </div>
             <div
-                class="relative px-10 py-2 overflow-hidden text-white transition-all duration-300 bg-orange-400 border border-orange-500 rounded-lg shadow-2xl before:ease before:absolute before:right-0 before:top-0 before:h-24 before:w-5 before:translate-x-12 before:rotate-6 before:bg-slate-100 before:opacity-30 before:duration-700 hover:shadow-orange-400 hover:bg-orange-500 animate-shine">
+                class="relative px-10 py-2 overflow-hidden text-white transition-all duration-300 bg-orange-400 border border-orange-500 rounded-lg shadow- md:max-w-[97%]2xl before:ease before:absolute before:right-0 before:top-0 before:h-24 before:w-5 before:translate-x-12 before:rotate-6 before:bg-slate-100 before:opacity-30 before:duration-700 hover:shadow-orange-400 hover:bg-orange-500 animate-shine">
                 <a href="{{ route('list') }}">
                     See More
                 </a>
@@ -80,7 +81,7 @@
     </section>
 
     <section class="py-5 transition-all">
-        <div class="bg-slate-100 md:w-[69%] mx-auto relative px-5">
+        <div class="bg-slate-100 md:max-w-[97%] xl:w-[69%] mx-auto relative px-5 transition-all">
             <div class="flex items-center justify-between">
                 <h1 class="font-fira text-[24px] pt-5 pb-3">Latest Update</h1>
                 <a href="{{ route('list') }}">
@@ -93,8 +94,8 @@
                 <div class="flex gap-4 py-6">
                     <!-- Card 1 -->
                     @foreach ($mangas as $manga)
-                        <x-cardmanga id="{{ $manga->id }}" title="{{ $manga->title }}"
-                            author="{{ $manga->author }}" description="{{ $manga->description }}"
+                        <x-cardmanga id="{{ $manga->id }}" title="{{ $manga->title }}" author="{{ $manga->author }}"
+                            description="{{ $manga->description }}"
                             image="{{ asset('storage/' . $manga->image) }}"></x-cardmanga>
                     @endforeach
 
@@ -105,7 +106,7 @@
     </section>
 
     <section class="py-10 transition-all">
-        <div class="bg-slate-100 md:w-[69%] mx-auto relative px-7">
+        <div class="bg-slate-100 md:max-w-[97%] xl:w-[69%] mx-auto relative px-7">
             <div class="flex items-center justify-between">
                 <h1 class="font-fira text-[24px] pt-5 pb-3">Blog</h1>
                 <a href="{{ route('blogs') }}" class="text-gray-700 hover:text-orange-400">
@@ -165,6 +166,15 @@
             },
             slidesPerView: '1',
             centeredSlides: true,
+        });
+    </script>
+    <script>
+        const swiper = new Swiper('.swiper-container', {
+            pagination: {
+                el: '.custom-pagination',
+                clickable: true,
+            },
+            // Other Swiper settings
         });
     </script>
 @endsection

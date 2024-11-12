@@ -110,3 +110,25 @@
     transition: max-height 0.3s ease-in-out; /* Transition for expanding/collapsing content */
 }
 
+.custom-pagination .swiper-pagination-bullet {
+    width: 20px; /* Bullet size */
+    height: 12px;
+    background-color: #ffffff; /* Default bullet color */
+    opacity: 0.6; /* Slightly transparent bullets */
+    border-radius: 10%; /* Makes bullets round */
+    margin: 0 4px; /* Space between bullets */
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+/* Active bullet style */
+.custom-pagination .swiper-pagination-bullet-active {
+    background-color: #ffa500; /* Color for the active bullet */
+    transform: scale(1.1); /* Enlarge the active bullet */
+    opacity: 1; /* Make the active bullet fully opaque */
+}
+
+/* Optional: Hover effect */
+.custom-pagination .swiper-pagination-bullet:hover {
+    background-color: #ffcc80; /* Hover color for bullets */
+    cursor: pointer;
+}
