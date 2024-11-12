@@ -12,13 +12,14 @@
                 <!-- Styled Select Menu -->
                 <div class="flex-1">
                     <select name="manga_id" id="manga_id"
-                            class="w-full py-1  border border-gray-300 text-gray-700 rounded-lg text-[14px] focus:ring-orange-400 focus:border-orange-400">
+                            class="w-full py-1 border border-gray-300 text-gray-700 rounded-lg text-[14px] focus:ring-orange-400 focus:border-orange-400 transition-all duration-300 ease-in-out transform focus:scale-100 focus:-translate-y-1 focus:shadow-[0px_10px_15px_rgba(0,0,0,0.2)]">
                         <option value="" disabled selected>Select Manga</option>
                         @foreach ($availableMangas as $manga)
                             <option value="{{ $manga->id }}">{{ $manga->title }}</option>
                         @endforeach
                     </select>
                 </div>
+
 
                 <!-- Styled Submit Button -->
                 <button type="submit"

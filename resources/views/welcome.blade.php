@@ -28,7 +28,6 @@
         class="swiper-container w-full md:max-w-[97%] xl:max-w-[69%] mx-auto overflow-hidden md:pt-5 relative transition-all">
         <div class="swiper-wrapper ">
             @foreach ($swiperMangas as $swiper)
-                {{-- {{ $swiper->manga->getGenre() }} --}}
                 <x-swiper :swiper="$swiper" id="{{ $swiper->manga->id }}" title="{{ $swiper->manga->title }}"
                     image="{{ $swiper->manga->image }}" :genres="$swiper->manga->getGenre()"
                     description="{{ Str::limit($swiper->manga->description, 210, '...') }}"
@@ -39,9 +38,6 @@
         <div class="absolute left-0 right-0 px-1 text-center bottom-1">
             <div class="swiper-pagination custom-pagination"></div>
         </div>
-
-
-        <!-- Add Pagination inside the Swiper container -->
     </div>
 
 
@@ -94,8 +90,8 @@
                 <div class="flex gap-4 py-6">
                     <!-- Card 1 -->
                     @foreach ($mangas as $manga)
-                        <x-cardmanga :manga="$manga" id="{{ $manga->id }}" title="{{ $manga->title }}" author="{{ $manga->author }}"
-                            :description="$manga->description"
+                        <x-cardmanga :manga="$manga" id="{{ $manga->id }}" title="{{ $manga->title }}"
+                            author="{{ $manga->author }}" :description="$manga->description"
                             image="{{ asset('storage/' . $manga->image) }}"></x-cardmanga>
                     @endforeach
 
@@ -138,22 +134,10 @@
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
     <script>
-        var swiper = new Swiper('.mySwiper', {
-            loop: true,
-            pagination: {
-                el: '.swiper-pagination',
-                clickable: true,
-            },
-            navigation: {
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev',
-            },
-            slidesPerView: 1,
-            spaceBetween: 10,
-        });
-    </script>
+        // Count the number of slides in the swiper container
+        const slideCount = document.querySelectorAll('.swiper-container .swiper-slide').length;
 
-    <script>
+        // Initialize swiper with conditional touch move based on slide count
         var swiper = new Swiper('.swiper-container', {
             loop: true,
             pagination: {
@@ -161,20 +145,12 @@
                 clickable: true,
             },
             autoplay: {
-                delay: 5000,
+                delay: 3000,
                 disableOnInteraction: false,
             },
             slidesPerView: '1',
             centeredSlides: true,
-        });
-    </script>
-    <script>
-        const swiper = new Swiper('.swiper-container', {
-            pagination: {
-                el: '.custom-pagination',
-                clickable: true,
-            },
-            // Other Swiper settings
+            allowTouchMove: slideCount >= 4, // Enable touch move only if slide count is 4 or more
         });
     </script>
 @endsection

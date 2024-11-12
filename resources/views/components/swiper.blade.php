@@ -1,4 +1,4 @@
-<div class="px-4 py-4 md:py-8 overflow-hidden text-white shadow-lg swiper-slide relative cursor-grab">
+<div class="px-4 py-4 md:py-8 overflow-hidden text-white shadow-lg swiper-slide relative">
     <!-- Background Image with Darker Gradient -->
     <div class="absolute inset-0 bg-cover bg-center blur-sm opacity-70"
         style="background-image: url('{{ asset('storage/' . $image) }}');"></div>

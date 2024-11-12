@@ -151,11 +151,11 @@
                         <!-- Description -->
                         <div class="w-full">
                             <label for="description" class="block text-sm font-medium text-gray-700">Description</label>
-                            <textarea name="description" id="description" rows="4"
+                            <textarea name="description" id="description" rows="4" required minlength="150"
                                 class="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:border-orange-400">{{ old('description') }}</textarea>
                         </div>
                         @error('description')
-                            {{ $message }}
+                            <p class="text-red-500 text-sm">{{ $message }}</p>
                         @enderror
 
                         <!-- Save Button -->
