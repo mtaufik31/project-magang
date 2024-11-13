@@ -4,7 +4,7 @@
     <div id="particles-js" class="absolute w-full h-[65vh] ">
 
     </div>
-    <section class="bg-gradient-to-r  text-black md:pt-20 pt-16 pb-32 relative z-100">
+    <section class="bg-gradient-to-r  text-black md:pt-20 pt-6 pb-32 relative z-100">
         <div class="flex flex-wrap sm:flex-nowrap justify-center">
             <div class="w-full self-center px-6 sm:w-[45%]  font-inter pb-8 md:pb-0">
                 <h1 class="text-6xl text-[#ff9900] font-semibold ">FAQ</h1>

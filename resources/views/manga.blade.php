@@ -77,14 +77,14 @@
                             </div>
                             <div class="flex gap-5 pt-3 baris-satu">
                                 <x-statusmanga judul="Posted On">
-                                    {{ $manga->created_at->setTimezone('Asia/Jakarta')->format('F d, Y H:i:s') }}
+                                    {{ $manga->created_at->setTimezone('Asia/Jakarta')->format('d F, Y ') }}
                                 </x-statusmanga>
                                 <x-statusmanga judul="Updated On">
-                                    {{ $manga->updated_at->setTimezone('Asia/Jakarta')->format('F d, Y H:i:s') }}
+                                    {{ $manga->updated_at->setTimezone('Asia/Jakarta')->format('d F, Y ') }}
                                 </x-statusmanga>
                             </div>
                             <div class="flex pt-3 baris-satu">
-                                <div class="w-1/5 md:w-max">
+                                <div class="w-1/4 md:w-max">
                                     <h2 class="mb-2 text-[18px]">Genre</h2>
                                     <div class="flex flex-wrap gap-2"> <!-- Flex container with gap between items -->
                                         @foreach ($manga->getGenre() as $genre)

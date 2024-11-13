@@ -9,7 +9,7 @@
                         {{ $blog->title }}
                     </h1>
                     <p class="text-[12px] text-center md:text-left">
-                        <span class="italic">{{ $blog->user->name }} -</span> {{ $blog->updated_at->format('d-m-Y') }}
+                        <span class="italic">{{ $blog->user->name }} -</span> {{ $blog->updated_at->format('d-F-Y') }}
                     </p>
                     <div class="mt-4">
                         <div class="image md:w-1/2 flex md:hidden justify-center items-center my-5 md:mt-0">

@@ -2,7 +2,7 @@
     <!-- Background Image with Darker Gradient -->
     <div class="absolute inset-0 bg-cover bg-center blur-sm opacity-70"
         style="background-image: url('{{ asset('storage/' . $image) }}');"></div>
-    <div class="absolute inset-0 bg-gradient-to-b from-orange-400/60 to-orange-900/85"></div>
+    <div class="absolute inset-0 bg-gradient-to-b from-orange-400/50 to-orange-900/95"></div>
 
 
 
@@ -19,16 +19,31 @@
             <h3 class="text-lg md:text-[20px] font-bold mb-2 md:block hidden">Chapter: 200</h3>
 
             <!-- Title -->
-            <h2 class="text-2xl md:text-3xl font-poppins font-bold mb-4">{{ $title }}</h2>
+            <h2 class="text-2xl md:text-3xl font-poppins font-bold mb-4">
+                {{ request()->header('User-Agent') &&
+                preg_match(
+                    '/Mobile|Android|iP(hone|od)|IEMobile|Windows Phone|Kindle|Silk-Accelerated|(hpw|web)OS|Opera M(obi|ini)/',
+                    request()->header('User-Agent'),
+                )
+                    ? Str::limit($title, 10)
+                    : $title }}
+            </h2>
 
             <!-- Description -->
-            <p class="text-gray-200 text-sm md:text-[14px] mb-6 md:w-[calc(55%)]">{!! $description !!}</p>
+            <p class="text-gray-200 text-sm md:text-[14px] mb-6 md:w-[calc(55%)]">{!! request()->header('User-Agent') &&
+            preg_match(
+                '/Mobile|Android|iP(hone|od)|IEMobile|Windows Phone|Kindle|Silk-Accelerated|(hpw|web)OS|Opera M(obi|ini)/',
+                request()->header('User-Agent'),
+            )
+                ? Str::limit($description, 90)
+                : $description !!}</p>
 
             <!-- Genre Tags -->
             <div class="space-x-1 flex-wrap  mb-6 hidden md:block">
                 @foreach ($genres as $genre)
                     <a href="{{ route('genre.sort', $genre->id) }}">
-                        <span class="px-3 md:px-4 py-1 text-xs md:text-sm rounded-md bg-transparent cursor-pointer hover:bg-orange-600/50 border hover:border-orange-700">
+                        <span
+                            class="px-3 md:px-4 py-1 text-xs md:text-sm rounded-md bg-transparent cursor-pointer hover:bg-orange-600/50 border hover:orange-orange-400">
                             {{ $genre->title }}
                         </span>
                     </a>
@@ -37,7 +52,8 @@
 
             <!-- Read Button -->
             <a href="{{ route('manga', $id) }}">
-                <button class="relative flex h-12 md:h-[50px] w-36 md:w-40 items-center justify-center overflow-hidden bg-transparent border hover:border-black hover:text-black text-white shadow-2xl transition-all before:absolute before:h-0 before:w-0 before:rounded-full before:bg-orange-600 before:duration-500 before:ease-out hover:shadow-orange-600 hover:before:h-56 hover:before:w-56">
+                <button
+                    class="relative flex h-12 md:h-[50px] w-36 md:w-40 items-center justify-center overflow-hidden bg-transparent border text-white shadow-2xl transition-all before:absolute before:h-0 before:w-0 before:rounded-full before:bg-orange-400 before:duration-500 before:ease-out hover:shadow-orange-400 hover:before:h-56 hover:before:w-56">
                     <span class="relative z-10">Read More &raquo;</span>
                 </button>
             </a>

@@ -59,7 +59,7 @@
 
 /* Menargetkan tombol accordion yang aktif */
 [data-accordion-target][aria-expanded="true"] span {
-    color: black; /* Ubah warna teks menjadi hitam ketika accordion aktif */
+    color: black;
 }
 
 .accordion-content {
@@ -69,66 +69,124 @@
 }
 
 .accordion-content.open {
-    max-height: 500px; /* Atur nilai max-height sesuai dengan konten */
+    max-height: 500px;
 }
 
 .shadow-manual-left {
-    box-shadow: -6px 0px 16px 4px rgba(0, 0, 0, 0.2); /* Ubah efek shadow menjadi manual */
+    box-shadow: -6px 0px 16px 4px rgba(0, 0, 0, 0.2);
 }
 .shadow-manual-right {
     box-shadow: 6px 0px 16px 4px rgba(0, 0, 0, 0.2),
-        0px 2px 10px rgba(0, 0, 0, 0.2); /* Ubah efek shadow menjadi manual */
+        0px 2px 10px rgba(0, 0, 0, 0.2);
 }
 
 ::-webkit-scrollbar {
     width: 7px;
     height: 4px;
     transition: opacity 0.3s ease-in-out;
-    /* Width of the scrollbar */
+
 }
 
-/* Make the scrollbar background transparent */
 ::-webkit-scrollbar-track {
     background: transparent;
 }
 
-/* Style the scrollbar handle/drag (thumb) */
 ::-webkit-scrollbar-thumb {
-    background-color: rgba(0, 0, 0, 0.3); /* Add transparency to the thumb */
-    border-radius: full; /* Make the scrollbar rounded */
-    border: 2px solid transparent; /* Optional: Adds spacing around the thumb */
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: full;
+    border: 2px solid transparent;
 }
 
-/* Optional: Hover effect on the thumb */
 ::-webkit-scrollbar-thumb:hover {
-    background-color: gray; /* Slightly darker on hover */
+    background-color: gray;
 }
 
 .sidebar-content {
     scrollbar-width: block;
-    opacity: 10; /* Firefox */ /* Collapsed height */
-    transition: max-height 0.3s ease-in-out; /* Transition for expanding/collapsing content */
+    opacity: 10;
+    transition: max-height 0.3s ease-in-out;
+}
+
+.pagination-wrapper {
+    padding: 13px 50px;
+    border-radius: 24px;
+    display: inline-block;
+    backdrop-filter: blur(8px);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .custom-pagination .swiper-pagination-bullet {
-    width: 20px; /* Bullet size */
+    width: 12px;
     height: 12px;
-    background-color: #ffffff; /* Default bullet color */
-    opacity: 0.6; /* Slightly transparent bullets */
-    border-radius: 10%; /* Makes bullets round */
-    margin: 0 4px; /* Space between bullets */
-    transition: background-color 0.3s ease, transform 0.3s ease;
+    background-color: rgba(255, 255, 255, 0.8);
+    opacity: 0.6;
+    margin: 0 10px;
+    border: 2px solid transparent;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
 }
 
-/* Active bullet style */
 .custom-pagination .swiper-pagination-bullet-active {
-    background-color: #ffa500; /* Color for the active bullet */
-    transform: scale(1.1); /* Enlarge the active bullet */
-    opacity: 1; /* Make the active bullet fully opaque */
+    background-color: #ffa500;
+    transform: scale(1.2);
+    width: 24px;
+    border-radius: 12px;
+    opacity: 1;
+    border-color: rgba(255, 165, 0, 0.3);
 }
 
-/* Optional: Hover effect */
 .custom-pagination .swiper-pagination-bullet:hover {
-    background-color: #ffcc80; /* Hover color for bullets */
     cursor: pointer;
+    opacity: 0.9;
+    transform: scale(1.1);
+    box-shadow: 0 0 0 4px rgba(255, 165, 0, 0.2);
 }
+
+.custom-pagination .swiper-pagination-bullet::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    transform: translate(-50%, -50%) scale(0);
+    border-radius: 50%;
+    background-color: rgba(255, 165, 0, 0.2);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.custom-pagination .swiper-pagination-bullet:hover::before {
+    transform: translate(-50%, -50%) scale(1.5);
+}
+
+.custom-pagination .swiper-pagination-bullet-active::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    transform: translate(-50%, -50%);
+    border-radius: 12px;
+    background: radial-gradient(circle, rgba(255,165,0,0.4) 0%, rgba(255,165,0,0) 70%);
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+@keyframes pulse {
+    0% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 0.5;
+    }
+    50% {
+        transform: translate(-50%, -50%) scale(1.3);
+        opacity: 0;
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 0.5;
+    }
+}
+
+
+
+

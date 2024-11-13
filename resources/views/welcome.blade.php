@@ -35,14 +35,18 @@
             @endforeach
         </div>
 
-        <div class="absolute left-0 right-0 px-1 text-center bottom-1">
-            <div class="swiper-pagination custom-pagination"></div>
+        <div class="absolute left-0 right-0 px-3 text-center bottom-1">
+            <div class="pagination-wrapper">
+                <div class="swiper-pagination custom-pagination"></div>
+            </div>
         </div>
+
+
     </div>
 
 
     <section
-        class="bg-[#fec46d] py-3 px-5 rounded-t md:max-w-[97%] xl:max-w-[69%] mt-5 justify-center relative items-center mx-auto lg:block hidden transition-all">
+        class="bg-[#fec46d] py-3 px-5 rounded-t-xl md:max-w-[97%] xl:max-w-[69%] mt-5 justify-center relative items-center mx-auto lg:block hidden transition-all">
         <div class="flex justify-between ">
             <div class="font-fira text-[18px] self-center space-x-7 ps-10 ">
                 @foreach ($genres as $genre)
@@ -150,7 +154,7 @@
             },
             slidesPerView: '1',
             centeredSlides: true,
-            allowTouchMove: slideCount >= 4, // Enable touch move only if slide count is 4 or more
+            allowTouchMove: slideCount >= 4,
         });
     </script>
 @endsection

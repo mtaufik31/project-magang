@@ -12,7 +12,7 @@
                 <!-- Dropdown for Tablet and Mobile -->
                 <div class="relative cursor-pointer md:hidden">
                     <select id="sort-select" class="block w-full p-2 bg-white border rounded-md shadow-sm cursor-pointer">
-                        <option value="latest" {{ request('sort') == 'latest' ? 'selected' : '' }}>Latest</option>
+                        <option value="latest" {{ request('sort') == 'latest' ? 'selected' : '' }}>Newest</option>
                         <option value="a-z" {{ request('sort') == 'a-z' ? 'selected' : '' }}>A-Z</option>
                         <option value="z-a" {{ request('sort') == 'z-a' ? 'selected' : '' }}>Z-A</option>
                         <option value="oldest" {{ request('sort') == 'oldest' ? 'selected' : '' }}>Oldest</option>
@@ -21,7 +21,7 @@
 
                 <!-- Links for Desktop -->
                 <div class="hidden md:flex space-x-7">
-                    <a href="javascript:void(0)" class="sort-link font-light hover:text-orange-600 duration-200" data-sort="latest">Latest</a>
+                    <a href="javascript:void(0)" class="sort-link font-light hover:text-orange-600 duration-200" data-sort="latest">Newest</a>
                     <a href="javascript:void(0)" class="sort-link font-light hover:text-orange-600 duration-200" data-sort="a-z">A-Z</a>
                     <a href="javascript:void(0)" class="sort-link font-light hover:text-orange-600 duration-200" data-sort="z-a">Z-A</a>
                     <a href="javascript:void(0)" class="sort-link font-light hover:text-orange-600 duration-200" data-sort="oldest">Oldest</a>
