@@ -18,6 +18,9 @@
                             <option value="{{ $manga->id }}">{{ $manga->title }}</option>
                         @endforeach
                     </select>
+                    @if ($errors->has('manga_id'))
+                        <p class="text-red-500 text-sm mt-1">{{ $errors->first('manga_id') }}</p>
+                    @endif
                 </div>
 
 
@@ -65,4 +68,29 @@
         </div>
     </div>
 </div>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        @if(session('success'))
+            Swal.fire({
+                icon: 'success',
+                title: 'Sukses',
+                text: "{{ session('success') }}",
+                timer: 3000,
+                showConfirmButton: false
+            });
+        @endif
+
+        @if(session('error'))
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: "{{ session('error') }}",
+                timer: 3000,
+                showConfirmButton: false
+            });
+        @endif
+    });
+</script>
 @endsection

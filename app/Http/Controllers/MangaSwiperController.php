@@ -26,17 +26,34 @@ class MangaSwiperController extends Controller
 
     public function store(Request $request)
     {
+        // Cek apakah jumlah swiper sudah mencapai batas maksimal
+        $currentSwiperCount = MangaSwiper::count();
+        if ($currentSwiperCount >= 5) {
+            return redirect()->route('swiper.list')
+                ->with('error', 'Maksimal manga pada swiper adalah 5');
+        }
+
         $request->validate([
             'manga_id' => 'required|exists:manga,id',
             'order' => 'nullable|integer|min:1'
         ]);
 
+        // Mendapatkan manga berdasarkan ID
+        $manga = Manga::findOrFail($request->manga_id);
+
+        // Pastikan deskripsi manga tersedia dan panjangnya <= 230 karakter
+        // Perbaikan
+        if (!isset($manga->description) || strlen($manga->description) < 230) {
+            return redirect()->route('swiper.list')
+                ->with('error', 'Manga harus memiliki deskripsi minimal 230 karakter.');
+        }
+
+        // Menentukan urutan manga
         $maxOrder = MangaSwiper::max('order') ?? 0;
 
         if ($request->order) {
             $newOrder = $request->order;
         } else {
-            // Cari order terendah yang tersedia
             $usedOrders = MangaSwiper::pluck('order')->toArray();
             $newOrder = 1;
             while (in_array($newOrder, $usedOrders)) {
@@ -44,6 +61,7 @@ class MangaSwiperController extends Controller
             }
         }
 
+        // Menambahkan manga ke swiper
         MangaSwiper::create([
             'manga_id' => $request->manga_id,
             'order' => $newOrder,
@@ -53,6 +71,9 @@ class MangaSwiperController extends Controller
         return redirect()->route('swiper.list')
             ->with('success', 'Manga added to swiper successfully');
     }
+
+
+
 
     public function updateOrder(Request $request)
     {
