@@ -95,10 +95,10 @@
 
         <!-- Right Section (Empty or Image) -->
         <div
-            class="hidden lg:flex items-center justify-center text-center lg:w-1/2 bg-right bg-no-repeat z-10 bg-[#fec46d] bg-cover shadow-manual-right">
+            class="hidden lg:flex items-center justify-center text-center lg:w-1/2 bg-right bg-no-repeat z-10 from-[#fec46d] bg-gradient-to-r bg-cover shadow-manual-right">
             <div class="font-fira">
                 <h1 class="text-5xl font-semibold font-inter">Silahkan Login</h1>
-                <H2 class="py-6 text-2xl text-red-600">Not Register Yet?</b></H2>
+                <H2 class="py-6 text-2xl">Not Register Yet?</b></H2>
                 <a href="{{ route('register') }}"
                     class="text-black transition  bg-[#ff9900] hover:bg-[rgb(255,153,0,0.6)] py-3 px-6 rounded-lg duration-100">Register
                     Here

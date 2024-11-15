@@ -1,7 +1,7 @@
 <nav class="md:bg-transparent bg-[rgb(255,153,0,0.7)] font-poppins transition-all">
      <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto xl:p-4 py-4 px-6">
         <a href="{{ route('home') }}" class="flex items-center space-x-3 rtl:space-x-reverse">
-            <span class="self-center text-3xl whitespace-nowrap hover:text-[#FF9900] duration-200">MangaLo!</span>
+             <x-logo></x-logo>
         </a>
         <div class="flex md:order-2 items-center">
 

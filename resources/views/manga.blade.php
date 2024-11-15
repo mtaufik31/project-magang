@@ -86,7 +86,7 @@
                             <div class="flex pt-3 baris-satu">
                                 <div class="w-1/4 md:w-max">
                                     <h2 class="mb-2 text-[18px]">Genre</h2>
-                                    <div class="flex flex-wrap gap-2"> <!-- Flex container with gap between items -->
+                                    <div class="flex flex-wrap gap-2">
                                         @foreach ($manga->getGenre() as $genre)
                                             <x-buttongenre route="{{ route('genre.sort', $genre->id) }}" class="">
                                                 {{ $genre->title }}

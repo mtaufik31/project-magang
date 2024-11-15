@@ -47,10 +47,10 @@
 
     <section
         class="bg-[#fec46d] py-3 px-5 rounded-t-xl md:max-w-[97%] xl:max-w-[69%] mt-5 justify-center relative items-center mx-auto lg:block hidden transition-all">
-        <div class="flex justify-between ">
+        <div class="flex justify-between">
             <div class="font-fira text-[18px] self-center space-x-7 ps-10 ">
                 @foreach ($genres as $genre)
-                    <a class="duration-200 hover:text-white "
+                    <a class="duration-200 hover:text-white"
                         href="{{ route('genre.sort', $genre->id) }}">{{ $genre->title }}</a>
                 @endforeach
             </div>
@@ -80,7 +80,7 @@
         </div>
     </section>
 
-    <section class="py-5 transition-all">
+    <section class=" transition-all">
         <div class="bg-slate-100 md:max-w-[97%] xl:w-[69%] mx-auto relative px-5 transition-all">
             <div class="flex items-center justify-between">
                 <h1 class="font-fira text-[24px] pt-5 pb-3">Latest Update</h1>

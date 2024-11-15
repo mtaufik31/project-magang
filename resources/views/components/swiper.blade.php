@@ -2,9 +2,7 @@
     <!-- Background Image with Darker Gradient -->
     <div class="absolute inset-0 bg-cover bg-center blur-sm opacity-70"
         style="background-image: url('{{ asset('storage/' . $image) }}');"></div>
-    <div class="absolute inset-0 bg-gradient-to-b from-orange-400/50 to-orange-900/95"></div>
-
-
+    <div class="absolute inset-0 bg-gradient-to-b from-orange-500/50 to-orange-900/95"></div>
 
     <!-- Content Container -->
     <div class="relative z-10 flex md:flex xl:ps-8 px-3">
@@ -59,8 +57,6 @@
             </a>
         </div>
     </div>
-
-
 
     <!-- Manga Cover - Positioned below text on mobile -->
     <div

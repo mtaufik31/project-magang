@@ -57,7 +57,7 @@
 
         <!-- Right Section (Empty or Image) -->
         <div
-            class="hidden lg:flex items-center justify-center text-center lg:w-1/2 bg-right bg-no-repeat z-10 bg-[#fec46d] bg-cover shadow-manual-right">
+            class="hidden lg:flex items-center justify-center text-center lg:w-1/2 bg-right bg-no-repeat z-10 from-[#fec46d] bg-gradient-to-r bg-cover shadow-manual-right">
             <div class="font-fira">
                 <h1 class="text-5xl font-semibold font-inter">HELO GAIS</h1>
                 <H2 class="py-5 text-2xl text-red-600">Udah Ingat <b>Password Akun</b> nya?</H2>
