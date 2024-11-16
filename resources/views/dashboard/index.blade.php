@@ -5,10 +5,11 @@
     <div class="pb-7">
         <h1 class="text-3xl font-semibold ">Statistik</h1>
     </div>
+
     <div class="flex flex-wrap md:flex-nowrap gap-4">
         <div class="bg-blue-500 text-white rounded-lg w-full md:w-1/3 lg:w-1/4 shadow-lg p-4 hover:-translate-y-2 duration-300 hover:shadow-xl">
             <div class="flex items-center justify-between">
-                <div class="text-4xl font-bold">{{ $manyManga }}</div>
+                <div id="manga-counter" class="text-4xl font-bold">{{ $manyManga }}</div>
                 <i class="fa-solid fa-newspaper text-5xl"></i>
             </div>
             <div class="mt-4 text-lg">Manga</div>
@@ -21,7 +22,7 @@
 
         <div class="bg-red-500 text-white rounded-lg w-full md:w-1/3 lg:w-1/4 shadow-lg p-4 hover:-translate-y-2 duration-300 hover:shadow-xl">
             <div class="flex items-center justify-between">
-                <div class="text-4xl font-bold">{{ $manyGenre }}</div>
+                <div id="genre-counter" class="text-4xl font-bold">{{ $manyGenre }}</div>
                 <i class="fa-solid fa-scroll text-5xl"></i>
             </div>
             <div class="mt-4 text-lg">Genre</div>
@@ -34,7 +35,7 @@
 
         <div class="bg-yellow-500 text-white rounded-lg w-full md:w-1/4 lg:w-1/4 shadow-lg p-4 hover:-translate-y-2 duration-300 hover:shadow-xl">
             <div class="flex items-center justify-between">
-                <div class="text-4xl font-bold">{{ $manyStaff }}</div>
+                <div id="users-counter" class="text-4xl font-bold">{{ $manyStaff }}</div>
                 <i class="fa-solid fa-users text-5xl"></i>
             </div>
             <div class="mt-4 text-lg">Users</div>
@@ -48,7 +49,7 @@
 
         <div class="bg-green-500 text-white rounded-lg w-full md:w-1/4 lg:w-1/4 shadow-lg p-4 hover:-translate-y-2 duration-300 hover:shadow-xl">
             <div class="flex items-center justify-between">
-                <div class="text-4xl font-bold">{{ $manyBlogs }}</div>
+                <div id="blogs-counter" class="text-4xl font-bold">{{ $manyBlogs }}</div>
                 <i class="fa-regular fa-note-sticky text-5xl"></i>
             </div>
             <div class="mt-4 text-lg">Blogs</div>
@@ -60,4 +61,41 @@
             </a>
         </div>
     </div>
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+    // Data dari server
+    const counters = {
+        manga: {{ $manyManga }},
+        genre: {{ $manyGenre }},
+        users: {{ $manyStaff }},
+        blogs: {{ $manyBlogs }}
+    };
+
+    // Fungsi untuk animasi penghitung
+    function animateCounter(elementId, targetNumber, duration) {
+        const element = document.getElementById(elementId);
+        const stepTime = Math.abs(Math.floor(duration / targetNumber));
+        let currentNumber = 0;
+
+        const increment = () => {
+            currentNumber += 1;
+            element.textContent = currentNumber;
+            if (currentNumber < targetNumber) {
+                setTimeout(increment, stepTime);
+            }
+        };
+
+        increment();
+    }
+
+    // Menjalankan animasi untuk setiap counter
+    animateCounter("manga-counter", counters.manga, 1000); // 2 detik
+    animateCounter("genre-counter", counters.genre, 1000);
+    animateCounter("users-counter", counters.users, 1000);
+    animateCounter("blogs-counter", counters.blogs, 1000);
+});
+
+    </script>
 @endsection

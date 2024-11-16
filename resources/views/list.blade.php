@@ -32,7 +32,8 @@
         <div id="manga-list-container" class="w-full text-center">
             <div class="flex flex-wrap justify-center gap-8 py-5 md:gap-6 md:justify-start">
                 @foreach ($mangas as $manga)
-                    <x-cardmanga id="{{ $manga->id }}" title="{{ $manga->title }}" author="{{ $manga->author }}"
+                    <x-cardmanga id="{{ $manga->id }}" title="{{ $manga->title }}"
+                        status="{{ $manga->status }}" author="{{ $manga->author }}"
                         description="{{ $manga->description }}" image="{{ asset('storage/' . $manga->image) }}">
                     </x-cardmanga>
                 @endforeach

@@ -1,4 +1,4 @@
-<nav class="md:bg-transparent bg-[rgb(255,153,0,0.7)] font-poppins transition-all">
+<nav class="md:bg-transparent  font-poppins transition-all">
      <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto xl:p-4 py-4 px-6">
         <a href="{{ route('home') }}" class="flex items-center space-x-3 rtl:space-x-reverse hover:scale-105 duration-100 fill-black">
              <img width="180px" src="{{ asset('asset/img/manga.png') }}" alt="">

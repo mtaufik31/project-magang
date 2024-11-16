@@ -41,7 +41,11 @@
                                 <div
                                     class="w-[210px] flex justify-between items-center px-4 py-2 bg-gray-200 rounded-lg shadow">
                                     <span class="mr-2 text-gray-500">Status</span>
-                                    <span class="font-medium text-orange-600 uppercase">{{ $manga->status }}</span>
+                                    <span
+                                        class="font-medium uppercase px-2 py-1 rounded
+                                        {{ $manga->status === 'ongoing' ? 'text-orange-600' : ($manga->status === 'complete' ? 'text-green-600 ' : 'text-gray-500 ') }}">
+                                        {{ $manga->status }}
+                                    </span>
                                 </div>
                                 <div
                                     class="w-[210px] flex justify-between items-center px-4 py-2 bg-gray-200 rounded-lg shadow">

@@ -17,13 +17,16 @@ class cardmanga extends Component
     public $author;
     public $description;
 
-    public function __construct($id ,$title, $author, $description, $image)
+    public $status;
+
+    public function __construct($id ,$title, $author, $description, $image, $status)
     {
         $this->id = $id;
         $this->title = $title;
         $this->author = $author;
         $this->description = $description;
         $this->image = $image;
+        $this->status = $status;
     }
 
     /**

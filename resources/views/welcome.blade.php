@@ -60,7 +60,6 @@
                     See More
                 </a>
             </div>
-
             <style>
                 @keyframes shine {
                     0% {
@@ -94,9 +93,15 @@
                 <div class="flex gap-4 py-6">
                     <!-- Card 1 -->
                     @foreach ($mangas as $manga)
-                        <x-cardmanga :manga="$manga" id="{{ $manga->id }}" title="{{ $manga->title }}"
-                            author="{{ $manga->author }}" :description="$manga->description"
-                            image="{{ asset('storage/' . $manga->image) }}"></x-cardmanga>
+                        <x-cardmanga
+                            :manga="$manga"
+                            id="{{ $manga->id }}"
+                            status="{{ $manga->status }}"
+                            title="{{ $manga->title }}"
+                            author="{{ $manga->author }}"
+                            :description="$manga->description"
+                            image="{{ asset('storage/' . $manga->image) }}">
+                        </x-cardmanga>
                     @endforeach
 
                     <!-- Tambahan Card jika diperlukan -->

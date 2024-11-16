@@ -38,11 +38,8 @@ class MangaSwiperController extends Controller
             'order' => 'nullable|integer|min:1'
         ]);
 
-        // Mendapatkan manga berdasarkan ID
         $manga = Manga::findOrFail($request->manga_id);
 
-        // Pastikan deskripsi manga tersedia dan panjangnya <= 230 karakter
-        // Perbaikan
         if (!isset($manga->description) || strlen($manga->description) < 230) {
             return redirect()->route('swiper.list')
                 ->with('error', 'Manga harus memiliki deskripsi minimal 230 karakter.');

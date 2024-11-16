@@ -37,11 +37,11 @@
                 : $description !!}</p>
 
             <!-- Genre Tags -->
-            <div class="space-x-1 flex-wrap  mb-6 hidden md:block">
+            <div class="space-x-1 flex-wrap mb-6 hidden md:block">
                 @foreach ($genres as $genre)
                     <a href="{{ route('genre.sort', $genre->id) }}">
                         <span
-                            class="px-3 md:px-4 py-1 text-xs md:text-sm rounded-md bg-transparent cursor-pointer hover:bg-orange-600/50 border hover:orange-orange-400">
+                            class="px-3 md:px-4 py-1 text-xs md:text-sm rounded-md bg-transparent cursor-pointer hover:bg-orange-600/50 border hover:orange-orange-400 ">
                             {{ $genre->title }}
                         </span>
                     </a>
