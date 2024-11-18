@@ -16,7 +16,7 @@
             <div class="flex flex-wrap py-5 gap-8 md:gap-6 justify-center md:justify-start">
                 <!-- Display each manga in a card -->
                 @forelse ($mangas as $manga)
-                    <x-cardmanga id="{{ $manga->id }}" title="{{ $manga->title }}" author="{{ $manga->author }}"
+                    <x-cardmanga id="{{ $manga->id }}" status="{{ $manga->status }}" title="{{ $manga->title }}" author="{{ $manga->author }}"
                         description="{{ $manga->description }}" image="{{ asset('storage/' . $manga->image) }}">
                     </x-cardmanga>
                 @empty

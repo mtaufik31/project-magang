@@ -16,7 +16,6 @@ class cardmanga extends Component
     public $title;
     public $author;
     public $description;
-
     public $status;
 
     public function __construct($id ,$title, $author, $description, $image, $status)

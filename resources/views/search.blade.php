@@ -15,7 +15,7 @@
                     <!-- Display each manga in a card -->
                     @forelse ($mangas as $manga)
                         <x-cardmanga id="{{ $manga->id }}" title="{{ $manga->title }}" author="{{ $manga->author }}"
-                            description="{{ $manga->description }}" image="{{ asset('storage/' . $manga->image) }}">
+                            status="{{ $manga->status }}" description="{{ $manga->description }}" image="{{ asset('storage/' . $manga->image) }}">
                         </x-cardmanga>
                     @empty
                         <div class="justify-center mx-auto">

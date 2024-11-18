@@ -74,8 +74,7 @@
             });
         });
     });
-    </script>
-
+</script>
 @endsection
 
 @section('script')
