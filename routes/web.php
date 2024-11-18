@@ -62,7 +62,7 @@ Route::get('blog/{id}', action: function ($id) {
 
 Route::get('list', function () {
 
-    $mangas = Manga::latest()->paginate();
+    $mangas = Manga::latest()->paginate(4);
 
     return view('list', array('title' => 'MangaLo | List', 'mangas' => $mangas));
 })->name('list');

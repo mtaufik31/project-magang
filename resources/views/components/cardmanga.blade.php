@@ -1,7 +1,7 @@
 <a href="{{ route('manga', $id) }}" class="block text-center font-fira">
     <div class="w-[140px] h-[230px] mx-auto relative group rounded-b-md box-manga mb-1">
         <span
-            class="absolute top-0 left-0 text-white text-[8px] font-medium capitalize px-2 py-1 rounded-br-xl z-[2] font-inter
+            class="absolute top-0 left-0 text-white text-[8px] font-medium capitalize px-2 py-1 rounded-br-md z-[2] font-inter
             {{ $status === 'ongoing' ? 'bg-orange-600' : ($status === 'complete' ? 'bg-green-600' : 'bg-gray-400') }}">
             {{ $status }}
         </span>
