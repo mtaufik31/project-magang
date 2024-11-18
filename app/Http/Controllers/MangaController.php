@@ -20,9 +20,24 @@ class MangaController extends Controller
 
     public function sort(Request $request)
     {
-        $sort = $request->query('sort', 'latest'); // Default sort is latest
+        $genres = Genre::all(); // Ambil data genre dari database
+        $sort = $request->query('sort', 'latest'); // Default sorting
+
         $query = Manga::query();
 
+        // Filter berdasarkan genres (JSON)
+        if ($request->has('genre') && $request->genre !== null) {
+            $selectedGenres = $request->genre; // Ambil array genre dari request
+            $query->where(function ($q) use ($selectedGenres) {
+                foreach ($selectedGenres as $genreId) {
+                    // Cek JSON untuk setiap genre yang dipilih
+                    $q->orWhereJsonContains('genre', $genreId);
+                }
+            });
+        }
+
+
+        // Apply sorting
         switch ($sort) {
             case 'latest':
                 $query->orderBy('created_at', 'desc');
@@ -33,12 +48,12 @@ class MangaController extends Controller
             case 'z-a':
                 $query->orderBy('title', 'desc');
                 break;
-            case 'populer':
-                $query->orderBy('views', 'desc');
+            case 'oldest':
+                $query->orderBy('created_at', 'asc');
                 break;
         }
 
-        $mangas = $query->get();
+        $mangas = $query->paginate(10); // Paginate hasil query
 
         if ($request->ajax()) {
             return view('partials.manga-list', compact('mangas'))->render();
@@ -47,9 +62,12 @@ class MangaController extends Controller
         return view('list', [
             'title' => 'MangaLo | List',
             'mangas' => $mangas,
-            'sort' => $sort
+            'genres' => $genres,
+            'sort' => $sort,
+            'selectedGenres' => $request->genre ?? [] // Kirim genre yang dipilih ke view
         ]);
     }
+
 
     public function create()
     {
