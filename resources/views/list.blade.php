@@ -3,12 +3,21 @@
 @section('content')
     <section class="py-5">
         <div class="bg-slate-100 md:w-[65%] md:ps-4 md:pe-4 mx-auto relative shadow-xl">
-            <div class="flex flex-wrap items-center justify-between">
-                <h1 class="font-fira text-[24px] md:px-0 pt-3 pb-2 px-6">Manga List</h1>
+            <div class="flex  items-center md:justify-start justify-center">
+                <h1 class="font-fira text-[24px] md:px-0 pt-3 pb-2 px-6 font-medium">Manga List</h1>
+            </div>
+            <div class="flex justify-center pb-3 md:hidden ">
+                <a href="{{ route('home') }}">
+                    <h2 class="duration-100 hover:text-orange-400 hover:underline"> Home</h2>
+                </a>
+                <p class="px-2"> &raquo; </p>
+                <a href="{{ route('list') }}">
+                    <h2 class="duration-100 hover:text-orange-400 hover:underline"> List</h2>
+                </a>
             </div>
             <hr>
 
-            <div class="flex flex-wrap px-6 md:px-0 py-4 gap-5 justify-end">
+            <div class="md:flex md:flex-wrap px-6 py-4 gap-5 justify-end grid grid-cols-2 bg-gradient-to-r from-transparent via-orange-300 to-transparent my-5 md:bg-gradient-to-r md:to-orange-300 md:px-3">
                 <!-- Sort Dropdown -->
                 <div class="relative w-full md:w-auto">
                     <button id="sortDropdown"
@@ -121,9 +130,6 @@
                     </div>
                 </div>
 
-
-
-
                 <form id="filterForm" action="{{ route('list') }}" method="GET" class="w-full md:w-auto">
                     <button type="button" id="applyFilter"
                         class="bg-orange-500 text-white px-6 py-1 text-[16px] rounded-sm hover:bg-orange-600 transition-colors w-full md:w-auto">
@@ -133,88 +139,12 @@
             </div>
 
 
-
             <!-- Manga List Container -->
             <div id="manga-list-container" class="w-full text-center">
-                <div class="flex flex-wrap justify-center gap-8 pb-4 md:gap-6 md:justify-start">
-                    @foreach ($mangas as $manga)
-                        <x-cardmanga id="{{ $manga->id }}" title="{{ $manga->title }}"
-                            status="{{ $manga->status }}" author="{{ $manga->author }}"
-                            description="{{ $manga->description }}" image="{{ asset('storage/' . $manga->image) }}">
-                        </x-cardmanga>
-                    @endforeach
-                </div>
+                @include('partials.manga-list')
             </div>
         </div>
     </section>
-
-    <style>
-        /* Custom checkbox styling */
-        .form-checkbox {
-            appearance: none;
-            padding: 0;
-            print-color-adjust: exact;
-            display: inline-block;
-            vertical-align: middle;
-            background-origin: border-box;
-            user-select: none;
-            flex-shrink: 0;
-            height: 1rem;
-            width: 1rem;
-            color: #ff9900;
-            background-color: #fff;
-            border: 1px solid orange;
-            border-radius: 0.25rem;
-        }
-
-        .form-radio {
-            appearance: none;
-            padding: 0;
-            print-color-adjust: exact;
-            display: inline-block;
-            vertical-align: middle;
-            background-origin: border-box;
-            user-select: none;
-            flex-shrink: 0;
-            height: 1rem;
-            width: 1rem;
-            color: #ff9900;
-            background-color: #fff;
-            border: 1px solid orange;
-            border-radius: 0.25rem;
-        }
-
-        .form-checkbox:checked {
-            background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z'/%3e%3c/svg%3e");
-            background-color: #ff9900;
-            background-position: center;
-            background-repeat: no-repeat;
-            border-color: #ff9900;
-        }
-
-        .form-radio:checked {
-            background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z'/%3e%3c/svg%3e");
-            background-color: #ff9900;
-            background-position: center;
-            background-repeat: no-repeat;
-            border-color: #ff9900;
-        }
-
-        .form-checkbox:focus {
-            outline: none;
-            ring: 2px;
-            ring-offset-2;
-            ring-blue-500;
-        }
-
-        .form-radio:focus {
-            outline: none;
-            ring: 2px;
-            ring-offset-2;
-            ring-blue-500;
-        }
-    </style>
-
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const toggleDropdown = (buttonId, dropdownId) => {
@@ -240,68 +170,115 @@
         });
     </script>
     <script>
-         document.addEventListener('DOMContentLoaded', () => {
-        const applyFilterButton = document.getElementById('applyFilter');
-        const filterForm = document.getElementById('filterForm');
-        const mangaListContainer = document.getElementById('manga-list-container');
+        document.addEventListener('DOMContentLoaded', () => {
+            const applyFilterButton = document.getElementById('applyFilter');
+            const filterForm = document.getElementById('filterForm');
+            const mangaListContainer = document.getElementById('manga-list-container');
 
-        applyFilterButton.addEventListener('click', () => {
-            // Serialize form data
-            const formData = new FormData(filterForm);
-            const queryString = new URLSearchParams(formData).toString();
+            applyFilterButton.addEventListener('click', () => {
+                // Serialize form data
+                const formData = new FormData(filterForm);
+                const queryString = new URLSearchParams(formData).toString();
 
-            // AJAX Request
-            fetch(`{{ route('list') }}?${queryString}`, {
-                headers: {
-                    'X-Requested-With': 'XMLHttpRequest'
-                }
-            })
-                .then(response => response.text())
-                .then(data => {
-                    mangaListContainer.innerHTML = data; // Replace manga list
-                })
-                .catch(error => console.error('Error:', error));
-        });
-
-        // Optional: Reset dropdowns when re-filtering
-        const resetDropdowns = () => {
-            const dropdowns = document.querySelectorAll('.dropdown-content');
-            dropdowns.forEach(dropdown => dropdown.classList.add('hidden'));
-        };
-
-        // Close dropdowns on outside click
-        document.addEventListener('click', (e) => {
-            if (!e.target.closest('.dropdown')) {
-                resetDropdowns();
-            }
-        });
-    });
-    </script>
-    <script>
-        document.getElementById('genreSearch').addEventListener('input', function() {
-            const searchValue = this.value.toLowerCase();
-            const genres = document.querySelectorAll('#genreList .genre-item');
-            const noResults = document.getElementById('noResults');
-            let hasResults = false;
-
-            genres.forEach(function(genre) {
-                const genreText = genre.textContent.toLowerCase();
-                const parentLabel = genre.closest('label');
-
-                if (genreText.includes(searchValue)) {
-                    parentLabel.style.display = ''; // Tampilkan
-                    hasResults = true;
-                } else {
-                    parentLabel.style.display = 'none'; // Sembunyikan
-                }
+                // AJAX Request
+                fetch(`{{ route('list') }}?${queryString}`, {
+                        headers: {
+                            'X-Requested-With': 'XMLHttpRequest'
+                        }
+                    })
+                    .then(response => response.text())
+                    .then(data => {
+                        mangaListContainer.innerHTML = data; // Replace manga list
+                    })
+                    .catch(error => console.error('Error:', error));
             });
 
-            // Tampilkan/hidden logo "No Results"
-            if (hasResults) {
-                noResults.classList.add('hidden');
-            } else {
-                noResults.classList.remove('hidden');
-            }
+            // Optional: Reset dropdowns when re-filtering
+            const resetDropdowns = () => {
+                const dropdowns = document.querySelectorAll('.dropdown-content');
+                dropdowns.forEach(dropdown => dropdown.classList.add('hidden'));
+            };
+
+            // Close dropdowns on outside click
+            document.addEventListener('click', (e) => {
+                if (!e.target.closest('.dropdown')) {
+                    resetDropdowns();
+                }
+            });
+        });
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const mangaListContainer = document.getElementById('manga-list-container');
+
+            // Function untuk load content
+            const loadContent = (url) => {
+                // Tambahkan loading state
+                mangaListContainer.style.opacity = '0.5';
+
+                fetch(url, {
+                        headers: {
+                            'X-Requested-With': 'XMLHttpRequest'
+                        }
+                    })
+                    .then(response => response.text())
+                    .then(data => {
+                        mangaListContainer.innerHTML = data;
+                        mangaListContainer.style.opacity = '1';
+                        // Reinitialize pagination setelah content diupdate
+                        initPaginationLinks();
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        mangaListContainer.style.opacity = '1';
+                    });
+            };
+
+            // Function untuk initialize pagination links
+            const initPaginationLinks = () => {
+                const paginationLinks = document.querySelectorAll('.pagination-wrapper a');
+                paginationLinks.forEach(link => {
+                    link.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        const url = e.target.href;
+
+                        // Update URL tanpa refresh
+                        history.pushState({}, '', url);
+
+                        // Load content
+                        loadContent(url);
+
+                        // Scroll ke atas container
+                        mangaListContainer.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    });
+                });
+            };
+
+            // Initialize pagination pertama kali
+            initPaginationLinks();
+
+            // Handle browser back/forward buttons
+            window.addEventListener('popstate', () => {
+                loadContent(window.location.href);
+            });
+
+            // Modify existing filter form handler
+            const filterForm = document.getElementById('filterForm');
+            const applyFilterButton = document.getElementById('applyFilter');
+
+            applyFilterButton.addEventListener('click', () => {
+                const formData = new FormData(filterForm);
+                const queryString = new URLSearchParams(formData).toString();
+                const url = `${window.location.pathname}?${queryString}`;
+
+                // Update URL tanpa refresh
+                history.pushState({}, '', url);
+
+                // Load content
+                loadContent(url);
+            });
         });
     </script>
 @endsection

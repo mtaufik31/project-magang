@@ -27,10 +27,9 @@ class MangaController extends Controller
 
         // Filter berdasarkan genres (JSON)
         if ($request->has('genre') && $request->genre !== null) {
-            $selectedGenres = $request->genre; // Ambil array genre dari request
+            $selectedGenres = $request->genre;
             $query->where(function ($q) use ($selectedGenres) {
                 foreach ($selectedGenres as $genreId) {
-                    // Cek JSON untuk setiap genre yang dipilih
                     $q->orWhereJsonContains('genre', $genreId);
                 }
             });
@@ -56,7 +55,7 @@ class MangaController extends Controller
                 break;
         }
 
-        $mangas = $query->paginate(12); // Paginate hasil query
+        $mangas = $query->paginate(8);
 
         if ($request->ajax()) {
             return view('partials.manga-list', compact('mangas'))->render();
