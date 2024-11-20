@@ -33,11 +33,11 @@
                 '/Mobile|Android|iP(hone|od)|IEMobile|Windows Phone|Kindle|Silk-Accelerated|(hpw|web)OS|Opera M(obi|ini)/',
                 request()->header('User-Agent'),
             )
-                ? Str::limit($description, 90)
+                ? Str::limit($description, 80)
                 : $description !!}</p>
 
             <!-- Genre Tags -->
-            <div class="space-x-1 flex-wrap mb-6 hidden md:block">
+            <div class="space-x-1 w-3/4 flex-wrap mb-6 hidden md:block">
                 @foreach ($genres as $genre)
                     <a href="{{ route('genre.sort', $genre->id) }}">
                         <span

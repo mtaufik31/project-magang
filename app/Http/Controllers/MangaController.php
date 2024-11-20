@@ -55,7 +55,7 @@ class MangaController extends Controller
                 break;
         }
 
-        $mangas = $query->paginate(8);
+        $mangas = $query->paginate(12);
 
         if ($request->ajax()) {
             return view('partials.manga-list', compact('mangas'))->render();
