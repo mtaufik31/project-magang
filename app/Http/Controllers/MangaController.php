@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\genre;
 use App\Models\Manga;
+use DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -21,6 +22,7 @@ class MangaController extends Controller
     public function sort(Request $request)
     {
         $genres = Genre::all();
+        $years = Manga::select('released_year')->distinct()->orderBy('released_year', 'desc')->pluck('released_year');
         $sort = $request->query('sort', 'latest');
         $status = $request->query('status', '');
         $query = Manga::query();
@@ -35,8 +37,14 @@ class MangaController extends Controller
             });
         }
 
+        // Filter berdasarkan status
         if ($status) {
             $query->where('status', $status);
+        }
+
+        // Filter berdasarkan tahun
+        if ($request->has('released_year') && is_array($request->query('released_year'))) {
+            $query->whereIn('released_year', $request->query('released_year'));
         }
 
         // Apply sorting
@@ -53,9 +61,18 @@ class MangaController extends Controller
             case 'oldest':
                 $query->orderBy('created_at', 'asc');
                 break;
+            case 'year-desc':
+                $query->orderBy('released_year', 'desc');
+                break;
+            case 'year-asc':
+                $query->orderBy('released_year', 'asc');
+                break;
         }
 
         $mangas = $query->paginate(12);
+
+        // Get selected years from request
+        $selectedYears = $request->input('released_year', []);
 
         if ($request->ajax()) {
             return view('partials.manga-list', compact('mangas'))->render();
@@ -65,9 +82,11 @@ class MangaController extends Controller
             'title' => 'MangaLo | List',
             'mangas' => $mangas,
             'genres' => $genres,
+            'years' => $years,
             'sort' => $sort,
             'status' => $status,
-            'selectedGenres' => $request->genre ?? []
+            'selectedGenres' => $request->genre ?? [],
+            'selectedYears' => $selectedYears,
         ]);
     }
 

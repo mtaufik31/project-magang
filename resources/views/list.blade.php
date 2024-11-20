@@ -17,56 +17,86 @@
             </div>
             <hr>
 
-            <div class="relative md:flex md:flex-wrap px-6 py-4 gap-5 justify-end grid grid-cols-2 bg-gradient-to-r from-transparent via-orange-300 to-transparent my-5 md:bg-gradient-to-r md:to-orange-300 rounded-md md:px-10">
-                <!-- Sort Dropdown -->
-                <div class="relative w-full md:w-auto">
-                    <button id="sortDropdown"
-                        class="flex duration-200 border border-black items-center bg-white rounded-sm hover:bg-gray-200 px-6 md:px-10 py-1 font-fira space-x-2 w-full md:w-auto justify-center">
-                        <h1 class="font-normal font-fira text-[15px] ">Sort</h1>
-                        <i class="fa-solid fa-chevron-down text-[12px]"></i>
-                    </button>
+            <div
+                class="relative px-6 py-4 md:px-10 mb-5 bg-gradient-to-r from-transparent via-orange-400 to-transparent rounded-md">
+                <!-- Main container with grid -->
+                <div class="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-5 gap-3">
+                    <!-- Sort Dropdown -->
+                    <div class="relative w-full lg:w-auto">
+                        <button id="sortDropdown"
+                            class="flex duration-200 border border-black items-center bg-white rounded-sm justify-center hover:bg-gray-100 px-6 md:px-10 py-1 font-fira space-x-2 w-full">
+                            <h1 class="font-normal font-fira text-[15px]">Sort</h1>
+                            <i class="fa-solid fa-chevron-down text-[12px]"></i>
+                        </button>
+                    </div>
 
+                    <!-- Status Dropdown -->
+                    <div class="relative w-full lg:w-auto">
+                        <button id="statusDropdown"
+                            class="flex duration-200 border border-black items-center bg-white rounded-sm justify-center hover:bg-gray-100 px-6 md:px-10 py-1 font-fira space-x-2 w-full">
+                            <h1 class="font-normal font-fira text-[15px]">Status</h1>
+                            <i class="fa-solid fa-chevron-down text-[12px]"></i>
+                        </button>
+                    </div>
+
+                    <!-- Genre Dropdown -->
+                    <div class="relative w-full lg:w-auto">
+                        <button id="genreDropdown"
+                            class="flex duration-200 border border-black items-center bg-white rounded-sm justify-center hover:bg-gray-100 px-6 md:px-10 py-1 font-fira space-x-2 w-full">
+                            <h1 class="font-normal font-fira text-[15px]">Genre</h1>
+                            <i class="fa-solid fa-chevron-down text-[12px]"></i>
+                        </button>
+                    </div>
+
+                    <!-- Year Dropdown -->
+                    <div class="relative w-full lg:w-auto">
+                        <button id="yearDropdown"
+                            class="flex duration-200 border border-black items-center bg-white rounded-sm justify-center hover:bg-gray-100 px-6 md:px-10 py-1 font-fira space-x-2 w-full">
+                            <h1 class="font-normal font-fira text-[15px]">Year</h1>
+                            <i class="fa-solid fa-chevron-down text-[12px]"></i>
+                        </button>
+                    </div>
+
+                    <!-- Search Button -->
+                    <div class="col-span-2 md:col-span-2 lg:col-span-1">
+                        <form id="filterForm" action="{{ route('list') }}" method="GET" class="w-full">
+                            <button type="button" id="applyFilter"
+                                class="bg-orange-500 text-white px-6 py-1 text-[16px] rounded-sm hover:bg-orange-600 transition-colors w-full">
+                                <i class="fa-solid fa-magnifying-glass md:pe-1"></i> Search
+                            </button>
+                        </form>
+                    </div>
                 </div>
+
+                <!-- Your original dropdown content panels -->
                 <div id="sortOptions"
-                    class="absolute top-28 md:top-16 left-0 md:left-auto md:right-0 mt-2 bg-white w-full rounded-md shadow-lg hidden z-50">
-                    <div class="py-2 px-4 grid grid-cols-2 md:grid-cols-4 ">
+                    class="absolute top-36 md:top-16 left-0 md:left-auto md:right-0 mt-2 bg-white w-full rounded-md shadow-lg hidden z-50">
+                    <div class="py-2 px-4 grid grid-cols-2 md:grid-cols-4">
                         <label class="flex items-center hover:bg-gray-100 rounded cursor-pointer p-2">
                             <input type="radio" name="sort" value="latest" form="filterForm"
-                                class="form-radio h-4 w-4 text-blue-600"
-                                {{ request('sort') == 'latest' ? 'checked' : '' }}>
+                                class="form-radio h-4 w-4 text-blue-600" {{ request('sort') == 'latest' ? 'checked' : '' }}>
                             <span class="ml-2 text-gray-700">Latest</span>
                         </label>
                         <label class="flex items-center hover:bg-gray-100 rounded cursor-pointer p-2">
                             <input type="radio" name="sort" value="a-z" form="filterForm"
-                                class="form-radio h-4 w-4 text-blue-600"
-                                {{ request('sort') == 'a-z' ? 'checked' : '' }}>
+                                class="form-radio h-4 w-4 text-blue-600" {{ request('sort') == 'a-z' ? 'checked' : '' }}>
                             <span class="ml-2 text-gray-700">A-Z</span>
                         </label>
                         <label class="flex items-center hover:bg-gray-100 rounded cursor-pointer p-2">
                             <input type="radio" name="sort" value="z-a" form="filterForm"
-                                class="form-radio h-4 w-4 text-blue-600"
-                                {{ request('sort') == 'z-a' ? 'checked' : '' }}>
+                                class="form-radio h-4 w-4 text-blue-600" {{ request('sort') == 'z-a' ? 'checked' : '' }}>
                             <span class="ml-2 text-gray-700">Z-A</span>
                         </label>
                         <label class="flex items-center hover:bg-gray-100 rounded cursor-pointer p-2">
                             <input type="radio" name="sort" value="oldest" form="filterForm"
-                                class="form-radio h-4 w-4 text-blue-600"
-                                {{ request('sort') == 'oldest' ? 'checked' : '' }}>
+                                class="form-radio h-4 w-4 text-blue-600" {{ request('sort') == 'oldest' ? 'checked' : '' }}>
                             <span class="ml-2 text-gray-700">Oldest</span>
                         </label>
                     </div>
                 </div>
 
-                <!-- Status Dropdown -->
-                <div class="relative w-full md:w-auto">
-                    <button id="statusDropdown"
-                        class="flex duration-200  border border-black items-center bg-white rounded-sm hover:bg-gray-200 px-6 py-1 md:px-8 font-fira space-x-2 w-full md:w-auto justify-center">
-                        <h1 class="font-normal font-fira text-[15px]">Status</h1>
-                        <i class="fa-solid fa-chevron-down text-[12px]"></i>
-                    </button>
-                </div>
                 <div id="statusOptions"
-                    class="absolute top-28 md:top-16 left-0 md:left-auto md:right-0 mt-2 w-full md:w-auto bg-white min-w-full rounded-md shadow-lg hidden z-50">
+                    class="absolute top-36 md:top-16 left-0 md:left-auto md:right-0 mt-2 w-full md:w-auto bg-white min-w-full rounded-md shadow-lg hidden z-50">
                     <div class="py-2 px-4 grid grid-cols-2 md:grid-cols-4 justify-center">
                         <label class="flex items-center hover:bg-gray-100 rounded cursor-pointer p-2">
                             <input type="radio" name="status" value="" form="filterForm"
@@ -88,26 +118,9 @@
                     </div>
                 </div>
 
-                <!-- Genre Dropdown -->
-                <div class="relative w-full md:w-auto">
-                    <button id="genreDropdown"
-                        class="flex  duration-200 border border-black items-center bg-white rounded-sm justify-center hover:bg-gray-100 px-6 md:px-14 py-1 font-fira space-x-2 w-full md:w-auto">
-                        <h1 class="font-normal font-fira text-[15px]">Genre</h1>
-                        <i class="fa-solid fa-chevron-down text-[12px]"></i>
-                    </button>
-                </div>
                 <div id="genreOptions"
-                    class="absolute top-28 md:top-16 left-0 md:left-auto md:right-0 mt-2 bg-white min-w-full rounded-md shadow-lg hidden z-50">
-                    <!-- Search bar -->
-                    <div class="p-2">
-                        <input type="text" id="genreSearch"
-                            class="w-full border border-gray-300 rounded-sm px-2 py-1 text-sm focus:outline-none focus:ring-1 focus:ring-orange-500"
-                            placeholder="Search genre...">
-                    </div>
-
-                    <!-- Genre list -->
-                    <div id="genreList"
-                        class="grid grid-cols-2 md:grid-cols-4 gap-1 px-4 pb-4 max-h-60 overflow-y-auto">
+                    class="absolute top-36 md:top-16 left-0 md:left-auto md:right-0 mt-2 bg-white min-w-full rounded-md shadow-lg hidden z-50">
+                    <div id="genreList" class="grid grid-cols-2 md:grid-cols-4 gap-1 px-4 py-3 max-h-60 overflow-y-auto">
                         @foreach ($genres as $genre)
                             <label class="flex items-center hover:bg-gray-100 rounded cursor-pointer py-1 px-2">
                                 <input type="checkbox" name="genre[]" value="{{ $genre->id }}" form="filterForm"
@@ -117,26 +130,21 @@
                             </label>
                         @endforeach
                     </div>
-
-                    <!-- No results icon -->
-                    <div id="noResults" class="hidden flex flex-col items-center justify-center pb-4 px-4">
-                        <script src="https://cdn.lordicon.com/lordicon.js"></script>
-                        <lord-icon src="https://cdn.lordicon.com/wjyqkiew.json" trigger="loop"
-                            colors="primary:#121331,secondary:#eeaa66" style="width:80px;height:80px">
-                        </lord-icon>
-                        <p class="text-gray-500 text-sm mt-2">No genres found.</p>
-                    </div>
                 </div>
 
-                
-
-
-                <form id="filterForm" action="{{ route('list') }}" method="GET" class="w-full md:w-auto">
-                    <button type="button" id="applyFilter"
-                        class="bg-orange-500 text-white px-6 py-1 text-[16px] rounded-sm hover:bg-orange-600 transition-colors w-full md:w-auto">
-                        <i class="fa-solid fa-magnifying-glass md:pe-1"></i> Search
-                    </button>
-                </form>
+                <div id="yearOptions"
+                    class="absolute top-36 md:top-16 left-0 md:left-auto md:right-0 mt-2 bg-white min-w-full rounded-md shadow-lg hidden z-50">
+                    <div class="py-3 px-4 grid grid-cols-2 md:grid-cols-4 gap-1 max-h-60 overflow-y-auto">
+                        @foreach ($years as $year)
+                            <label class="flex items-center hover:bg-gray-100 rounded cursor-pointer py-1 px-2">
+                                <input type="checkbox" name="year[]" value="{{ $year }}" form="filterForm"
+                                    class="form-checkbox h-4 w-4 text-blue-600"
+                                    {{ in_array($year, $selectedYears ?? []) ? 'checked' : '' }}>
+                                <span class="ml-2 text-gray-700">{{ $year }}</span>
+                            </label>
+                        @endforeach
+                    </div>
+                </div>
             </div>
 
 
@@ -146,6 +154,7 @@
             </div>
         </div>
     </section>
+
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const toggleDropdown = (buttonId, dropdownId) => {
@@ -168,53 +177,17 @@
             toggleDropdown('sortDropdown', 'sortOptions');
             toggleDropdown('genreDropdown', 'genreOptions');
             toggleDropdown('statusDropdown', 'statusOptions');
+            toggleDropdown('yearDropdown', 'yearOptions');
         });
     </script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            const applyFilterButton = document.getElementById('applyFilter');
+            const mangaListContainer = document.getElementById('manga-list-container');
             const filterForm = document.getElementById('filterForm');
-            const mangaListContainer = document.getElementById('manga-list-container');
+            const applyFilterButton = document.getElementById('applyFilter');
+            const sortSelect = document.getElementById('sort'); // Tambahkan ini untuk select sorting
 
-            applyFilterButton.addEventListener('click', () => {
-                // Serialize form data
-                const formData = new FormData(filterForm);
-                const queryString = new URLSearchParams(formData).toString();
-
-                // AJAX Request
-                fetch(`{{ route('list') }}?${queryString}`, {
-                        headers: {
-                            'X-Requested-With': 'XMLHttpRequest'
-                        }
-                    })
-                    .then(response => response.text())
-                    .then(data => {
-                        mangaListContainer.innerHTML = data; // Replace manga list
-                    })
-                    .catch(error => console.error('Error:', error));
-            });
-
-            // Optional: Reset dropdowns when re-filtering
-            const resetDropdowns = () => {
-                const dropdowns = document.querySelectorAll('.dropdown-content');
-                dropdowns.forEach(dropdown => dropdown.classList.add('hidden'));
-            };
-
-            // Close dropdowns on outside click
-            document.addEventListener('click', (e) => {
-                if (!e.target.closest('.dropdown')) {
-                    resetDropdowns();
-                }
-            });
-        });
-    </script>
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const mangaListContainer = document.getElementById('manga-list-container');
-
-            // Function untuk load content
             const loadContent = (url) => {
-                // Tambahkan loading state
                 mangaListContainer.style.opacity = '0.5';
 
                 fetch(url, {
@@ -226,7 +199,6 @@
                     .then(data => {
                         mangaListContainer.innerHTML = data;
                         mangaListContainer.style.opacity = '1';
-                        // Reinitialize pagination setelah content diupdate
                         initPaginationLinks();
                     })
                     .catch(error => {
@@ -235,21 +207,14 @@
                     });
             };
 
-            // Function untuk initialize pagination links
             const initPaginationLinks = () => {
                 const paginationLinks = document.querySelectorAll('.pagination-wrapper a');
                 paginationLinks.forEach(link => {
                     link.addEventListener('click', (e) => {
                         e.preventDefault();
                         const url = e.target.href;
-
-                        // Update URL tanpa refresh
                         history.pushState({}, '', url);
-
-                        // Load content
                         loadContent(url);
-
-                        // Scroll ke atas container
                         mangaListContainer.scrollIntoView({
                             behavior: 'smooth'
                         });
@@ -257,28 +222,50 @@
                 });
             };
 
-            // Initialize pagination pertama kali
+            // Initialize pagination
             initPaginationLinks();
 
-            // Handle browser back/forward buttons
+            // Handle browser back/forward
             window.addEventListener('popstate', () => {
                 loadContent(window.location.href);
             });
 
-            // Modify existing filter form handler
-            const filterForm = document.getElementById('filterForm');
-            const applyFilterButton = document.getElementById('applyFilter');
+            // Handle sorting change
+            if (sortSelect) {
+                sortSelect.addEventListener('change', () => {
+                    applyFilterButton.click(); // Trigger filter application when sorting changes
+                });
+            }
 
+            // Handle filter application
             applyFilterButton.addEventListener('click', () => {
                 const formData = new FormData(filterForm);
+
+                // Get all checked year checkboxes
+                const yearCheckboxes = document.querySelectorAll('input[name="year[]"]:checked');
+                formData.delete('year[]'); // Clear existing year data
+                yearCheckboxes.forEach(checkbox => {
+                    formData.append('released_year[]', checkbox.value);
+                });
+
                 const queryString = new URLSearchParams(formData).toString();
                 const url = `${window.location.pathname}?${queryString}`;
 
-                // Update URL tanpa refresh
                 history.pushState({}, '', url);
-
-                // Load content
                 loadContent(url);
+            });
+
+            // Reset dropdowns
+            const resetDropdowns = () => {
+                const dropdowns = document.querySelectorAll('.dropdown-content');
+                dropdowns.forEach(dropdown => dropdown.classList.add('hidden'));
+            };
+
+            // Close dropdowns on outside click
+            document.addEventListener('click', (e) => {
+                if (!e.target.closest('.dropdown')) {
+                    resetDropdowns();
+                }
             });
         });
     </script>

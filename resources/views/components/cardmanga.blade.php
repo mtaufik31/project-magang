@@ -5,7 +5,7 @@
             {{ $status === 'ongoing' ? 'bg-orange-600' : ($status === 'complete' ? 'bg-green-600' : 'bg-gray-400') }}">
             {{ $status }}
         </span>
-        <img class="relative object-cover w-full h-full transition-shadow duration-300 rounded-md shadow-none cursor-pointer z-[1] hover:shadow-lg hover:shadow-gray-500" loading="lazy" src="{{ $image }}"
+        <img lazy="loading" class="relative object-cover w-full h-full transition-shadow duration-300 rounded-md shadow-none cursor-pointer z-[1] hover:shadow-lg hover:shadow-gray-500" src="{{ $image }}"
             alt="Jujutsu Kaisen">
         <span class="absolute bottom-0 left-0 w-full px-2 pb-3 text-white transition-all duration-300 manga z-[1]">
             <h3

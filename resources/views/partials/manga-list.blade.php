@@ -2,7 +2,7 @@
     @forelse ($mangas as $manga)
         <x-cardmanga id="{{ $manga->id }}" title="{{ $manga->title }}" status="{{ $manga->status }}"
             author="{{ $manga->author }}" description="{{ $manga->description }}"
-            image="{{ asset('storage/' . $manga->image) }}">
+            lazy="loading" image="{{ asset('storage/' . $manga->image) }}">
         </x-cardmanga>
     @empty
         <div class="w-full text-center text-gray-500 py-4">
