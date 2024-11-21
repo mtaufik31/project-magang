@@ -1,4 +1,4 @@
-{{-- @extends('layout.app')
+@extends('layout.app')
 
 @section('content')
     <section class="py-5">
@@ -272,4 +272,4 @@
 @endsection
 
 @section('script')
-@endsection --}}
+@endsection
