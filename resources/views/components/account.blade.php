@@ -1,4 +1,4 @@
-{{-- <div x-data="{ isOpen: false }" class="relative text-left md:px-5">
+<div x-data="{ isOpen: false }" class="relative text-left md:px-5">
     <div>
         <button type="button" @click="isOpen = !isOpen"
             class="inline-flex w-full self-center justify-center gap-x-1.5 rounded-md px-3 py-2 text-sm font-semibold text-gray-900 hover:text-orange-400 duration-150"
@@ -39,4 +39,4 @@
             @endif
         </div>
     </div>
-</div> --}}
+</div>
