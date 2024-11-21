@@ -82,8 +82,9 @@ Route::get('forgot', function () {
 Route::get('manga/{id}', function ($id) {
 
     $manga = Manga::where('id', '=', $id)->get()->first();
+    $mangas = Manga::inRandomOrder()->take(7)->get();
 
-    return view('manga', ['title' => 'MangaLo | Manga'], compact('manga'));
+    return view('manga', ['title' => 'MangaLo | Manga'], compact('manga', 'mangas'));
 })->name('manga');
 
 Route::get('/search-manga', [MangaController::class, 'search'])->name('search.manga');

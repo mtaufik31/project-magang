@@ -1,4 +1,4 @@
-@extends('layout.app')
+{{-- @extends('layout.app')
 
 @section('content')
     <section class="py-5">
@@ -18,7 +18,7 @@
             <hr>
 
             <div
-                class="relative px-6 py-4 md:px-10 mb-5 bg-gradient-to-r from-transparent via-orange-400 to-transparent rounded-md">
+                class="relative px-6 py-4 md:px-10 mb-5 bg-gradient-to-r from-transparent to-orange-300 rounded-md">
                 <!-- Main container with grid -->
                 <div class="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-5 gap-3">
                     <!-- Sort Dropdown -->
@@ -272,4 +272,4 @@
 @endsection
 
 @section('script')
-@endsection
+@endsection --}}

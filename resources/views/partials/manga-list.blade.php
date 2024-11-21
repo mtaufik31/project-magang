@@ -7,7 +7,7 @@
     @empty
         <div class="w-full text-center text-gray-500 py-4">
             <script src="https://cdn.lordicon.com/lordicon.js"></script>
-            <lord-icon src="https://cdn.lordicon.com/wjyqkiew.json" trigger="loop"
+            <lord-icon lazy="loading" src="https://cdn.lordicon.com/wjyqkiew.json" trigger="loop"
                 colors="primary:#121331,secondary:#eeaa66" style="width:100px;height:100px">
             </lord-icon>
             <p class="text-lg font-semibold">No Mangas Found</p>
