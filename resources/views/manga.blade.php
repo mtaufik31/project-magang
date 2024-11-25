@@ -130,7 +130,7 @@
                 </div>
             </div>
             <div class="pb-4 border-t">
-                <div class="overflow-y-auto" style="max-height: 400px;">
+                <div class="overflow-y-auto" style="max-height: 380px;">
                     <div class="gap-x-4 gap-y-6">
                         <!-- Card 1 -->
                         <div
@@ -247,7 +247,7 @@
             <div class="space-y-4 py-2">
                 @foreach ($mangas as $manga)
                     <a href="{{ route('manga', $manga->id) }}">
-                        <div class="flex items-center space-x-4 py-2 px-4 border-b">
+                        <div class="flex items-center space-x-4 py-2 px-4 border-b hover:bg-slate-100 duration-150">
                             <!-- Gambar Manga -->
                             <img src="{{ asset('storage/' . $manga->image) }}" alt="{{ $manga->title }}"
                                 class="w-16 h-24 object-cover">

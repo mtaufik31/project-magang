@@ -26,6 +26,10 @@ class GenreController extends Controller
         // Query for matching manga based on title, author, description, or other fields.
         $mangas = Manga::whereJsonContains('genre', $id)->get();
 
+        if (!$genre) {
+            abort(404);
+        }
+
         return view('genre', [
             'title' => 'Dashboard | List Manga',
             'mangas' => $mangas,

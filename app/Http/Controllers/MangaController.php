@@ -138,7 +138,6 @@ class MangaController extends Controller
             $title = $originalTitle . " {$counter}";
         }
 
-        // Create and save the Manga with the unique title
         $manga = new Manga($validated);
         $manga->title = $title; // Use the modified title
         $manga->genre = json_encode($genreIds);

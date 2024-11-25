@@ -56,12 +56,13 @@ Route::get('blogs', function () {
 
 Route::get('blog/{id}', action: function ($id) {
     $blog = Blog::where('id', '=', $id)->get()->first();
-
+    if (!$blog) {
+        abort(404);
+    }
     return view('blog', array('title' => 'MangaLo | blog', 'blog' => $blog));
 })->name('blog');
 
 Route::get('list', function () {
-
     $mangas = Manga::latest()->paginate(4);
 
     return view('list', array('title' => 'MangaLo | List', 'mangas' => $mangas));
@@ -80,10 +81,11 @@ Route::get('forgot', function () {
 })->name('forgot');
 
 Route::get('manga/{id}', function ($id) {
-
     $manga = Manga::where('id', '=', $id)->get()->first();
     $mangas = Manga::inRandomOrder()->take(7)->get();
-
+    if (!$manga) {
+        abort(404);
+    }
     return view('manga', ['title' => 'MangaLo | Manga'], compact('manga', 'mangas'));
 })->name('manga');
 
