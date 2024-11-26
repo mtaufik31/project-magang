@@ -60,34 +60,62 @@
                             <h2 class="text-2xl text-[#ff9900] font-semibold mb-2">Sinopsis</h2>
                             <p class="text-gray-700">
                                 {!! $manga->description !!}
-
                             </p>
 
-                            <div class="flex gap-5 pt-5 baris-satu">
-                                <x-statusmanga judul="Released">{{ $manga->released_year }}</x-statusmanga>
-                                <x-statusmanga judul="Author">{{ $manga->author }}</x-statusmanga>
+                            <div class="grid grid-cols-2 md:grid-cols-4 border-gray-300 py-3">
+
+                                <!-- Released -->
+                                <div class="border-b border-r border-gray-300 p-4">
+                                    <h2 class="text-sm text-gray-500 font-medium">Released</h2>
+                                    <span class="text-base">{{ $manga->released_year ?? '-' }}</span>
+                                </div>
+                                <!-- Artist -->
+                                <div class="border-b md:border-r border-gray-300 p-4">
+                                    <h2 class="text-sm text-gray-500 font-medium ">Artist</h2>
+                                    <span class="text-base capitalize">{{ $manga->artist }}</span>
+                                </div>
+                                <!-- Author -->
+                                <div class="border-b border-r border-gray-300 p-4">
+                                    <h2 class="text-sm text-gray-500 font-medium">Author</h2>
+                                    <span class="text-base capitalize">{{ $manga->author }}</span>
+                                </div>
+                                <!-- publisher -->
+                                <div class="border-b border-gray-300 p-4">
+                                    <h2 class="text-sm text-gray-500 font-medium">Publisher</h2>
+                                    <span class="text-base">{{ $manga->publisher }}</span>
+                                </div>
+                                <!-- Posted By -->
+                                <div class="border-b border-r border-gray-300 p-4">
+                                    <h2 class="text-sm text-gray-500 font-medium">Posted By</h2>
+                                    <span class="text-base">{{ $manga->user->name }}</span>
+                                </div>
+                                <!-- Posted On -->
+                                <div class="border-b md:border-r border-gray-300 p-4">
+                                    <h2 class="text-sm text-gray-500 font-medium">Posted On</h2>
+                                    <span class="text-base">
+                                        {{ $manga->created_at->setTimezone('Asia/Jakarta')->format('F d, Y') }}
+                                    </span>
+                                </div>
+                                <!-- Updated On -->
+                                <div class="border-b border-r border-gray-300 p-4">
+                                    <h2 class="text-sm text-gray-500 font-medium">Updated On</h2>
+                                    <span class="text-base">
+                                        {{ $manga->updated_at->setTimezone('Asia/Jakarta')->format('F d, Y') }}
+                                    </span>
+                                </div>
+                                <div class="border-b border-gray-300 p-4">
+                                    <h2 class="text-sm text-gray-500 font-medium">Rating</h2>
+                                    <span class="text-base">
+                                        {{ $manga->rating }}
+                                    </span>
+                                </div>
                             </div>
 
-                            <div class="flex gap-5 pt-3 baris-satu">
-                                <x-statusmanga judul="Artist">{{ $manga->artist }}</x-statusmanga>
-                            </div>
 
-                            <div class="flex gap-5 pt-3 baris-satu ">
-                                <x-statusmanga judul="Publisher">{{ $manga->publisher }}</x-statusmanga>
-                                <x-statusmanga judul="Posted By">{{ $manga->user->name }}</x-statusmanga>
-                            </div>
-                            <div class="flex gap-5 pt-3 baris-satu">
-                                <x-statusmanga judul="Posted On">
-                                    {{ $manga->created_at->setTimezone('Asia/Jakarta')->format('d F, Y ') }}
-                                </x-statusmanga>
-                                <x-statusmanga judul="Updated On">
-                                    {{ $manga->updated_at->setTimezone('Asia/Jakarta')->format('d F, Y ') }}
-                                </x-statusmanga>
-                            </div>
                             <div class="flex pt-3 baris-satu">
-                                <div class="w-1/4 md:w-max">
+                                <div class="">
                                     <h2 class="mb-2 text-[18px]">Genre</h2>
-                                    <div class="flex flex-wrap gap-2">
+                                    <div class="flex flex-wrap gap-4">
                                         @foreach ($manga->getGenre() as $genre)
                                             <x-buttongenre route="{{ route('genre.sort', $genre->id) }}" class="">
                                                 {{ $genre->title }}
@@ -110,22 +138,24 @@
                 <h2 class="text-2xl font-medium font-fira">Chapter Dandadan</h2>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 p-6">
-                <div class="bg-orange-500 text-white rounded-lg py-4 px-6">
+                <a href="" class="bg-orange-500 hover:bg-orange-400 duration-200 text-white rounded-lg py-4 px-6">
                     <h3 class="text-md font-bold">First </h3>
                     <p class="text-lg">Chapter 1</p>
-                </div>
-                <div class="bg-orange-500 text-white rounded-lg py-4 px-6">
+                </a>
+                <a href="" class="bg-orange-500 hover:bg-orange-400 duration-200 text-white rounded-lg py-4 px-6">
                     <h3 class="text-md font-bold">New </h3>
                     <p class="text-lg">Chapter 175</p>
-                </div>
+                </a>
             </div>
             <div class="px-6 py-1 border-t">
                 <div class="flex gap-4 items-center justify-between py-3">
-                    <input type="number"
+                    <input type="text" inputmode="numeric"
                         class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-500 caret-orange-400"
                         placeholder="Search Chapter. Example: 25 or 178" />
                     <a href="#">
-                        <i class="fa-solid fa-sort text-orange-500 hover:text-orange-300 duration-200"></i>
+                        {{-- <i class="fa-solid fa-sort text-orange-500 hover:text-orange-300 duration-200"></i> --}}
+                        <i class="fa-solid fa-arrow-down-9-1 text-orange-500 hover:text-orange-400 duration-200"></i>
+                        <i class="fa-solid fa-arrow-down-1-9 text-orange-500 hover:text-orange-400 duration-200"></i>
                     </a>
                 </div>
             </div>
@@ -142,7 +172,7 @@
         </div>
         <div class="bg-white w-full md:col-span-1 my-5 md:rounded-r-xl shadow-md mx-auto">
             <div class="px-6 py-4 border-b">
-                <h2 class="text-2xl font-medium font-fira">Other Mangas</h2>
+                <h2 class="text-2xl font-medium font-fira">Random Mangas</h2>
             </div>
             <div class="space-y-4 py-2">
                 @foreach ($mangas as $manga)

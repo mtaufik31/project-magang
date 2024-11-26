@@ -46,7 +46,7 @@
 
 
     <section
-        class="bg-[#fec46d] py-3 px-5 rounded-t-xl md:max-w-[97%] xl:max-w-[69%] mt-5 justify-center relative items-center mx-auto lg:block hidden transition-all">
+        class="bg-[#fec46d] py-3 px-5 rounded-t-xl md:max-w-[97%] xl:max-w-[69%] my-5 justify-center relative items-center mx-auto lg:block hidden transition-all">
         <div class="flex justify-between">
             <div class="font-fira text-[18px] self-center space-x-7 ps-10 ">
                 @foreach ($genres as $genre)
@@ -110,35 +110,35 @@
 
             <div class="flex items-center justify-between border-b-2">
                 <h1 class="font-fira text-[24px] pt-5 pb-3 ">Updated Chapter</h1>
-                <a href="#" class="text-sm font-semibold text-purple-600 hover:text-purple-800">VIEW ALL</a>
+                <a href="{{ route('list') }}" class="text-sm font-semibold text-purple-600 hover:text-purple-800">VIEW ALL</a>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 py-3">
-                @for ($i = 1; $i <= 9; $i++)
+                @foreach ($mangas as $manga)
                     <div class="flex sm:justify-normal py-3  border-b-2 duration-200">
-                        <img class="w-[100px] h-auto rounded-md hover:scale-105 duration-200"
-                            src="{{ asset('asset/img/postjjk.jpg') }}">
-                        <div class="px-5 w-full  lg:w-fit">
-                            <a href="" class="font-poppins font-semibold text-lg hover:text-orange-500 duration-200">
-                                Jujutsu Kaisen</a>
+                        <img class="w-[80px] h-auto rounded-md hover:scale-105 duration-200"
+                            src="{{ asset('storage/' . $manga->image) }}" alt="{{ $manga->title }}">
+                        <div class="px-5 w-full lg:w-fit">
+                            <a href="{{ route('manga', $manga->id) }}" class="font-poppins font-medium text-lg hover:text-orange-500 duration-200">
+                                {{ Str::limit( $manga->title, 14, '...') }}</a>
                             <div class="mt-2 space-y-2 flex flex-col w-full font-fira">
-                                <a href="#" class="flex items-center justify-between" >
-                                    <div class="items-center flex group gap-2 duration-200 hover:text-orange-500">
-                                        <i class="fa-solid fa-circle text-[5px] group-hover:text-orange-500 duration-200 text-gray-400"></i>
+                                <a class="flex items-center justify-between" href="#">
+                                    <div class="items-center flex gap-2 hover:">
+                                        <i class="fa-solid fa-circle text-[5px] text-gray-400"></i>
                                         <span>Ch. 12</span>
                                     </div>
                                     <span class="ml-2 text-sm text-gray-700">Aug 1, 2023</span>
                                 </a>
-                                <a href="#" class="flex items-center justify-between" >
-                                    <div class="items-center flex group gap-2 duration-200 hover:text-orange-500">
-                                        <i class="fa-solid fa-circle text-[5px] group-hover:text-orange-500 duration-200 text-gray-400"></i>
+                                <a class="flex items-center justify-between" href="#">
+                                    <div class="items-center flex gap-2">
+                                        <i class="fa-solid fa-circle text-[5px] text-gray-400"></i>
                                         <span>Ch. 12</span>
                                     </div>
                                     <span class="ml-2 text-sm text-gray-700">Aug 1, 2023</span>
                                 </a>
-                                <a href="#" class="flex items-center justify-between" >
-                                    <div class="items-center flex group gap-2 duration-200 hover:text-orange-500">
-                                        <i class="fa-solid fa-circle text-[5px] group-hover:text-orange-500 duration-200 text-gray-400"></i>
+                                <a class="flex items-center justify-between" href="#">
+                                    <div class="items-center flex gap-2">
+                                        <i class="fa-solid fa-circle text-[5px] text-gray-400"></i>
                                         <span>Ch. 12</span>
                                     </div>
                                     <span class="ml-2 text-sm text-gray-700">Aug 1, 2023</span>
@@ -147,34 +147,11 @@
                             </div>
                         </div>
                     </div>
-                @endfor
+                @endforeach
             </div>
 
         </div>
     </section>
-
-    <div class="bg-slate-100 md:max-w-[97%] xl:w-[69%] mx-auto relative ">
-        <div class="px-6 py-4 border-b">
-            <h2 class="text-2xl font-medium font-fira">Other Mangas</h2>
-        </div>
-        <div class="space-y-4 py-2">
-            @foreach ($mangas as $manga)
-                <a href="{{ route('manga', $manga->id) }}">
-                    <div class="flex items-center space-x-4 py-2 px-4 border-b hover:bg-slate-200 duration-150">
-                        <!-- Gambar Manga -->
-                        <img src="{{ asset('storage/' . $manga->image) }}" alt="{{ $manga->title }}"
-                            class="w-16 h-24 object-cover">
-
-                        <!-- Detail Manga -->
-                        <div class="flex-1">
-                            <h3 class="text-base font-medium font-fira">{{ $manga->title }}</h3>
-                            <p class="text-sm text-gray-400">{{ $manga->released_year }}</p>
-                        </div>
-                    </div>
-                </a>
-            @endforeach
-        </div>
-    </div>
 
     <section class="py-10 transition-all">
         <div class="bg-slate-100 md:max-w-[97%] xl:w-[69%] mx-auto relative px-7">
@@ -201,8 +178,6 @@
             </div>
         </div>
     </section>
-
-
 
 
 

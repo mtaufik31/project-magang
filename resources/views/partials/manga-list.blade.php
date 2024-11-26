@@ -16,6 +16,8 @@
 </div>
 
 <hr class="border-2 bg-black">
+
+
 {{-- Pagination --}}
 @if ($mangas->hasPages())
     <div class=" pb-8 pt-5">

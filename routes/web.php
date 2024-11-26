@@ -27,7 +27,7 @@ Route::get('/', function () {
 
     $blogs = Blog::latest()->paginate(4);
 
-    $mangas = Manga::latest()->paginate(8);
+    $mangas = Manga::orderBy('updated_at', 'desc')->paginate(9);
 
     $genres = genre::paginate(6);
 
@@ -63,7 +63,7 @@ Route::get('blog/{id}', action: function ($id) {
 })->name('blog');
 
 Route::get('list', function () {
-    $mangas = Manga::latest()->paginate(4);
+    $mangas = Manga::orderBy('updated_at', 'desc')->paginate(8);
 
     return view('list', array('title' => 'MangaLo | List', 'mangas' => $mangas));
 })->name('list');
@@ -82,7 +82,7 @@ Route::get('forgot', function () {
 
 Route::get('manga/{id}', function ($id) {
     $manga = Manga::where('id', '=', $id)->get()->first();
-    $mangas = Manga::inRandomOrder()->take(7)->get();
+    $mangas = Manga::inRandomOrder()->take(5)->get();
     if (!$manga) {
         abort(404);
     }
