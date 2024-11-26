@@ -2,15 +2,15 @@
 
 @section('content')
     @if (session('success'))
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            Swal.fire({
-                title: "Welcome!",
-                text: "{{ session('success') }}", // Use the session success message here
-                icon: "success"
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                Swal.fire({
+                    title: "Welcome!",
+                    text: "{{ session('success') }}", // Use the session success message here
+                    icon: "success"
+                });
             });
-        });
-    </script>
+        </script>
     @endif
     <div class="flex h-screen bg-cover lg:px-52 lg:py-5 bg-white  md:bg-[#ff9900]">
         <!-- Left Section (Form) -->
@@ -49,10 +49,45 @@
                     </label>
                     <input id="password" required name="password" type="password" placeholder=" "
                         class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-orange-600 peer transition-all ease-in-out" />
+                    <span id="toggle-password" class="absolute top-1/2 right-3 -translate-y-1/2 cursor-pointer hidden">
+                        <i id="eye-icon"
+                            class="fa-regular fa-eye text-gray-400 hover:text-orange-400 transition-all duration-200"></i>
+                    </span>
                     @if ($errors->has('login'))
                         <p class="text-red-500 text-sm mt-1">{{ $errors->first('login') }}</p>
                     @endif
                 </div>
+
+                <script>
+                    document.addEventListener("DOMContentLoaded", () => {
+                        const passwordInput = document.getElementById("password");
+                        const togglePassword = document.getElementById("toggle-password");
+                        const eyeIcon = document.getElementById("eye-icon");
+
+                        // Sembunyikan ikon mata saat halaman dimuat
+                        togglePassword.classList.add("hidden");
+
+                        // Tampilkan/hilangkan ikon mata saat input berubah
+                        passwordInput.addEventListener("input", () => {
+                            if (passwordInput.value.trim() === "") {
+                                togglePassword.classList.add("hidden");
+                            } else {
+                                togglePassword.classList.remove("hidden");
+                            }
+                        });
+
+                        // Toggle password visibility saat ikon diklik
+                        togglePassword.addEventListener("click", () => {
+                            const isPasswordVisible = passwordInput.type === "text";
+                            passwordInput.type = isPasswordVisible ? "password" : "text";
+
+                            // Ganti ikon
+                            eyeIcon.classList.toggle("fa-eye");
+                            eyeIcon.classList.toggle("fa-eye-slash");
+                        });
+                    });
+                </script>
+
 
 
                 <!-- Remember Me and Forgot Password Section -->
@@ -106,6 +141,4 @@
             </div>
         </div>
     </div>
-
-
 @endsection

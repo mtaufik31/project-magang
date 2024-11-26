@@ -13,7 +13,6 @@
                 <input type="hidden" name="token" value="{{ $token }}">
 
                 <!-- Email Field -->
-                <!-- Email Field -->
                 <div class="relative">
                     <label for="email"
                         class="absolute text-sm text-gray-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 transition-all ease-in-out peer-focus:px-2 peer-focus:text-orange-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4">
@@ -32,12 +31,46 @@
                         class="absolute text-sm text-gray-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 transition-all ease-in-out peer-focus:px-2 peer-focus:text-orange-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4">
                         New Password
                     </label>
-                    <input id="password" name="password" type="password" placeholder=" "
+                    <input id="password" name="password" type="password" placeholder="" required
                         class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-orange-600 peer transition-all ease-in-out" />
+                        <span id="toggle-password" class="absolute top-1/2 right-3 -translate-y-1/2 cursor-pointer hidden">
+                            <i id="eye-icon"
+                                class="fa-regular fa-eye text-gray-400 hover:text-orange-400 transition-all duration-200"></i>
+                        </span>
                     @if ($errors->has('password'))
                         <p class="text-red-500 text-sm mt-1">{{ $errors->first('password') }}</p>
                     @endif
                 </div>
+
+                <script>
+                    document.addEventListener("DOMContentLoaded", () => {
+                        const passwordInput = document.getElementById("password");
+                        const togglePassword = document.getElementById("toggle-password");
+                        const eyeIcon = document.getElementById("eye-icon");
+
+                        // Sembunyikan ikon mata saat halaman dimuat
+                        togglePassword.classList.add("hidden");
+
+                        // Tampilkan/hilangkan ikon mata saat input berubah
+                        passwordInput.addEventListener("input", () => {
+                            if (passwordInput.value.trim() === "") {
+                                togglePassword.classList.add("hidden");
+                            } else {
+                                togglePassword.classList.remove("hidden");
+                            }
+                        });
+
+                        // Toggle password visibility saat ikon diklik
+                        togglePassword.addEventListener("click", () => {
+                            const isPasswordVisible = passwordInput.type === "text";
+                            passwordInput.type = isPasswordVisible ? "password" : "text";
+
+                            // Ganti ikon
+                            eyeIcon.classList.toggle("fa-eye");
+                            eyeIcon.classList.toggle("fa-eye-slash");
+                        });
+                    });
+                </script>
 
                 <!-- Confirm New Password Field -->
                 <div class="relative mt-6">
@@ -45,8 +78,12 @@
                         class="absolute text-sm text-gray-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 transition-all ease-in-out peer-focus:px-2 peer-focus:text-orange-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4">
                         Confirm New Password
                     </label>
-                    <input id="password_confirmation" name="password_confirmation" type="password" placeholder=" "
+                    <input required id="password_confirmation" name="password_confirmation" type="password" placeholder=" "
                         class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-orange-600 peer transition-all ease-in-out" />
+                        <span id="toggle-password" class="absolute top-1/2 right-3 -translate-y-1/2 cursor-pointer hidden">
+                            <i id="eye-icon"
+                                class="fa-regular fa-eye text-gray-400 hover:text-orange-400 transition-all duration-200"></i>
+                        </span>
                 </div>
 
 

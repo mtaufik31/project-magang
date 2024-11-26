@@ -30,10 +30,10 @@
                         <p class="mb-2 text-center text-slate-600 md:text-left">{{ $manga->alternative }} </p>
                     </div>
 
-                    <!-- Flex container for isi-kiri and isi-kanan -->
+                    <!-- isi-kiri and isi-kanan -->
                     <div class="flex flex-col md:flex-row md:pt-5 ">
 
-                        <!-- Left Section: Image and Info -->
+                        <!-- Left Section -->
                         <div class="flex flex-col items-center isi-kiri md:items-start">
                             <img class="w-[210px] h-[310px] mb-4 shadow-xl" src="{{ asset('storage/' . $manga->image) }}"
                                 alt="">
@@ -55,7 +55,7 @@
                             </div>
                         </div>
 
-                        <!-- Right Section: Synopsis -->
+                        <!-- Right Section -->
                         <div class="w-full mt-8 isi-kanan md:ml-10 md:mt-0">
                             <h2 class="text-2xl text-[#ff9900] font-semibold mb-2">Sinopsis</h2>
                             <p class="text-gray-700">
@@ -63,18 +63,15 @@
 
                             </p>
 
-                            <!-- Released and Author Section -->
                             <div class="flex gap-5 pt-5 baris-satu">
                                 <x-statusmanga judul="Released">{{ $manga->released_year }}</x-statusmanga>
                                 <x-statusmanga judul="Author">{{ $manga->author }}</x-statusmanga>
                             </div>
 
-                            <!-- Artist Section -->
                             <div class="flex gap-5 pt-3 baris-satu">
                                 <x-statusmanga judul="Artist">{{ $manga->artist }}</x-statusmanga>
                             </div>
 
-                            <!-- Publisher and Another Released Section -->
                             <div class="flex gap-5 pt-3 baris-satu ">
                                 <x-statusmanga judul="Publisher">{{ $manga->publisher }}</x-statusmanga>
                                 <x-statusmanga judul="Posted By">{{ $manga->user->name }}</x-statusmanga>
@@ -123,124 +120,27 @@
                 </div>
             </div>
             <div class="px-6 py-1 border-t">
-                <div class="flex items-center justify-between py-3">
+                <div class="flex gap-4 items-center justify-between py-3">
                     <input type="number"
                         class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-500 caret-orange-400"
                         placeholder="Search Chapter. Example: 25 or 178" />
+                    <a href="#">
+                        <i class="fa-solid fa-sort text-orange-500 hover:text-orange-300 duration-200"></i>
+                    </a>
                 </div>
             </div>
             <div class="pb-4 border-t">
                 <div class="overflow-y-auto" style="max-height: 380px;">
                     <div class="gap-x-4 gap-y-6">
                         <!-- Card 1 -->
-                        <div
-                            class="group relative flex items-center justify-between px-5 hover:bg-slate-100 duration-200 rounded-md cursor-pointer border-b">
-                            <div class="flex py-2 gap-4 w-full">
-                                <!-- Gambar -->
-                                <img src="{{ asset('asset/img/logo.jpeg') }}" alt="Chapter Image"
-                                    class="w-36 h-28 object-cover transition-all duration-200 group-hover:-translate-x-2">
-                                <!-- Detail Chapter -->
-                                <div class="flex flex-col justify-between">
-                                    <div>
-                                        <h3 class="text-xl font-semibold group-hover:text-orange-400">#003</h3>
-                                        <p class="text-gray-700 font-roboto group-hover:text-gray-900">Chapter 3: Maron, Out
-                                            of Breath!</p>
-                                    </div>
-                                    <p class="text-sm font-inter text-gray-500">Nov 6, 2024</p>
-                                </div>
-                            </div>
-                            <!-- Icon Mata -->
-                            <i
-                                class="fa-regular fa-eye text-gray-400 group-hover:text-orange-400 transition-all duration-200 ml-auto"></i>
-                        </div>
-                        <div
-                            class="group relative flex items-center justify-between px-5 hover:bg-slate-100 duration-200 rounded-md cursor-pointer border-b">
-                            <div class="flex py-2 gap-4 w-full">
-                                <!-- Gambar -->
-                                <img src="{{ asset('asset/img/logo.jpeg') }}" alt="Chapter Image"
-                                    class="w-36 h-28 object-cover transition-all duration-200 group-hover:-translate-x-2">
-                                <!-- Detail Chapter -->
-                                <div class="flex flex-col justify-between">
-                                    <div>
-                                        <h3 class="text-xl font-semibold group-hover:text-orange-400">#003</h3>
-                                        <p class="text-gray-700 font-roboto group-hover:text-gray-900">Chapter 3: Maron, Out
-                                            of Breath!</p>
-                                    </div>
-                                    <p class="text-sm font-inter text-gray-500">Nov 6, 2024</p>
-                                </div>
-                            </div>
-                            <!-- Icon Mata -->
-                            <i
-                                class="fa-regular fa-eye text-gray-400 group-hover:text-orange-400 transition-all duration-200 ml-auto"></i>
-                        </div>
-                        <div
-                            class="group relative flex items-center justify-between px-5 hover:bg-slate-100 duration-200 rounded-md cursor-pointer border-b">
-                            <div class="flex py-2 gap-4 w-full">
-                                <!-- Gambar -->
-                                <img src="{{ asset('asset/img/logo.jpeg') }}" alt="Chapter Image"
-                                    class="w-36 h-28 object-cover transition-all duration-200 group-hover:-translate-x-2">
-                                <!-- Detail Chapter -->
-                                <div class="flex flex-col justify-between">
-                                    <div>
-                                        <h3 class="text-xl font-semibold group-hover:text-orange-400">#003</h3>
-                                        <p class="text-gray-700 font-roboto group-hover:text-gray-900">Chapter 3: Maron, Out
-                                            of Breath!</p>
-                                    </div>
-                                    <p class="text-sm font-inter text-gray-500">Nov 6, 2024</p>
-                                </div>
-                            </div>
-                            <!-- Icon Mata -->
-                            <i
-                                class="fa-regular fa-eye text-gray-400 group-hover:text-orange-400 transition-all duration-200 ml-auto"></i>
-                        </div>
-                        <div
-                            class="group relative flex items-center justify-between px-5 hover:bg-slate-100 duration-200 rounded-md cursor-pointer border-b">
-                            <div class="flex py-2 gap-4 w-full">
-                                <!-- Gambar -->
-                                <img src="{{ asset('asset/img/logo.jpeg') }}" alt="Chapter Image"
-                                    class="w-36 h-28 object-cover transition-all duration-200 group-hover:-translate-x-2">
-                                <!-- Detail Chapter -->
-                                <div class="flex flex-col justify-between">
-                                    <div>
-                                        <h3 class="text-xl font-semibold group-hover:text-orange-400">#003</h3>
-                                        <p class="text-gray-700 font-roboto group-hover:text-gray-900">Chapter 3: Maron, Out
-                                            of Breath!</p>
-                                    </div>
-                                    <p class="text-sm font-inter text-gray-500">Nov 6, 2024</p>
-                                </div>
-                            </div>
-                            <!-- Icon Mata -->
-                            <i
-                                class="fa-regular fa-eye text-gray-400 group-hover:text-orange-400 transition-all duration-200 ml-auto"></i>
-                        </div>
-                        <div
-                            class="group relative flex items-center justify-between px-5 hover:bg-slate-100 duration-200 rounded-md cursor-pointer border-b">
-                            <div class="flex py-2 gap-4 w-full">
-                                <!-- Gambar -->
-                                <img src="{{ asset('asset/img/logo.jpeg') }}" alt="Chapter Image"
-                                    class="w-36 h-28 object-cover transition-all duration-200 group-hover:-translate-x-2">
-                                <!-- Detail Chapter -->
-                                <div class="flex flex-col justify-between">
-                                    <div>
-                                        <h3 class="text-xl font-semibold group-hover:text-orange-400">#003</h3>
-                                        <p class="text-gray-700 font-roboto group-hover:text-gray-900">Chapter 3: Maron, Out
-                                            of Breath!</p>
-                                    </div>
-                                    <p class="text-sm font-inter text-gray-500">Nov 6, 2024</p>
-                                </div>
-                            </div>
-                            <!-- Icon Mata -->
-                            <i
-                                class="fa-regular fa-eye text-gray-400 group-hover:text-orange-400 transition-all duration-200 ml-auto"></i>
-                        </div>
-                        <!-- Tambahkan card lainnya dengan format serupa -->
+                        <x-cardchapter></x-cardchapter>
                     </div>
                 </div>
             </div>
 
 
         </div>
-        <div class="bg-white w-full md:col-span-1  my-5  md:rounded-r-xl shadow-md mx-auto ">
+        <div class="bg-white w-full md:col-span-1 my-5 md:rounded-r-xl shadow-md mx-auto">
             <div class="px-6 py-4 border-b">
                 <h2 class="text-2xl font-medium font-fira">Other Mangas</h2>
             </div>
