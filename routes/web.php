@@ -10,6 +10,7 @@ use App\Http\Controllers\GenreController;
 use App\Http\Controllers\StaffController;
 use App\Http\Controllers\MangaController;
 use App\Http\Controllers\MangaSwiperController;
+use App\Http\Controllers\PointController;
 use App\Http\Middleware\Dashboard;
 use App\Models\Blog;
 use App\Models\genre;
@@ -147,6 +148,7 @@ Route::middleware(Dashboard::class)->group(function () {
     Route::get('points', function () {
         return view('points', array('title' => 'MangaLo! | Points'));
     })->name('points');
+
 
     // Blog Routes Group
     Route::controller(BlogController::class)->group(function () {

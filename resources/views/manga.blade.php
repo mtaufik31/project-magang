@@ -21,7 +21,7 @@
     <section>
         <div class="relative z-20 mt-[-200px]">
             <div
-                class="bg-white w-[81%] mx-auto py-5 px-6 my-10 rounded-t-md shadow-lg flex flex-col md:flex-row md:flex-nowrap">
+                class="bg-white w-full md:w-[81%] mx-auto py-5 px-6 my-10 rounded-t-md shadow-lg flex flex-col md:flex-row md:flex-nowrap">
                 <div class="flex flex-col items-center transition-all md:items-start">
                     <div class="w-full judul md:border-b-2">
                         <h1 class="mb-2 text-3xl text-center text-black font-fira md:text-left ">
@@ -132,7 +132,7 @@
     </section>
 
 
-    <div class="grid grid-cols-1 md:grid-cols-3 w-[81%] mx-auto gap-8">
+    <div class="grid grid-cols-1 md:grid-cols-3 w-full md:w-[81%] mx-auto gap-8">
         <div class="bg-white w-full md:col-span-2  md:rounded-l-xl shadow-md my-5">
             <div class="px-6 py-4 border-b">
                 <h2 class="text-2xl font-medium font-fira">Chapter Dandadan</h2>
@@ -163,29 +163,31 @@
                 <div class="overflow-y-auto" style="max-height: 380px;">
                     <div class="gap-x-4 gap-y-6">
                         <!-- Card 1 -->
+                        @for ($i = 1; $i < 100; $i++)
                         <x-cardchapter></x-cardchapter>
+                        @endfor
                     </div>
                 </div>
             </div>
 
 
         </div>
-        <div class="bg-white w-full md:col-span-1 my-5 md:rounded-r-xl shadow-md mx-auto">
-            <div class="px-6 py-4 border-b">
+        <div class="bg-white w-full md:col-span-1 my-5 md:rounded-r-xl shadow-md mx-auto ransition-all">
+            <div class="px-6 py-4 border-b t">
                 <h2 class="text-2xl font-medium font-fira">Random Mangas</h2>
             </div>
             <div class="space-y-4 py-2">
                 @foreach ($mangas as $manga)
                     <a href="{{ route('manga', $manga->id) }}">
-                        <div class="flex items-center space-x-4 py-2 px-4 border-b hover:bg-slate-100 duration-150">
+                        <div class="flex items-center space-x-4 py-2 px-4 border-b hover:bg-gradient-to-r group hover:from-slate-100 hover:to-transparent  duration-200 ">
                             <!-- Gambar Manga -->
                             <img src="{{ asset('storage/' . $manga->image) }}" alt="{{ $manga->title }}"
                                 class="w-16 h-24 object-cover">
 
                             <!-- Detail Manga -->
                             <div class="flex-1">
-                                <h3 class="text-base font-medium font-fira">{{ $manga->title }}</h3>
-                                <p class="text-sm text-gray-400">{{ $manga->released_year }}</p>
+                                <h3 class="text-base font-medium font-fira duration-200 group-hover:text-orange-400">{{ Str::limit($manga->title, 27, '...')  }}</h3>
+                                <p class="text-sm text-gray-400 duration-200 group-hover:text-black">{{ $manga->released_year }}</p>
                             </div>
                         </div>
                     </a>

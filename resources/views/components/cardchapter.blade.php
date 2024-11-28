@@ -1,10 +1,10 @@
 <a href="{{ route('chapter') }}">
     <div
-        class="group relative flex items-center justify-between px-5 hover:bg-slate-100 duration-200 rounded-md cursor-pointer border-b">
-        <div class="flex py-2 gap-4 w-full">
+        class="group relative flex items-center justify-between md:px-5 hover:bg-slate-100 duration-200 rounded-md cursor-pointer border-b">
+        <div class="flex md:py-2 gap-4 w-full">
             <!-- Gambar -->
             <img src="{{ asset('asset/img/logo.jpeg') }}" alt="Chapter Image"
-                class="w-36 h-28 object-cover transition-all duration-200 group-hover:-translate-x-2">
+                class="md:w-36 md:h-28 w-24 h-24 object-cover transition-all duration-200 md:group-hover:-translate-x-2">
             <!-- Detail Chapter -->
             <div class="flex flex-col justify-between">
                 <div>

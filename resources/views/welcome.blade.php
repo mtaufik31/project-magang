@@ -50,12 +50,12 @@
         <div class="flex justify-between">
             <div class="font-fira text-[18px] self-center space-x-7 ps-10 ">
                 @foreach ($genres as $genre)
-                    <a class="duration-200 hover:text-white"
+                    <a class="duration-300 hover:text-white"
                         href="{{ route('genre.sort', $genre->id) }}">{{ $genre->title }}</a>
                 @endforeach
             </div>
             <div
-                class="relative px-10 py-2 overflow-hidden text-white transition-all duration-300 bg-orange-400 border border-orange-500 rounded-lg shadow- md:max-w-[97%] before:ease before:absolute before:right-0 before:top-0 before:h-24 before:w-5 before:translate-x-12 before:rotate-6 before:bg-slate-100 before:opacity-30 before:duration-700 hover:shadow-orange-400 hover:bg-orange-500 animate-shine">
+                class="relative px-10 py-2 overflow-hidden text-white transition-all duration-300 bg-orange-500 border border-orange-500 rounded-lg shadow- md:max-w-[97%] before:ease before:absolute before:right-0 before:top-0 before:h-24 before:w-5 before:translate-x-12 before:rotate-6 before:bg-white before:opacity-30 before:duration-700 hover:shadow-orange-400 hover:bg-orange-400 animate-shine">
                 <a href="{{ route('list') }}">
                     See More
                 </a>
@@ -80,12 +80,13 @@
     </section>
 
     <section class=" transition-all">
-        <div class="bg-slate-100 md:max-w-[97%] xl:w-[69%] mx-auto relative px-5 transition-all">
+        <div class="bg-white md:max-w-[97%] xl:w-[69%] mx-auto relative px-5 transition-all">
             <div class="flex items-center justify-between">
                 <h1 class="font-fira text-[24px] pt-5 pb-3">Latest Update</h1>
                 <a href="{{ route('list') }}">
                     <i data-feather="arrow-right-circle" class="duration-150 me-5 hover:text-slate-700"></i>
                 </a>
+                <a href="{{ route('list') }}" class="text-sm font-semibold text-white hover:text-white bg-orange-500 py-2 px-4 absolute right-0 hover:rounded-s-xl duration-300 hover:px-5 hover:bg-orange-400 rounded-l-md">Semua Manga</a>
             </div>
 
             <hr>
@@ -106,20 +107,20 @@
     </section>
 
     <section class="transition-all py-10">
-        <div class="bg-slate-100 md:max-w-[97%] xl:w-[69%] mx-auto relative px-7">
+        <div class="bg-white md:max-w-[97%] xl:w-[69%] mx-auto relative px-7">
 
             <div class="flex items-center justify-between border-b-2">
                 <h1 class="font-fira text-[24px] pt-5 pb-3 ">Updated Chapter</h1>
-                <a href="{{ route('list') }}" class="text-sm font-semibold text-purple-600 hover:text-purple-800">VIEW ALL</a>
+                <a href="{{ route('list') }}" class="text-sm font-semibold text-white hover:text-white bg-orange-500 py-2 px-4 absolute right-0 hover:rounded-s-xl duration-300 hover:px-5 hover:bg-orange-400 rounded-l-md">Semua Manga</a>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 py-3">
                 @foreach ($mangas as $manga)
-                    <div class="flex sm:justify-normal py-3  border-b-2 duration-200">
-                        <img class="w-[80px] h-auto rounded-md hover:scale-105 duration-200"
+                    <div class="flex sm:justify-normal py-3  border-b-2 duration-300">
+                        <img class="w-[80px] h-auto rounded-md hover:scale-105 duration-300"
                             src="{{ asset('storage/' . $manga->image) }}" alt="{{ $manga->title }}">
                         <div class="px-5 w-full lg:w-fit">
-                            <a href="{{ route('manga', $manga->id) }}" class="font-poppins font-medium text-lg hover:text-orange-500 duration-200">
+                            <a href="{{ route('manga', $manga->id) }}" class="font-poppins font-medium text-lg hover:text-orange-500 duration-300">
                                 {{ Str::limit( $manga->title, 14, '...') }}</a>
                             <div class="mt-2 space-y-2 flex flex-col w-full font-fira">
                                 <a class="flex items-center justify-between" href="#">
@@ -154,12 +155,10 @@
     </section>
 
     <section class="py-10 transition-all">
-        <div class="bg-slate-100 md:max-w-[97%] xl:w-[69%] mx-auto relative px-7">
+        <div class="bg-white md:max-w-[97%] xl:w-[69%] mx-auto relative px-7">
             <div class="flex items-center justify-between">
                 <h1 class="font-fira text-[24px] pt-5 pb-3">Blog</h1>
-                <a href="{{ route('blogs') }}" class="text-gray-700 hover:text-orange-400">
-                    <i class="fa-solid fa-arrow-right me-5"></i>
-                </a>
+                <a href="{{ route('blogs') }}" class="text-sm font-semibold text-white hover:text-white bg-orange-500 py-2 px-4 absolute right-0 hover:rounded-s-xl duration-300 hover:px-5 hover:bg-orange-400 rounded-l-md">Semua Blog</a>
             </div>
 
             <hr class="mb-5">

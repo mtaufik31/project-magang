@@ -15,9 +15,9 @@
 
     <section>
         <div class="w-full px-5 py-5 mx-auto bg-white shadow-xl rounded-b-xl">
-            <div class="text-3xl font-inter">
+            <div class="text-3xl font-fira">
                 <p>Genre List</p>
-                <p class="text-[14px] ">Jika terjadi kesalahan dalam penginputan genre, silahkan edit atau hapus disini...
+                <p class="text-[14px] italic ">*Jika terjadi kesalahan dalam penginputan genre, silahkan edit atau hapus disini...
                 </p>
             </div>
             <hr class="mb-4">
