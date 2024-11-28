@@ -11,8 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('chapter', function (Blueprint $table) {
+        Schema::create('point', function (Blueprint $table) {
             $table->id();
+            $table->integer('point_amount');
+            $table->decimal('price', 10, 2);
+            $table->string('name');
+            $table->boolean('is_active')->default(true);
             $table->timestamps();
         });
     }
@@ -22,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('chapter');
+        Schema::dropIfExists('points');
     }
 };

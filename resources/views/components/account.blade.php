@@ -15,14 +15,14 @@
         class="hidden absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
         role="menu" aria-orientation="vertical" aria-labelledby="menu-button">
         <div class="py-1" role="none">
-            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-200"
-                role="menuitem">Profile</a>
 
             @if (Auth::check())
                 @if (Auth::user()->role === 'staff' || Auth::user()->role === 'admin')
                     <a href="{{ route('dashboard') }}"
                         class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-200">Dashboard</a>
                 @endif
+                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-200"
+                role="menuitem">Profile</a>
                 <a href="{{ route('logout') }}"
                     onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
                     class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-200">Logout</a>

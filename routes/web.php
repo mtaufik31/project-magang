@@ -80,6 +80,12 @@ Route::get('forgot', function () {
     return view('register.forgot', data: array('title' => 'MangaLo | Forgot'));
 })->name('forgot');
 
+Route::get('chapter', function () {
+    return view('chapter', data: array('title' => 'MangaLo | Chapter'));
+})->name('chapter');
+
+
+
 Route::get('manga/{id}', function ($id) {
     $manga = Manga::where('id', '=', $id)->get()->first();
     $mangas = Manga::inRandomOrder()->take(5)->get();
@@ -137,6 +143,10 @@ Route::middleware(Dashboard::class)->group(function () {
         }
         return redirect()->route('home');
     })->middleware('auth')->name('dashboard');
+
+    Route::get('points', function () {
+        return view('points', array('title' => 'MangaLo! | Points'));
+    })->name('points');
 
     // Blog Routes Group
     Route::controller(BlogController::class)->group(function () {
@@ -215,5 +225,9 @@ Route::middleware(Dashboard::class)->group(function () {
         Route::delete('swiper-delete/{id}', 'destroy')->name('swiper.delete');
         Route::patch('swiper-toggle-active/{id}', 'toggleActive')->name('swiper.toggle');
     });
+
+    Route::get('ChapterCreate', function () {
+        return view('dashboard.chapter.create', array('title' => 'Dashboard | Add Chapter'));
+    })->name('chapter.create');
 
 });

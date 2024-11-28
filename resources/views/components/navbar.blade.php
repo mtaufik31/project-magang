@@ -6,12 +6,12 @@
         <div class="flex md:order-2 items-center">
 
             <div class="hidden md:block">
+                <x-points></x-points>
+            </div>
+            <div class="hidden md:block">
                 <x-searchbar></x-searchbar>
             </div>
             <x-account></x-account>
-
-            <!-- Include Alpine.js -->
-            <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
 
             <button data-collapse-toggle="navbar-search" type="button"
                     class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden focus:outline-none"
@@ -36,6 +36,7 @@
                 <li><a href="{{ route('blogs') }}" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 hover:text-[#FF9900] md:hover:bg-transparent md:hover:text-blue-700 md:p-0">Blogs</a></li>
                 <li><a href="{{ route('join') }}" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 hover:text-[#FF9900] md:hover:bg-transparent md:hover:text-blue-700 md:p-0">Join Us</a></li>
                 <li><a href="{{ route('faq') }}" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 hover:text-[#FF9900] md:hover:bg-transparent md:hover:text-blue-700 md:p-0">FAQ</a></li>
+                <x-points></x-points>
             </ul>
         </div>
     </div>

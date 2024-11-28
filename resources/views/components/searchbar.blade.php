@@ -1,4 +1,4 @@
-<div class="flex items-center bg-gray-100 rounded-lg overflow-hidden  md:block">
+<div class="flex items-center bg-white md:bg-gray-100 rounded-lg overflow-hidden  md:block">
     <form action="{{ route('search.manga') }}" method="GET" class="flex w-full">
         <input type="text" id="search-navbar" name="keyword"
                class="w-full py-2 px-4 text-sm text-gray-700 border-none bg-gray-100 caret-orange-500 focus:outline-none"
