@@ -70,7 +70,7 @@
                                 </td>
                                 <td class="px-6 py-4 text-center border-b border-gray-300">
                                     <div class="flex items-center justify-center gap-2">
-                                        <a href="{{ route('chapter.create') }}"
+                                        <a href=""
                                             class="px-3 py-2 text-sm text-white bg-blue-500 rounded-md hover:bg-blue-600">
                                             <i class="fa-solid fa-plus"></i>
                                         </a>

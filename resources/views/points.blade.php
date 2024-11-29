@@ -19,11 +19,11 @@
                             </div>
 
                             <!-- Point Value -->
-                            <p class="text-3xl font-bold my-4">10 Point</p>
+                            <p class="text-3xl font-bold my-4">40 Point</p>
 
                             <!-- Point Details -->
                             <div class="bg-orange-300 p-4 w-full text-center border-t duration-200 group-hover:bg-orange-400 border-slate-200">
-                                <h1 class="font-fira text-xl duration-200 font-semibold text-gray-700 group-hover:text-black">Rp. 5000</h1>
+                                <h1 class="font-fira text-xl duration-200 text-gray-700 group-hover:text-black">Rp. 8.200,00</h1>
                             </div>
                         </div>
                     </a>
@@ -36,11 +36,11 @@
                             </div>
 
                             <!-- Point Value -->
-                            <p class="text-3xl font-bold my-4">10 Point</p>
+                            <p class="text-3xl font-bold my-4">100 Point</p>
 
                             <!-- Point Details -->
                             <div class="bg-orange-300 p-4 w-full text-center border-t duration-200 group-hover:bg-orange-400 border-slate-200">
-                                <h1 class="font-fira text-xl duration-200 font-semibold text-gray-700 group-hover:text-black">Rp. 5000</h1>
+                                <h1 class="font-fira text-xl duration-200  text-gray-700 group-hover:text-black">Rp. 20.000,00</h1>
                             </div>
                         </div>
                     </a>
@@ -53,11 +53,62 @@
                             </div>
 
                             <!-- Point Value -->
-                            <p class="text-3xl font-bold my-4">10 Point</p>
+                            <p class="text-3xl font-bold my-4">250 Point</p>
 
                             <!-- Point Details -->
                             <div class="bg-orange-300 p-4 w-full text-center border-t duration-200 group-hover:bg-orange-400 border-slate-200">
-                                <h1 class="font-fira text-xl duration-200 font-semibold text-gray-700 group-hover:text-black">Rp. 5000</h1>
+                                <h1 class="font-fira text-xl duration-200  text-gray-700 group-hover:text-black">Rp. 47.900,00</h1>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="">
+                        <div class="flex relative flex-col items-center group duration-200 hover:bg-gray-300 bg-gray-200 text-black rounded-lg w-64 overflow-hidden">
+                            <!-- Logo Section -->
+
+                            <div class="flex items-center justify-center w-16 h-16 bg-white rounded-full mt-7">
+                                <i class="fa-solid fa-coins text-3xl text-orange-500"></i>
+                            </div>
+
+                            <!-- Point Value -->
+                            <p class="text-3xl font-bold my-4">510 Point</p>
+
+                            <!-- Point Details -->
+                            <div class="bg-orange-300 p-4 w-full text-center border-t duration-200 group-hover:bg-orange-400 border-slate-200">
+                                <h1 class="font-fira text-xl duration-200  text-gray-700 group-hover:text-black">Rp. 93.900,00</h1>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="">
+                        <div class="flex relative flex-col items-center group duration-200 hover:bg-gray-300 bg-gray-200 text-black rounded-lg w-64 overflow-hidden">
+                            <!-- Logo Section -->
+
+                            <div class="flex items-center justify-center w-16 h-16 bg-white rounded-full mt-7">
+                                <i class="fa-solid fa-coins text-3xl text-orange-500"></i>
+                            </div>
+
+                            <!-- Point Value -->
+                            <p class="text-3xl font-bold my-4">1050 Point</p>
+
+                            <!-- Point Details -->
+                            <div class="bg-orange-300 p-4 w-full text-center border-t duration-200 group-hover:bg-orange-400 border-slate-200">
+                                <h1 class="font-fira text-xl duration-200  text-gray-700 group-hover:text-black">Rp. 170.920,00</h1>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="">
+                        <div class="flex relative flex-col items-center group duration-200 hover:bg-gray-300 bg-gray-200 text-black rounded-lg w-64 overflow-hidden">
+                            <!-- Logo Section -->
+
+                            <div class="flex items-center justify-center w-16 h-16 bg-white rounded-full mt-7">
+                                <i class="fa-solid fa-coins text-3xl text-orange-500"></i>
+                            </div>
+
+                            <!-- Point Value -->
+                            <p class="text-3xl font-bold my-4">2100 Point</p>
+
+                            <!-- Point Details -->
+                            <div class="bg-orange-300 p-4 w-full text-center border-t duration-200 group-hover:bg-orange-400 border-slate-200">
+                                <h1 class="font-fira text-xl duration-200  text-gray-700 group-hover:text-black">Rp. 300.000,00</h1>
                             </div>
                         </div>
                     </a>

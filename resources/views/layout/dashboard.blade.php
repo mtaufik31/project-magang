@@ -30,7 +30,7 @@
             }
         }
     </script> --}}
-    <link rel="stylesheet" href="/richtexteditor/rte_theme_default.css" />
+    {{-- <link rel="stylesheet" href="/richtexteditor/rte_theme_default.css" /> --}}
     <script src="https://cdn.ckeditor.com/ckeditor5/39.0.1/classic/ckeditor.js"></script>
     @vite('resources/css/app.css')
 
@@ -119,9 +119,9 @@
             });
 
         });
-        particlesJS.load('particles-js', '{{ asset('js/particles.json') }}', function() {
-            console.log('callback - particles.js config loaded');
-        });
+        // particlesJS.load('particles-js', '{{ asset('js/particles.json') }}', function() {
+        //     console.log('callback - particles.js config loaded');
+        // });
     </script>
 </body>
 

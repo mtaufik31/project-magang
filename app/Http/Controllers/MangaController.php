@@ -18,7 +18,6 @@ class MangaController extends Controller
             'mangas' => $mangas
         ]);
     }
-
     public function sort(Request $request)
     {
         $genres = Genre::all();
@@ -36,17 +35,14 @@ class MangaController extends Controller
                 }
             });
         }
-
         // Filter berdasarkan status
         if ($status) {
             $query->where('status', $status);
         }
-
         // Filter berdasarkan tahun
         if ($request->has('released_year') && is_array($request->query('released_year'))) {
             $query->whereIn('released_year', $request->query('released_year'));
         }
-
         // Apply sorting
         switch ($sort) {
             case 'latest':
@@ -68,7 +64,6 @@ class MangaController extends Controller
                 $query->orderBy('released_year', 'asc');
                 break;
         }
-
         $mangas = $query->paginate(12);
 
         // Get selected years from request
@@ -89,15 +84,12 @@ class MangaController extends Controller
             'selectedYears' => $selectedYears,
         ]);
     }
-
-
     public function create()
     {
         return view('dashboard.manga.create', [
             'title' => 'Dashboard | Add Manga'
         ]);
     }
-
     public function store(Request $request)
     {
         $validated = $request->validate([
@@ -113,7 +105,6 @@ class MangaController extends Controller
             'publisher' => 'nullable|string|max:255',
             'genre' => 'required|array'
         ]);
-
         // Handling genres (existing or new)
         $genreIds = [];
         foreach ($request->genre as $genre) {
@@ -124,31 +115,24 @@ class MangaController extends Controller
                 $genreIds[] = "" . $newGenre->id;
             }
         }
-
         // Handling image upload
         $imagePath = $request->file('image')->store('manga-covers', 'public');
-
         // Check if title exists and modify if needed
         $title = $validated['title'];
         $originalTitle = $title;
         $counter = 1;
-
         while (Manga::where('title', $title)->exists()) {
             $counter++;
             $title = $originalTitle . " {$counter}";
         }
-
         $manga = new Manga($validated);
         $manga->title = $title; // Use the modified title
         $manga->genre = json_encode($genreIds);
         $manga->image = $imagePath;
         $manga->created_by = Auth::id();
         $manga->save();
-
         return redirect()->route('List Manga')->with('success', 'Manga added successfully with a unique title!');
     }
-
-
     public function edit(Manga $manga)
     {
         return view('dashboard.manga.edit', [
@@ -159,7 +143,6 @@ class MangaController extends Controller
 
     public function update(Request $request, Manga $manga)
     {
-
         $validated = $request->validate([
             'title' => 'required|string|max:255',
             'alternative' => 'required|string|max:255',
@@ -173,15 +156,11 @@ class MangaController extends Controller
             'publisher' => 'nullable|string|max:255',
             'genre' => ' required|array'
         ]);
-
         if ($request->hasFile('image')) {
             $imagePath = $request->file('image')->store('manga-covers', 'public');
             $validated['image'] = $imagePath;
         }
-
         $genreIds = [];
-
-
         foreach ($request->genre as $genre) {
             if (is_numeric($genre)) {
                 $genreIds[] = $genre;
@@ -192,8 +171,6 @@ class MangaController extends Controller
         }
         $validated["genre"] = json_encode($genreIds);
         // dd($manga->genre);
-
-
         $manga->update($validated);
         // $manga->save();
         return redirect()->route('List Manga')->with('success', 'Manga updated successfully');

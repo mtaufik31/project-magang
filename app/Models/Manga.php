@@ -42,4 +42,9 @@ class Manga extends Model
     {
         return $this->hasOne(MangaSwiper::class);
     }
+
+    public function chapters()
+    {
+        return $this->hasMany(Chapter::class);
+    }
 }

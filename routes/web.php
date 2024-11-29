@@ -1,6 +1,4 @@
 <?php
-
-
 use Illuminate\Support\Facades\Password;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -10,7 +8,6 @@ use App\Http\Controllers\GenreController;
 use App\Http\Controllers\StaffController;
 use App\Http\Controllers\MangaController;
 use App\Http\Controllers\MangaSwiperController;
-use App\Http\Controllers\PointController;
 use App\Http\Middleware\Dashboard;
 use App\Models\Blog;
 use App\Models\genre;
@@ -33,9 +30,9 @@ Route::get('/', function () {
     $genres = genre::paginate(6);
 
     $swiperMangas = MangaSwiper::with('manga')
-            ->where('is_active', true)
-            ->orderBy('order')
-            ->get();
+        ->where('is_active', true)
+        ->orderBy('order')
+        ->get();
 
 
     return view('welcome', array('title' => 'MangaLo', 'blogs' => $blogs, 'mangas' => $mangas, 'genres' => $genres, 'swiperMangas' => $swiperMangas));
@@ -65,7 +62,6 @@ Route::get('blog/{id}', action: function ($id) {
 
 Route::get('list', function () {
     $mangas = Manga::orderBy('updated_at', 'desc')->paginate(8);
-
     return view('list', array('title' => 'MangaLo | List', 'mangas' => $mangas));
 })->name('list');
 
@@ -84,8 +80,6 @@ Route::get('forgot', function () {
 Route::get('chapter', function () {
     return view('chapter', data: array('title' => 'MangaLo | Chapter'));
 })->name('chapter');
-
-
 
 Route::get('manga/{id}', function ($id) {
     $manga = Manga::where('id', '=', $id)->get()->first();
@@ -149,7 +143,6 @@ Route::middleware(Dashboard::class)->group(function () {
         return view('points', array('title' => 'MangaLo! | Points'));
     })->name('points');
 
-
     // Blog Routes Group
     Route::controller(BlogController::class)->group(function () {
         Route::get('BlogsList', function (Request $request) {
@@ -191,7 +184,7 @@ Route::middleware(Dashboard::class)->group(function () {
         Route::put('blog/update/{id}', 'update')->name('blog.update');
     });
 
-    Route::controller(GenreController::class)->group(function() {
+    Route::controller(GenreController::class)->group(function () {
         Route::get('GenreList', [GenreController::class, 'index'])->name('GenreList');
         Route::post('GenreStore', [GenreController::class, 'store'])->name('GenreStore');
         Route::get('GenreEdit/{id}', [GenreController::class, 'edit'])->name('GenreEdit');
@@ -227,9 +220,4 @@ Route::middleware(Dashboard::class)->group(function () {
         Route::delete('swiper-delete/{id}', 'destroy')->name('swiper.delete');
         Route::patch('swiper-toggle-active/{id}', 'toggleActive')->name('swiper.toggle');
     });
-
-    Route::get('ChapterCreate', function () {
-        return view('dashboard.chapter.create', array('title' => 'Dashboard | Add Chapter'));
-    })->name('chapter.create');
-
 });
