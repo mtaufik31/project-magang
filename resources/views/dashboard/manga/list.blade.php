@@ -70,9 +70,9 @@
                                 </td>
                                 <td class="px-6 py-4 text-center border-b border-gray-300">
                                     <div class="flex items-center justify-center gap-2">
-                                        <a href=""
+                                        <a href="{{ route('chapters.index', $manga->id) }}"
                                             class="px-3 py-2 text-sm text-white bg-blue-500 rounded-md hover:bg-blue-600">
-                                            <i class="fa-solid fa-plus"></i>
+                                            <i class="fa-solid fa-eye"></i>
                                         </a>
                                         <a href="{{ route('Edit manga', $manga) }}"
                                             class="px-3 py-2 text-sm text-white bg-yellow-500 rounded-md hover:bg-yellow-600">

@@ -1,9 +1,11 @@
 <?php
+
 use Illuminate\Support\Facades\Password;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\ChapterController;
 use App\Http\Controllers\GenreController;
 use App\Http\Controllers\StaffController;
 use App\Http\Controllers\MangaController;
@@ -138,11 +140,9 @@ Route::middleware(Dashboard::class)->group(function () {
         }
         return redirect()->route('home');
     })->middleware('auth')->name('dashboard');
-
     Route::get('points', function () {
         return view('points', array('title' => 'MangaLo! | Points'));
     })->name('points');
-
     // Blog Routes Group
     Route::controller(BlogController::class)->group(function () {
         Route::get('BlogsList', function (Request $request) {
@@ -219,5 +219,14 @@ Route::middleware(Dashboard::class)->group(function () {
         Route::post('swiper-submit', 'store')->name('swiper.submit');
         Route::delete('swiper-delete/{id}', 'destroy')->name('swiper.delete');
         Route::patch('swiper-toggle-active/{id}', 'toggleActive')->name('swiper.toggle');
+    });
+
+    Route::prefix('manga/{mangaId}/chapters')->group(function () {
+        Route::get('/', [ChapterController::class, 'index'])->name('chapters.index');
+        Route::get('/create', [ChapterController::class, 'create'])->name('chapters.create');
+        Route::post('/', [ChapterController::class, 'store'])->name('chapters.store');
+        Route::delete('/{id}', [ChapterController::class, 'destroy'])->name('chapters.destroy');
+        Route::get('/{id}/edit', [ChapterController::class, 'edit'])->name('chapters.edit');
+        Route::put('/{id}', [ChapterController::class, 'update'])->name('chapters.update');
     });
 });

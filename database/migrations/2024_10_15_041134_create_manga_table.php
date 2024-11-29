@@ -24,8 +24,7 @@ return new class extends Migration
             $table->string('artist');
             $table->string('publisher')->nullable();
             $table->foreignId('created_by')->constrained('users')->onDelete('cascade');
-            $table->boolean('is_paid')->default(true); // Menentukan apakah manga berbayar atau tidak.
-            $table->integer('price_points')->nullable(); // Harga dalam MangaLo! points, diisi jika berbayar.
+
             $table->text('genre');
             $table->timestamps();
         });

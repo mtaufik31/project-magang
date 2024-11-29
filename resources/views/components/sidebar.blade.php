@@ -1,5 +1,5 @@
 <!-- Sidebar -->
-<nav id="sidebar" class="bg-white w-[37vh] h-[100vh] fixed z-10 font-sans  border-r border-gray-300 shadow-md transition-transform transform duration-500 -translate-x-full md:translate-x-0">
+<nav id="sidebar" class="bg-white w-[37vh] h-[100vh] fixed z-10 font-sans  border-r border-gray-300 shadow-md transition-all transform duration-500 -translate-x-full md:translate-x-0">
     <!-- Sidebar Title (Fixed) -->
     <div class="h-20 border-b border-gray-300 flex items-center justify-center ">
         <img class="hover:scale-105 duration-100 cursor-all-scroll" width="180px" src="{{ asset('asset/img/manga.png') }}" alt="">
