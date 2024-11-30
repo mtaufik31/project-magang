@@ -86,7 +86,9 @@
                 <a href="{{ route('list') }}">
                     <i data-feather="arrow-right-circle" class="duration-150 me-5 hover:text-slate-700"></i>
                 </a>
-                <a href="{{ route('list') }}" class="text-sm font-semibold text-white hover:text-white bg-orange-500 py-2 px-4 absolute right-0 hover:rounded-s-xl duration-300 hover:px-5 hover:bg-orange-400 rounded-l-md">Semua Manga</a>
+                <a href="{{ route('list') }}"
+                    class="text-sm font-semibold text-white hover:text-white bg-orange-500 py-2 px-4 absolute right-0 hover:rounded-s-xl duration-300 hover:px-5 hover:bg-orange-400 rounded-l-md">Semua
+                    Manga</a>
             </div>
 
             <hr>
@@ -95,8 +97,9 @@
                     <!-- Card 1 -->
                     @foreach ($mangas as $manga)
                         <x-cardmanga :manga="$manga" id="{{ $manga->id }}" status="{{ $manga->status }}"
-                            title="{{ $manga->title }}" author="{{ $manga->author }}" :description="$manga->description"
-                            image="{{ asset('storage/' . $manga->image) }}">
+                            title="{{ $manga->title }}" author="{{ $manga->author }}" :description="$manga->chapters->first()->chapter_title ?? 'No chapters'"
+                            image="{{ asset('storage/' . $manga->image) }}"
+                            chapter="{{ $manga->chapters->first()->chapter_number ?? 'N/A' }}">
                         </x-cardmanga>
                     @endforeach
 
@@ -111,7 +114,9 @@
 
             <div class="flex items-center justify-between border-b-2">
                 <h1 class="font-fira text-[24px] pt-5 pb-3 ">Updated Chapter</h1>
-                <a href="{{ route('list') }}" class="text-sm font-semibold text-white hover:text-white bg-orange-500 py-2 px-4 absolute right-0 hover:rounded-s-xl duration-300 hover:px-5 hover:bg-orange-400 rounded-l-md">Semua Manga</a>
+                <a href="{{ route('list') }}"
+                    class="text-sm font-semibold text-white hover:text-white bg-orange-500 py-2 px-4 absolute right-0 hover:rounded-s-xl duration-300 hover:px-5 hover:bg-orange-400 rounded-l-md">Semua
+                    Manga</a>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 py-3">
@@ -120,30 +125,22 @@
                         <img class="w-[80px] h-auto rounded-md hover:scale-105 duration-300"
                             src="{{ asset('storage/' . $manga->image) }}" alt="{{ $manga->title }}">
                         <div class="px-5 w-full lg:w-fit">
-                            <a href="{{ route('manga', $manga->id) }}" class="font-poppins font-medium text-lg hover:text-orange-500 duration-300">
-                                {{ Str::limit( $manga->title, 14, '...') }}</a>
+                            <a href="{{ route('manga', $manga->id) }}"
+                                class="font-poppins font-medium text-lg hover:text-orange-500 duration-300">
+                                {{ Str::limit($manga->title, 14, '...') }}</a>
                             <div class="mt-2 space-y-2 flex flex-col w-full font-fira">
-                                <a class="flex items-center justify-between" href="#">
-                                    <div class="items-center flex gap-2 hover:">
-                                        <i class="fa-solid fa-circle text-[5px] text-gray-400"></i>
-                                        <span>Ch. 12</span>
-                                    </div>
-                                    <span class="ml-2 text-sm text-gray-700">Aug 1, 2023</span>
-                                </a>
-                                <a class="flex items-center justify-between" href="#">
-                                    <div class="items-center flex gap-2">
-                                        <i class="fa-solid fa-circle text-[5px] text-gray-400"></i>
-                                        <span>Ch. 12</span>
-                                    </div>
-                                    <span class="ml-2 text-sm text-gray-700">Aug 1, 2023</span>
-                                </a>
-                                <a class="flex items-center justify-between" href="#">
-                                    <div class="items-center flex gap-2">
-                                        <i class="fa-solid fa-circle text-[5px] text-gray-400"></i>
-                                        <span>Ch. 12</span>
-                                    </div>
-                                    <span class="ml-2 text-sm text-gray-700">Aug 1, 2023</span>
-                                </a>
+                                @foreach ($manga->chapters as $chapter)
+                                    <a class="flex items-center justify-between"
+                                        href="{{ route('chapter', ['manga_id' => $manga->id, 'chapter_number' => $chapter->chapter_number]) }}">
+                                        <div class="items-center flex gap-2">
+                                            <i class="fa-solid fa-circle text-[5px] text-gray-400"></i>
+                                            <span>Ch. {{ $chapter->chapter_number }}</span>
+                                        </div>
+                                        <span class="ml-2 text-sm text-gray-700">
+                                            {{ $chapter->updated_at->setTimezone('Asia/Jakarta')->format('F d, Y') }}
+                                        </span>
+                                    </a>
+                                @endforeach
 
                             </div>
                         </div>
@@ -158,7 +155,9 @@
         <div class="bg-white md:max-w-[97%] xl:w-[69%] mx-auto relative px-7">
             <div class="flex items-center justify-between">
                 <h1 class="font-fira text-[24px] pt-5 pb-3">Blog</h1>
-                <a href="{{ route('blogs') }}" class="text-sm font-semibold text-white hover:text-white bg-orange-500 py-2 px-4 absolute right-0 hover:rounded-s-xl duration-300 hover:px-5 hover:bg-orange-400 rounded-l-md">Semua Blog</a>
+                <a href="{{ route('blogs') }}"
+                    class="text-sm font-semibold text-white hover:text-white bg-orange-500 py-2 px-4 absolute right-0 hover:rounded-s-xl duration-300 hover:px-5 hover:bg-orange-400 rounded-l-md">Semua
+                    Blog</a>
             </div>
 
             <hr class="mb-5">

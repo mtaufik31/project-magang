@@ -24,10 +24,13 @@ use Illuminate\Support\Facades\Auth;
 // ROUTE VIEW
 //  ----------------------------------------------------------------
 Route::get('/', function () {
-
     $blogs = Blog::latest()->paginate(4);
 
-    $mangas = Manga::orderBy('updated_at', 'desc')->paginate(9);
+    $mangas = Manga::with(['chapters' => function($query) {
+        $query->latest('chapter_number')->take(3);
+    }])
+    ->orderBy('updated_at', 'desc')
+    ->paginate(9);
 
     $genres = genre::paginate(6);
 
@@ -36,8 +39,13 @@ Route::get('/', function () {
         ->orderBy('order')
         ->get();
 
-
-    return view('welcome', array('title' => 'MangaLo', 'blogs' => $blogs, 'mangas' => $mangas, 'genres' => $genres, 'swiperMangas' => $swiperMangas));
+    return view('welcome', array(
+        'title' => 'MangaLo',
+        'blogs' => $blogs,
+        'mangas' => $mangas,
+        'genres' => $genres,
+        'swiperMangas' => $swiperMangas
+    ));
 })->name('home');
 
 Route::get('join', function () {

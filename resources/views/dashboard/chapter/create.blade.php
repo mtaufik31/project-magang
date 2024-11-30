@@ -44,8 +44,9 @@
                 <!-- Input untuk Chapter Title -->
                 <div class="w-screen sm:w-full">
                     <label for="chapter_title" class="block text-sm font-medium text-gray-700">Chapter Title</label>
+                    <p class="text-[12px] italic text-red-400">*Please Input The Title Like The Placeholder</p>
                     <input type="text" id="chapter_title" name="chapter_title"
-                        class="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:border-orange-400" required>
+                        class="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:border-orange-400" placeholder="Chapter 1: The Title" required>
                 </div>
 
                 @error('chapter_title')

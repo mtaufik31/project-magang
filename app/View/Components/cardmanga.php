@@ -17,8 +17,9 @@ class cardmanga extends Component
     public $author;
     public $description;
     public $status;
+    public $chapter;
 
-    public function __construct($id ,$title, $author, $description, $image, $status)
+    public function __construct($id ,$title, $author, $description, $image, $status, $chapter)
     {
         $this->id = $id;
         $this->title = $title;
@@ -26,6 +27,7 @@ class cardmanga extends Component
         $this->description = $description;
         $this->image = $image;
         $this->status = $status;
+        $this->chapter = $chapter;
     }
 
     /**
