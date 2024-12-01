@@ -14,9 +14,10 @@
                 <div class="flex flex-wrap py-5 gap-8 md:gap-6 justify-center md:justify-start">
                     <!-- Display each manga in a card -->
                     @forelse ($mangas as $manga)
-                        <x-cardmanga id="{{ $manga->id }}" title="{{ $manga->title }}" author="{{ $manga->author }}"
-                            status="{{ $manga->status }}" description="{{ $manga->description }}" image="{{ asset('storage/' . $manga->image) }}">
-                        </x-cardmanga>
+                    <x-cardmanga id="{{ $manga->id }}" status="{{ $manga->status }}" title="{{ $manga->title }}"
+                        author="{{ $manga->author }}" :description="$manga->chapters->first()->chapter_title ?? 'No chapters'" image="{{ asset('storage/' . $manga->image) }}"
+                        chapter="{{ $manga->chapters->first()->chapter_number ?? 'N/A' }}">
+                    </x-cardmanga>
                     @empty
                         <div class="justify-center mx-auto">
                             <script src="https://cdn.lordicon.com/lordicon.js"></script>

@@ -96,10 +96,15 @@
                 <div class="flex gap-4 py-6">
                     <!-- Card 1 -->
                     @foreach ($mangas as $manga)
-                        <x-cardmanga :manga="$manga" id="{{ $manga->id }}" status="{{ $manga->status }}"
-                            title="{{ $manga->title }}" author="{{ $manga->author }}" :description="$manga->chapters->first()->chapter_title ?? 'No chapters'"
-                            image="{{ asset('storage/' . $manga->image) }}"
-                            chapter="{{ $manga->chapters->first()->chapter_number ?? 'N/A' }}">
+                        <x-cardmanga
+                        :manga="$manga"
+                        id="{{ $manga->id }}"
+                        status="{{ $manga->status }}"
+                        title="{{ $manga->title }}"
+                        author="{{ $manga->author }}"
+                        :description="$manga->chapters->first()->chapter_title ?? 'No chapters'"
+                        image="{{ asset('storage/' . $manga->image) }}"
+                        chapter="{{ $manga->chapters->first()->chapter_number ?? 'N/A' }}">
                         </x-cardmanga>
                     @endforeach
 

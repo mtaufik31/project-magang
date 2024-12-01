@@ -47,7 +47,7 @@
                             <tr
                                 class="transition-colors bg-white border-b even:bg-orange-100 odd:hover:bg-gray-100 even:hover:bg-orange-50">
                                 <td class="px-6 py-4 border-b border-gray-300">
-                                    <img src="storage/{{ $manga->image }}" alt="Manga Image"
+                                    <img loading="lazy" src="storage/{{ $manga->image }}" alt="Manga Image"
                                         class="object-cover w-20 rounded-md h-28">
                                 </td>
                                 <td class="px-6 py-4 border-b border-gray-300">

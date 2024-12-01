@@ -1,8 +1,8 @@
 <div class="flex flex-wrap justify-center gap-8 pb-5 md:gap-6 md:justify-start">
     @forelse ($mangas as $manga)
-        <x-cardmanga id="{{ $manga->id }}" title="{{ $manga->title }}" status="{{ $manga->status }}"
-            author="{{ $manga->author }}" description="{{ $manga->description }}"
-            lazy="loading" image="{{ asset('storage/' . $manga->image) }}">
+        <x-cardmanga id="{{ $manga->id }}" status="{{ $manga->status }}" title="{{ $manga->title }}"
+            author="{{ $manga->author }}" :description="$manga->chapters->first()->chapter_title ?? 'No chapters'" image="{{ asset('storage/' . $manga->image) }}"
+            chapter="{{ $manga->chapters->first()->chapter_number ?? 'N/A' }}">
         </x-cardmanga>
     @empty
         <div class="w-full text-center text-gray-500 py-4">

@@ -1,8 +1,8 @@
 <?php
-
 use Illuminate\Support\Facades\Password;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\ChapterController;
@@ -12,25 +12,23 @@ use App\Http\Controllers\MangaController;
 use App\Http\Controllers\MangaSwiperController;
 use App\Http\Middleware\Dashboard;
 use App\Models\Blog;
+use App\Models\Chapter;
 use App\Models\genre;
 use App\Models\User;
 use App\Models\Manga;
 use App\Models\MangaSwiper;
-use App\View\Components\swiper;
-use Illuminate\Support\Facades\Auth;
-
 
 //  ----------------------------------------------------------------
-// ROUTE VIEW
+// ROUTE VIEW LANDING PAGE
 //  ----------------------------------------------------------------
 Route::get('/', function () {
     $blogs = Blog::latest()->paginate(4);
 
-    $mangas = Manga::with(['chapters' => function($query) {
+    $mangas = Manga::with(['chapters' => function ($query) {
         $query->latest('chapter_number')->take(3);
     }])
-    ->orderBy('updated_at', 'desc')
-    ->paginate(9);
+        ->orderBy('updated_at', 'desc')
+        ->paginate(9);
 
     $genres = genre::paginate(6);
 
@@ -84,7 +82,9 @@ Route::get('login', function () {
 })->name('login');
 
 Route::get('forgot', function () {
+
     return view('register.forgot', data: array('title' => 'MangaLo | Forgot'));
+
 })->name('forgot');
 
 Route::get('chapter', function () {
@@ -92,12 +92,26 @@ Route::get('chapter', function () {
 })->name('chapter');
 
 Route::get('manga/{id}', function ($id) {
-    $manga = Manga::where('id', '=', $id)->get()->first();
+    $manga = Manga::with(['chapters' => function ($query) {
+        $query->orderBy('chapter_number', 'desc');
+    }])->find($id);
+
     $mangas = Manga::inRandomOrder()->take(5)->get();
+
     if (!$manga) {
         abort(404);
     }
-    return view('manga', ['title' => 'MangaLo | Manga'], compact('manga', 'mangas'));
+
+    $firstChapter = Chapter::where('manga_id', $id)->orderBy('chapter_number', 'asc')->first();
+    $newChapter = Chapter::where('manga_id', $id)->orderBy('chapter_number', 'desc')->first();
+
+    return view('manga', [
+        'title' => 'MangaLo | Manga',
+        'manga' => $manga,
+        'mangas' => $mangas,
+        'firstChapter' => $firstChapter,
+        'newChapter' => $newChapter,
+    ]);
 })->name('manga');
 
 Route::get('/search-manga', [MangaController::class, 'search'])->name('search.manga');

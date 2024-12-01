@@ -8,12 +8,19 @@ use Illuminate\View\Component;
 
 class cardchapter extends Component
 {
-    /**
-     * Create a new component instance.
-     */
-    public function __construct()
+    public $id;
+    public $number;
+    public $title;
+    public $cover;
+    public $date;
+
+    public function __construct($id, $number, $title, $cover, $date)
     {
-        //
+        $this->id = $id;
+        $this->number = $number;
+        $this->title = $title;
+        $this->cover = $cover;
+        $this->date = $date;
     }
 
     /**

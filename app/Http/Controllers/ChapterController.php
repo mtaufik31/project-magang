@@ -54,12 +54,12 @@ class ChapterController extends Controller
         }
 
         // Simpan cover image
-        $coverImagePath = $request->file('cover_image')->store('chapters/covers');
-
+        $coverImagePath = $request->file('cover_image')->store('chapters/covers', 'public');
+    
         // Extract ZIP content
         $zip = new ZipArchive();
         $zipPath = $request->file('chapter_content')->path();
-        $extractPath = 'chapters/content/' . uniqid();
+        $extractPath = 'chapters/assets/' . uniqid(); // Di bawah chapters/assets
         if ($zip->open($zipPath) === true) {
             $zip->extractTo(storage_path('app/' . $extractPath));
             $zip->close();
@@ -95,7 +95,7 @@ class ChapterController extends Controller
 
         return back()->with('success', 'Chapter deleted successfully.');
     }
-    
+
     public function edit($mangaId, $id)
     {
         $manga = Manga::findOrFail($mangaId);

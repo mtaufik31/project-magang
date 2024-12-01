@@ -135,18 +135,29 @@
     <div class="grid grid-cols-1 md:grid-cols-3 w-full md:w-[81%] mx-auto gap-8">
         <div class="bg-white w-full md:col-span-2  md:rounded-l-xl shadow-md my-5">
             <div class="px-6 py-4 border-b">
-                <h2 class="text-2xl font-medium font-fira">Chapter Dandadan</h2>
+                <h2 class="text-2xl font-medium font-fira">Chapter <span
+                        class="text-orange-500 underline">{{ $manga->title }}</span></h2>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 p-6">
-                <a href="" class="bg-orange-500 hover:bg-orange-400 duration-200 text-white rounded-lg py-4 px-6">
-                    <h3 class="text-md font-bold">First </h3>
-                    <p class="text-lg">Chapter 1</p>
-                </a>
-                <a href="" class="bg-orange-500 hover:bg-orange-400 duration-200 text-white rounded-lg py-4 px-6">
-                    <h3 class="text-md font-bold">New </h3>
-                    <p class="text-lg">Chapter 175</p>
-                </a>
+                <!-- Tombol First -->
+                @if ($firstChapter)
+                    <a href="{{ route('chapter', $firstChapter->id) }}"
+                        class="bg-orange-500 hover:bg-orange-400 duration-200 text-white rounded-lg py-4 px-6">
+                        <h3 class="text-md font-bold">First</h3>
+                        <p class="text-lg">Chapter {{ $firstChapter->chapter_number }}</p>
+                    </a>
+                @endif
+
+                <!-- Tombol New -->
+                @if ($newChapter)
+                    <a href="{{ route('chapter', $newChapter->id) }}"
+                        class="bg-orange-500 hover:bg-orange-400 duration-200 text-white rounded-lg py-4 px-6">
+                        <h3 class="text-md font-bold">New</h3>
+                        <p class="text-lg">Chapter {{ $newChapter->chapter_number }}</p>
+                    </a>
+                @endif
             </div>
+
             <div class="px-6 py-1 border-t">
                 <div class="flex gap-4 items-center justify-between py-3">
                     <input type="text" inputmode="numeric"
@@ -163,9 +174,12 @@
                 <div class="overflow-y-auto" style="max-height: 380px;">
                     <div class="gap-x-4 gap-y-6">
                         <!-- Card 1 -->
-                        @for ($i = 1; $i < 100; $i++)
-                        <x-cardchapter></x-cardchapter>
-                        @endfor
+                        @foreach ($manga->chapters as $chapter)
+                            <x-cardchapter number="{{ $chapter->chapter_number }}" title="{{ $chapter->chapter_title }}"
+                                cover="{{ asset('storage/' . $chapter->cover_image) }}"
+                                date="{{ $chapter->updated_at->setTimezone('Asia/Jakarta')->format('F d, Y') }}"
+                                :id="$chapter->id" />
+                        @endforeach
                     </div>
                 </div>
             </div>
@@ -179,15 +193,18 @@
             <div class="space-y-4 py-2">
                 @foreach ($mangas as $manga)
                     <a href="{{ route('manga', $manga->id) }}">
-                        <div class="flex items-center space-x-4 py-2 px-4 border-b hover:bg-gradient-to-r group hover:from-slate-1200 hover:to-transparent  duration-200 ">
+                        <div
+                            class="flex items-center space-x-4 py-2 px-4 border-b hover:bg-gradient-to-r group hover:from-slate-1200 hover:to-transparent  duration-200 ">
                             <!-- Gambar Manga -->
                             <img src="{{ asset('storage/' . $manga->image) }}" alt="{{ $manga->title }}"
                                 class="w-16 h-24 object-cover">
 
                             <!-- Detail Manga -->
                             <div class="flex-1">
-                                <h3 class="text-base font-medium font-fira duration-200 group-hover:text-orange-400">{{ Str::limit($manga->title, 27, '...')  }}</h3>
-                                <p class="text-sm text-gray-400 duration-200 group-hover:text-black">{{ $manga->released_year }}</p>
+                                <h3 class="text-base font-medium font-fira duration-200 group-hover:text-orange-400">
+                                    {{ Str::limit($manga->title, 27, '...') }}</h3>
+                                <p class="text-sm text-gray-400 duration-200 group-hover:text-black">
+                                    {{ $manga->released_year }}</p>
                             </div>
                         </div>
                     </a>

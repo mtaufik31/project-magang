@@ -176,7 +176,7 @@
                                 <img src="{{ Storage::url($chapter->cover_image) }}" alt="Cover Image" width="80"
                                     class="rounded">
                             </td>
-                            <td class="px-6 py-4 whitespace-nowrap flex space-x-3">
+                            <td class="px-6 py-10 whitespace-nowrap flex space-x-3">
                                 <a href="{{ route('chapters.edit', ['mangaId' => $manga->id, 'id' => $chapter->id]) }}"
                                     class="px-3 py-2 bg-yellow-500 text-white text-xs font-medium rounded-md hover:bg-yellow-600 transition">
                                     Edit
