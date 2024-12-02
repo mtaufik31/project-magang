@@ -1,4 +1,5 @@
 <?php
+
 use Illuminate\Support\Facades\Password;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -82,9 +83,7 @@ Route::get('login', function () {
 })->name('login');
 
 Route::get('forgot', function () {
-
     return view('register.forgot', data: array('title' => 'MangaLo | Forgot'));
-
 })->name('forgot');
 
 Route::get('chapter', function () {
@@ -165,6 +164,7 @@ Route::middleware(Dashboard::class)->group(function () {
     Route::get('points', function () {
         return view('points', array('title' => 'MangaLo! | Points'));
     })->name('points');
+
     // Blog Routes Group
     Route::controller(BlogController::class)->group(function () {
         Route::get('BlogsList', function (Request $request) {

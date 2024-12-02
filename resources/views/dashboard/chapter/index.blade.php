@@ -144,7 +144,7 @@
                 <p>Chapter List for <span class="text-orange-500 underline">{{ $manga->title }}</span></p>
                 <a href="{{ route('chapters.create', $manga->id) }}">
                     <button class="px-3 py-2 text-sm text-white bg-blue-500 rounded-md hover:bg-blue-600">
-                        <i class="fa-solid fa-plus"></i> Add Manga
+                        <i class="fa-solid fa-plus"></i> Add Chapter
                     </button>
                 </a>
             </div>
@@ -153,14 +153,14 @@
             <table id="chapters-table" class="min-w-full divide-y divide-gray-200 table-auto">
                 <thead class="text-xs text-gray-700 uppercase bg-orange-200">
                     <tr>
-                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">#</th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">No</th>
                         <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                             Chapter Title
                         </th>
                         <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                             Cover Image
                         </th>
-                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider items-center">
                             Actions
                         </th>
                     </tr>
@@ -176,7 +176,7 @@
                                 <img src="{{ Storage::url($chapter->cover_image) }}" alt="Cover Image" width="80"
                                     class="rounded">
                             </td>
-                            <td class="px-6 py-10 whitespace-nowrap flex space-x-3">
+                            <td class="px-6 py-16 whitespace-nowrap items-center justify-center flex space-x-3">
                                 <a href="{{ route('chapters.edit', ['mangaId' => $manga->id, 'id' => $chapter->id]) }}"
                                     class="px-3 py-2 bg-yellow-500 text-white text-xs font-medium rounded-md hover:bg-yellow-600 transition">
                                     Edit

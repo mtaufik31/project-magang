@@ -29,11 +29,16 @@
         <div class="swiper-wrapper ">
             @foreach ($swiperMangas as $swiper)
                 <x-swiper :swiper="$swiper" id="{{ $swiper->manga->id }}" title="{{ $swiper->manga->title }}"
-                    image="{{ $swiper->manga->image }}" :genres="$swiper->manga->getGenre()"
+                    image="{{ $swiper->manga->image }}"
+                    number="{{ $swiper->manga->chapters->last()->chapter_number ?? 'No chapters' }}"
+                    :genres="$swiper->manga->getGenre()"
                     description="{{ Str::limit($swiper->manga->description, 210, '...') }}"
                     status="{{ $swiper->manga->status }}" />
             @endforeach
+
         </div>
+
+
 
         <div class="absolute left-0 right-0 px-3 text-center bottom-1">
             <div class="pagination-wrapper">
@@ -96,15 +101,10 @@
                 <div class="flex gap-4 py-6">
                     <!-- Card 1 -->
                     @foreach ($mangas as $manga)
-                        <x-cardmanga
-                        :manga="$manga"
-                        id="{{ $manga->id }}"
-                        status="{{ $manga->status }}"
-                        title="{{ $manga->title }}"
-                        author="{{ $manga->author }}"
-                        :description="$manga->chapters->first()->chapter_title ?? 'No chapters'"
-                        image="{{ asset('storage/' . $manga->image) }}"
-                        chapter="{{ $manga->chapters->first()->chapter_number ?? 'N/A' }}">
+                        <x-cardmanga :manga="$manga" id="{{ $manga->id }}" status="{{ $manga->status }}"
+                            title="{{ $manga->title }}" author="{{ $manga->author }}" :description="$manga->chapters->first()->chapter_title ?? 'No chapters'"
+                            image="{{ asset('storage/' . $manga->image) }}"
+                            chapter="{{ $manga->chapters->first()->chapter_number ?? 'N/A' }}">
                         </x-cardmanga>
                     @endforeach
 

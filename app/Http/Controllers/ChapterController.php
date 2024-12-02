@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Chapter;
 use App\Models\Manga;
+use Faker\Core\File;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use ZipArchive;
@@ -39,41 +40,36 @@ class ChapterController extends Controller
             'chapter_content' => 'required|file|mimes:zip',
         ]);
 
-        // Cari chapter dengan nomor yang sama untuk manga ini
         $existingChapter = Chapter::where('manga_id', $mangaId)
             ->where('chapter_number', 'like', $request->chapter_number . '%')
             ->orderBy('chapter_number', 'desc')
             ->first();
 
-        // Hitung nomor chapter baru (tambahkan part jika nomor sudah ada)
-        if ($existingChapter) {
-            $lastPart = (float)$existingChapter->chapter_number;
-            $newChapterNumber = $lastPart + 0.1; // Tambahkan part (contoh: 1 -> 1.1, 1.1 -> 1.2)
-        } else {
-            $newChapterNumber = $request->chapter_number; // Gunakan nomor input jika belum ada
-        }
+        $newChapterNumber = $existingChapter
+            ? (float)$existingChapter->chapter_number + 0.1
+            : $request->chapter_number;
 
-        // Simpan cover image
         $coverImagePath = $request->file('cover_image')->store('chapters/covers', 'public');
-    
+
         // Extract ZIP content
+        $extractPath = 'chapters/assets/' . uniqid();
+        $destinationPath = storage_path('app/public/' . $extractPath);
+
         $zip = new ZipArchive();
         $zipPath = $request->file('chapter_content')->path();
-        $extractPath = 'chapters/assets/' . uniqid(); // Di bawah chapters/assets
         if ($zip->open($zipPath) === true) {
-            $zip->extractTo(storage_path('app/' . $extractPath));
+            $zip->extractTo($destinationPath);
             $zip->close();
         } else {
             return back()->withErrors(['chapter_content' => 'Failed to extract ZIP file']);
         }
 
-        // Simpan chapter baru
         Chapter::create([
             'manga_id' => $mangaId,
             'chapter_number' => $newChapterNumber,
             'chapter_title' => $request->chapter_title,
             'cover_image' => $coverImagePath,
-            'content_path' => $extractPath,
+            'content_path' => 'storage/' . $extractPath,
         ]);
 
         $manga = Manga::findOrFail($mangaId);
@@ -81,7 +77,6 @@ class ChapterController extends Controller
 
         return redirect()->route('chapters.index', $mangaId)->with('success', 'Chapter added successfully.');
     }
-
 
     public function destroy($mangaId, $id)
     {
@@ -152,5 +147,18 @@ class ChapterController extends Controller
         $manga->touch();
 
         return redirect()->route('chapters.index', $mangaId)->with('success', 'Chapter updated successfully.');
+    }
+
+    public function showChapter($chapterId)
+    {
+        $chapter = Chapter::findOrFail($chapterId); // Pastikan chapter ditemukan
+        $contentPath = $chapter->content_path;
+
+        // Ambil file gambar dari folder path
+        $images = collect(Storage::files($contentPath))->filter(function ($file) {
+            return in_array(pathinfo($file, PATHINFO_EXTENSION), ['jpg', 'jpeg', 'png', 'webp']);
+        });
+
+        return view('chapters', compact('chapter', 'images'));
     }
 }

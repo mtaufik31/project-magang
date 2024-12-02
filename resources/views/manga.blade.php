@@ -171,15 +171,27 @@
                 </div>
             </div>
             <div class="border-t">
-                <div class="overflow-y-auto" style="max-height: 380px;">
-                    <div class="gap-x-4 gap-y-6">
+                <div class="overflow-y-auto" style="">
+                    <div class="gap-x-4 gap-y-6 ">
                         <!-- Card 1 -->
-                        @foreach ($manga->chapters as $chapter)
-                            <x-cardchapter number="{{ $chapter->chapter_number }}" title="{{ $chapter->chapter_title }}"
-                                cover="{{ asset('storage/' . $chapter->cover_image) }}"
-                                date="{{ $chapter->updated_at->setTimezone('Asia/Jakarta')->format('F d, Y') }}"
-                                :id="$chapter->id" />
-                        @endforeach
+                        @if ($manga->chapters->isEmpty())
+                            <script src="https://cdn.lordicon.com/lordicon.js"></script>
+                            <div class="text-center">
+                                <lord-icon lazy="loading" src="https://cdn.lordicon.com/wjyqkiew.json" trigger="loop"
+                                    colors="primary:#121331,secondary:#eeaa66" style="width:100px;height:100px">
+                                </lord-icon>
+                                <p class="mt-3 text-gray-500">No chapters available yet.</p>
+                            </div>
+                        @else
+                            @foreach ($manga->chapters as $chapter)
+                                <x-cardchapter number="{{ $chapter->chapter_number }}"
+                                    title="{{ $chapter->chapter_title }}"
+                                    cover="{{ asset('storage/' . $chapter->cover_image) }}"
+                                    date="{{ $chapter->updated_at->setTimezone('Asia/Jakarta')->format('F d, Y') }}"
+                                    :id="$chapter->id" />
+                            @endforeach
+                        @endif
+
                     </div>
                 </div>
             </div>
@@ -194,7 +206,7 @@
                 @foreach ($mangas as $manga)
                     <a href="{{ route('manga', $manga->id) }}">
                         <div
-                            class="flex items-center space-x-4 py-2 px-4 border-b hover:bg-gradient-to-r group hover:from-slate-1200 hover:to-transparent  duration-200 ">
+                            class="flex items-center space-x-4 py-2 px-4 border-b hover:bg-gradient-to-l group hover:from-slate-200 hover:to-transparent  transition-all duration-100 ">
                             <!-- Gambar Manga -->
                             <img src="{{ asset('storage/' . $manga->image) }}" alt="{{ $manga->title }}"
                                 class="w-16 h-24 object-cover">

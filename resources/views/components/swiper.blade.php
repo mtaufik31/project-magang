@@ -14,7 +14,7 @@
         <!-- Content Section -->
         <div class="md:ml-6">
             <!-- Chapter Number -->
-            <h3 class="text-lg md:text-[20px] font-bold mb-2 md:block hidden">Chapter: 200</h3>
+            <h3 class="text-lg md:text-[20px] font-bold mb-2 md:block hidden">Chapter: {{ $number }}</h3>
 
             <!-- Title -->
             <h2 class="text-2xl md:text-3xl font-poppins font-bold mb-4">
