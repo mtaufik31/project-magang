@@ -69,7 +69,7 @@ class ChapterController extends Controller
             'chapter_number' => $newChapterNumber,
             'chapter_title' => $request->chapter_title,
             'cover_image' => $coverImagePath,
-            'content_path' => 'storage/' . $extractPath,
+            'content_path' => $extractPath,
         ]);
 
         $manga = Manga::findOrFail($mangaId);
@@ -105,7 +105,7 @@ class ChapterController extends Controller
     public function update(Request $request, $mangaId, $id)
     {
         $request->validate([
-            'chapter_number' => 'required|integer',
+            'chapter_number' => 'required|numeric',
             'chapter_title' => 'required|string',
             'cover_image' => 'nullable|image',
             'chapter_content' => 'nullable|file|mimes:zip',
@@ -113,23 +113,40 @@ class ChapterController extends Controller
 
         $chapter = Chapter::findOrFail($id);
 
+        // Check for existing chapter number
+        $existingChapter = Chapter::where('manga_id', $mangaId)
+            ->where('id', '!=', $id) // Exclude the current chapter
+            ->where('chapter_number', 'like', $request->chapter_number . '%')
+            ->orderBy('chapter_number', 'desc')
+            ->first();
+
+        $newChapterNumber = $existingChapter
+            ? (float)$existingChapter->chapter_number + 0.1
+            : $request->chapter_number;
+
         // Update cover image if provided
         if ($request->hasFile('cover_image')) {
-            Storage::delete($chapter->cover_image);
-            $chapter->cover_image = $request->file('cover_image')->store('chapters/covers');
+            if ($chapter->cover_image) {
+                Storage::disk('public')->delete($chapter->cover_image); // Delete old cover
+            }
+            $chapter->cover_image = $request->file('cover_image')->store('chapters/covers', 'public');
         }
 
         // Update content if ZIP is provided
         if ($request->hasFile('chapter_content')) {
             // Delete existing content folder
-            Storage::deleteDirectory($chapter->content_path);
+            if ($chapter->content_path) {
+                Storage::disk('public')->deleteDirectory($chapter->content_path);
+            }
 
-            // Extract new ZIP
+            // Extract new ZIP content
+            $extractPath = 'chapters/assets/' . uniqid();
+            $destinationPath = storage_path('app/public/' . $extractPath);
+
             $zip = new ZipArchive();
             $zipPath = $request->file('chapter_content')->path();
-            $extractPath = 'chapters/content/' . uniqid();
             if ($zip->open($zipPath) === true) {
-                $zip->extractTo(storage_path('app/' . $extractPath));
+                $zip->extractTo($destinationPath);
                 $zip->close();
                 $chapter->content_path = $extractPath;
             } else {
@@ -137,17 +154,19 @@ class ChapterController extends Controller
             }
         }
 
-        // Update other fields
+        // Update chapter fields
         $chapter->update([
-            'chapter_number' => $request->chapter_number,
+            'chapter_number' => $newChapterNumber,
             'chapter_title' => $request->chapter_title,
         ]);
 
+        // Touch the manga to update its updated_at timestamp
         $manga = Manga::findOrFail($mangaId);
         $manga->touch();
 
         return redirect()->route('chapters.index', $mangaId)->with('success', 'Chapter updated successfully.');
     }
+
 
     public function showChapter($chapterId)
     {
@@ -159,6 +178,6 @@ class ChapterController extends Controller
             return in_array(pathinfo($file, PATHINFO_EXTENSION), ['jpg', 'jpeg', 'png', 'webp']);
         });
 
-        return view('chapters', compact('chapter', 'images'));
+        return view('chapter', compact('chapter', 'images'));
     }
 }

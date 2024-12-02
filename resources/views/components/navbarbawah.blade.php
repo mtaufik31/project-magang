@@ -1,4 +1,4 @@
-<nav class="bg-[rgb(255,153,0,0.7)] hidden md:block transition-all">
+<nav class="bg-[rgb(255,153,0,0.7)] hidden md:block transition-all border-black border-t border-b">
     <div class="max-w-screen-xl px-5 mx-auto ">
         <div class="flex font-inter items-center justify-between">
             <ul class="flex flex-row font-fira mt-0 gap-10 rtl:space-x-reverse text-lg items-center ">

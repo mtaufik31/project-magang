@@ -18,6 +18,7 @@ use App\Models\genre;
 use App\Models\User;
 use App\Models\Manga;
 use App\Models\MangaSwiper;
+use Illuminate\Support\Facades\Storage;
 
 //  ----------------------------------------------------------------
 // ROUTE VIEW LANDING PAGE
@@ -86,8 +87,35 @@ Route::get('forgot', function () {
     return view('register.forgot', data: array('title' => 'MangaLo | Forgot'));
 })->name('forgot');
 
-Route::get('chapter', function () {
-    return view('chapter', data: array('title' => 'MangaLo | Chapter'));
+Route::get('chapter/{id}', function ($id) {
+    // Ambil chapter berdasarkan ID
+    $chapter = Chapter::findOrFail($id);
+
+    $absolutePath = storage_path('app/public/' . $chapter->content_path);
+
+    // Ambil semua file dalam folder
+    $files = scandir($absolutePath);
+
+    // Filter hanya file gambar
+    $images = collect($files)->filter(function ($file) use ($absolutePath) {
+        $filePath = $absolutePath . '/' . $file;
+        return is_file($filePath) && in_array(pathinfo($file, PATHINFO_EXTENSION), ['jpg', 'jpeg', 'png', 'webp']);
+    })->toArray();
+
+    // Urutkan berdasarkan angka di awal nama file
+    usort($images, function ($a, $b) {
+        // Ekstrak angka di awal nama file
+        $numA = (int) preg_replace('/\D/', '', pathinfo($a, PATHINFO_FILENAME));
+        $numB = (int) preg_replace('/\D/', '', pathinfo($b, PATHINFO_FILENAME));
+
+        return $numA <=> $numB;
+    });
+
+    return view('chapter', [
+        'title' => 'MangaLo | Chapter',
+        'chapter' => $chapter,
+        'images' => $images,
+    ]);
 })->name('chapter');
 
 Route::get('manga/{id}', function ($id) {

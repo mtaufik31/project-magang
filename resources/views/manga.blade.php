@@ -89,26 +89,27 @@
                                     <h2 class="text-sm text-gray-500 font-medium">Posted By</h2>
                                     <span class="text-base">{{ $manga->user->name }}</span>
                                 </div>
-                                <!-- Posted On -->
-                                <div class="border-b md:border-r border-gray-300 p-4">
-                                    <h2 class="text-sm text-gray-500 font-medium">Posted On</h2>
-                                    <span class="text-base">
-                                        {{ $manga->created_at->setTimezone('Asia/Jakarta')->format('F d, Y') }}
-                                    </span>
-                                </div>
-                                <!-- Updated On -->
-                                <div class="border-b border-r border-gray-300 p-4">
-                                    <h2 class="text-sm text-gray-500 font-medium">Updated On</h2>
-                                    <span class="text-base">
-                                        {{ $manga->updated_at->setTimezone('Asia/Jakarta')->format('F d, Y') }}
-                                    </span>
-                                </div>
                                 <div class="border-b border-gray-300 p-4">
                                     <h2 class="text-sm text-gray-500 font-medium">Rating</h2>
                                     <span class="text-base">
                                         {{ $manga->rating }}
                                     </span>
                                 </div>
+                                <!-- Posted On -->
+                                <div class="border-b md:border-l border-gray-300 p-4">
+                                    <h2 class="text-sm text-gray-500 font-medium">Posted On</h2>
+                                    <span class="text-base">
+                                        {{ $manga->created_at->setTimezone('Asia/Jakarta')->format('F d, Y') }}
+                                    </span>
+                                </div>
+                                <!-- Updated On -->
+                                <div class="border-b border-l border-gray-300 p-4">
+                                    <h2 class="text-sm text-gray-500 font-medium">Updated On</h2>
+                                    <span class="text-base">
+                                        {{ $manga->updated_at->setTimezone('Asia/Jakarta')->format('F d, Y') }}
+                                    </span>
+                                </div>
+
                             </div>
 
 
@@ -171,7 +172,7 @@
                 </div>
             </div>
             <div class="border-t">
-                <div class="overflow-y-auto" style="">
+                <div class="overflow-y-auto" style="max-height: 380px">
                     <div class="gap-x-4 gap-y-6 ">
                         <!-- Card 1 -->
                         @if ($manga->chapters->isEmpty())

@@ -136,7 +136,7 @@
                             <div class="mt-2 space-y-2 flex flex-col w-full font-fira">
                                 @foreach ($manga->chapters as $chapter)
                                     <a class="flex items-center justify-between"
-                                        href="{{ route('chapter', ['manga_id' => $manga->id, 'chapter_number' => $chapter->chapter_number]) }}">
+                                        href="{{ route('chapter', ['id' => $chapter->id]) }}">
                                         <div class="items-center flex gap-2">
                                             <i class="fa-solid fa-circle text-[5px] text-gray-400"></i>
                                             <span>Ch. {{ $chapter->chapter_number }}</span>
