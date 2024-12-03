@@ -78,7 +78,7 @@
                                 </thead>
                                 <tbody>
                                     @php $i = 1; @endphp
-                                    @foreach ($admins as $staff)
+                                    @foreach ($staffs as $staff)
                                         <tr
                                             class="transition-colors border-b font-poppins even:bg-orange-100 odd:hover:bg-gray-100 even:hover:bg-orange-50">
                                             <td class="px-4 py-6 text-sm text-gray-700 border-b border-gray-300 ">
