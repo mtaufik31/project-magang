@@ -106,11 +106,10 @@
 }
 
 .pagination-wrapper {
-    background-color: #d3d3d3;
-    padding: 19px 65px;
+    padding: 17px 65px;
     border-radius: 24px;
     display: inline-block;
-    backdrop-filter: blur(8px);
+    backdrop-filter:blur(0.5px);
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 

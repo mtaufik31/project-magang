@@ -35,7 +35,7 @@
                     status="{{ $swiper->manga->status }}" />
             @endforeach
         </div>
-        <div class="absolute left-0 right-0 px-3 text-center bottom-1">
+        <div class="absolute left-0 right-0 top-80 z-50 px-3 text-center bottom-1">
             <div class="pagination-wrapper">
                 <div class="swiper-pagination custom-pagination"></div>
             </div>
@@ -100,7 +100,6 @@
                             chapter="{{ $manga->chapters->first()->chapter_number ?? 'N/A' }}">
                         </x-cardmanga>
                     @endforeach
-
                     <!-- Tambahan Card jika diperlukan -->
                 </div>
             </div>

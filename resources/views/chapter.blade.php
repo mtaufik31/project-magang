@@ -36,7 +36,19 @@
 
         /* Teks yang melayang */
         #terbang {
-            animation: float 2s ease-in-out infinite;
+            animation: float 1s ease-in-out infinite;
+        }
+
+        #terbang::after {
+            content: "";
+            position: absolute;
+            bottom: -11px;
+            left: 43%;
+            transform: translateX(-50%);
+            border-width: 6px;
+            border-style: solid;
+            border-color: transparent transparent #febf8c transparent;
+            rotate: 180deg;
         }
     </style>
     <div id="#" class="">.</div>
@@ -79,27 +91,38 @@
                     class="chapter-image" loading="lazy" width="800px">
             @endforeach
         </div>
-        <div class="bg-gradient-to-t group from-orange-600 from-10% to-90% via-black to-orange-600 group-hover:bg-gradient-to-t group-hover:from-black group-hover:to-orange-700 rounded-xl w-[400px] mx-auto p-6 space-y-4 my-36 cursor-pointer">
+        <div
+            class="bg-gradient-to-t from-black to-orange-600 rounded-xl w-[400px] mx-auto p-6 space-y-4 my-36 cursor-pointer relative border">
             @if ($nextChapter)
-                <p class="flex justify-center text-white font-semibold text-[24px]">Next Chapter</p>
-                <a href="{{ route('chapter', ['id' => $nextChapter->id]) }}" class="flex justify-center items-center duration-200">
-                    <h2 class="text-xl font-medium border px-12 py-1 text-white duration-200 group-hover:shadow-xl group-hover:bg-orange-600 rounded-md group-hover:border-orange-600">
+                <p id="terbang"
+                    class="flex justify-center w-36 py-2 mx-auto rounded-xl text-black bg-gradient-to-r from-orange-400 to-yellow-100 font-medium gap-3 text-[12px] absolute top-4 right-32">
+                    <i class="fa-solid fa-forward self-center"></i>
+                    Next Chapter
+                </p>
+                <a href="{{ route('chapter', ['id' => $nextChapter->id]) }}"
+                    class="flex justify-center items-center duration-200">
+                    <h2
+                        class="text-xl font-medium border px-12 mt-5 py-2.5 text-white duration-200 hover:shadow-xl hover:bg-orange-600 rounded-md hover:border-orange-600 tracking-widest hover:tracking-normal hover:text-[18px] truncate ">
                         {{ $nextChapter->chapter_title }}
                     </h2>
                 </a>
-
                 <div class="flex justify-center">
-                    <img src="{{ asset('storage/' . $nextChapter->cover_image) }}" alt="Next Chapter" class="w-60 h-32 object-cover rounded-xl">
+                    <img src="{{ asset('storage/' . $nextChapter->cover_image) }}" alt="Next Chapter"
+                        class="w-60 h-32 object-cover rounded-xl">
                 </div>
-                <a href="{{ route('manga', ['id' => $chapter->manga_id]) }}" class="flex justify-center items-center duration-200">
-                    <h2 class="text-xl font-medium border px-12 py-1 text-white duration-200 hover:shadow-xl hover:bg-orange-600 rounded-md hover:border-orange-600">
+                <a href="{{ route('manga', ['id' => $chapter->manga_id]) }}"
+                    class="flex justify-center items-center duration-200">
+                    <h2
+                        class="text-xl font-medium border px-12 py-2.5 text-white duration-200 hover:shadow-xl hover:bg-orange-600 rounded-md hover:border-orange-600">
                         Back to Manga
                     </h2>
                 </a>
             @else
-                <p class="flex justify-center text-white font-semibold text-[24px]">{{ $chapter->manga->title}}</p>
-                <a href="{{ route('manga', ['id' => $chapter->manga_id]) }}" class="flex justify-center items-center duration-200">
-                    <h2 class="text-xl font-medium border px-12 py-1 text-white duration-200 group-hover:shadow-xl group-hover:bg-orange-600 rounded-md group-hover:border-orange-600">
+                <p class="flex justify-center text-white font-semibold text-[24px]">{{ $chapter->manga->title }}</p>
+                <a href="{{ route('manga', ['id' => $chapter->manga_id]) }}"
+                    class="flex justify-center items-center duration-200">
+                    <h2
+                        class="text-xl font-medium border px-12 py-1 text-white duration-200 group-hover:shadow-xl group-hover:bg-orange-600 rounded-md group-hover:border-orange-600">
                         Back to Manga
                     </h2>
                 </a>
@@ -117,7 +140,7 @@
             </div>
         </div>
     </div>
-    <div id="terbang" class="fixed bottom-4 right-4 bg-transparent text-white px-4 py-2 rounded-md z-50">
+    <div id="terbang" class="fixed bottom-4 right-4 bg-transparent text-white px-4 py-2 rounded-md z-50 after:hidden">
         <a href="#">
             <i
                 class="fa-solid fa-arrow-up-long hover:bg-orange-400 duration-200 rounded-full bg-orange-500 p-3 text-black outline-white"></i>

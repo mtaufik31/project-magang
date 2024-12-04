@@ -111,7 +111,6 @@ Route::get('chapter/{id}', function ($id) {
 
     // Urutkan berdasarkan angka di awal nama file
     usort($images, function ($a, $b) {
-        // Ekstrak angka di awal nama file
         $numA = (int) preg_replace('/\D/', '', pathinfo($a, PATHINFO_FILENAME));
         $numB = (int) preg_replace('/\D/', '', pathinfo($b, PATHINFO_FILENAME));
 
@@ -124,7 +123,8 @@ Route::get('chapter/{id}', function ($id) {
         'images' => $images,
         'nextChapter' => $nextChapter
     ]);
-})->name('chapter');
+})->name('chapter')->middleware('auth');
+
 
 Route::get('manga/{id}', function ($id) {
     $manga = Manga::with(['chapters' => function ($query) {
@@ -197,6 +197,8 @@ Route::middleware(Dashboard::class)->group(function () {
         }
         return redirect()->route('home');
     })->middleware('auth')->name('dashboard');
+
+    
     Route::get('points', function () {
         return view('points', array('title' => 'MangaLo! | Points'));
     })->name('points');
