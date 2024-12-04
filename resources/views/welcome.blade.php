@@ -24,8 +24,7 @@
         </script>
     @endif
 
-    <div
-        class="swiper-container w-full md:max-w-[97%] xl:max-w-[69%] mx-auto overflow-hidden md:pt-5 relative transition-all">
+    <div class="swiper-container w-full md:max-w-[97%] xl:max-w-[69%] mx-auto overflow-hidden md:pt-5 relative transition-all">
         <div class="swiper-wrapper ">
             @foreach ($swiperMangas as $swiper)
                 <x-swiper :swiper="$swiper" id="{{ $swiper->manga->id }}" title="{{ $swiper->manga->title }}"
@@ -35,18 +34,12 @@
                     description="{{ Str::limit($swiper->manga->description, 210, '...') }}"
                     status="{{ $swiper->manga->status }}" />
             @endforeach
-
         </div>
-
-
-
         <div class="absolute left-0 right-0 px-3 text-center bottom-1">
             <div class="pagination-wrapper">
                 <div class="swiper-pagination custom-pagination"></div>
             </div>
         </div>
-
-
     </div>
 
 

@@ -90,7 +90,7 @@
 }
 
 ::-webkit-scrollbar-thumb {
-    background-color: rgba(0, 0, 0, 1);
+    background-color: rgba(0, 0, 0, 0.3);
     border-radius: full;
     border: 2px solid transparent;
 }

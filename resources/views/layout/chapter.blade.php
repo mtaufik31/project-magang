@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" scroll-behaviour="smooth">
+<html lang="en" class="scroll-smooth" >
 
 <head>
     <meta charset="UTF-8">
@@ -22,7 +22,7 @@
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 </head>
 
-<body class="transition-all bg-black">
+<body id="atas" class="transition-all bg-black">
 
     @yield('content')
 

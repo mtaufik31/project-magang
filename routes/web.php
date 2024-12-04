@@ -91,6 +91,13 @@ Route::get('chapter/{id}', function ($id) {
     // Ambil chapter berdasarkan ID
     $chapter = Chapter::findOrFail($id);
 
+    // Cari chapter selanjutnya dalam manga yang sama
+    $nextChapter = Chapter::where('manga_id', $chapter->manga_id)
+        ->where('chapter_number', '>', $chapter->chapter_number)
+        ->orderBy('chapter_number', 'asc')
+        ->first();
+
+    // Ambil path absolut untuk konten chapter
     $absolutePath = storage_path('app/public/' . $chapter->content_path);
 
     // Ambil semua file dalam folder
@@ -115,6 +122,7 @@ Route::get('chapter/{id}', function ($id) {
         'title' => 'MangaLo | Chapter',
         'chapter' => $chapter,
         'images' => $images,
+        'nextChapter' => $nextChapter
     ]);
 })->name('chapter');
 

@@ -12,15 +12,34 @@
         }
 
         .footer.active {
-            transform: translateY(125%);
+            transform: translateY(180%);
         }
 
         .footer {
             transform: translateY(0);
             transition: transform 0.3s ease-in-out;
         }
-    </style>
 
+        @keyframes float {
+            0% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(5px);
+            }
+
+            100% {
+                transform: translateY(0);
+            }
+        }
+
+        /* Teks yang melayang */
+        #terbang {
+            animation: float 2s ease-in-out infinite;
+        }
+    </style>
+    <div id="#" class="">.</div>
     <div id="navbar"
         class="navbar fixed top-0 left-0 w-full border-t-2 md:border-t-8 border-orange-500 bg-gradient-to-t from-transparent to-black text-white p-4 z-50 ">
         <div class="container mx-auto flex justify-between md:justify-between items-center gap-8 md:px-5">
@@ -29,7 +48,9 @@
                 <img width="" loading="lazy" src="{{ asset('asset/img/manga.png') }}" alt="">
             </a>
             <div class="">
-                <h1 class="text-[22px] font-fira font-medium hidden md:block">{{ $chapter->chapter_title }} </h1>
+                <a href="{{ route('manga', $chapter->manga->id) }}"
+                    class="text-[28px] font-fira hover:text-orange-500 duration-200 font-medium hidden md:block">{{ $chapter->manga->title }}
+                </a>
                 <div class="w-full max-w-sm min-w-[200px]">
                     <div class="relative">
                         <select id="chap"
@@ -47,8 +68,6 @@
                         </svg>
                     </div>
                 </div>
-
-
             </div>
         </div>
     </div>
@@ -60,17 +79,49 @@
                     class="chapter-image" loading="lazy" width="800px">
             @endforeach
         </div>
+        <div class="bg-gradient-to-t group from-orange-600 from-10% to-90% via-black to-orange-600 group-hover:bg-gradient-to-t group-hover:from-black group-hover:to-orange-700 rounded-xl w-[400px] mx-auto p-6 space-y-4 my-36 cursor-pointer">
+            @if ($nextChapter)
+                <p class="flex justify-center text-white font-semibold text-[24px]">Next Chapter</p>
+                <a href="{{ route('chapter', ['id' => $nextChapter->id]) }}" class="flex justify-center items-center duration-200">
+                    <h2 class="text-xl font-medium border px-12 py-1 text-white duration-200 group-hover:shadow-xl group-hover:bg-orange-600 rounded-md group-hover:border-orange-600">
+                        {{ $nextChapter->chapter_title }}
+                    </h2>
+                </a>
+
+                <div class="flex justify-center">
+                    <img src="{{ asset('storage/' . $nextChapter->cover_image) }}" alt="Next Chapter" class="w-60 h-32 object-cover rounded-xl">
+                </div>
+                <a href="{{ route('manga', ['id' => $chapter->manga_id]) }}" class="flex justify-center items-center duration-200">
+                    <h2 class="text-xl font-medium border px-12 py-1 text-white duration-200 hover:shadow-xl hover:bg-orange-600 rounded-md hover:border-orange-600">
+                        Back to Manga
+                    </h2>
+                </a>
+            @else
+                <p class="flex justify-center text-white font-semibold text-[24px]">{{ $chapter->manga->title}}</p>
+                <a href="{{ route('manga', ['id' => $chapter->manga_id]) }}" class="flex justify-center items-center duration-200">
+                    <h2 class="text-xl font-medium border px-12 py-1 text-white duration-200 group-hover:shadow-xl group-hover:bg-orange-600 rounded-md group-hover:border-orange-600">
+                        Back to Manga
+                    </h2>
+                </a>
+            @endif
+        </div>
     </div>
 
 
     <div id="footer"
-        class="fixed footer bottom-0 left-0 w-full border-b-2 md:border-b-8 border-orange-500 bg-gradient-to-b from-transparent to-black text-white p-4 z-50">
+        class="fixed footer bottom-0 left-0 w-full border-b-2 md:border-b-8 border-orange-500 bg-gradient-to-b from-transparent  to-black text-white p-4 z-50">
         <div class="">
-            <div id="current-page" class="fixed bottom-4 right-4 bg-black/80 text-white px-4 py-2 rounded-md z-50">
+            <div id="current-page" class="fixed bottom-4 left-4 bg-black/80 text-white px-4 py-2 rounded-md z-50">
                 Halaman: <span id="current-number">1</span>/<span class="text-slate-400"
                     id="total-pages">{{ count($images) }}</span>
             </div>
         </div>
+    </div>
+    <div id="terbang" class="fixed bottom-4 right-4 bg-transparent text-white px-4 py-2 rounded-md z-50">
+        <a href="#">
+            <i
+                class="fa-solid fa-arrow-up-long hover:bg-orange-400 duration-200 rounded-full bg-orange-500 p-3 text-black outline-white"></i>
+        </a>
     </div>
 
 
@@ -87,7 +138,7 @@
                     navbar.classList.add('hidden');
                     footer.classList.add('hidden');
                 }, 300)
-            }, 4000);
+            }, 3000);
             document.body.addEventListener('click', (e) => {
                 console.log(e.target.classList.contains('chapter-image'));
                 if (navbarVisible && e.target.classList.contains('chapter-image')) {
@@ -118,36 +169,12 @@
             const chapterImages = document.querySelectorAll('.chapter-image');
             const currentPageNumber = document.getElementById('current-number');
             const totalPages = document.getElementById('total-pages');
-            const navbar = document.getElementById('navbar');
-            const footer = document.getElementById('footer');
 
+            // Set total halaman
             totalPages.textContent = chapterImages.length;
-
-            let currentPage = 1;
-            let navbarVisible = true;
-            let prevScrollPos = window.pageYOffset;
 
             window.addEventListener('scroll', () => {
                 const currentScrollPos = window.pageYOffset;
-
-                if (currentScrollPos < prevScrollPos) {
-                    navbar.classList.remove('hidden');
-                    footer.classList.remove('hidden');
-                    navbar.classList.remove('active');
-                    footer.classList.remove('active');
-                    navbarVisible = true;
-                } else {
-                    navbar.classList.add('active');
-                    footer.classList.add('active');
-
-                    setTimeout(() => {
-                        navbar.classList.add('hidden');
-                        footer.classList.add('hidden');
-                    }, 300);
-                    navbarVisible = false;
-                }
-
-                prevScrollPos = currentScrollPos;
 
                 // Hitung halaman yang sedang aktif
                 let activeIndex = 0;
@@ -158,17 +185,9 @@
                     }
                 });
 
-                currentPage = activeIndex + 1;
+                // Update nomor halaman saat ini
+                const currentPage = activeIndex + 1;
                 currentPageNumber.textContent = currentPage;
-
-                // Jika di halaman terakhir, tampilkan navbar dan footer permanen
-                if (currentPage === chapterImages.length) {
-                    navbar.classList.remove('hidden');
-                    footer.classList.remove('hidden');
-                    navbar.classList.remove('active');
-                    footer.classList.remove('active');
-                    navbarVisible = true;
-                }
             });
         });
     </script>
