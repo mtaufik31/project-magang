@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Manga;
 use Illuminate\Http\Request;
 use App\Models\User;
+use Closure;
 use Illuminate\Support\Facades\Auth;
 
 class StaffController extends Controller
@@ -53,10 +54,14 @@ class StaffController extends Controller
 
         $staff = User::find($id);
         $staff->delete();
-
-
         return redirect()->route('List.Staff')->with('success', 'Staff berhasil dihapus');
+    }
 
-
+    public function handle($request, Closure $next)
+    {
+        if (Auth::check() && Auth::user()->role === 'staff') {
+            return redirect()->route('dashboard')->with('error', 'Anda tidak memiliki akses ke halaman ini');
+        }
+        return $next($request);
     }
 }

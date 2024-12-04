@@ -12,6 +12,7 @@ use App\Http\Controllers\StaffController;
 use App\Http\Controllers\MangaController;
 use App\Http\Controllers\MangaSwiperController;
 use App\Http\Middleware\Dashboard;
+use App\Http\Middleware\RestrictStaffAccess;
 use App\Models\Blog;
 use App\Models\Chapter;
 use App\Models\genre;
@@ -198,7 +199,7 @@ Route::middleware(Dashboard::class)->group(function () {
         return redirect()->route('home');
     })->middleware('auth')->name('dashboard');
 
-    
+
     Route::get('points', function () {
         return view('points', array('title' => 'MangaLo! | Points'));
     })->name('points');
@@ -267,7 +268,9 @@ Route::middleware(Dashboard::class)->group(function () {
     });
 
     // Staff Routes Group
-    Route::controller(StaffController::class)->group(function () {
+    Route::controller(StaffController::class)
+    ->middleware(RestrictStaffAccess::class)
+    ->group(function () {
         Route::get('StaffList', 'index')->name('List.Staff');
         Route::get('StaffCreate', 'showForm')->name('Staff.create');
         Route::post('staffSubmit', 'addStaff')->name('staff.submit');

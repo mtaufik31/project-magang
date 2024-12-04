@@ -17,7 +17,7 @@
         </div>
     </section>
 
-    <section>
+    {{-- <section>
         <div class="">
             <div
                 class="bg-white w-full md:w-full mx-auto py-5 px-6 my-4 rounded-t-md shadow-lg flex flex-col md:flex-row md:flex-nowrap">
@@ -134,7 +134,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> --}}
 
     <div class="container">
 
@@ -150,48 +150,42 @@
             </div>
             <hr class="mb-4">
 
-            <table id="chapters-table" class="min-w-full divide-y divide-gray-200 table-auto">
+            <table id="chapters-table" class="w-full text-sm text-left text-gray-700">
                 <thead class="text-xs text-gray-700 uppercase bg-orange-200">
                     <tr>
-                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">No</th>
-                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                            Chapter Title
-                        </th>
-                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                            Cover Image
-                        </th>
-                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider items-center">
-                            Actions
-                        </th>
+                        <th scope="col" class="px-6 py-3 border-gray-300 border-y-2">No</th>
+                        <th scope="col" class="px-6 py-3 border-gray-300 border-y-2">Chapter Title</th>
+                        <th scope="col" class="px-6 py-3 border-gray-300 border-y-2">Cover Image</th>
+                        <th scope="col" class="px-6 py-3 text-center border-gray-300 border-y-2">Actions</th>
                     </tr>
                 </thead>
-                <tbody class="bg-white divide-y divide-gray-200">
+                <tbody>
                     @foreach ($chapters as $chapter)
-                        <tr>
-                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{ $chapter->chapter_number }}
+                        <tr
+                            class="transition-colors bg-white border-b even:bg-orange-100 odd:hover:bg-gray-100 even:hover:bg-orange-50">
+                            <td class="px-6 py-3 text-gray-900">{{ $chapter->chapter_number }}</td>
+                            <td class="px-6 py-3 text-gray-900">{{ $chapter->chapter_title }}</td>
+                            <td class="px-6 py-3">
+                                <img src="{{ Storage::url($chapter->cover_image) }}" alt="Cover Image"
+                                    class="object-cover h-16 rounded-md w-32">
                             </td>
-                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{ $chapter->chapter_title }}
-                            </td>
-                            <td class="px-6 py-4 whitespace-nowrap">
-                                <img src="{{ Storage::url($chapter->cover_image) }}" alt="Cover Image" width="80"
-                                    class="rounded">
-                            </td>
-                            <td class="px-6 py-16 whitespace-nowrap items-center justify-center flex space-x-3">
-                                <a href="{{ route('chapters.edit', ['mangaId' => $manga->id, 'id' => $chapter->id]) }}"
-                                    class="px-3 py-2 bg-yellow-500 text-white text-xs font-medium rounded-md hover:bg-yellow-600 transition">
-                                    Edit
-                                </a>
-                                <form
-                                    action="{{ route('chapters.destroy', ['mangaId' => $chapter->manga_id, 'id' => $chapter->id]) }}"
-                                    method="POST">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit"
-                                        class="px-3 py-2 bg-red-500 text-white text-xs font-medium rounded-md hover:bg-red-600 transition">
-                                        Delete
-                                    </button>
-                                </form>
-
+                            <td class="px-6 py-3 text-center">
+                                <div class="flex items-center justify-center space-x-2">
+                                    <a href="{{ route('chapters.edit', ['mangaId' => $manga->id, 'id' => $chapter->id]) }}"
+                                        class="px-3 py-2 text-sm text-white bg-yellow-400 rounded-md hover:bg-yellow-500">
+                                        Edit
+                                    </a>
+                                    <form
+                                        action="{{ route('chapters.destroy', ['mangaId' => $chapter->manga_id, 'id' => $chapter->id]) }}"
+                                        method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit"
+                                            class="px-3 py-2 text-sm text-white bg-red-500 rounded-md hover:bg-red-600">
+                                            Delete
+                                        </button>
+                                    </form>
+                                </div>
                             </td>
                         </tr>
                     @endforeach
