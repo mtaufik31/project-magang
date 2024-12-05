@@ -14,12 +14,11 @@ class StaffController extends Controller
     {
         // Ambil data semua admin dan user
         $admins = User::where('role', 'admin')->get();
-        $staffs = User::where('role', 'staff')->get();
+        $staffs = User::where('role', 'staff')->withCount('manga')->get();
         $users = User::where('role', 'user')->get();
-        $manyManga = Manga::all()->count();
 
         // Tampilkan ke view superadmin
-        return view('dashboard.Staff.List', ['title' => 'List Staff'], compact('admins', 'users', 'staffs', 'manyManga'));
+        return view('dashboard.Staff.List', ['title' => 'List Staff'], compact('admins', 'users', 'staffs'));
     }
 
     public function showForm(Request $request) {

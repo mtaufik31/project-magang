@@ -16,8 +16,7 @@
                 {{ Str::limit($author, 22, '...') }}</h5>
         </span>
     </div>
-    <div
-        class="px-2 pb-3 border-t border-black rounded-b-lg text-start bg-gray-50 hover:border-orange-300 hover:bg-gradient-to-t hover:to-white hover:from-orange-400">
+    <div class="px-2 pb-3 border-t border-black rounded-b-lg text-start bg-gray-50 hover:border-orange-300 hover:bg-gradient-to-t hover:to-white hover:from-orange-400">
         <p class="">#{{ $chapter }}</p>
         <p class="text-[12px] text-gray-600">
             {!! Str::limit($description, 19, "...") !!}

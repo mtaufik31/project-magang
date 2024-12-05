@@ -94,10 +94,15 @@
                 <div class="flex gap-4 py-6">
                     <!-- Card 1 -->
                     @foreach ($mangas as $manga)
-                        <x-cardmanga :manga="$manga" id="{{ $manga->id }}" status="{{ $manga->status }}"
-                            title="{{ $manga->title }}" author="{{ $manga->author }}" :description="$manga->chapters->first()->chapter_title ?? 'No chapters'"
-                            image="{{ asset('storage/' . $manga->image) }}"
-                            chapter="{{ $manga->chapters->first()->chapter_number ?? 'N/A' }}">
+                        <x-cardmanga
+                        :manga="$manga"
+                        id="{{ $manga->id }}"
+                        status="{{ $manga->status }}"
+                        title="{{ $manga->title }}"
+                        author="{{ $manga->author }}"
+                        :description="$manga->chapters->first()->chapter_title ?? 'No chapters'"
+                        image="{{ asset('storage/' . $manga->image) }}"
+                        chapter="{{ $manga->chapters->first()->chapter_number ?? 'N/A' }}">
                         </x-cardmanga>
                     @endforeach
                     <!-- Tambahan Card jika diperlukan -->
@@ -133,7 +138,7 @@
                                             <i class="fa-solid fa-circle text-[5px] text-gray-400"></i>
                                             <span>Ch. {{ $chapter->chapter_number }}</span>
                                         </div>
-                                        <span class="ml-2 text-sm text-gray-700">
+                                        <span class="ml-2 text-xs text-gray-700">
                                             {{ $chapter->updated_at->setTimezone('Asia/Jakarta')->format('F d, Y') }}
                                         </span>
                                     </a>

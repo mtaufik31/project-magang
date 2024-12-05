@@ -93,7 +93,7 @@
                                             <td class="px-4 py-6 text-sm text-gray-700 border-b border-gray-300 ">
                                                 {{ $staff->role }}</td>
                                             <td class="px-4 py-6 text-sm text-gray-700 border-b border-gray-300 ">
-                                                {{ $manyManga }}</td>
+                                                {{ $staff->manga_count }}</td>
                                             <td class="px-4 py-6 text-sm text-gray-700 border-b border-gray-300">
                                                 @if (Auth::id() != $staff->id)
                                                     <form action="{{ route('staff.delete', $staff->id) }}" method="POST"

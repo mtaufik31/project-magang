@@ -92,10 +92,10 @@
             @endforeach
         </div>
         <div
-            class="bg-gradient-to-t from-black to-orange-600 rounded-xl w-[400px] mx-auto p-6 space-y-4 my-36 cursor-pointer relative border">
+            class="bg-gradient-to-t from-orange-600 via-black to-orange-600   bg-pos-100 transition-all group-hover:bg-gradient-to-t ease-in-out bg-pos rounded-xl w-[400px] mx-auto p-6 space-y-4 my-36 cursor-pointer relative border group bg-size-200 hover:bg-pos-0 ">
             @if ($nextChapter)
                 <p id="terbang"
-                    class="flex justify-center w-36 py-2 mx-auto rounded-xl text-black bg-gradient-to-r from-orange-400 to-yellow-100 font-medium gap-3 text-[12px] absolute top-4 right-32">
+                    class="flex justify-center w-36 py-2 mx-auto rounded-full text-black bg-gradient-to-r from-orange-500 to-yellow-50 font-medium gap-3 text-[12px] absolute top-4 right-32">
                     <i class="fa-solid fa-forward self-center"></i>
                     Next Chapter
                 </p>
@@ -108,7 +108,7 @@
                 </a>
                 <div class="flex justify-center">
                     <img src="{{ asset('storage/' . $nextChapter->cover_image) }}" alt="Next Chapter"
-                        class="w-60 h-32 object-cover rounded-xl">
+                        class="w-60 h-32 grayscale group-hover:grayscale-0 duration-200 object-cover rounded-xl">
                 </div>
                 <a href="{{ route('manga', ['id' => $chapter->manga_id]) }}"
                     class="flex justify-center items-center duration-200">
@@ -118,13 +118,16 @@
                     </h2>
                 </a>
             @else
-                <p class="flex justify-center text-white font-semibold text-[24px]">{{ $chapter->manga->title }}</p>
+                <p class="flex justify-center text-yellow-400 font-semibold text-[40px] pb-3 group-hover:text-white duration-200 group-hover:drop-shadow-xl">{{ $chapter->manga->title }}</p>
                 <a href="{{ route('manga', ['id' => $chapter->manga_id]) }}"
-                    class="flex justify-center items-center duration-200">
-                    <h2
-                        class="text-xl font-medium border px-12 py-1 text-white duration-200 group-hover:shadow-xl group-hover:bg-orange-600 rounded-md group-hover:border-orange-600">
-                        Back to Manga
-                    </h2>
+                    class=" justify-center items-center duration-200">
+                    <div class="items-center justify-items-center">
+                        <img src="{{ asset('storage/' . $chapter->manga->image) }}" alt="Next Chapter" class="w-42 grayscale group-hover:grayscale-0 duration-200 h-60 object-cover rounded-xl">
+                            <p class="bg-transparent text-white px-5 py-2.5  rounded-md my-3 hover:bg-orange-600 font-medium hover:border-orange-600 duration-200 border border-white tracking-widest hover:tracking-tight hover:shadow-2xl  ">
+                                Back To Manga
+                            </p>
+                    </div>
+
                 </a>
             @endif
         </div>
@@ -214,9 +217,9 @@
             });
         });
     </script>
-    <script>
+    {{-- <script>
         document.onkeydown = function(e) {
             return false;
         }
-    </script>
+    </script> --}}
 @endsection
