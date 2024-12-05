@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Chapter;
 use App\Models\genre;
 use App\Models\Manga;
 use DB;
@@ -195,5 +196,37 @@ class MangaController extends Controller
 
         return view('search', ['title' => 'MangaLo!
     | What U wanna See'], compact('mangas', 'keyword'));
+    }
+
+    public function view(Request $request, $id)
+    {
+        $query = $request->input('query'); // Ambil parameter pencarian
+        $sort = $request->input('sort', 'desc'); // Ambil parameter urutan, default 'desc'
+
+        // Ambil data manga dengan chapter yang difilter dan diurutkan
+        $manga = Manga::with(['chapters' => function ($queryBuilder) use ($query, $sort) {
+            if ($query) {
+                // Filter hanya berdasarkan nomor chapter
+                $queryBuilder->where('chapter_number', 'like', "%{$query}%");
+            }
+            $queryBuilder->orderBy('chapter_number', $sort);
+        }])->find($id);
+
+        if (!$manga) {
+            abort(404); // Tampilkan 404 jika manga tidak ditemukan
+        }
+
+        // Proses biasa jika bukan AJAX
+        $mangas = Manga::inRandomOrder()->take(5)->get();
+        $firstChapter = Chapter::where('manga_id', $id)->orderBy('chapter_number', 'asc')->first();
+        $newChapter = Chapter::where('manga_id', $id)->orderBy('chapter_number', 'desc')->first();
+
+        return view('manga', [
+            'title' => 'MangaLo | Manga',
+            'manga' => $manga,
+            'mangas' => $mangas,
+            'firstChapter' => $firstChapter,
+            'newChapter' => $newChapter,
+        ]);
     }
 }

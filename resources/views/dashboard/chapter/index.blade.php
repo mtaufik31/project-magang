@@ -7,7 +7,7 @@
                 <h2 class="duration-100 hover:text-orange-400 hover:underline">Dashboard</h2>
             </a>
             <p class="px-2"> &raquo; </p>
-            <a href="">
+            <a href="{{ route('List Manga') }}">
                 <h2 class="duration-100 hover:text-orange-400 hover:underline">List Manga</h2>
             </a>
             <p class="px-2"> &raquo; </p>

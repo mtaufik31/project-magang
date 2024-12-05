@@ -161,38 +161,38 @@
 
             <div class="px-6 py-1 border-t">
                 <div class="flex gap-4 items-center justify-between py-3">
-                    <input type="text" inputmode="numeric"
-                        class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-500 caret-orange-400"
-                        placeholder="Search Chapter. Example: 25 or 178" />
-                    <a href="#">
-                        {{-- <i class="fa-solid fa-sort text-orange-500 hover:text-orange-300 duration-200"></i> --}}
-                        <i class="fa-solid fa-arrow-down-9-1 text-orange-500 hover:text-orange-400 duration-200"></i>
-                        <i class="fa-solid fa-arrow-down-1-9 text-orange-500 hover:text-orange-400 duration-200"></i>
-                    </a>
+                    <form method="GET" action="{{ route('manga', ['id' => $manga->id]) }}" class="flex w-full gap-4">
+                        <input type="text" name="query" inputmode="numeric" value="{{ request('query') }}"
+                            class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-500 caret-orange-400"
+                            placeholder="Search Chapter. Example: 25 or 178" />
+                        <button type="submit" class="text-orange-500 hover:text-orange-400 duration-200">
+                            @if (request('sort', 'desc') === 'desc')
+                                <i class="fa-solid fa-arrow-up-1-9"></i>
+                            @else
+                                <i class="fa-solid fa-arrow-down-9-1"></i>
+                            @endif
+                        </button>
+                    </form>
                 </div>
+
             </div>
             <div class="border-t">
                 <div class="overflow-y-auto" style="max-height: 380px">
-                    <div class="gap-x-4 gap-y-6 ">
-                        <!-- Card 1 -->
+                    <div id="chaptersContainer" class="gap-x-4 gap-y-6">
                         @if ($manga->chapters->isEmpty())
                             <script src="https://cdn.lordicon.com/lordicon.js"></script>
-                            <div class="text-center">
+                            <div class="text-center  md:mt-28">
                                 <lord-icon lazy="loading" src="https://cdn.lordicon.com/wjyqkiew.json" trigger="loop"
-                                    colors="primary:#121331,secondary:#eeaa66" style="width:100px;height:100px">
+                                    colors="primary:#121331,secondary:#eeaa66" style="width:100px;height:80px">
                                 </lord-icon>
                                 <p class="mt-3 text-gray-500">No chapters available yet.</p>
                             </div>
                         @else
                             @foreach ($manga->chapters as $chapter)
-                                <x-cardchapter number="{{ $chapter->chapter_number }}"
-                                    title="{{ $chapter->chapter_title }}"
-                                    cover="{{ asset('storage/' . $chapter->cover_image) }}"
-                                    date="{{ $chapter->updated_at->setTimezone('Asia/Jakarta')->format('F d, Y') }}"
-                                    :id="$chapter->id" />
+                                <x-cardchapter :chapter-id="$chapter->id" :number="$chapter->chapter_number" :title="$chapter->chapter_title" :cover="asset('storage/' . $chapter->cover_image)"
+                                    :date="$chapter->updated_at->setTimezone('Asia/Jakarta')->format('F d, Y')" :chapter-route="route('chapter', ['id' => $chapter->id])" />
                             @endforeach
                         @endif
-
                     </div>
                 </div>
             </div>
@@ -225,4 +225,42 @@
             </div>
         </div>
     </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        // Frontend JavaScript (likely in your blade template or a separate JS file)
+        function fetchChapters(mangaId, query, sort) {
+            $.ajax({
+                url: `/manga/${mangaId}`,
+                method: 'GET',
+                data: {
+                    query: query,
+                    sort: sort,
+                    ajax: true // Menandai request sebagai AJAX
+                },
+                success: function(response) {
+                    // Clear existing chapters
+                    $('#chaptersContainer').empty();
+
+                    // Render new chapters
+                    response.chapters.forEach(function(chapter) {
+                        const chapterHtml = `
+                    <x-cardchapter
+                        chapter-id="${chapter.id}"
+                        number="${chapter.number}"
+                        title="${chapter.title}"
+                        cover="${chapter.cover}"
+                        date="${chapter.date}"
+                        chapter-route="${chapter.route}"
+                    />
+                `;
+                        $('#chaptersContainer').append(chapterHtml);
+                    });
+                },
+                error: function(xhr) {
+                    console.error('Error fetching chapters:', xhr);
+                }
+            });
+        }
+    </script>
 @endsection

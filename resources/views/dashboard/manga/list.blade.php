@@ -74,10 +74,12 @@
                                             class="px-3 py-2 text-sm text-white bg-blue-500 rounded-md hover:bg-blue-600">
                                             <i class="fa-solid fa-eye"></i>
                                         </a>
+                                        @if (Auth::user()->role == 'admin')
                                         <a href="{{ route('Edit manga', $manga) }}"
                                             class="px-3 py-2 text-sm text-white bg-yellow-500 rounded-md hover:bg-yellow-600">
                                             <i class="fa-solid fa-pen"></i>
                                         </a>
+                                        @endif
                                         <form action="{{ route('Delete manga', $manga) }}" method="POST"
                                             class="btn-remove">
                                             @csrf

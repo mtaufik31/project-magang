@@ -62,4 +62,38 @@ class BlogController extends Controller
         return redirect()->route('List Blogs')->with('success', 'Blog updated successfully!');
     }
 
+    public function view ($request, $id) {
+
+            // Ambil query 'search' dan 'sort' dari URL
+            $search = $request->query('search');
+            $sort = $request->query('sort');
+
+            // Mulai query untuk mengambil data blog
+            $blogs = Blog::query();
+
+            // Filter berdasarkan pencarian jika ada query 'search'
+            if ($search) {
+                $blogs->where('title', 'like', '%' . $search . '%')
+                    ->orWhere('description', 'like', '%' . $search . '%')
+                    ->orWhere('created_by', 'like', '%' . $search . '%');
+            }
+
+            // Urutkan berdasarkan 'sort' jika ada query 'sort'
+            if ($sort == 'terbaru') {
+                $blogs->orderBy('created_at', 'desc');
+            } elseif ($sort == 'terlama') {
+                $blogs->orderBy('created_at', 'asc');
+            } else {
+                $blogs->orderBy('created_at', 'asc');
+            }
+
+            // Dapatkan hasil query
+            $blogs = $blogs->get();
+
+            return view('dashboard.blog.list', array(
+                'title' => 'Dashboard | List Blogs',
+                'blogs' => $blogs
+            ));
+    }
+
 }

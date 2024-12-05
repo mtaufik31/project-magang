@@ -44,7 +44,6 @@
             position: absolute;
             bottom: -11px;
             left: 43%;
-            transform: translateX(-50%);
             border-width: 6px;
             border-style: solid;
             border-color: transparent transparent #febf8c transparent;
@@ -61,7 +60,7 @@
             </a>
             <div class="">
                 <a href="{{ route('manga', $chapter->manga->id) }}"
-                    class="text-[28px] font-fira hover:text-orange-500 duration-200 font-medium hidden md:block">{{ $chapter->manga->title }}
+                    class="text-[28px] font-fira hover:text-orange-500 duration-200 font-medium hidden md:block ">{{Str::limit($chapter->manga->title, 20, '...')  }}
                 </a>
                 <div class="w-full max-w-sm min-w-[200px]">
                     <div class="relative">
@@ -118,12 +117,12 @@
                     </h2>
                 </a>
             @else
-                <p class="flex justify-center text-yellow-400 font-semibold text-[40px] pb-3 group-hover:text-white duration-200 group-hover:drop-shadow-xl">{{ $chapter->manga->title }}</p>
+                <p class="flex justify-center text-yellow-400 font-bold text-[40px] pb-3 group-hover:text-white duration-200 group-hover:drop-shadow-xl truncate">{{ Str::limit($chapter->manga->title, 14, '...') }}</p>
                 <a href="{{ route('manga', ['id' => $chapter->manga_id]) }}"
                     class=" justify-center items-center duration-200">
                     <div class="items-center justify-items-center">
                         <img src="{{ asset('storage/' . $chapter->manga->image) }}" alt="Next Chapter" class="w-42 grayscale group-hover:grayscale-0 duration-200 h-60 object-cover rounded-xl">
-                            <p class="bg-transparent text-white px-5 py-2.5  rounded-md my-3 hover:bg-orange-600 font-medium hover:border-orange-600 duration-200 border border-white tracking-widest hover:tracking-tight hover:shadow-2xl  ">
+                            <p class="bg-transparent text-white px-8 py-2.5  rounded-md my-3 group-hover:bg-orange-600 font-medium group-hover:border-orange-600 duration-200 border border-white tracking-widest group-hover:tracking-tight hover:shadow-2xl  ">
                                 Back To Manga
                             </p>
                     </div>

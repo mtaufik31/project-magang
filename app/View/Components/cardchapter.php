@@ -8,25 +8,30 @@ use Illuminate\View\Component;
 
 class cardchapter extends Component
 {
-    public $id;
+    public $chapterId;
     public $number;
     public $title;
     public $cover;
     public $date;
+    public $chapterRoute;
 
-    public function __construct($id, $number, $title, $cover, $date)
-    {
-        $this->id = $id;
+    public function __construct(
+        $chapterId = null,
+        $number = null,
+        $title = null,
+        $cover = null,
+        $date = null,
+        $chapterRoute = null
+    ) {
+        $this->chapterId = $chapterId;
         $this->number = $number;
         $this->title = $title;
         $this->cover = $cover;
         $this->date = $date;
+        $this->chapterRoute = $chapterRoute;
     }
 
-    /**
-     * Get the view / contents that represent the component.
-     */
-    public function render(): View|Closure|string
+    public function render()
     {
         return view('components.cardchapter');
     }

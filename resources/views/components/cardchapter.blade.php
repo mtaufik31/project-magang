@@ -1,4 +1,4 @@
-<a href="{{ route('chapter', $id) }}">
+<a href="{{  $chapterRoute  }}">
     <div
         class="group relative flex items-center justify-between md:px-5 hover:bg-slate-100 duration-200 rounded-md cursor-pointer border-b">
         <div class="flex md:py-2 gap-4 w-full">

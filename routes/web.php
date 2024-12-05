@@ -7,7 +7,9 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\ChapterController;
+use App\Http\Controllers\Controller;
 use App\Http\Controllers\GenreController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\StaffController;
 use App\Http\Controllers\MangaController;
 use App\Http\Controllers\MangaSwiperController;
@@ -24,30 +26,7 @@ use Illuminate\Support\Facades\Storage;
 //  ----------------------------------------------------------------
 // ROUTE VIEW LANDING PAGE
 //  ----------------------------------------------------------------
-Route::get('/', function () {
-    $blogs = Blog::latest()->paginate(4);
-
-    $mangas = Manga::with(['chapters' => function ($query) {
-        $query->latest('chapter_number')->take(3);
-    }])
-        ->orderBy('updated_at', 'desc')
-        ->paginate(9);
-
-    $genres = genre::paginate(6);
-
-    $swiperMangas = MangaSwiper::with('manga')
-        ->where('is_active', true)
-        ->orderBy('order')
-        ->get();
-
-    return view('welcome', array(
-        'title' => 'MangaLo',
-        'blogs' => $blogs,
-        'mangas' => $mangas,
-        'genres' => $genres,
-        'swiperMangas' => $swiperMangas
-    ));
-})->name('home');
+Route::get('/', [HomeController::class, 'home'])->name('home');
 
 Route::get('join', function () {
     return view('join', array('title' => 'MangaLo | Join Us'));
@@ -88,68 +67,8 @@ Route::get('forgot', function () {
     return view('register.forgot', data: array('title' => 'MangaLo | Forgot'));
 })->name('forgot');
 
-Route::get('chapter/{id}', function ($id) {
-    // Ambil chapter berdasarkan ID
-    $chapter = Chapter::findOrFail($id);
-
-    // Cari chapter selanjutnya dalam manga yang sama
-    $nextChapter = Chapter::where('manga_id', $chapter->manga_id)
-        ->where('chapter_number', '>', $chapter->chapter_number)
-        ->orderBy('chapter_number', 'asc')
-        ->first();
-
-    // Ambil path absolut untuk konten chapter
-    $absolutePath = storage_path('app/public/' . $chapter->content_path);
-
-    // Ambil semua file dalam folder
-    $files = scandir($absolutePath);
-
-    // Filter hanya file gambar
-    $images = collect($files)->filter(function ($file) use ($absolutePath) {
-        $filePath = $absolutePath . '/' . $file;
-        return is_file($filePath) && in_array(pathinfo($file, PATHINFO_EXTENSION), ['jpg', 'jpeg', 'png', 'webp']);
-    })->toArray();
-
-    // Urutkan berdasarkan angka di awal nama file
-    usort($images, function ($a, $b) {
-        $numA = (int) preg_replace('/\D/', '', pathinfo($a, PATHINFO_FILENAME));
-        $numB = (int) preg_replace('/\D/', '', pathinfo($b, PATHINFO_FILENAME));
-
-        return $numA <=> $numB;
-    });
-
-    return view('chapter', [
-        'title' => 'MangaLo | Chapter',
-        'chapter' => $chapter,
-        'images' => $images,
-        'nextChapter' => $nextChapter
-    ]);
-})->name('chapter')->middleware('auth');
-
-
-Route::get('manga/{id}', function ($id) {
-    $manga = Manga::with(['chapters' => function ($query) {
-        $query->orderBy('chapter_number', 'desc');
-    }])->find($id);
-
-    $mangas = Manga::inRandomOrder()->take(5)->get();
-
-    if (!$manga) {
-        abort(404);
-    }
-
-    $firstChapter = Chapter::where('manga_id', $id)->orderBy('chapter_number', 'asc')->first();
-    $newChapter = Chapter::where('manga_id', $id)->orderBy('chapter_number', 'desc')->first();
-
-    return view('manga', [
-        'title' => 'MangaLo | Manga',
-        'manga' => $manga,
-        'mangas' => $mangas,
-        'firstChapter' => $firstChapter,
-        'newChapter' => $newChapter,
-    ]);
-})->name('manga');
-
+Route::get('chapter/{id}', [ChapterController::class, 'view'])->name('chapter')->middleware('auth');
+Route::get('manga/{id}', [MangaController::class, 'view'])->name('manga');
 Route::get('/search-manga', [MangaController::class, 'search'])->name('search.manga');
 Route::get('list', [MangaController::class, 'sort'])->name('list');
 
@@ -206,39 +125,7 @@ Route::middleware(Dashboard::class)->group(function () {
 
     // Blog Routes Group
     Route::controller(BlogController::class)->group(function () {
-        Route::get('BlogsList', function (Request $request) {
-
-            // Ambil query 'search' dan 'sort' dari URL
-            $search = $request->query('search');
-            $sort = $request->query('sort');
-
-            // Mulai query untuk mengambil data blog
-            $blogs = Blog::query();
-
-            // Filter berdasarkan pencarian jika ada query 'search'
-            if ($search) {
-                $blogs->where('title', 'like', '%' . $search . '%')
-                    ->orWhere('description', 'like', '%' . $search . '%')
-                    ->orWhere('created_by', 'like', '%' . $search . '%');
-            }
-
-            // Urutkan berdasarkan 'sort' jika ada query 'sort'
-            if ($sort == 'terbaru') {
-                $blogs->orderBy('created_at', 'desc');
-            } elseif ($sort == 'terlama') {
-                $blogs->orderBy('created_at', 'asc');
-            } else {
-                $blogs->orderBy('created_at', 'asc');
-            }
-
-            // Dapatkan hasil query
-            $blogs = $blogs->get();
-
-            return view('dashboard.blog.list', array(
-                'title' => 'Dashboard | List Blogs',
-                'blogs' => $blogs
-            ));
-        })->name('List Blogs');
+        Route::get('BlogsList',  'view')->name('List Blogs');
         Route::get('BlogCreate', 'create')->name('Create blog');
         Route::delete('blog/delete/{id}', 'delete')->name('blog.delete');
         Route::post('blog/submit', 'store')->name('blog.submit');
@@ -259,7 +146,7 @@ Route::middleware(Dashboard::class)->group(function () {
         Route::get('MangaList', 'index')->name('List Manga');
         Route::get('MangaCreate', 'create')->name('Create manga');
         Route::post('MangaStore', 'store')->name('Store manga');
-        Route::get('MangaEdit/{manga}', 'edit')->name('Edit manga');
+        Route::get('MangaEdit/{manga}', 'edit')->middleware(RestrictStaffAccess::class)->name('Edit manga');
         Route::put('MangaUpdate/{manga}', 'update')->name('Update manga');
         Route::delete('MangaDelete/{manga}', 'destroy')->name('Delete manga');
         Route::get('MangaDetail/{manga}', function () {

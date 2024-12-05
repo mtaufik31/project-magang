@@ -180,4 +180,54 @@ class ChapterController extends Controller
 
         return view('chapter', compact('chapter', 'images'));
     }
+
+    public function search(Request $request)
+    {
+        $query = $request->input('query');
+
+        // Filter chapters based on the query (assuming chapter_number is an integer)
+        $chapters = Chapter::where('chapter_number', $query)
+            ->get();
+
+        // Return the filtered data as JSON
+        return response()->json($chapters);
+    }
+
+    public function view(Request $request, $id)
+    {
+        $chapter = Chapter::findOrFail($id);
+
+        // Cari chapter selanjutnya dalam manga yang sama
+        $nextChapter = Chapter::where('manga_id', $chapter->manga_id)
+            ->where('chapter_number', '>', $chapter->chapter_number)
+            ->orderBy('chapter_number', 'asc')
+            ->first();
+
+        // Ambil path absolut untuk konten chapter
+        $absolutePath = storage_path('app/public/' . $chapter->content_path);
+
+        // Ambil semua file dalam folder
+        $files = scandir($absolutePath);
+
+        // Filter hanya file gambar
+        $images = collect($files)->filter(function ($file) use ($absolutePath) {
+            $filePath = $absolutePath . '/' . $file;
+            return is_file($filePath) && in_array(pathinfo($file, PATHINFO_EXTENSION), ['jpg', 'jpeg', 'png', 'webp']);
+        })->toArray();
+
+        // Urutkan berdasarkan angka di awal nama file
+        usort($images, function ($a, $b) {
+            $numA = (int) preg_replace('/\D/', '', pathinfo($a, PATHINFO_FILENAME));
+            $numB = (int) preg_replace('/\D/', '', pathinfo($b, PATHINFO_FILENAME));
+
+            return $numA <=> $numB;
+        });
+
+        return view('chapter', [
+            'title' => 'MangaLo | Chapter',
+            'chapter' => $chapter,
+            'images' => $images,
+            'nextChapter' => $nextChapter
+        ]);
+    }
 }
