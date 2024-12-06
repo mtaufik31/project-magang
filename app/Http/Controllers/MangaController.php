@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Chapter;
+use DB;
+use Log;
 use App\Models\genre;
 use App\Models\Manga;
-use DB;
+use App\Models\Chapter;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -200,31 +201,56 @@ class MangaController extends Controller
 
     public function view(Request $request, $id)
     {
-        $query = $request->input('query'); // Ambil parameter pencarian
-        $sort = $request->input('sort', 'desc'); // Ambil parameter urutan, default 'desc'
-
-        // Ambil data manga dengan chapter yang difilter dan diurutkan
-        $manga = Manga::with(['chapters' => function ($queryBuilder) use ($query, $sort) {
-            if ($query) {
-                // Filter hanya berdasarkan nomor chapter
-                $queryBuilder->where('chapter_number', 'like', "%{$query}%");
-            }
-            $queryBuilder->orderBy('chapter_number', $sort);
-        }])->find($id);
+        $manga = Manga::find($id);
 
         if (!$manga) {
-            abort(404); // Tampilkan 404 jika manga tidak ditemukan
+            abort(404);
+        }
+
+        // Jika request AJAX, return JSON data chapters
+        if ($request->ajax()) {
+            $query = $request->input('query');
+            $sort = $request->input('sort', 'desc');
+
+            // Query untuk mencari chapter berdasarkan nomor chapter
+            $chapters = Chapter::where('manga_id', $id)
+                ->when($query, function ($queryBuilder) use ($query) {
+                    // Konversi chapter_number ke string untuk perbandingan LIKE
+                    return $queryBuilder->whereRaw('CAST(chapter_number AS CHAR) LIKE ?', ['%' . $query . '%']);
+                })
+                ->orderBy('chapter_number', $sort)
+                ->get()
+                ->map(function ($chapter) {
+                    return [
+                        'id' => $chapter->id,
+                        'number' => $chapter->chapter_number,
+                        'title' => $chapter->chapter_title ?? 'Chapter ' . $chapter->chapter_number,
+                        'cover' => asset('storage/' . $chapter->cover_image),
+                        'date' => $chapter->updated_at->setTimezone('Asia/Jakarta')->format('F d, Y'),
+                        'url' => route('chapter', ['id' => $chapter->id])
+                    ];
+                });
+
+            return response()->json([
+                'success' => true,
+                'manga_id' => $id,
+                'data' => $chapters
+            ]);
         }
 
         // Proses biasa jika bukan AJAX
+        $chapters = Chapter::where('manga_id', $id)
+            ->orderBy('chapter_number', 'desc')
+            ->get();
         $mangas = Manga::inRandomOrder()->take(5)->get();
-        $firstChapter = Chapter::where('manga_id', $id)->orderBy('chapter_number', 'asc')->first();
-        $newChapter = Chapter::where('manga_id', $id)->orderBy('chapter_number', 'desc')->first();
+        $firstChapter = $chapters->last();
+        $newChapter = $chapters->first();
 
         return view('manga', [
             'title' => 'MangaLo | Manga',
             'manga' => $manga,
             'mangas' => $mangas,
+            'chapters' => $chapters,
             'firstChapter' => $firstChapter,
             'newChapter' => $newChapter,
         ]);
