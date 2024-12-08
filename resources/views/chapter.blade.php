@@ -117,12 +117,12 @@
                     </h2>
                 </a>
             @else
-                <p class="flex justify-center text-yellow-400 font-bold text-[40px] pb-3 group-hover:text-white duration-200 group-hover:drop-shadow-xl truncate">{{ Str::limit($chapter->manga->title, 14, '...') }}</p>
+                <p class="flex justify-center text-yellow-400 font-bold text-[40px] pb-3 group-hover:text-white duration-300 group-hover:drop-shadow-xl truncate">{{ Str::limit($chapter->manga->title, 15, '...') }}</p>
                 <a href="{{ route('manga', ['id' => $chapter->manga_id]) }}"
-                    class=" justify-center items-center duration-200">
+                    class=" justify-center items-center duration-300">
                     <div class="items-center justify-items-center">
-                        <img src="{{ asset('storage/' . $chapter->manga->image) }}" alt="Next Chapter" class="w-42 grayscale group-hover:grayscale-0 duration-200 h-60 object-cover rounded-xl">
-                            <p class="bg-transparent text-white px-8 py-2.5  rounded-md my-3 group-hover:bg-orange-600 font-medium group-hover:border-orange-600 duration-200 border border-white tracking-widest group-hover:tracking-tight hover:shadow-2xl  ">
+                        <img src="{{ asset('storage/' . $chapter->manga->image) }}" alt="Next Chapter" class="w-42 grayscale group-hover:grayscale-0 duration-300 h-60 object-cover rounded-xl">
+                            <p class="bg-transparent text-white px-8 py-2.5  rounded-md my-3 group-hover:bg-orange-600 font-medium group-hover:border-orange-600 duration-300 border border-white tracking-widest group-hover:tracking-tight hover:shadow-2xl  ">
                                 Back To Manga
                             </p>
                     </div>

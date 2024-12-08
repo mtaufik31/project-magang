@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('title');
             $table->text('description');
             $table->string('image')->nullable();
-            $table->foreignId('created_by')->constrained('users')->onDelete('cascade'); // Foreign key ke tabel users
+            $table->foreignId('created_by')->constrained('users')->onDelete('cascade'); 
             $table->timestamps();
         });
     }

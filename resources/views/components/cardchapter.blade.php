@@ -4,7 +4,7 @@
         <div class="flex md:py-2 gap-4 w-full">
             <!-- Gambar -->
             <img src="{{ $cover }}" alt="Chapter Image"
-                class="md:w-36 md:h-28 w-24 h-24 object-cover transition-all duration-200 md:group-hover:-translate-x-2">
+                class="md:w-36 md:h-28 w-32 h-24 object-cover transition-all duration-200 md:group-hover:-translate-x-2">
             <!-- Detail Chapter -->
             <div class="flex flex-col justify-between">
                 <div>

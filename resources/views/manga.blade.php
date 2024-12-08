@@ -25,7 +25,7 @@
                 <div class="flex flex-col items-center transition-all md:items-start">
                     <div class="w-full judul md:border-b-2">
                         <h1 class="mb-2 text-3xl text-center text-black font-fira md:text-left ">
-                            {{ $manga->title }} {{ $manga->id }}
+                            {{ $manga->title }}
                         </h1>
                         <p class="mb-2 text-center text-slate-600 md:text-left">{{ $manga->alternative }} </p>
                     </div>

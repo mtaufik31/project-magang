@@ -24,7 +24,6 @@ return new class extends Migration
             $table->string('artist');
             $table->string('publisher')->nullable();
             $table->foreignId('created_by')->constrained('users')->onDelete('cascade');
-
             $table->text('genre');
             $table->timestamps();
         });

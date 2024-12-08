@@ -17,7 +17,7 @@ return new class extends Migration
             $table->integer('chapter_number');
             $table->string('chapter_title');
             $table->string('cover_image');
-            $table->string('content_path'); // Path ke folder image hasil extract ZIP
+            $table->string('content_path');
             $table->timestamps();
         });
     }
