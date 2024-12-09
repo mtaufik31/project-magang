@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\ChapterController;
+use App\Http\Controllers\CoinController;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\GenreController;
 use App\Http\Controllers\HomeController;
@@ -77,6 +78,15 @@ Route::controller(GenreController::class)->group(function () {
     Route::get('/genre/{id}', 'sortGenres')->name('genre.sort');
 });
 
+Route::middleware(['auth'])->group(function () {
+    Route::get('/coins/topup', [CoinController::class, 'showTopUpPage'])->name('coins.topup');
+    Route::post('/coins/topup/kocak', [CoinController::class, 'processTopUp'])->name('process.topup');
+    Route::post('/manga/{manga}/unlock', [CoinController::class, 'unlockManga'])->name('manga.unlock');
+    Route::get('checkout', function() {
+        return view('checkout', array('title' => 'MangaLo | Checkout'));
+    })->name('checkout');
+    Route::post('/payment/success', [CoinController::class, 'successPayment'])->name('payment.success');
+});
 //  ----------------------------------------------------------------
 // AUTHENTICATION
 //  ----------------------------------------------------------------

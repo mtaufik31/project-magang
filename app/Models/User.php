@@ -56,4 +56,9 @@ class User extends Authenticatable
     public function manga() {
         return $this->hasMany(Manga::class, 'created_by');
     }
+
+    public function coinBalance()
+    {
+        return $this->hasOne(related: UserCoinBalance::class);
+    }
 }
