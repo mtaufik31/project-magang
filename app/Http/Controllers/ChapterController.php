@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Chapter;
 use App\Models\Manga;
+use App\Models\MangaPurchase;
 use Faker\Core\File;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -177,6 +178,17 @@ class ChapterController extends Controller
         $images = collect(Storage::files($contentPath))->filter(function ($file) {
             return in_array(pathinfo($file, PATHINFO_EXTENSION), ['jpg', 'jpeg', 'png', 'webp']);
         });
+
+        // if ($manga->is_paid) {
+        //     // Cek apakah pengguna sudah membuka manga
+        //     $isUnlocked = MangaPurchase::where('user_id', auth()->id())
+        //         ->where('manga_id', $manga->id)
+        //         ->exists();
+
+        //     if (!$isUnlocked) {
+        //         return redirect()->back()->with('error', 'You need to unlock this manga to access its chapters.');
+        //     }
+        // }
 
         return view('chapter', compact('chapter', 'images'));
     }

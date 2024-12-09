@@ -175,7 +175,7 @@
                 </div>
 
             </div>
-            <div class="border-t">
+            <div class="border-t relative">
                 <div class="overflow-y-auto" style="max-height: 380px">
                     <div id="chaptersContainer" class="gap-x-4 gap-y-6">
                         @if ($chapters->isEmpty())
@@ -194,6 +194,19 @@
                         @endif
                     </div>
                 </div>
+
+                <!-- Locked Button Overlay -->
+                @if ($manga->is_paid)
+                    <div class="absolute inset-0 flex items-center justify-center bg-gray-900 bg-opacity-50">
+                        <button class="bg-gray-700 text-white py-2 px-4 rounded shadow-lg items-center gap-2">
+                            <script src="https://cdn.lordicon.com/lordicon.js"></script>
+                            <lord-icon src="https://cdn.lordicon.com/fgxwhgfp.json" trigger="loop" delay="1000"
+                                colors="primary:#ffffff,secondary:#e88c30" style="width:250px;height:100px">
+                            </lord-icon>
+                            <p>Locked</p>
+                        </button>
+                    </div>
+                @endif
             </div>
 
 

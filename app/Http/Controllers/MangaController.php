@@ -105,7 +105,9 @@ class MangaController extends Controller
             'author' => 'required|string|max:255',
             'artist' => 'required|string|max:255',
             'publisher' => 'nullable|string|max:255',
-            'genre' => 'required|array'
+            'genre' => 'required|array',
+            'is_paid' => 'required|boolean',
+            'unlock_cost' => 'required_if:is_paid,1|integer|min:90',
         ]);
         // Handling genres (existing or new)
         $genreIds = [];
@@ -132,6 +134,8 @@ class MangaController extends Controller
         $manga->genre = json_encode($genreIds);
         $manga->image = $imagePath;
         $manga->created_by = Auth::id();
+        $manga->is_paid = $request->is_paid; // Set apakah manga berbayar
+        $manga->unlock_cost = $request->is_paid ? $request->unlock_cost : 0;
         $manga->save();
         return redirect()->route('List Manga')->with('success', 'Manga added successfully with a unique title!');
     }
@@ -156,7 +160,9 @@ class MangaController extends Controller
             'author' => 'required|string|max:255',
             'artist' => 'required|string|max:255',
             'publisher' => 'nullable|string|max:255',
-            'genre' => ' required|array'
+            'genre' => ' required|array',
+            'is_paid' => 'required|boolean',
+            'unlock_cost' => 'nullable|integer|min:90|required_if:is_paid,1',
         ]);
         if ($request->hasFile('image')) {
             $imagePath = $request->file('image')->store('manga-covers', 'public');
@@ -173,7 +179,10 @@ class MangaController extends Controller
         }
         $validated["genre"] = json_encode($genreIds);
         // dd($manga->genre);
-        $manga->update($validated);
+        $manga->update(array_merge($validated, [
+            'genre' => json_encode($genreIds),
+            'unlock_cost' => $request->is_paid ? $request->unlock_cost : 0, // Set unlock_cost ke 0 jika gratis
+        ]));
         // $manga->save();
         return redirect()->route('List Manga')->with('success', 'Manga updated successfully');
     }

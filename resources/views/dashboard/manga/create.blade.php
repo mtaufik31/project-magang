@@ -148,6 +148,40 @@
                             </p>
                         </div>
 
+                        <div class="flex flex-col !w-full mb-4">
+                            <h4 for="nama" class="mb-2 font-semibold">Apakah Berbayar? (jika gratis biarkan saja)</h4>
+                            <div class="">
+                                <input type="radio" name="is_paid" id="gratis" value="0"
+                                    onchange="togglePriceInput(false)">
+                                <label for="gratis">Gratis</label>
+                            </div>
+                            <div class="">
+                                <input type="radio" name="is_paid" id="bayar" value="1"
+                                    onchange="togglePriceInput(true)">
+                                <label for="bayar">Bayar</label>
+                            </div>
+                            <p class="text-red-500">
+                                @error('is_paid')
+                                    {{ $message }}
+                                @enderror
+                            </p>
+                        </div>
+
+                        <!-- Input tambahan untuk harga -->
+                        <div id="priceInput" class="flex flex-col !w-full mb-4 hidden">
+                            <label for="unlock_cost" class="mb-2 font-semibold">Harga Coin per Manga (minimal 90
+                                coin)</label>
+                            <input type="number" name="unlock_cost" id="unlock_cost"
+                                class="border border-gray-300 rounded p-2" min="90" value="90" step="1">
+                            <p class="text-red-500">
+                                @error('unlock_cost')
+                                    {{ $message }}
+                                @enderror
+                            </p>
+                        </div>
+
+
+
                         <!-- Description -->
                         <div class="w-full">
                             <label for="description" class="block text-sm font-medium text-gray-700">Description</label>
@@ -257,4 +291,16 @@
             initGenreTypeSelect('#genre');
         });
     </script>
+    <script>
+        function togglePriceInput(isPaid) {
+            const priceInput = document.getElementById('priceInput');
+            if (isPaid) {
+                priceInput.classList.remove('hidden'); // Tampilkan input harga
+            } else {
+                priceInput.classList.add('hidden');   // Sembunyikan input harga
+                document.getElementById('unlock_cost').value = 90; // Reset nilai ke default
+            }
+        }
+    </script>
+
 @endsection

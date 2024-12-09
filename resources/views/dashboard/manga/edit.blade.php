@@ -139,8 +139,7 @@
                             <select name="genre[]" id="genre" class="h-10 border-2 rounded-md border-slate-400"
                                 multiple="multiple">
                                 @foreach ($manga->getGenre() as $genre)
-
-                                <option value="{{ $genre->id }}" selected="selected">{{ $genre->title }}</option>
+                                    <option value="{{ $genre->id }}" selected="selected">{{ $genre->title }}</option>
                                 @endforeach
                             </select>
                             <p class="text-red-500">
@@ -148,6 +147,35 @@
                                     {{ $message }}
                                 @enderror
                             </p>
+                        </div>
+
+                        <div class="mb-4">
+                            <label class="block font-semibold">Apakah Berbayar?</label>
+                            <div>
+                                <input type="radio" name="is_paid" id="gratis" value="0"
+                                    {{ old('is_paid', $manga->is_paid) == 0 ? 'checked' : '' }}>
+                                <label for="gratis">Gratis</label>
+                            </div>
+                            <div>
+                                <input type="radio" name="is_paid" id="bayar" value="1"
+                                    {{ old('is_paid', $manga->is_paid) == 1 ? 'checked' : '' }}>
+                                <label for="bayar">Bayar</label>
+                            </div>
+                            @error('is_paid')
+                                <p class="text-red-500">{{ $message }}</p>
+                            @enderror
+                        </div>
+
+                        <!-- Harga Coin -->
+                        <div id="priceInput" class="mb-4 {{ old('is_paid', $manga->is_paid) == 1 ? '' : 'hidden' }}">
+                            <label for="unlock_cost" class="block font-semibold">Harga Coin per Manga (minimal 90
+                                coin)</label>
+                            <input type="number" name="unlock_cost" id="unlock_cost"
+                                class="border border-gray-300 rounded p-2 w-full" min="90"
+                                value="{{ old('unlock_cost', $manga->unlock_cost) }}">
+                            @error('unlock_cost')
+                                <p class="text-red-500">{{ $message }}</p>
+                            @enderror
                         </div>
 
                         <!-- Description -->
@@ -243,6 +271,28 @@
                 const option = new Option(genre, genre, true, true);
                 $('#genre').append(option).trigger('change');
             });
+        });
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const gratisInput = document.getElementById('gratis');
+            const bayarInput = document.getElementById('bayar');
+            const priceInput = document.getElementById('priceInput');
+
+            const togglePriceInput = () => {
+                if (bayarInput.checked) {
+                    priceInput.classList.remove('hidden');
+                } else {
+                    priceInput.classList.add('hidden');
+                    document.getElementById('unlock_cost').value = 90; // Reset nilai ke default
+                }
+            };
+
+            gratisInput.addEventListener('change', togglePriceInput);
+            bayarInput.addEventListener('change', togglePriceInput);
+
+            // Set initial state
+            togglePriceInput();
         });
     </script>
 @endsection

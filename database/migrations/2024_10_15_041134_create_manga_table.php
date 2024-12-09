@@ -24,6 +24,8 @@ return new class extends Migration
             $table->string('artist');
             $table->string('publisher')->nullable();
             $table->foreignId('created_by')->constrained('users')->onDelete('cascade');
+            $table->boolean('is_paid')->default(false); // Indikator manga berbayar
+            $table->integer('unlock_cost')->default(value: 90); // Harga unlock manga dalam koin
             $table->text('genre');
             $table->timestamps();
         });

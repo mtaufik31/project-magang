@@ -24,7 +24,9 @@ class Manga extends Model
         'artist',
         'publisher',
         'created_by',
-        'genre'
+        'genre',
+        'is_paid',
+        'unlock_cost'
     ];
 
     public function user()
