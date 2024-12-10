@@ -20,4 +20,6 @@ class MangaPurchase extends Model
     {
         return $this->belongsTo(Manga::class);
     }
+
+    
 }

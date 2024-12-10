@@ -44,6 +44,17 @@
 
                     </a>
                 </li>
+                @if (Auth::check())
+                <li>
+                    <a href="{{ route('purchased') }}"
+                        class="text-gray-900 group justify-center flex flex-col items-center {{ request()->routeIs('purchased') ? 'bg-[#ff9900] px-4 py-3 text-white rounded-lg' : '' }}">
+                        Purchases
+                        <hr
+                            class="w-0 border-transparent transition-all duration-300 group-hover:w-full group-hover:border-black">
+
+                    </a>
+                </li>
+                @endif
             </ul>
 
             {{-- <div class="flex space-x-4 ml-auto">

@@ -1,4 +1,4 @@
-<div class="flex flex-wrap justify-center gap-8 pb-5 md:gap-6 md:justify-start">
+<div class="flex flex-wrap justify-center gap-1 pb-5 md:gap-6 md:justify-start">
     @forelse ($mangas as $manga)
         <x-cardmanga :manga="$manga" id="{{ $manga->id }}" status="{{ $manga->status }}" title="{{ $manga->title }}"
             author="{{ $manga->author }}" :description="$manga->chapters->last()->chapter_title ?? 'No chapters'" image="{{ asset('storage/' . $manga->image) }}"

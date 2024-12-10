@@ -49,4 +49,9 @@ class Manga extends Model
     {
         return $this->hasMany(Chapter::class);
     }
+
+    public function purchases()
+    {
+        return $this->hasMany(MangaPurchase::class);
+    }
 }

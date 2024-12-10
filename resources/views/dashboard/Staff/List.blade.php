@@ -17,7 +17,7 @@
         <div class="w-full px-5 py-5 mx-auto bg-white shadow-xl rounded-b-xl">
             <!-- Header Section -->
             <div class="flex items-center justify-between">
-                <h1 class="pb-3 text-2xl font-inter ">Staff (babu)</h1>
+                <h1 class="pb-3 text-2xl font-inter ">Staff</h1>
                 <a href="{{ route('Staff.create') }}">
                     <button class="px-3 py-2 text-sm text-white bg-blue-500 rounded-md hover:bg-blue-600">
                         <i class="fa-solid fa-plus"></i> Add Staff

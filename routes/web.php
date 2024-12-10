@@ -38,6 +38,7 @@ Route::get('faq', function () {
     return view('faq', array('title' => 'MangaLo | FAQ'));
 })->name('faq');
 
+
 Route::get('blogs', function () {
     $blogs = Blog::all();
 
@@ -72,7 +73,8 @@ Route::get('forgot', function () {
 Route::get('chapter/{id}', [ChapterController::class, 'view'])
     ->middleware(MangaPurchase::class)
     ->name('chapter');
-Route::get('manga/{id}', [MangaController::class, 'view'])->name('manga');
+Route::get('manga/{id}', [MangaController::class, 'view'])
+->name('manga');
 // Route::post('manga/{id}/unlock', [MangaController::class, 'unlock'])->name('manga.unlock')->middleware('auth');
 
 Route::get('/search-manga', [MangaController::class, 'search'])->name('search.manga');
@@ -91,6 +93,17 @@ Route::middleware(['auth'])->group(function () {
         return view('checkout', array('title' => 'MangaLo | Checkout'));
     })->name('checkout');
     Route::post('/payment/success', [CoinController::class, 'successPayment'])->name('payment.success');
+    Route::get('purchased', function () {
+        $user = Auth::user();
+        $purchasedMangas = Manga::whereHas('purchases', function ($query) use ($user) {
+            $query->where('user_id', $user->id);
+        })->get();
+
+        return view('purchased', [
+            'title' => 'MangaLo | Purchased',
+            'mangas' => $purchasedMangas,
+        ]);
+    })->name('purchased');
 });
 //  ----------------------------------------------------------------
 // AUTHENTICATION
