@@ -6,7 +6,7 @@
             document.addEventListener('DOMContentLoaded', function() {
                 Swal.fire({
                     title: "Welcome!",
-                    text: "{{ session('success') }}", // Use the session success message here
+                    text: "{{ session('success') }}",
                     icon: "success"
                 });
             });
@@ -17,7 +17,7 @@
             document.addEventListener('DOMContentLoaded', function() {
                 Swal.fire({
                     title: "Goodbye!",
-                    text: "{{ session('berhasil') }}", // Use the session success message here
+                    text: "{{ session('berhasil') }}",
                     icon: "success"
                 });
             });

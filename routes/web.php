@@ -128,24 +128,7 @@ Route::controller(Authcontroller::class)->group(function () {
 
 Route::middleware(Dashboard::class)->group(function () {
     // Dashboard Route
-    Route::get('/dashboard', function () {
-        $manyManga = Manga::all()->count();
-        $manyBlog = Blog::all()->count();
-        $manyGenre = genre::all()->count();
-        $manyStaff = User::where('role', 'staff')->count();
-        if (Auth::user()->role == 'admin' || Auth::user()->role == 'staff') {
-            return view('dashboard.index', array(
-                'title' => 'Dashboard | Staff',
-                'manyBlogs' => $manyBlog,
-                'manyStaff' => $manyStaff,
-                'manyManga' => $manyManga,
-                'manyGenre' => $manyGenre,
-
-            ));
-        }
-        return redirect()->route('home');
-    })->middleware('auth')->name('dashboard');
-
+    Route::get('/dashboard', [HomeController::class, 'dashboard'])->middleware('auth')->name('dashboard');
 
     Route::get('points', function () {
         return view('points', array('title' => 'MangaLo! | Points'));

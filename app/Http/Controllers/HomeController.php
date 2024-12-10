@@ -6,7 +6,9 @@ use App\Models\Blog;
 use App\Models\genre;
 use App\Models\Manga;
 use App\Models\MangaSwiper;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -34,5 +36,23 @@ class HomeController extends Controller
             'genres' => $genres,
             'swiperMangas' => $swiperMangas
         ));
+    }
+
+    public function dashboard() {
+        $manyManga = Manga::all()->count();
+        $manyBlog = Blog::all()->count();
+        $manyGenre = genre::all()->count();
+        $manyStaff = User::where('role', 'staff')->count();
+        if (Auth::user()->role == 'admin' || Auth::user()->role == 'staff') {
+            return view('dashboard.index', array(
+                'title' => 'Dashboard | Staff',
+                'manyBlogs' => $manyBlog,
+                'manyStaff' => $manyStaff,
+                'manyManga' => $manyManga,
+                'manyGenre' => $manyGenre,
+
+            ));
+        }
+        return redirect()->route('home');
     }
 }
