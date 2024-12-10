@@ -85,23 +85,28 @@ class CoinController extends Controller
     public function unlockManga(Manga $manga)
     {
         $user = Auth::user();
+        $unlockCost = $manga->unlock_cost;
+
         $userBalance = UserCoinBalance::firstOrCreate(
             ['user_id' => $user->id],
             ['total_coins' => 0]
         );
 
-        if ($userBalance->deductCoins(self::MANGA_UNLOCK_COST)) {
+        if ($userBalance->deductCoins($unlockCost)) {
             MangaPurchase::create([
                 'user_id' => $user->id,
                 'manga_id' => $manga->id,
-                'coins_spent' => self::MANGA_UNLOCK_COST
+                'coins_spent' => $unlockCost
             ]);
 
-            return redirect()->route('manga', $manga->id);
+            return response()->json(['success' => true, 'message' => 'Manga unlocked successfully!']);
         }
 
-        return redirect()->back()->with('error', 'Coin tidak mencukupi!');
+        return response()->json(['success' => false, 'message' => 'You do not have enough coins!']);
     }
+
+
+
 
     public function successPayment(Request $request)
     {

@@ -7,6 +7,7 @@ use Log;
 use App\Models\genre;
 use App\Models\Manga;
 use App\Models\Chapter;
+use App\Models\MangaPurchase;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -216,6 +217,13 @@ class MangaController extends Controller
             abort(404);
         }
 
+        $isUnlocked = false;
+        if (Auth::check()) {
+            $isUnlocked = MangaPurchase::where('user_id', Auth::id())
+                ->where('manga_id', $manga->id)
+                ->exists();
+        }
+
         // Jika request AJAX, return JSON data chapters
         if ($request->ajax()) {
             $query = $request->input('query');
@@ -262,6 +270,43 @@ class MangaController extends Controller
             'chapters' => $chapters,
             'firstChapter' => $firstChapter,
             'newChapter' => $newChapter,
+            'isUnlocked' => $isUnlocked,
         ]);
     }
+
+    // public function unlock(Request $request, $id)
+    // {
+    //     $manga = Manga::findOrFail($id);
+    //     $user = auth()->user();
+
+    //     // Pastikan manga berbayar
+    //     if (!$manga->is_paid) {
+    //         return redirect()->back()->with('error', 'This manga is free and doesn’t need to be unlocked.');
+    //     }
+
+    //     // Cek apakah pengguna sudah memiliki manga ini
+    //     $isUnlocked = MangaPurchase::where('user_id', $user->id)
+    //         ->where('manga_id', $manga->id)
+    //         ->exists();
+
+    //     if ($isUnlocked) {
+    //         return redirect()->back()->with('success', 'You already unlocked this manga.');
+    //     }
+
+    //     if ($user->coins < $manga->unlock_cost) {
+    //         return redirect()->back()->with('error', 'You do not have enough coins to unlock this manga.');
+    //     }
+
+    //     // Kurangi koin pengguna
+    //     $user->coins -= $manga->unlock_cost;
+    //     $user->save();
+
+    //     // Simpan data unlock
+    //     MangaPurchase::create([
+    //         'user_id' => $user->id,
+    //         'manga_id' => $manga->id,
+    //     ]);
+
+    //     return redirect()->back()->with('success', 'Manga unlocked successfully!');
+    // }
 }

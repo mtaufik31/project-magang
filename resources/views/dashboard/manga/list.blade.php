@@ -72,7 +72,7 @@
                                     <div class="flex items-center justify-center gap-2">
                                         <a href="{{ route('chapters.index', $manga->id) }}"
                                             class="px-3 py-2 text-sm text-white bg-blue-500 rounded-md hover:bg-blue-600">
-                                            <i class="fa-solid fa-eye"></i>
+                                            <i class="fa-solid fa-plus"></i>
                                         </a>
                                         @if (Auth::user()->role == 'admin')
                                         <a href="{{ route('Edit manga', $manga) }}"

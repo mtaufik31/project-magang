@@ -2,8 +2,13 @@
 
 
 @section('content')
-    <div class="pb-7">
-        <h1 class="text-3xl font-semibold ">Statistik</h1>
+    <div class="font-inter py-4">
+        <p class="text-xl font-semibold text-gray-600">Welcome, {{ Auth::user()->name }}!</p>
+        <p class="font-normal text-gray-700">Ini merupakan dashboard untuk mengelola isi konten website MangaLo!. Jadi,
+            tolong <strong class="text-black">gunakan sebaik mungkin.</strong></p>
+    </div>
+    <div class="pb-4">
+        <h1 class="text-xl font-semibold text-gray-600">Statistik</h1>
     </div>
 
     <div class="flex flex-wrap md:flex-nowrap gap-4">

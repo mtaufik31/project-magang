@@ -134,7 +134,7 @@
 
 
     <div class="grid grid-cols-1 md:grid-cols-3 w-full md:w-[81%] mx-auto gap-8">
-        <div class="w-full my-5 bg-white shadow-md md:col-span-2 md:rounded-l-xl">
+        <div class="w-full my-5 bg-white shadow-md md:col-span-2 md:rounded-l-xl relative">
             <div class="px-6 py-4 border-b">
                 <h2 class="text-2xl font-medium font-fira">Chapter <span
                         class="text-orange-500 underline">{{ $manga->title }}</span></h2>
@@ -175,7 +175,7 @@
                 </div>
 
             </div>
-            <div class="border-t relative">
+            <div class="border-t">
                 <div class="overflow-y-auto" style="max-height: 380px">
                     <div id="chaptersContainer" class="gap-x-4 gap-y-6">
                         @if ($chapters->isEmpty())
@@ -196,22 +196,26 @@
                 </div>
 
                 <!-- Locked Button Overlay -->
-                @if ($manga->is_paid)
+                @php
+                    $user = Auth::user();
+                @endphp
+
+                @if ($manga->is_paid && !$isUnlocked && !in_array($user->role, ['staff', 'admin']))
                     <div class="absolute inset-0 flex items-center justify-center bg-gray-900 bg-opacity-50">
-                        <button class="bg-gray-700 text-white py-2 px-4 rounded shadow-lg items-center gap-2">
+                        <button
+                            class="bg-gray-700 hover:bg-gray-800 duration-200 text-white py-2 px-4 rounded shadow-lg items-center gap-2"
+                            onclick="confirmPurchase({{ $manga->id }}, {{ $manga->unlock_cost }})">
                             <script src="https://cdn.lordicon.com/lordicon.js"></script>
-                            <lord-icon src="https://cdn.lordicon.com/fgxwhgfp.json" trigger="loop" delay="1000"
+                            <lord-icon src="https://cdn.lordicon.com/fgxwhgfp.json" trigger="loop" delay="500"
                                 colors="primary:#ffffff,secondary:#e88c30" style="width:250px;height:100px">
                             </lord-icon>
-                            <p>Locked</p>
+                            <p>You need {{ $manga->unlock_cost }} coins to read this manga.</p>
                         </button>
                     </div>
                 @endif
             </div>
-
-
         </div>
-        <div class="w-full mx-auto my-5 bg-white shadow-md md:col-span-1 md:rounded-r-xl ransition-all">
+        <div class="w-full mx-auto my-5 bg-white shadow-md md:col-span-1 md:rounded-r-xl transition-all">
             <div class="px-6 py-4 border-b t">
                 <h2 class="text-2xl font-medium font-fira">Random Mangas</h2>
             </div>
@@ -238,6 +242,7 @@
         </div>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const searchInput = document.querySelector('input[name="query"]');
@@ -364,4 +369,56 @@
             searchInput.addEventListener('input', () => debounce(loadChapters, 300));
         });
     </script>
+    <script>
+        function confirmPurchase(mangaId, cost) {
+            Swal.fire({
+                title: 'Confirm Purchase',
+                text: `You will spend ${cost} coins to unlock this manga. Do you want to proceed?`,
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'Yes, buy it!',
+                cancelButtonText: 'Cancel',
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // Kirim form pembelian
+                    fetch(`/manga/${mangaId}/unlock`, {
+                            method: 'POST',
+                            headers: {
+                                'X-CSRF-TOKEN': '{{ csrf_token() }}',
+                                'Content-Type': 'application/json'
+                            }
+                        })
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.success) {
+                                Swal.fire({
+                                    title: 'Success!',
+                                    text: 'You have successfully unlocked the manga.',
+                                    icon: 'success',
+                                    timer: 2000,
+                                    showConfirmButton: false
+                                }).then(() => {
+                                    // Redirect ke halaman manga
+                                    window.location.href = `/manga/${mangaId}`;
+                                });
+                            } else {
+                                Swal.fire({
+                                    title: 'Error!',
+                                    text: data.message || 'You do not have enough coins.',
+                                    icon: 'error'
+                                });
+                            }
+                        })
+                        .catch(error => {
+                            Swal.fire({
+                                title: 'Error!',
+                                text: 'An unexpected error occurred.',
+                                icon: 'error'
+                            });
+                        });
+                }
+            });
+        }
+    </script>
+
 @endsection

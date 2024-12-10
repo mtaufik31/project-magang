@@ -56,14 +56,6 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#"
-                            class="flex items-center p-2 text-gray-700 transition-all duration-200 rounded-md hover:text-orange-400 hover:bg-gray-100 hover:translate-x-1 ">
-                            <i
-                                class="mr-2 mt-1 fa-solid fa-circle text-[5px] self-center items-center hover:fill-orange-500"></i>
-                            Chapter
-                        </a>
-                    </li>
-                    <li>
                         <a href="{{ route('GenreList') }}"
                             class="flex items-center p-2 rounded-md text-gray-700 hover:text-orange-400 hover:bg-gray-100 transition-all hover:translate-x-1 duration-200  {{ request()->routeIs('GenreList') ? 'text-orange-400 translate-x-1 hover:text-gray-800' : '' }}">
                             <i

@@ -12,11 +12,6 @@
                 <form action="{{ route('process.topup') }}" method="POST" class="">
                     @csrf
                     <div class="mb-6">
-                        <label for="current-balance" class="block text-sm font-medium text-gray-700">Saldo Coin Anda:</label>
-                        <p id="current-balance" class="text-lg font-semibold">{{ $currentBalance }} Coin</p>
-                    </div>
-
-                    <div class="mb-6">
                         <label for="coin_amount" class="block text-sm pb-2 font-medium text-gray-700">Pilih Jumlah
                             Coin</label>
                         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -62,6 +57,49 @@
                                     </div>
                                 </div>
                             </a>
+                            <a href="#" onclick="selectCoin(360)" class="coin-card" data-amount="360">
+                                <div
+                                    class="flex relative flex-col items-center group duration-200 hover:bg-gray-300 bg-gray-200 text-black rounded-lg w-64 overflow-hidden">
+                                    <div class="flex items-center justify-center w-16 h-16 bg-white rounded-full mt-7">
+                                        <i class="fa-solid fa-coins text-3xl text-orange-500"></i>
+                                    </div>
+                                    <p class="text-3xl font-bold my-4">360 Coin</p>
+                                    <div
+                                        class="bg-orange-300 p-4 w-full text-center border-t duration-200 group-hover:bg-orange-400 border-slate-200">
+                                        <h1 class="font-fira text-xl duration-200 text-gray-700 group-hover:text-black">Rp.
+                                            80.000</h1>
+                                    </div>
+                                </div>
+                            </a>
+                            <a href="#" onclick="selectCoin(450)" class="coin-card" data-amount="450">
+                                <div
+                                    class="flex relative flex-col items-center group duration-200 hover:bg-gray-300 bg-gray-200 text-black rounded-lg w-64 overflow-hidden">
+                                    <div class="flex items-center justify-center w-16 h-16 bg-white rounded-full mt-7">
+                                        <i class="fa-solid fa-coins text-3xl text-orange-500"></i>
+                                    </div>
+                                    <p class="text-3xl font-bold my-4">450 Coin</p>
+                                    <div
+                                        class="bg-orange-300 p-4 w-full text-center border-t duration-200 group-hover:bg-orange-400 border-slate-200">
+                                        <h1 class="font-fira text-xl duration-200 text-gray-700 group-hover:text-black">Rp.
+                                            100.000</h1>
+                                    </div>
+                                </div>
+                            </a>
+                            <a href="#" onclick="selectCoin(540)" class="coin-card" data-amount="540">
+                                <div
+                                    class="flex relative flex-col items-center group duration-200 hover:bg-gray-300 bg-gray-200 text-black rounded-lg w-64 overflow-hidden">
+                                    <div class="flex items-center justify-center w-16 h-16 bg-white rounded-full mt-7">
+                                        <i class="fa-solid fa-coins text-3xl text-orange-500"></i>
+                                    </div>
+                                    <p class="text-3xl font-bold my-4">540 Coin</p>
+                                    <div
+                                        class="bg-orange-300 p-4 w-full text-center border-t duration-200 group-hover:bg-orange-400 border-slate-200">
+                                        <h1 class="font-fira text-xl duration-200 text-gray-700 group-hover:text-black">Rp.
+                                            120.000</h1>
+                                    </div>
+                                </div>
+                            </a>
+
                         </div>
                         <input type="hidden" name="coin_amount" id="coin_amount">
                     </div>

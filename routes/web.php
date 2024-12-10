@@ -15,6 +15,7 @@ use App\Http\Controllers\StaffController;
 use App\Http\Controllers\MangaController;
 use App\Http\Controllers\MangaSwiperController;
 use App\Http\Middleware\Dashboard;
+use App\Http\Middleware\MangaPurchase;
 use App\Http\Middleware\RestrictStaffAccess;
 use App\Models\Blog;
 use App\Models\Chapter;
@@ -28,10 +29,10 @@ use Illuminate\Support\Facades\Storage;
 // ROUTE VIEW LANDING PAGE
 //  ----------------------------------------------------------------
 Route::get('/', [HomeController::class, 'home'])->name('home');
-
 Route::get('join', function () {
-    return view('join', array('title' => 'MangaLo | Join Us'));
+    return view('join', ['title' => 'MangaLo | Join Us']);
 })->name('join');
+
 
 Route::get('faq', function () {
     return view('faq', array('title' => 'MangaLo | FAQ'));
@@ -68,8 +69,12 @@ Route::get('forgot', function () {
     return view('register.forgot', data: array('title' => 'MangaLo | Forgot'));
 })->name('forgot');
 
-Route::get('chapter/{id}', [ChapterController::class, 'view'])->name('chapter')->middleware('auth');
+Route::get('chapter/{id}', [ChapterController::class, 'view'])
+    ->middleware(MangaPurchase::class)
+    ->name('chapter');
 Route::get('manga/{id}', [MangaController::class, 'view'])->name('manga');
+// Route::post('manga/{id}/unlock', [MangaController::class, 'unlock'])->name('manga.unlock')->middleware('auth');
+
 Route::get('/search-manga', [MangaController::class, 'search'])->name('search.manga');
 Route::get('list', [MangaController::class, 'sort'])->name('list');
 
@@ -82,7 +87,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/coins/topup', [CoinController::class, 'showTopUpPage'])->name('coins.topup');
     Route::post('/coins/topup/kocak', [CoinController::class, 'processTopUp'])->name('process.topup');
     Route::post('/manga/{manga}/unlock', [CoinController::class, 'unlockManga'])->name('manga.unlock');
-    Route::get('checkout', function() {
+    Route::get('checkout', function () {
         return view('checkout', array('title' => 'MangaLo | Checkout'));
     })->name('checkout');
     Route::post('/payment/success', [CoinController::class, 'successPayment'])->name('payment.success');
@@ -166,13 +171,13 @@ Route::middleware(Dashboard::class)->group(function () {
 
     // Staff Routes Group
     Route::controller(StaffController::class)
-    ->middleware(RestrictStaffAccess::class)
-    ->group(function () {
-        Route::get('StaffList', 'index')->name('List.Staff');
-        Route::get('StaffCreate', 'showForm')->name('Staff.create');
-        Route::post('staffSubmit', 'addStaff')->name('staff.submit');
-        Route::delete('staffDelete/{id}', 'delete')->name('staff.delete');
-    });
+        ->middleware(RestrictStaffAccess::class)
+        ->group(function () {
+            Route::get('StaffList', 'index')->name('List.Staff');
+            Route::get('StaffCreate', 'showForm')->name('Staff.create');
+            Route::post('staffSubmit', 'addStaff')->name('staff.submit');
+            Route::delete('staffDelete/{id}', 'delete')->name('staff.delete');
+        });
 
     Route::controller(MangaSwiperController::class)->group(function () {
         Route::get('swiper-list', 'index')->name('swiper.list');

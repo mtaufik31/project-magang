@@ -63,7 +63,7 @@
     <x-sidebar></x-sidebar>
     <div id="content" class="md:ml-[35vh] transition-all duration-500">
         <x-navboard></x-navboard>
-        <div class="md:px-12 py-4 ">
+        <div class="md:px-12 pb-4 ">
             @yield('content')
         </div>
     </div>
