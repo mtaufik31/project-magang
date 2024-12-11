@@ -200,32 +200,33 @@
                     $user = Auth::user();
                 @endphp
 
-                @if ($manga->is_paid && !$isUnlocked && (is_null($user) || !in_array($user->role, ['staff', 'admin'])))
+                @if (is_null($user))
+                    {{-- Overlay untuk pengguna yang belum login --}}
                     <div class="absolute inset-0 flex items-center justify-center bg-gray-900 bg-opacity-50">
-                        @if (is_null($user))
-                            {{-- Overlay untuk pengguna yang belum login --}}
-                            <a href="{{ route('login') }}"
-                                class="bg-gray-700 hover:bg-gray-800 duration-200 text-white py-2 px-4 rounded shadow-lg justify-center justify-items-center items-center gap-2">
-                                <script src="https://cdn.lordicon.com/lordicon.js"></script>
-                                <lord-icon src="https://cdn.lordicon.com/dxjqoygy.json" trigger="loop"
-                                    colors="primary:#ffffff,secondary:#e88c30" style="width:250px;height:100px">
-                                </lord-icon>
-                                <p>Login to unlock this manga</p>
-                            </a>
-                        @else
-                            {{-- Overlay untuk pengguna yang belum memiliki akses --}}
-                            <button
-                                class="bg-gray-700 hover:bg-gray-800 duration-200 text-white py-2 px-4 rounded shadow-lg items-center gap-2"
-                                onclick="confirmPurchase({{ $manga->id }}, {{ $manga->unlock_cost }})">
-                                <script src="https://cdn.lordicon.com/lordicon.js"></script>
-                                <lord-icon src="https://cdn.lordicon.com/fgxwhgfp.json" trigger="loop" delay="500"
-                                    colors="primary:#ffffff,secondary:#e88c30" style="width:250px;height:100px">
-                                </lord-icon>
-                                <p>You need {{ $manga->unlock_cost }} coins to read this manga.</p>
-                            </button>
-                        @endif
+                        <a href="{{ route('login') }}"
+                            class="bg-gray-700 hover:bg-gray-800 duration-200 text-white py-2 px-4 rounded shadow-lg justify-center justify-items-center items-center gap-2">
+                            <script src="https://cdn.lordicon.com/lordicon.js"></script>
+                            <lord-icon src="https://cdn.lordicon.com/dxjqoygy.json" trigger="loop"
+                                colors="primary:#ffffff,secondary:#e88c30" style="width:250px;height:100px">
+                            </lord-icon>
+                            <p>Login to unlock this manga</p>
+                        </a>
+                    </div>
+                @elseif ($manga->is_paid && !$isUnlocked && !in_array($user->role, ['staff', 'admin']))
+                    {{-- Overlay untuk pengguna yang belum memiliki akses --}}
+                    <div class="absolute inset-0 flex items-center justify-center bg-gray-900 bg-opacity-50">
+                        <button
+                            class="bg-gray-700 hover:bg-gray-800 duration-200 text-white py-2 px-4 rounded shadow-lg items-center gap-2"
+                            onclick="confirmPurchase({{ $manga->id }}, {{ $manga->unlock_cost }})">
+                            <script src="https://cdn.lordicon.com/lordicon.js"></script>
+                            <lord-icon src="https://cdn.lordicon.com/fgxwhgfp.json" trigger="loop" delay="500"
+                                colors="primary:#ffffff,secondary:#e88c30" style="width:250px;height:100px">
+                            </lord-icon>
+                            <p>You need {{ $manga->unlock_cost }} coins to read this manga.</p>
+                        </button>
                     </div>
                 @endif
+
 
             </div>
         </div>

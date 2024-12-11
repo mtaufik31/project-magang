@@ -97,7 +97,7 @@ Route::middleware(['auth'])->group(function () {
         $user = Auth::user();
         $purchasedMangas = Manga::whereHas('purchases', function ($query) use ($user) {
             $query->where('user_id', $user->id);
-        })->get();
+        })->orderBy('updated_at', 'desc')->get();
 
         return view('purchased', [
             'title' => 'MangaLo | Purchased',

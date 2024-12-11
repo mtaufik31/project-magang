@@ -25,6 +25,11 @@ class MangaPurchase
         $manga = $chapter->manga;
         $user = Auth::user();
 
+        if (!$user) {
+            return redirect()->route('login')
+                ->with('error', 'You need to login to access this chapter.');
+        }
+
         // Jika user memiliki role staff atau admin, lewati pemeriksaan
         if (in_array($user->role, ['staff', 'admin'])) {
             return $next($request);

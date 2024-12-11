@@ -11,7 +11,7 @@
     <div
         id="accordion-content-{{ $id }}"
         role="region"
-        class="overflow-hidden text-sm transition-all duration-300 ease-in-out text-slate-600"
+        class="overflow-hidden text-sm transition-all duration-200 ease-in-out text-slate-600"
         style="max-height: {{ request()->routeIs(['List Manga', 'Create manga', 'GenreList']) ? '100vh' : '0' }};"
     >
         <p class="px-5 font-semibold text-black">

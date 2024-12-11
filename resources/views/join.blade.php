@@ -31,10 +31,10 @@
                 </p>
                 <p>jadi, Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla animi temporibus accusantium. In
                     tenetur porro accusamus, ex minus pariatur nihil.</p>
-                <button
-                    class="before:ease rounded-lg relative px-10 py-2 mt-3 overflow-hidden border border-orange-500 bg-orange-500 text-white shadow-2xl transition-all before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-6 before:bg-white before:opacity-50 before:duration-700 hover:shadow-orange-500 hover:before:-translate-x-40">
+                <a href="mailto:taufikbudiman031@gmail.com?subject=Join Us&body=Hello,%20I%20am%20interested%20to%20join!"
+                    class="before:ease rounded-lg absolute px-10 py-2 mt-3 overflow-hidden border border-orange-500 bg-orange-500 text-white shadow-2xl transition-all before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-6 before:bg-white before:opacity-50 before:duration-700 hover:shadow-orange-500 hover:before:-translate-x-40">
                     <span relative="relative z-10">Join Us!</span>
-                </button>
+                </a>
             </div>
         </div>
     </section>
