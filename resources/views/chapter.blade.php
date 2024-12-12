@@ -111,8 +111,9 @@
     </style>
 
     <div id="#" class="">.</div>
-    <div id="vertical-alert" class="fixed inset-0 flex items-center justify-center z-50">
-        <div class="py-10 px-16 border-white border bg-black  bg-opacity-80 rounded-lg flex flex-col items-center justify-center shadow-lg">
+    <div id="vertical-alert" class="fixed inset-0 flex items-center justify-center -z-0">
+        <div
+            class="py-10 px-16 border-white border bg-black  bg-opacity-80 rounded-lg flex flex-col items-center justify-center shadow-lg">
             <i id="arrow-up" class="fa-solid fa-angles-up text-white text-4xl mb-2"></i>
             <div class="text-white text-xl font-semibold py-2 ">Vertical</div>
             <i id="arrow-down" class="fa-solid fa-angles-down text-white text-4xl mt-2"></i>
@@ -161,7 +162,7 @@
             @endforeach
         </div>
         <div
-            class="bg-gradient-to-t from-orange-600 via-black to-orange-600   bg-pos-100 transition-all group-hover:bg-gradient-to-t ease-in-out bg-pos rounded-xl w-[400px] mx-auto p-6 space-y-4 my-36 cursor-pointer relative border group bg-size-200 hover:bg-pos-0 ">
+            class="bg-gradient-to-t from-orange-600 via-black to-orange-600   bg-pos-100 transition-all group-hover:bg-gradient-to-t ease-in-out bg-pos rounded-xl w-[400px] mx-auto px-6 py-10 space-y-4 my-36 cursor-pointer relative border group bg-size-200 hover:bg-pos-0 ">
             @if ($nextChapter)
                 <p id="terbang"
                     class="flex justify-center w-36 py-2 mx-auto rounded-full text-black bg-gradient-to-r from-orange-500 to-yellow-50 font-medium gap-3 text-[12px] absolute top-4 right-32">
@@ -186,6 +187,10 @@
                         Back to Manga
                     </h2>
                 </a>
+                <a href="{{ route('home') }}"
+                        class="flex absolute items-center top-80 left-40 hover:-translate-y-1 duration-100 w-[90px] md:w-[90px]">
+                        <img width="" loading="lazy" src="{{ asset('asset/img/MangaLo_logo_no_background-removebg-preview.png') }}" alt="">
+                    </a>
             @else
                 <p
                     class="flex justify-center text-yellow-400 font-bold text-[40px] pb-3 group-hover:text-white duration-300 group-hover:drop-shadow-xl truncate">
@@ -200,8 +205,10 @@
                             Back To Manga
                         </p>
                     </div>
-
-                </a>
+                    <a href="{{ route('home') }}"
+                        class="flex absolute items-center top-96 left-40 hover:translate-y-4 duration-100 w-[90px] md:w-[90px]">
+                        <img width="" loading="lazy" src="{{ asset('asset/img/MangaLo_logo_no_background-removebg-preview.png') }}" alt="">
+                    </a>
             @endif
         </div>
     </div>
@@ -290,7 +297,7 @@
             });
         });
     </script>
-    {{-- <script>
+    <script>
         document.addEventListener('DOMContentLoaded', function() {
             const alertElement = document.getElementById('vertical-alert');
 
@@ -299,7 +306,7 @@
                 alertElement.style.display = 'none';
             }, 3000);
         });
-    </script> --}}
+    </script>
     {{-- <script>
         document.onkeydown = function(e) {
             return false;

@@ -19,9 +19,13 @@ class AuthController extends Controller
     public function register(Request $request)
     {
         $request->validate([
-            'name' => 'required|string|max:255|alpha_dash',
-            'email' => 'required|string|email|max:255|unique:users',
+            'name' => 'required|string|max:255|alpha_dash|unique:users,name',
+            'email' => 'required|string|email|max:255|unique:users,email',
             'password' => 'required|string|min:8|confirmed',
+        ], [
+            'name.unique' => 'Username sudah digunakan, silakan pilih username lain.',
+            'name.required' => 'Username tidak boleh kosong.',
+            'name.alpha_dash' => 'Username hanya boleh mengandung huruf, angka, tanda hubung, dan underscore.',
         ]);
 
         $user = User::create([
@@ -30,9 +34,9 @@ class AuthController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
-        // Redirect ke halaman login atau dashboard setelah registrasi berhasil
         return redirect()->route('login')->with('success', 'Registrasi berhasil! Silakan login.');
     }
+
 
     public function showLogin()
     {
@@ -58,7 +62,7 @@ class AuthController extends Controller
         $remember = $request->has('remember');
 
         if (Auth::attempt($credentials, $remember)) {
-            if (Auth::user()->role=='admin') {
+            if (Auth::user()->role == 'admin') {
                 return redirect()->intended('/dashboard')->with('success', 'You`re Dewa'); // Pesan sukses
             }
             return redirect()->intended('/')->with('success', 'Login berhasil!'); // Pesan sukses
@@ -77,7 +81,8 @@ class AuthController extends Controller
         return redirect('/')->with('berhasil', 'Anda Log Out!');
     }
 
-    public function forgotPassword(Request $request) {
+    public function forgotPassword(Request $request)
+    {
         $request->validate(['email' => 'required|email']);
 
         // Mengirim link reset password
@@ -86,7 +91,7 @@ class AuthController extends Controller
         );
 
         return $status === Password::RESET_LINK_SENT
-           ? back()->with(['status' => __($status)])
+            ? back()->with(['status' => __($status)])
             : back()->withErrors(['email' => [__($status)]]);
     }
 

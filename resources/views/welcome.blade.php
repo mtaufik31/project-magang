@@ -124,8 +124,10 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 py-3">
                 @foreach ($mangas as $manga)
                     <div class="flex sm:justify-normal py-3  border-b-2 duration-300">
-                        <img class="w-[80px] h-auto rounded-md hover:scale-105 duration-300"
-                            src="{{ asset('storage/' . $manga->image) }}" alt="{{ $manga->title }}">
+                        <a href="{{ route('manga', $manga->id) }}">
+                            <img class="w-[80px] h-auto rounded-md hover:scale-105 duration-300"
+                                src="{{ asset('storage/' . $manga->image) }}" alt="{{ $manga->title }}">
+                        </a>
                         <div class="px-5 w-full lg:w-fit">
                             <a href="{{ route('manga', $manga->id) }}"
                                 class="font-poppins font-medium text-lg hover:text-orange-500 duration-300">

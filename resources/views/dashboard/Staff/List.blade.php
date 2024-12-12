@@ -114,7 +114,7 @@
                     </div>
                 </div>
             </div>
-
+{{-- 
             <!-- Pagination -->
             <div class="flex justify-end mt-4">
                 <nav class="inline-flex">
@@ -124,7 +124,7 @@
                     <button
                         class="px-4 py-2 text-sm font-medium text-gray-500 bg-gray-100 rounded-r-md hover:bg-gray-200">Next</button>
                 </nav>
-            </div>
+            </div> --}}
         </div>
     </section>
 

@@ -24,6 +24,7 @@
                     @enderror
                 </div>
 
+
                 <!-- Email Field -->
                 <div class="relative">
                     <label for="email"
@@ -46,13 +47,9 @@
                     </label>
                     <input id="password" required name="password" type="password" placeholder=" "
                         class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-orange-600 peer transition-all ease-in-out" />
-                    <span id="toggle-password" class="absolute top-1/2 right-3 -translate-y-1/2 cursor-pointer hidden">
-                        <i id="eye-icon"
-                            class="fa-regular fa-eye text-gray-400 hover:text-orange-400 transition-all duration-200"></i>
-                    </span>
-                    @if ($errors->has('login'))
-                        <p class="text-red-500 text-sm mt-1">{{ $errors->first('login') }}</p>
-                    @endif
+                    @error('password')
+                        <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                    @enderror
                 </div>
 
                 <script>
@@ -89,12 +86,12 @@
                 <div class="relative">
                     <label for="password_confirmation"
                         class="absolute text-sm text-gray-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 transition-all ease-in-out peer-focus:px-2 peer-focus:text-orange-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4">
-                        Confirm Password
+                        Konfirmasi Password
                     </label>
-                    <input required id="password_confirmation" name="password_confirmation" type="password" placeholder=" "
+                    <input id="password_confirmation" required name="password_confirmation" type="password" placeholder=" "
                         class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-orange-600 peer transition-all ease-in-out" />
                     @error('password_confirmation')
-                        <span class="text-red-500 text-sm">{{ $message }}</span>
+                        <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
                     @enderror
                 </div>
 
