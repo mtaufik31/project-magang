@@ -67,7 +67,7 @@ class MangaController extends Controller
                 $query->orderBy('released_year', 'asc');
                 break;
         }
-        $mangas = $query->paginate(12);
+        $mangas = $query->paginate(3);
 
         // Get selected years from request
         $selectedYears = $request->input('released_year', []);

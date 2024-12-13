@@ -1,66 +1,96 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# MangaLo! 
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+<p align="center"><a href="https://laravel.com" target="_blank"><img src="!Rancangan Website!/logo/manga.png" width="400" alt="Laravel Logo"></a></p>
+<p align="center"><a href="https://laravel.com" target="_blank"><img src="!Rancangan Website!/logo/MangaLo_logo_no_background-removebg-preview.png" width="200" alt="Laravel Logo"></a></p>
 
-## About Laravel
+[![Build Status](https://github.com/laravel/framework/workflows/tests/badge.svg)](https://github.com/laravel/framework/actions)
+[![Total Downloads](https://img.shields.io/packagist/dt/laravel/framework)](https://packagist.org/packages/laravel/framework)
+[![Latest Stable Version](https://img.shields.io/packagist/v/laravel/framework)](https://packagist.org/packages/laravel/framework)
+[![License](https://img.shields.io/packagist/l/laravel/framework)](https://packagist.org/packages/laravel/framework)
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Tentang MangaLo!
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+**MangaLo!** adalah platform website untuk membaca komik dan manga secara online. Website ini dirancang untuk memberikan pengalaman membaca yang nyaman dan mudah bagi semua penggemar manga. MangaLo! menyediakan dua jenis manga:
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+- **Gratis**: Tersedia untuk semua pengguna tanpa biaya tambahan.
+- **Berbayar**: Memerlukan poin yang bisa dibeli untuk membuka chapter tertentu.
 
-## Learning Laravel
+Dengan antarmuka yang ramah pengguna dan koleksi manga yang terus diperbarui, MangaLo! menjadi pilihan terbaik untuk menikmati manga favorit Anda kapan saja dan di mana saja.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## Keunggulan MangaLo!
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+- **Aksesibilitas Mudah**: Tersedia online dengan antarmuka yang responsif di berbagai perangkat.
+- **Koleksi Beragam**: Menyediakan berbagai genre dan cerita untuk semua selera.
+- **Sistem Mikrotransaksi**: Pengguna dapat membeli poin untuk membuka chapter premium dengan mudah.
+- **Manajemen Pengguna**: Mendukung tiga jenis pengguna: 
+  - **Pengguna Umum**: Membaca manga dan blog.
+  - **Staff**: Menambah, mengedit, atau menghapus manga dan blog.
+  - **Admin**: Mengelola akun staff dan memantau konten.
+- **Pembayaran Terintegrasi**: Didukung oleh gateway pembayaran Midtrans yang aman dan terpercaya.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## Instalasi Cepat
 
-## Laravel Sponsors
+Ikuti langkah-langkah berikut untuk menjalankan MangaLo! di mesin lokal Anda:
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+1. **Clone Repository**:
 
-### Premium Partners
+    ```bash
+    git clone https://github.com/mtaufik31/MangaLo.git
+    cd mangalo
+    ```
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+2. **Instal Dependensi**:
 
-## Contributing
+    ```bash
+    composer install
+    npm install
+    npm run build
+    ```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+3. **Konfigurasi File `.env`**:
 
-## Code of Conduct
+    Salin file `.env.example` ke `.env` dan sesuaikan konfigurasi berikut:
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+    ```bash
+    cp .env.example .env
+    ```
 
-## Security Vulnerabilities
+    Edit file `.env` untuk menyesuaikan dengan database lokal Anda:
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+    ```env
+    DB_DATABASE=mangalo
+    DB_USERNAME=root
+    DB_PASSWORD=yourpassword
 
-## License
+    MIDTRANS_SERVER_KEY=your-midtrans-server-key
+    MIDTRANS_CLIENT_KEY=your-midtrans-client-key
+    MIDTRANS_IS_PRODUCTION=false
+    ```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+4. **Generate Application Key**:
+
+    ```bash
+    php artisan key:generate
+    ```
+
+5. **Migrasi dan Seeder**:
+
+    ```bash
+    php artisan migrate --seed
+    ```
+
+6. **Jalankan Server Lokal**:
+
+    ```bash
+    php artisan serve
+    ```
+
+    Buka browser dan akses aplikasi di `http://localhost:8000`.
+
+## Pembimbing
+
+[Khairul Amri CM](https://github.com/piramli14)
+
+## Lisensi
+
+MangaLo! dikembangkan menggunakan framework Laravel yang merupakan perangkat lunak sumber terbuka yang dilisensikan di bawah [MIT license](https://opensource.org/licenses/MIT).
