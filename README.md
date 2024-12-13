@@ -1,12 +1,24 @@
-# MangaLo! 
+# MangaLo!
 
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="!Rancangan Website!/logo/manga.png" width="400" alt="Laravel Logo"></a></p>
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="!Rancangan Website!/logo/MangaLo_logo_no_background-removebg-preview.png" width="200" alt="Laravel Logo"></a></p>
+<p align="center">
+    <img src="!Rancangan Website!/logo/manga.png" width="180" alt="Manga Logo" style="display: inline;">
+    <img src="!Rancangan Website!/logo/MangaLo_logo_no_background-removebg-preview.png" width="200" alt="MangaLo Logo" style="display: inline;">
+</p>
 
-[![Build Status](https://github.com/laravel/framework/workflows/tests/badge.svg)](https://github.com/laravel/framework/actions)
-[![Total Downloads](https://img.shields.io/packagist/dt/laravel/framework)](https://packagist.org/packages/laravel/framework)
-[![Latest Stable Version](https://img.shields.io/packagist/v/laravel/framework)](https://packagist.org/packages/laravel/framework)
-[![License](https://img.shields.io/packagist/l/laravel/framework)](https://packagist.org/packages/laravel/framework)
+<p align="center">
+    <a href="https://github.com/laravel/framework/actions">
+        <img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status">
+    </a>
+    <a href="https://packagist.org/packages/laravel/framework">
+        <img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads">
+    </a>
+    <a href="https://packagist.org/packages/laravel/framework">
+        <img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version">
+    </a>
+    <a href="https://packagist.org/packages/laravel/framework">
+        <img src="https://img.shields.io/packagist/l/laravel/framework" alt="License">
+    </a>
+</p>
 
 ## Tentang MangaLo!
 
@@ -35,7 +47,7 @@ Ikuti langkah-langkah berikut untuk menjalankan MangaLo! di mesin lokal Anda:
 1. **Clone Repository**:
 
     ```bash
-    git clone https://github.com/mtaufik31/MangaLo.git
+    git clone https://github.com/username/mangalo.git
     cd mangalo
     ```
 
