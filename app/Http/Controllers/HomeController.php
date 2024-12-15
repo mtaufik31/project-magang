@@ -19,7 +19,7 @@ class HomeController extends Controller
         $mangas = Manga::with(['chapters' => function ($query) {
             $query->latest('chapter_number')->take(3);
         }])
-            ->orderBy('updated_at', 'desc')
+            ->orderBy('status', 'desc')
             ->paginate(9);
 
         $genres = genre::paginate(6);

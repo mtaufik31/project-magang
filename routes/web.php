@@ -53,10 +53,10 @@ Route::get('blog/{id}', action: function ($id) {
     return view('blog', array('title' => 'MangaLo | blog', 'blog' => $blog));
 })->name('blog');
 
-Route::get('list', function () {
-    $mangas = Manga::orderBy('updated_at', 'desc')->paginate(8);
-    return view('list', array('title' => 'MangaLo | List', 'mangas' => $mangas));
-})->name('list');
+// Route::get('list', function () {
+//     $mangas = Manga::orderBy('updated_at', 'desc')->paginate(8);
+//     return view('list', array('title' => 'MangaLo | List', 'mangas' => $mangas));
+// })->name('list');
 
 Route::get('register', function () {
     return view('register.signup',);

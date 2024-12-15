@@ -172,7 +172,7 @@
                     {{-- {{ $blogs }} --}}
                     @foreach ($blogs as $blog)
                         <x-cardblog id="{{ $blog->id }}" title="{{ $blog->title }}"
-                            description="{{ $blog->description }}" image="{{ $blog->image }}"
+                        description="{!! $blog->description !!}" image="{{ $blog->image }}"
                             name="{{ $blog->user->name }} - {{ $blog->created_at->format('d-m-Y') }}">
                         </x-cardblog>
                     @endforeach
